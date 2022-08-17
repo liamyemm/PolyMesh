@@ -1,11 +1,12 @@
-#include <vector>
-#include <map>
-#include <iostream>
-#include <cmath>
-#include <Eigen/Dense>
-#include <math.hpp>
-#include <algorithm>
-// #include <Eigen/FullPivLU>
+// standard libraries
+#include <vector> // std::vector
+#include <algorithm> // std::find
+
+// external linking to Eigen is required
+#include <Eigen/Dense> // Eigen::Matrix, Eigen::MatrixXd, Eigen::FullPivLU
+
+// path to Math specified so that external linking is NOT required
+#include <../Math/math.hpp> // Math::factorial, Math::sgn
 
 #ifndef _POLYTOPE2D_HPP
 #define _POLYTOPE2D_HPP
@@ -46,7 +47,7 @@ namespace Mesh2D
     // ----------------------------------------------------------------------------
 
     /** Polytope is a templated class describing polytopes in two dimensional space. 
-        It takes in one template parameters - object_dim - the dimension of the polytope.
+        It takes in one template parameter - object_dim - the dimension of the polytope.
         object_dim must be less than or equal to two
      **/
 
@@ -467,6 +468,6 @@ namespace Mesh2D
         return _face_directions[edge_index];
     }
 
-} // namespace MeshND
+} // namespace Mesh2D
 
 #endif
