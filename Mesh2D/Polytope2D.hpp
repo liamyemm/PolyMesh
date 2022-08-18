@@ -1,5 +1,5 @@
 // standard libraries
-#include <vector> // std::vector
+#include <vector>    // std::vector
 #include <algorithm> // std::find
 
 // external linking to Eigen is required
@@ -7,6 +7,14 @@
 
 // path to Math specified so that external linking is NOT required
 #include <../Math/math.hpp> // Math::factorial, Math::sgn
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <algorithm>
+#include <functional>
+#include <random>
+#include <fstream>
 
 #ifndef _POLYTOPE2D_HPP
 #define _POLYTOPE2D_HPP
@@ -33,20 +41,20 @@ namespace Mesh2D
     double simplex_measure(Simplex<object_dim> simplex);
 
     /*!
-    * @defgroup Polytope
-    * @brief Class providing a template for all objects (Vertex, Edge, Face, Cell) that appear in a Mesh
-    */
+     * @defgroup Polytope
+     * @brief Class providing a template for all objects (Vertex, Edge, Face, Cell) that appear in a Mesh
+     */
 
     /*!
-    * \addtogroup Polytope
-    * @{
-    */
+     * \addtogroup Polytope
+     * @{
+     */
 
     // ----------------------------------------------------------------------------
     //                         Polytope class definition
     // ----------------------------------------------------------------------------
 
-    /** Polytope is a templated class describing polytopes in two dimensional space. 
+    /** Polytope is a templated class describing polytopes in two dimensional space.
         It takes in one template parameter - object_dim - the dimension of the polytope.
         object_dim must be less than or equal to two
      **/
@@ -72,39 +80,39 @@ namespace Mesh2D
 
         // inline size_t dim() const { return object_dim; }
 
-        inline size_t global_index() const { return _index; }                                ///< Return the global index of the Polytope
-        inline double diam() const { return _diameter; }                                     ///< Return the diameter of the Polytope
+        inline size_t global_index() const { return _index; }                     ///< Return the global index of the Polytope
+        inline double diam() const { return _diameter; }                          ///< Return the diameter of the Polytope
         inline VectorRd center_mass() const { return _center_mass; }              ///< Return the center mass of the Polytope
-        inline double measure() const { return _measure; }                                   ///< Return the Lebesgue measure of the Polytope
+        inline double measure() const { return _measure; }                        ///< Return the Lebesgue measure of the Polytope
         inline Simplices<object_dim> get_simplices() const { return _simplices; } ///< Return the simplices making up the Polytope
-        inline void set_global_index(const size_t idx) { _index = idx; }                           ///< Set the global index
-        inline bool is_boundary() const { return _is_boundary; }                                   ///< Return true if Polytope is a boundary object, false otherwise
-        inline void set_boundary(bool val) { _is_boundary = val; }                           ///< Set the boundary value of the Polytope
+        inline void set_global_index(const size_t idx) { _index = idx; }          ///< Set the global index
+        inline bool is_boundary() const { return _is_boundary; }                  ///< Return true if Polytope is a boundary object, false otherwise
+        inline void set_boundary(bool val) { _is_boundary = val; }                ///< Set the boundary value of the Polytope
 
-        inline std::vector<Polytope<0>*> get_vertices() const { return _vertices; }       ///< Return the vertices of the Polytope
-        inline std::vector<Polytope<1>*> get_edges() const { return _edges; }             ///< Return the edges of the Polytope
-        inline std::vector<Polytope<DIMENSION - 1>*> get_faces() const { return _edges; } ///< Return the faces of the Polytope
-        inline std::vector<Polytope<DIMENSION>*> get_cells() const { return _cells; }     ///< Return the cells of the Polytope
+        inline std::vector<Polytope<0> *> get_vertices() const { return _vertices; }       ///< Return the vertices of the Polytope
+        inline std::vector<Polytope<1> *> get_edges() const { return _edges; }             ///< Return the edges of the Polytope
+        inline std::vector<Polytope<DIMENSION - 1> *> get_faces() const { return _edges; } ///< Return the faces of the Polytope
+        inline std::vector<Polytope<DIMENSION> *> get_cells() const { return _cells; }     ///< Return the cells of the Polytope
 
         inline size_t n_vertices() const { return _vertices.size(); } ///< Return the number of vertices of the Polytope
         inline size_t n_edges() const { return _edges.size(); }       ///< Return the number of edges of the Polytope
         inline size_t n_faces() const { return _edges.size(); }       ///< Return the number of faces of the Polytope
         inline size_t n_cells() const { return _cells.size(); }       ///< Return the number of cells of the Polytope
 
-        Polytope<0>* vertex(const size_t i) const;           ///< Return the i-th vertex of the Polytope
-        Polytope<1>* edge(const size_t i) const;             ///< Return the i-th edge of the Polytope
-        Polytope<DIMENSION - 1>* face(const size_t i) const; ///< Return the i-th face of the Polytope
-        Polytope<DIMENSION>* cell(const size_t i) const;     ///< Return the i-th cell of the Polytope
+        Polytope<0> *vertex(const size_t i) const;           ///< Return the i-th vertex of the Polytope
+        Polytope<1> *edge(const size_t i) const;             ///< Return the i-th edge of the Polytope
+        Polytope<DIMENSION - 1> *face(const size_t i) const; ///< Return the i-th face of the Polytope
+        Polytope<DIMENSION> *cell(const size_t i) const;     ///< Return the i-th cell of the Polytope
 
-        void add_vertex(Polytope<0>* vertex);         ///< Add a vertex to the Polytope
-        void add_edge(Polytope<1>* edge);             ///< Add an edge to the Polytope
-        void add_face(Polytope<DIMENSION - 1>* face); ///< Add a face to the Polytope
-        void add_cell(Polytope<DIMENSION>* cell);     ///< Add a cell to the Polytope
+        void add_vertex(Polytope<0> *vertex);         ///< Add a vertex to the Polytope
+        void add_edge(Polytope<1> *edge);             ///< Add an edge to the Polytope
+        void add_face(Polytope<DIMENSION - 1> *face); ///< Add a face to the Polytope
+        void add_cell(Polytope<DIMENSION> *cell);     ///< Add a cell to the Polytope
 
-        int index_vertex(const Polytope<0>* vertex) const;           ///< Returns the local index of a vertex
-        int index_edge(const Polytope<1>* edge) const;               ///< Returns the local index of an edge
-        int index_face(const Polytope<DIMENSION - 1>* face) const;   ///< Returns the local index of a face
-        int index_cell(const Polytope<DIMENSION>* cell) const;       ///< Returns the local index of a cell
+        int index_vertex(const Polytope<0> *vertex) const;         ///< Returns the local index of a vertex
+        int index_edge(const Polytope<1> *edge) const;             ///< Returns the local index of an edge
+        int index_face(const Polytope<DIMENSION - 1> *face) const; ///< Returns the local index of a face
+        int index_cell(const Polytope<DIMENSION> *cell) const;     ///< Returns the local index of a cell
 
         VectorRd coords() const; ///< Return the coordinates of a Vertex
 
@@ -114,10 +122,44 @@ namespace Mesh2D
         int face_orientation(const size_t face_index) const; ///< Return the orientation of a Face
         int edge_orientation(const size_t edge_index) const; ///< Return the orientation of a Edge
 
-        VectorRd normal() const;     ///< Return the normal of a Face
-        VectorRd tangent() const;    ///< Return the tangent of a Edge
+        VectorRd normal() const;  ///< Return the normal of a Face
+        VectorRd tangent() const; ///< Return the tangent of a Edge
 
         void construct_face_normals(); ///< Set the directions of the face normals of a cell
+
+
+
+        void plot_triangle(std::ofstream *out, Simplex<object_dim> simplex)
+        {
+            for (size_t i = 0; i < 3; ++i)
+            {
+                size_t i_next = (i + 1) % 3;
+                *out << simplex[i](0) << " " << simplex[i](1) << std::endl;
+                *out << simplex[i_next](0) << " " << simplex[i_next](1) << std::endl;
+                *out << std::endl;
+            }
+        }
+
+        void plot_simplices(std::ofstream *out)
+        {
+            assert(object_dim == 2);
+            for (auto &simplex : _simplices)
+            {
+                this->plot_triangle(out, simplex);
+            }
+        }
+
+        void plot_cell(std::ofstream *out)
+        {
+            assert(object_dim == 2);
+            for (size_t i = 0; i < _vertices.size(); ++i)
+            {
+                size_t i_next = (i + 1) % _vertices.size();
+                *out << _vertices[i]->coords()(0) << " " << _vertices[i]->coords()(1) << std::endl;
+                *out << _vertices[i_next]->coords()(0) << " " << _vertices[i_next]->coords()(1) << std::endl;
+                *out << std::endl;
+            }
+        }
 
     private:
         size_t _index;
@@ -126,13 +168,13 @@ namespace Mesh2D
         double _diameter;
         bool _is_boundary;
         Simplices<object_dim> _simplices;
-        VectorRd _normal;       // uninitialised unless object_dim == DIMENSION - 1 (face)
+        VectorRd _normal;                  // uninitialised unless object_dim == DIMENSION - 1 (face)
         std::vector<int> _face_directions; // empty unless object_dim == DIMENSION (cell)
 
-        std::vector<Polytope<0>*> _vertices;
-        std::vector<Polytope<1>*> _edges;
+        std::vector<Polytope<0> *> _vertices;
+        std::vector<Polytope<1> *> _edges;
         // std::vector<Polytope<DIMENSION - 1>*> _faces;
-        std::vector<Polytope<DIMENSION>*> _cells;
+        std::vector<Polytope<DIMENSION> *> _cells;
     };
 
     ///< A Vertex is a Polytope with object_dim = 0
@@ -158,7 +200,7 @@ namespace Mesh2D
     {
         VectorRd center_mass = VectorRd::Zero();
 
-        for (auto& coord : simplex)
+        for (auto &coord : simplex)
         {
             for (size_t i = 0; i < DIMENSION; ++i)
             {
@@ -210,13 +252,13 @@ namespace Mesh2D
         _measure = 0.0;
         _center_mass = VectorRd::Zero();
         std::vector<VectorRd> vertex_coords;
-        for (auto& simplex : simplices)
+        for (auto &simplex : simplices)
         {
             // assert(simplex.size() == _dim + 1);
             double measure_of_simplex = simplex_measure<object_dim>(simplex);
             _measure += measure_of_simplex;
             _center_mass += measure_of_simplex * simplex_center_mass<object_dim>(simplex);
-            for (auto& coord : simplex)
+            for (auto &coord : simplex)
             {
                 if (std::find(vertex_coords.begin(), vertex_coords.end(), coord) == vertex_coords.end())
                 {
@@ -261,7 +303,7 @@ namespace Mesh2D
 
     template <size_t object_dim>
     Polytope<object_dim>::Polytope(size_t index, VectorRd vertex) // vertex
-        : Polytope(index, Simplex<object_dim>({ vertex }))
+        : Polytope(index, Simplex<object_dim>({vertex}))
     {
         assert(object_dim == 0); // must be a zero dimensional object to use vertex constructor
     }
@@ -273,56 +315,56 @@ namespace Mesh2D
     Polytope<object_dim>::~Polytope() {}
 
     template <size_t object_dim>
-    void Polytope<object_dim>::add_vertex(Polytope<0>* vertex)
+    void Polytope<object_dim>::add_vertex(Polytope<0> *vertex)
     {
         assert(std::find(_vertices.begin(), _vertices.end(), vertex) == _vertices.end()); // ensure vertex does not already exist in _vertices
         _vertices.push_back(vertex);
     }
 
     template <size_t object_dim>
-    void Polytope<object_dim>::add_edge(Polytope<1>* edge)
+    void Polytope<object_dim>::add_edge(Polytope<1> *edge)
     {
         assert(std::find(_edges.begin(), _edges.end(), edge) == _edges.end());
         _edges.push_back(edge);
     }
 
     template <size_t object_dim>
-    void Polytope<object_dim>::add_face(Polytope<DIMENSION - 1>* face)
+    void Polytope<object_dim>::add_face(Polytope<DIMENSION - 1> *face)
     {
         assert(std::find(_edges.begin(), _edges.end(), face) == _edges.end());
         _edges.push_back(face);
     }
 
     template <size_t object_dim>
-    void Polytope<object_dim>::add_cell(Polytope<DIMENSION>* cell)
+    void Polytope<object_dim>::add_cell(Polytope<DIMENSION> *cell)
     {
         assert(std::find(_cells.begin(), _cells.end(), cell) == _cells.end());
         _cells.push_back(cell);
     }
 
     template <size_t object_dim>
-    Polytope<0>* Polytope<object_dim>::vertex(const size_t i) const
+    Polytope<0> *Polytope<object_dim>::vertex(const size_t i) const
     {
         assert(i < _vertices.size());
         return _vertices[i];
     }
 
     template <size_t object_dim>
-    Polytope<1>* Polytope<object_dim>::edge(const size_t i) const
+    Polytope<1> *Polytope<object_dim>::edge(const size_t i) const
     {
         assert(i < _edges.size());
         return _edges[i];
     }
 
     template <size_t object_dim>
-    Polytope<DIMENSION - 1>* Polytope<object_dim>::face(const size_t i) const
+    Polytope<DIMENSION - 1> *Polytope<object_dim>::face(const size_t i) const
     {
         assert(i < _edges.size());
         return _edges[i];
     }
 
     template <size_t object_dim>
-    Polytope<DIMENSION>* Polytope<object_dim>::cell(const size_t i) const
+    Polytope<DIMENSION> *Polytope<object_dim>::cell(const size_t i) const
     {
         assert(i < _cells.size());
         return _cells[i];
@@ -332,18 +374,19 @@ namespace Mesh2D
     void Polytope<object_dim>::construct_face_normals() // not very efficient - probably room for improvement
     {
         assert(object_dim == DIMENSION);
+        bool flag = false;
         for (size_t iF = 0; iF < _edges.size(); ++iF)
         {
             VectorRd normal = _edges[iF]->normal();
             Simplex<object_dim - 1> face_simplex = _edges[iF]->get_simplices()[0];
             VectorRd center = VectorRd::Zero();
             double count;
-            for (auto& cell_simplex : this->get_simplices())
+            for (auto &cell_simplex : this->get_simplices())
             {
                 count = 0;
                 for (size_t i = 0; (i < cell_simplex.size()) && count < 2; ++i)
                 {
-                    if (std::find(face_simplex.begin(), face_simplex.end(), cell_simplex[i]) == face_simplex.end()) //requires numerical precision
+                    if (std::find(face_simplex.begin(), face_simplex.end(), cell_simplex[i]) == face_simplex.end()) // requires numerical precision
                     {
                         ++count;
                     }
@@ -357,8 +400,19 @@ namespace Mesh2D
             assert(count == 1);
             //    _face_directions.push_back(Math::sgn((_faces[iF]->center_mass() - _center_mass).dot(normal))); // star shaped wrt center mass
             _face_directions.push_back(Math::sgn((_edges[iF]->center_mass() - center).dot(normal)));
-            assert(_face_directions[iF] != 0);
+
+            flag = flag || _face_directions[iF] == 0;
+            // assert(_face_directions[iF] != 0);
         }
+        if(flag)
+        {
+            std::ofstream cell_plot("cell_plot.dat");
+            std::ofstream simplices_plot("simplices_plot.dat");
+            this->plot_simplices(&simplices_plot);
+            this->plot_cell(&cell_plot);
+            std::cout << "\n" << this->get_simplices().size() << "\n";
+        }
+        assert(!flag);
     }
 
     template <size_t object_dim>
@@ -378,7 +432,7 @@ namespace Mesh2D
     template <size_t object_dim>
     VectorRd Polytope<object_dim>::coords() const // only for vertices
     {
-        assert(object_dim == 0); // can only return coordinate of a vertex
+        assert(object_dim == 0);            // can only return coordinate of a vertex
         return this->get_simplices()[0][0]; // only has one simplex, with one coordinate
     }
 
@@ -397,7 +451,7 @@ namespace Mesh2D
     }
 
     template <size_t object_dim>
-    int Polytope<object_dim>::index_vertex(const Polytope<0>* vertex) const
+    int Polytope<object_dim>::index_vertex(const Polytope<0> *vertex) const
     {
         auto itr = std::find(_vertices.begin(), _vertices.end(), vertex);
         if (itr != _vertices.end())
@@ -411,7 +465,7 @@ namespace Mesh2D
     }
 
     template <size_t object_dim>
-    int Polytope<object_dim>::index_edge(const Polytope<1>* edge) const
+    int Polytope<object_dim>::index_edge(const Polytope<1> *edge) const
     {
         auto itr = std::find(_edges.begin(), _edges.end(), edge);
         if (itr != _edges.end())
@@ -425,7 +479,7 @@ namespace Mesh2D
     }
 
     template <size_t object_dim>
-    int Polytope<object_dim>::index_face(const Polytope<DIMENSION - 1>* face) const
+    int Polytope<object_dim>::index_face(const Polytope<DIMENSION - 1> *face) const
     {
         auto itr = std::find(_edges.begin(), _edges.end(), face);
         if (itr != _edges.end())
@@ -439,7 +493,7 @@ namespace Mesh2D
     }
 
     template <size_t object_dim>
-    int Polytope<object_dim>::index_cell(const Polytope<DIMENSION>* cell) const
+    int Polytope<object_dim>::index_cell(const Polytope<DIMENSION> *cell) const
     {
         auto itr = std::find(_cells.begin(), _cells.end(), cell);
         if (itr != _cells.end())

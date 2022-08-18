@@ -44,6 +44,9 @@ namespace Mesh2D
         void read_mesh(std::vector<std::array<double, 2>> &vertices, std::vector<std::vector<std::size_t>> &cells)
         {
             std::ifstream inFile;
+            
+            std::cout << "[MeshReaderTyp2] Reading mesh file " + _file_name + ".typ2" + "\n";
+            
             inFile.open(_file_name + ".typ2");
             if (!inFile)
             {
@@ -72,7 +75,7 @@ namespace Mesh2D
                 vert_count++;
             }
 
-            std::cout << "Read " + std::to_string(vertices.size()) + "/" + std::to_string(n_verts) + " vertices\n";
+            std::cout << "    Read " + std::to_string(vertices.size()) + "/" + std::to_string(n_verts) + " vertices\n";
 
             std::getline(inFile, ignore_line); // ignore the remainder of previous line
             std::getline(inFile, ignore_line); // ignore the following line (should simply say "cells")
@@ -95,15 +98,9 @@ namespace Mesh2D
                 cell_count++;
             }
 
-            std::cout << "Read " + std::to_string(cells.size()) + "/" + std::to_string(n_cells) + " cells\n";
-
-
-    std::cout << "-1";
+            std::cout << "    Read " + std::to_string(cells.size()) + "/" + std::to_string(n_cells) + " cells\n\n";
 
             inFile.close();
-
-
-    std::cout << "0";
         }
 
     private:
