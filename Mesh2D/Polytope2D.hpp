@@ -1,20 +1,13 @@
 // standard libraries
 #include <vector>    // std::vector
 #include <algorithm> // std::find
-
+#include <fstream> // std::ofstream
+ 
 // external linking to Eigen is required
 #include <Eigen/Dense> // Eigen::Matrix, Eigen::MatrixXd, Eigen::FullPivLU
 
 // path to Math specified so that external linking is NOT required
 #include <../Math/math.hpp> // Math::factorial, Math::sgn
-
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <algorithm>
-#include <functional>
-#include <random>
-#include <fstream>
 
 #ifndef _POLYTOPE2D_HPP
 #define _POLYTOPE2D_HPP
@@ -127,31 +120,22 @@ namespace Mesh2D
 
         void construct_face_normals(); ///< Set the directions of the face normals of a cell
 
-
-
-        void plot_triangle(std::ofstream *out, Simplex<object_dim> simplex)
-        {
-            for (size_t i = 0; i < 3; ++i)
-            {
-                size_t i_next = (i + 1) % 3;
-                *out << simplex[i](0) << " " << simplex[i](1) << std::endl;
-                *out << simplex[i_next](0) << " " << simplex[i_next](1) << std::endl;
-                *out << std::endl;
-            }
-        }
-
         void plot_simplices(std::ofstream *out)
         {
-            assert(object_dim == 2);
             for (auto &simplex : _simplices)
             {
-                this->plot_triangle(out, simplex);
+                for (size_t i = 0; i < object_dim + 1; ++i)
+                {
+                    size_t i_next = (i + 1) % (object_dim + 1);
+                    *out << simplex[i](0) << " " << simplex[i](1) << std::endl;
+                    *out << simplex[i_next](0) << " " << simplex[i_next](1) << std::endl;
+                    *out << std::endl;
+                }
             }
         }
 
-        void plot_cell(std::ofstream *out)
+        void plot(std::ofstream *out)
         {
-            assert(object_dim == 2);
             for (size_t i = 0; i < _vertices.size(); ++i)
             {
                 size_t i_next = (i + 1) % _vertices.size();
@@ -374,7 +358,6 @@ namespace Mesh2D
     void Polytope<object_dim>::construct_face_normals() // not very efficient - probably room for improvement
     {
         assert(object_dim == DIMENSION);
-        bool flag = false;
         for (size_t iF = 0; iF < _edges.size(); ++iF)
         {
             VectorRd normal = _edges[iF]->normal();
@@ -400,19 +383,8 @@ namespace Mesh2D
             assert(count == 1);
             //    _face_directions.push_back(Math::sgn((_faces[iF]->center_mass() - _center_mass).dot(normal))); // star shaped wrt center mass
             _face_directions.push_back(Math::sgn((_edges[iF]->center_mass() - center).dot(normal)));
-
-            flag = flag || _face_directions[iF] == 0;
-            // assert(_face_directions[iF] != 0);
+            assert(_face_directions[iF] != 0);
         }
-        if(flag)
-        {
-            std::ofstream cell_plot("cell_plot.dat");
-            std::ofstream simplices_plot("simplices_plot.dat");
-            this->plot_simplices(&simplices_plot);
-            this->plot_cell(&cell_plot);
-            std::cout << "\n" << this->get_simplices().size() << "\n";
-        }
-        assert(!flag);
     }
 
     template <size_t object_dim>

@@ -253,6 +253,22 @@ namespace Mesh2D
             }
         }
 
+        void plot_simplices(std::ofstream *out)
+        {
+            for (auto &cell : _cells)
+            {
+                cell->plot_simplices(out);
+            }
+        }
+
+        void plot_mesh(std::ofstream *out)
+        {
+            for (auto &edge : _edges)
+            {
+                edge->plot(out);
+            }
+        }
+
     private:
         std::string _mesh_name;
 
