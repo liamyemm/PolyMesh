@@ -1,14 +1,16 @@
-#include <vector>
-#include <map>
-#include <iostream>
-#include <cmath>
-#include <Eigen/Dense>
-#include <math.hpp>
-#include <algorithm>
-// #include <Eigen/FullPivLU>
+// standard libraries
+#include <vector>    // std::vector
+#include <algorithm> // std::find
+#include <fstream> // std::ofstream
+ 
+// external linking to Eigen is required
+#include <Eigen/Dense> // Eigen::Matrix, Eigen::MatrixXd, Eigen::FullPivLU
 
-#ifndef _POLYTOPE_HPP
-#define _POLYTOPE_HPP
+// path to Math specified so that external linking is NOT required
+#include <../Math/math.hpp> // Math::factorial, Math::sgn
+
+#ifndef _POLYTOPE3D_HPP
+#define _POLYTOPE3D_HPP
 
 namespace Mesh3D
 {

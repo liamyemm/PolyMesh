@@ -114,36 +114,15 @@ namespace Mesh2D
 
         int face_orientation(const size_t face_index) const; ///< Return the orientation of a Face
         int edge_orientation(const size_t edge_index) const; ///< Return the orientation of a Edge
+        int vertex_orientation(const size_t vertex_index) const; ///< Return the orientation of a Vertex
 
         VectorRd normal() const;  ///< Return the normal of a Face
         VectorRd tangent() const; ///< Return the tangent of a Edge
 
         void construct_face_normals(); ///< Set the directions of the face normals of a cell
 
-        void plot_simplices(std::ofstream *out)
-        {
-            for (auto &simplex : _simplices)
-            {
-                for (size_t i = 0; i < object_dim + 1; ++i)
-                {
-                    size_t i_next = (i + 1) % (object_dim + 1);
-                    *out << simplex[i](0) << " " << simplex[i](1) << std::endl;
-                    *out << simplex[i_next](0) << " " << simplex[i_next](1) << std::endl;
-                    *out << std::endl;
-                }
-            }
-        }
-
-        void plot(std::ofstream *out)
-        {
-            for (size_t i = 0; i < _vertices.size(); ++i)
-            {
-                size_t i_next = (i + 1) % _vertices.size();
-                *out << _vertices[i]->coords()(0) << " " << _vertices[i]->coords()(1) << std::endl;
-                *out << _vertices[i_next]->coords()(0) << " " << _vertices[i_next]->coords()(1) << std::endl;
-                *out << std::endl;
-            }
-        }
+        void plot_simplices(std::ofstream *out) const; ///< Plot the simplices to out
+        void plot(std::ofstream *out) const; ///< Plot the polytope to out
 
     private:
         size_t _index;
@@ -492,6 +471,43 @@ namespace Mesh2D
         assert(object_dim == 2);
         assert(edge_index < _edges.size());
         return _face_directions[edge_index];
+    }
+
+    template <size_t object_dim>
+    int Polytope<object_dim>::vertex_orientation(const size_t vertex_index) const
+    {
+        assert(object_dim == 1);
+        assert(vertex_index < _vertices.size());
+        return ( (_vertices[vertex_index]->coords()-_center_mass).dot(this->tangent()) > 0 ? 1 : -1);
+    }      
+    
+    template <size_t object_dim>
+    void Polytope<object_dim>::plot_simplices(std::ofstream *out) const 
+    {
+        assert(object_dim > 0);
+        for (auto &simplex : _simplices)
+        {
+            for (size_t i = 0; i < object_dim + 1; ++i)
+            {
+                size_t i_next = (i + 1) % (object_dim + 1);
+                *out << simplex[i](0) << " " << simplex[i](1) << std::endl;
+                *out << simplex[i_next](0) << " " << simplex[i_next](1) << std::endl;
+                *out << std::endl;
+            }
+        }
+    }
+
+    template <size_t object_dim>
+    void Polytope<object_dim>::plot(std::ofstream *out) const 
+    {
+        assert(object_dim > 0);
+        for (size_t i = 0; i < _vertices.size(); ++i)
+        {
+            size_t i_next = (i + 1) % _vertices.size();
+            *out << _vertices[i]->coords()(0) << " " << _vertices[i]->coords()(1) << std::endl;
+            *out << _vertices[i_next]->coords()(0) << " " << _vertices[i_next]->coords()(1) << std::endl;
+            *out << std::endl;
+        }
     }
 
 } // namespace Mesh2D

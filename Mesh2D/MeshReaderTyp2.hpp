@@ -45,9 +45,9 @@ namespace Mesh2D
         {
             std::ifstream inFile;
             
-            std::cout << "[MeshReaderTyp2] Reading mesh file " + _file_name + ".typ2" + "\n";
+            std::cout << "[MeshReaderTyp2] Reading mesh file " + _file_name + "\n";
             
-            inFile.open(_file_name + ".typ2");
+            inFile.open(_file_name);
             if (!inFile)
             {
                 std::cerr << "     Unable to open mesh file\n";
