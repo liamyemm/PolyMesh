@@ -132,6 +132,7 @@ namespace Mesh2D
         bool _is_boundary;
         Simplices<object_dim> _simplices;
         VectorRd _normal;                  // uninitialised unless object_dim == DIMENSION - 1 (face)
+        VectorRd _tangent;                  // uninitialised unless object_dim == 1 (edge)
         std::vector<int> _face_directions; // empty unless object_dim == DIMENSION (cell)
 
         std::vector<Polytope<0> *> _vertices;
@@ -236,25 +237,14 @@ namespace Mesh2D
         {
             for (auto jt = it; jt != vertex_coords.end(); ++jt)
             {
-                _diameter = std::max(_diameter, (*it - *jt).norm()); // probably more efficient methods
+                _diameter = std::max(_diameter, (*it - *jt).norm()); 
             }
         }
 
-        if (object_dim == DIMENSION - 1) // find the normal
+        if (object_dim == DIMENSION - 1) // find the tangent and normal
         {
-            Simplex<object_dim> simplex = _simplices[0];
-            Eigen::MatrixXd mat = Eigen::MatrixXd::Zero(object_dim, DIMENSION);
-            for (size_t i = 0; i < object_dim; ++i)
-            {
-                for (size_t j = 0; j < DIMENSION; ++j)
-                {
-                    mat(i, j) = simplex[i + 1][j] - simplex[0][j]; // fine d-1 linearly independent vectors in the face, and put them in each col of mat
-                }
-            }
-
-            // all normal vectors lie in null space of mat
-            Eigen::FullPivLU<Eigen::MatrixXd> lu(mat);
-            _normal = lu.kernel().normalized(); // not most efficient routine
+            _tangent = (this->get_simplices()[0][1] - this->get_simplices()[0][0]).normalized();
+            _normal = VectorRd(-_tangent(1), _tangent(0));
         }
     }
 
@@ -398,7 +388,8 @@ namespace Mesh2D
     VectorRd Polytope<object_dim>::tangent() const
     {
         assert(object_dim == 1);
-        return (this->get_vertices()[1]->coords() - this->get_vertices()[0]->coords()).normalized();
+        return _tangent;
+        // return (this->get_vertices()[1]->coords() - this->get_vertices()[0]->coords()).normalized();
     }
 
     template <size_t object_dim>

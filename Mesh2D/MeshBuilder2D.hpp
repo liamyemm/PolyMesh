@@ -11,11 +11,6 @@
 
 namespace Mesh2D
 {
-    inline double signed_area(VectorRd A, VectorRd B, VectorRd C) // returns signed area of trangle ABC. Positive if anticlock, negative otherwise
-    {
-        return (A(0) * (B(1) - C(1)) + B(0) * (C(1) - A(1)) + C(0) * (A(1) - B(1))) / 2.0;
-    }
-
     inline double shortest_distance(VectorRd p, VectorRd A, VectorRd B) // computes min distance from a point p to a line segment AB
     {
         VectorRd line_vec = B - A;
