@@ -16,6 +16,7 @@ namespace Mesh2D
 {
     inline constexpr int DIMENSION = 2;
 
+    using MatrixRd = Eigen::Matrix<double, DIMENSION, DIMENSION>;
     using VectorRd = Eigen::Matrix<double, DIMENSION, 1>;
     using VectorZd = Eigen::Matrix<int, DIMENSION, 1>;
 
