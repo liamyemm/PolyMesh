@@ -1,0 +1,87 @@
+\hypertarget{classCurvedMesh2D_1_1Edge}{}\doxysection{Curved\+Mesh2D\+::Edge Class Reference}
+\label{classCurvedMesh2D_1_1Edge}\index{CurvedMesh2D::Edge@{CurvedMesh2D::Edge}}
+
+
+Inheritance diagram for Curved\+Mesh2D\+::Edge\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{classCurvedMesh2D_1_1Edge__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Curved\+Mesh2D\+::Edge\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{classCurvedMesh2D_1_1Edge__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_a6008df0742093dbda4661c6f57cb7e54}\label{classCurvedMesh2D_1_1Edge_a6008df0742093dbda4661c6f57cb7e54}} 
+{\bfseries Edge} (size\+\_\+t index, Function2\+D\+::\+Curve \&\mbox{\hyperlink{classCurvedMesh2D_1_1Edge_a9d1455cdd9b73081a0b0f8485ffaa9d4}{parameterisation}})
+\item 
+\mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_aacecc2d57ac83c793bda757b7870e4b8}\label{classCurvedMesh2D_1_1Edge_aacecc2d57ac83c793bda757b7870e4b8}} 
+int \mbox{\hyperlink{classCurvedMesh2D_1_1Edge_aacecc2d57ac83c793bda757b7870e4b8}{vertex\+\_\+orientation}} (const size\+\_\+t vertex\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of the \mbox{\hyperlink{classCurvedMesh2D_1_1Vertex}{Vertex}} located at vertex\+\_\+index. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{classCurvedMesh2D_1_1Edge_abcedea44d895b149f1d38883dc334c90}{tangent}} (double t) const
+\begin{DoxyCompactList}\small\item\em Return the tangent of the \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}} at a distance t along it. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{classCurvedMesh2D_1_1Edge_ab96e0e4a801de2135f49c946e589de95}{normal}} (double t) const
+\begin{DoxyCompactList}\small\item\em Return the normal of the \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}} at a distance t along it. \end{DoxyCompactList}\item 
+const Function2\+D\+::\+Curve \& \mbox{\hyperlink{classCurvedMesh2D_1_1Edge_a9d1455cdd9b73081a0b0f8485ffaa9d4}{parameterisation}} () const
+\begin{DoxyCompactList}\small\item\em Return the parameterisation of the \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_a0cae73b771fc04be3f0504fe304f84dc}\label{classCurvedMesh2D_1_1Edge_a0cae73b771fc04be3f0504fe304f84dc}} 
+std\+::array$<$ Vector\+Rd, 2 $>$ {\bfseries coords} () const
+\item 
+\mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_adba469834e94fd834c8f246f471e1223}\label{classCurvedMesh2D_1_1Edge_adba469834e94fd834c8f246f471e1223}} 
+void {\bfseries plot} (std\+::ofstream $\ast$out, int partitions) const
+\item 
+\mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_a56a60d3a7190d835adbd9f9de50e4a7e}\label{classCurvedMesh2D_1_1Edge_a56a60d3a7190d835adbd9f9de50e4a7e}} 
+bool {\bfseries is\+\_\+straight} () const
+\item 
+\mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_acae44554480d90f54f0362481cc01426}\label{classCurvedMesh2D_1_1Edge_acae44554480d90f54f0362481cc01426}} 
+void {\bfseries set\+\_\+straight} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_ab96e0e4a801de2135f49c946e589de95}\label{classCurvedMesh2D_1_1Edge_ab96e0e4a801de2135f49c946e589de95}} 
+\index{CurvedMesh2D::Edge@{CurvedMesh2D::Edge}!normal@{normal}}
+\index{normal@{normal}!CurvedMesh2D::Edge@{CurvedMesh2D::Edge}}
+\doxysubsubsection{\texorpdfstring{normal()}{normal()}}
+{\footnotesize\ttfamily Vector\+Rd Edge\+::normal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+Return the normal of the \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}} at a distance t along it. 
+
+$<$ Return the normal of an \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}} \mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_a9d1455cdd9b73081a0b0f8485ffaa9d4}\label{classCurvedMesh2D_1_1Edge_a9d1455cdd9b73081a0b0f8485ffaa9d4}} 
+\index{CurvedMesh2D::Edge@{CurvedMesh2D::Edge}!parameterisation@{parameterisation}}
+\index{parameterisation@{parameterisation}!CurvedMesh2D::Edge@{CurvedMesh2D::Edge}}
+\doxysubsubsection{\texorpdfstring{parameterisation()}{parameterisation()}}
+{\footnotesize\ttfamily const Function2\+D\+::\+Curve \& Edge\+::parameterisation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return the parameterisation of the \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}}. 
+
+$<$ Return the parameterisation of an \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}} \mbox{\Hypertarget{classCurvedMesh2D_1_1Edge_abcedea44d895b149f1d38883dc334c90}\label{classCurvedMesh2D_1_1Edge_abcedea44d895b149f1d38883dc334c90}} 
+\index{CurvedMesh2D::Edge@{CurvedMesh2D::Edge}!tangent@{tangent}}
+\index{tangent@{tangent}!CurvedMesh2D::Edge@{CurvedMesh2D::Edge}}
+\doxysubsubsection{\texorpdfstring{tangent()}{tangent()}}
+{\footnotesize\ttfamily Vector\+Rd Edge\+::tangent (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+Return the tangent of the \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}} at a distance t along it. 
+
+$<$ Return the tangent of an \mbox{\hyperlink{classCurvedMesh2D_1_1Edge}{Edge}} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Edge.\+hpp\item 
+Edge.\+cpp\end{DoxyCompactItemize}

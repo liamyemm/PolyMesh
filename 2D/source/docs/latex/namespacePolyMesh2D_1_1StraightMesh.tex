@@ -1,0 +1,47 @@
+\hypertarget{namespacePolyMesh2D_1_1StraightMesh}{}\doxysection{Poly\+Mesh2D\+::Straight\+Mesh Namespace Reference}
+\label{namespacePolyMesh2D_1_1StraightMesh}\index{PolyMesh2D::StraightMesh@{PolyMesh2D::StraightMesh}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshBuilder}{Mesh\+Builder}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshBuilder}{Mesh\+Builder}} class provides build tools to create a full mesh with all connectivities. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshReaderTyp2}{Mesh\+Reader\+Typ2}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshReaderTyp2}{Mesh\+Reader\+Typ2}} class provides functions to read a typ2 mesh file. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Polytope}{Polytope}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using {\bfseries Triangle} = std\+::array$<$ \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}}, 3 $>$
+\item 
+using \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} = Eigen\+::\+Vector2d
+\begin{DoxyCompactList}\small\item\em Alias for a 2d vector. Used for coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries signed\+\_\+area} (\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} A, \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} B, \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} C)
+\item 
+\mbox{\Hypertarget{namespacePolyMesh2D_1_1StraightMesh_ae070d22f0949c81f81485cc121c71eb4}\label{namespacePolyMesh2D_1_1StraightMesh_ae070d22f0949c81f81485cc121c71eb4}} 
+\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} {\bfseries triangle\+\_\+center\+\_\+mass} (Triangle triangle)
+\item 
+\mbox{\Hypertarget{namespacePolyMesh2D_1_1StraightMesh_adcd43546574d75e3165700e28c170e99}\label{namespacePolyMesh2D_1_1StraightMesh_adcd43546574d75e3165700e28c170e99}} 
+double {\bfseries triangle\+\_\+measure} (Triangle triangle)
+\item 
+\mbox{\Hypertarget{namespacePolyMesh2D_1_1StraightMesh_ab8ffaf3c6d025295aa457f33bb5b1397}\label{namespacePolyMesh2D_1_1StraightMesh_ab8ffaf3c6d025295aa457f33bb5b1397}} 
+double {\bfseries shortest\+\_\+distance} (\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} p, \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} A, \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} B)
+\item 
+\mbox{\Hypertarget{namespacePolyMesh2D_1_1StraightMesh_ac8336ecbc14878981ddcdee2faac36c9}\label{namespacePolyMesh2D_1_1StraightMesh_ac8336ecbc14878981ddcdee2faac36c9}} 
+std\+::vector$<$ Triangle $>$ {\bfseries simplexify} (std\+::vector$<$ \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} $>$ vertices)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The namespace for all objects in a straight mesh. 

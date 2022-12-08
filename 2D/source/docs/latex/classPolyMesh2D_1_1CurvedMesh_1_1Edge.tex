@@ -1,0 +1,48 @@
+\hypertarget{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{}\doxysection{Poly\+Mesh2D\+::Curved\+Mesh\+::Edge Class Reference}
+\label{classPolyMesh2D_1_1CurvedMesh_1_1Edge}\index{PolyMesh2D::CurvedMesh::Edge@{PolyMesh2D::CurvedMesh::Edge}}
+
+
+Inheritance diagram for Poly\+Mesh2D\+::Curved\+Mesh\+::Edge\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classPolyMesh2D_1_1CurvedMesh_1_1Edge__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Poly\+Mesh2D\+::Curved\+Mesh\+::Edge\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{classPolyMesh2D_1_1CurvedMesh_1_1Edge__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Edge} (size\+\_\+t index, \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Functional\+::\+Curve}} \&\mbox{\hyperlink{group__Mesh_gacad02163d824c64f7f83e915d960f38a}{parameterisation}})
+\item 
+int \mbox{\hyperlink{group__Mesh_gad47d794d8972bc633733638195ef9df5}{vertex\+\_\+orientation}} (const size\+\_\+t vertex\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} located at vertex\+\_\+index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga05fb21a7083ecebef9812ecccb9acb90}{tangent}} (double t) const
+\begin{DoxyCompactList}\small\item\em Return the tangent of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} at the parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_gaac7ce72b7d379ef4bbc85cda1e46a80f}{normal}} (double t) const
+\begin{DoxyCompactList}\small\item\em Return the normal of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} at the parameter. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Functional\+::\+Curve}} \& \mbox{\hyperlink{group__Mesh_gacad02163d824c64f7f83e915d960f38a}{parameterisation}} () const
+\begin{DoxyCompactList}\small\item\em Return a const reference to the parameterisation of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}}. \end{DoxyCompactList}\item 
+std\+::array$<$ \mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}}, 2 $>$ {\bfseries coords} () const
+\item 
+void {\bfseries plot} (std\+::ofstream $\ast$out, int partitions) const
+\item 
+bool {\bfseries is\+\_\+straight} () const
+\item 
+void {\bfseries set\+\_\+straight} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Edge.\+hpp\item 
+Edge.\+cpp\end{DoxyCompactItemize}

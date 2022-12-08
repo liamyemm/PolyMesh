@@ -1,0 +1,96 @@
+\hypertarget{classPolyMesh2D_1_1CurvedMesh_1_1Polytope}{}\doxysection{Poly\+Mesh2D\+::Curved\+Mesh\+::Polytope Class Reference}
+\label{classPolyMesh2D_1_1CurvedMesh_1_1Polytope}\index{PolyMesh2D::CurvedMesh::Polytope@{PolyMesh2D::CurvedMesh::Polytope}}
+
+
+{\ttfamily \#include $<$Polytope.\+hpp$>$}
+
+
+
+Inheritance diagram for Poly\+Mesh2D\+::Curved\+Mesh\+::Polytope\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPolyMesh2D_1_1CurvedMesh_1_1Polytope__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__Mesh_ga806b5347f443b7c89788b7f861333cfb}{Polytope}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em $<$ Constructor for the base class. Sets \+\_\+index to \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga87dc1668a08c478a6fa3659b2c9f555d}{global\+\_\+index}} () const
+\begin{DoxyCompactList}\small\item\em Return the global index of the Curved\+Object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group__Mesh_ga4f77290856d6b4366365746af1572828}{diam}} () const
+\begin{DoxyCompactList}\small\item\em Return the diameter of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga26145c6dab59ef564df5e26046fd16db}{center\+\_\+mass}} () const
+\begin{DoxyCompactList}\small\item\em Return the center mass of the Curved\+Object. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group__Mesh_gae3271c378f536816a8d40673539bb04e}{measure}} () const
+\begin{DoxyCompactList}\small\item\em Return the Lebesgue measure of the Curved\+Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga68fc5bc9f29404931afaf26b439dfb4c}{set\+\_\+global\+\_\+index}} (const size\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Set the global index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__Mesh_ga900dc3865f8cc1b68d2fd244dd187b74}{is\+\_\+boundary}} () const
+\begin{DoxyCompactList}\small\item\em Return true if Curved\+Object is a boundary object, false otherwise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gae9c4bec460a02466f5b5a28debbf9b8b}{set\+\_\+boundary}} (bool val)
+\begin{DoxyCompactList}\small\item\em Set the boundary value of the Curved\+Object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga6ac5b37bd4521713a76b264ad7487b79}{get\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the vertices of the Curved\+Object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaf12f7300c86919dc398c605d409a4d95}{get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the edges of the Curved\+Object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gafeaca84adbdf2cc05bbdd111524fe082}{get\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the cells of the Curved\+Object. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_gaeb232918086a1d69b7986b5bcc97eeb4}{n\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of vertices of the Curved\+Object. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga18cb72c8d0fb3d2551c6b517167231d7}{n\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of edges of the Curved\+Object. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga2aece7e0ef78c5245038252983228697}{n\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of cells of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}{vertex}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th vertex of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{edge}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th edge of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{cell}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th cell of the Curved\+Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gab61a1fcfa5c62d6ac31c72e90fb40408}{add\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}{vertex}})
+\begin{DoxyCompactList}\small\item\em Add a vertex to the Curved\+Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga2d6d61566b3ab049554a43916fa382bd}{add\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{edge}})
+\begin{DoxyCompactList}\small\item\em Add an edge to the Curved\+Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga7a8216957bf254a8531fa05e27451ac6}{add\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{cell}})
+\begin{DoxyCompactList}\small\item\em Add a cell to the Curved\+Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga2ae1de5ed6069329474e162b97df4236}{remove\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{edge}})
+\begin{DoxyCompactList}\small\item\em Remove a cell from the Curved\+Object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga2bb72bd22701c8c640be5489df8269a5}{remove\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{cell}})
+\begin{DoxyCompactList}\small\item\em Remove a cell from the Curved\+Object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Mesh_gaecdb64b8e285efda5366317557b3f6f2}{index\+\_\+vertex}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}{vertex}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a vertex. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Mesh_ga187565ff0da3975f95243bfb470bef06}{index\+\_\+edge}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{edge}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of an edge. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Mesh_ga0b85ebdd8096b0204470ea4be13832cd}{index\+\_\+cell}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{cell}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a cell. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries \+\_\+index}
+\item 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} {\bfseries \+\_\+center\+\_\+mass}
+\item 
+double {\bfseries \+\_\+measure}
+\item 
+double {\bfseries \+\_\+diameter}
+\item 
+bool {\bfseries \+\_\+is\+\_\+boundary}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ {\bfseries \+\_\+vertices}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ {\bfseries \+\_\+edges}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ {\bfseries \+\_\+cells}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Polytope}{Polytope}} is the base class for each of \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}}, \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} and \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} and contains methods that are common between all mesh objects \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Polytope}{Polytope}} should never be used directly, only via its inherited classes \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}}, \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} and \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Polytope.\+hpp\item 
+Polytope.\+cpp\end{DoxyCompactItemize}

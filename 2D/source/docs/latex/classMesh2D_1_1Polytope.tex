@@ -1,0 +1,113 @@
+\hypertarget{classMesh2D_1_1Polytope}{}\doxysection{Mesh2D\+::Polytope$<$ object\+\_\+dim $>$ Class Template Reference}
+\label{classMesh2D_1_1Polytope}\index{Mesh2D::Polytope$<$ object\_dim $>$@{Mesh2D::Polytope$<$ object\_dim $>$}}
+
+
+A Vertex is a \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}} with object\+\_\+dim = 0.  
+
+
+
+
+{\ttfamily \#include $<$Polytope2\+D.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__Polytope_ga629bff32825c58bf341c29f30f3ca538}{Polytope}} (size\+\_\+t index, Simplices$<$ object\+\_\+dim $>$ simplices)
+\begin{DoxyCompactList}\small\item\em $<$ Constructor for a \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}} defined by its simplices \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Polytope_ga863c7509fc16de56621b6754f973034d}{Polytope}} (size\+\_\+t index, Simplex$<$ object\+\_\+dim $>$ simplex)
+\begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}} defined by a single coordinate (Vertex) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Polytope_gacad9dd3407212fbbe45e54ae230e6790}{Polytope}} (size\+\_\+t index, Vector\+Rd \mbox{\hyperlink{group__Polytope_gae6b422a6fd068b1ab3308a22b64c22bf}{vertex}})
+\begin{DoxyCompactList}\small\item\em Null constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Polytope_gabe72d8c0cd7dd8fed3db706a3003ff60}{Polytope}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Polytope_gabb9982f354f70f8607a2ca9cde38fe05}{global\+\_\+index}} () const
+\begin{DoxyCompactList}\small\item\em Return the global index of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group__Polytope_ga8c60bf3cacea2149b1117c07cd2b3d36}{diam}} () const
+\begin{DoxyCompactList}\small\item\em Return the diameter of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{group__Polytope_ga2950608bf8344f13c4bc800f139c5a81}{center\+\_\+mass}} () const
+\begin{DoxyCompactList}\small\item\em Return the center mass of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group__Polytope_ga09605e2c6091106117edcd8a29d331f8}{measure}} () const
+\begin{DoxyCompactList}\small\item\em Return the Lebesgue measure of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+Simplices$<$ object\+\_\+dim $>$ \mbox{\hyperlink{group__Polytope_gaccda81231aced2a9f89c397de1c5c49c}{get\+\_\+simplices}} () const
+\begin{DoxyCompactList}\small\item\em Return the simplices making up the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga50ea88bbb6cd23650c58acb88507bde6}{set\+\_\+global\+\_\+index}} (const size\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Set the global index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__Polytope_gaaeb6de0d2d40bd19bb2ecfccd53102dc}{is\+\_\+boundary}} () const
+\begin{DoxyCompactList}\small\item\em Return true if \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}} is a boundary object, false otherwise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga94a1804dbabbb0d624bec6ffa56f9943}{set\+\_\+boundary}} (bool val)
+\begin{DoxyCompactList}\small\item\em Set the boundary value of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 0 $>$ $\ast$ $>$ \mbox{\hyperlink{group__Polytope_ga366797aae2575be16f01eddc5905ffe1}{get\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the vertices of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 1 $>$ $\ast$ $>$ \mbox{\hyperlink{group__Polytope_gaa613793820a782b323fb35b7664e7c64}{get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the edges of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION -\/ 1 $>$ $\ast$ $>$ \mbox{\hyperlink{group__Polytope_ga79beab068505a03d7062b8dc441a0d31}{get\+\_\+faces}} () const
+\begin{DoxyCompactList}\small\item\em Return the faces of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION $>$ $\ast$ $>$ \mbox{\hyperlink{group__Polytope_gaf5cafc68e515f9a6e475cfdb8a533a39}{get\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the cells of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Polytope_ga54528c366b38fda92780a902cf4b3fe2}{n\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of vertices of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Polytope_ga65f6fdbbd6c54c5a8f9ca462b42c45ca}{n\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of edges of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Polytope_ga96a8a0f600e9e22ad4aee802dc005f75}{n\+\_\+faces}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of faces of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Polytope_gafe8d26f7f14128d7a0585a89ee838f52}{n\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of cells of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 0 $>$ $\ast$ \mbox{\hyperlink{group__Polytope_gae6b422a6fd068b1ab3308a22b64c22bf}{vertex}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th vertex of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 1 $>$ $\ast$ \mbox{\hyperlink{group__Polytope_ga9acad77e829d1eb6ef22f7acd5ade857}{edge}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th edge of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION -\/ 1 $>$ $\ast$ \mbox{\hyperlink{group__Polytope_ga931a1717a6f3779badd96707b97357a8}{face}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th face of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION $>$ $\ast$ \mbox{\hyperlink{group__Polytope_ga7d767c1e26aa424c6afce501c7eb57cf}{cell}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th cell of the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga6e5751073ff2970c3bd0b376ed938d87}{add\+\_\+vertex}} (\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 0 $>$ $\ast$\mbox{\hyperlink{group__Polytope_gae6b422a6fd068b1ab3308a22b64c22bf}{vertex}})
+\begin{DoxyCompactList}\small\item\em Add a vertex to the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga27198b66fe9b7db71874a7934c09be1e}{add\+\_\+edge}} (\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 1 $>$ $\ast$\mbox{\hyperlink{group__Polytope_ga9acad77e829d1eb6ef22f7acd5ade857}{edge}})
+\begin{DoxyCompactList}\small\item\em Add an edge to the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga9459aa0276041a2ddc3b4cf3d7cbcc62}{add\+\_\+face}} (\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION -\/ 1 $>$ $\ast$\mbox{\hyperlink{group__Polytope_ga931a1717a6f3779badd96707b97357a8}{face}})
+\begin{DoxyCompactList}\small\item\em Add a face to the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga6e831a5067994c1c66ee9f822287397f}{add\+\_\+cell}} (\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION $>$ $\ast$\mbox{\hyperlink{group__Polytope_ga7d767c1e26aa424c6afce501c7eb57cf}{cell}})
+\begin{DoxyCompactList}\small\item\em Add a cell to the \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Polytope_ga724a3119d62001f713f697dd5612c5fa}{index\+\_\+vertex}} (const \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 0 $>$ $\ast$\mbox{\hyperlink{group__Polytope_gae6b422a6fd068b1ab3308a22b64c22bf}{vertex}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a vertex. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Polytope_ga23d6a6b7d4c2f9e1ed87250b83361f27}{index\+\_\+edge}} (const \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ 1 $>$ $\ast$\mbox{\hyperlink{group__Polytope_ga9acad77e829d1eb6ef22f7acd5ade857}{edge}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of an edge. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Polytope_ga6b16af0f7fee053eef695706176073d3}{index\+\_\+face}} (const \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION -\/ 1 $>$ $\ast$\mbox{\hyperlink{group__Polytope_ga931a1717a6f3779badd96707b97357a8}{face}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a face. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Polytope_ga195b130dd110db582abe27fbacd33afc}{index\+\_\+cell}} (const \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}}$<$ DIMENSION $>$ $\ast$\mbox{\hyperlink{group__Polytope_ga7d767c1e26aa424c6afce501c7eb57cf}{cell}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a cell. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{group__Polytope_gae8956db2cea773aea2cf42e521a6efa9}{coords}} () const
+\begin{DoxyCompactList}\small\item\em Return the coordinates of a Vertex. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{group__Polytope_ga5ccff266ee47a51e14cdfdcca070d49a}{face\+\_\+normal}} (const size\+\_\+t face\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the outer normal of a Cell towards the Face located at face\+\_\+index. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{group__Polytope_gab32cead502620f811e154a9542841db7}{edge\+\_\+normal}} (const size\+\_\+t edge\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the edge normal of a 2D object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Polytope_gabe277143c10eb65150679657677a2ec7}{face\+\_\+orientation}} (const size\+\_\+t face\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of a Face. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Polytope_gae5b761d8e5d4d911a1eda2e5139a2673}{edge\+\_\+orientation}} (const size\+\_\+t edge\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of a Edge. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Polytope_ga7f848d08938f4b5effe9032af4a7d88f}{vertex\+\_\+orientation}} (const size\+\_\+t vertex\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of a Vertex. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{group__Polytope_ga0350727dcc0cdc82f99540713e88592d}{normal}} () const
+\begin{DoxyCompactList}\small\item\em Return the normal of a Face. \end{DoxyCompactList}\item 
+Vector\+Rd \mbox{\hyperlink{group__Polytope_ga4e8245c641f7f9c2d71ce5547e090266}{tangent}} () const
+\begin{DoxyCompactList}\small\item\em Return the tangent of a Edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga0a72658a5bb36b35c161acd1ab436770}{construct\+\_\+face\+\_\+normals}} ()
+\begin{DoxyCompactList}\small\item\em Set the directions of the face normals of a cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga5a64bd19f0e5acfad9de077f82566c52}{plot\+\_\+simplices}} (std\+::ofstream $\ast$out) const
+\begin{DoxyCompactList}\small\item\em Plot the simplices to out. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Polytope_ga2c72499ef8bf337df5bd954b7d4e9c79}{plot}} (std\+::ofstream $\ast$out) const
+\begin{DoxyCompactList}\small\item\em Plot the polytope to out. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$size\+\_\+t object\+\_\+dim$>$\newline
+class Mesh2\+D\+::\+Polytope$<$ object\+\_\+dim $>$}
+
+A Vertex is a \mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}} with object\+\_\+dim = 0. 
+
+\mbox{\hyperlink{classMesh2D_1_1Polytope}{Polytope}} is a templated class describing polytopes in two dimensional space. It takes in one template parameter -\/ object\+\_\+dim -\/ the dimension of the polytope. object\+\_\+dim must be less than or equal to two 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Polytope2\+D.\+hpp\end{DoxyCompactItemize}
