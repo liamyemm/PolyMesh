@@ -1,7 +1,7 @@
 // Class to provide various test cases for the homogeneous Poisson problem on the unit circle
 //
 //
-// Author: Liam Yemm (jerome.droniou@monash.edu)
+// Author: Liam Yemm (liam.yemm@monash.edu)
 //
 
 #ifndef _TEST_CASE_HPP
@@ -20,7 +20,7 @@ namespace PolyMesh2D
 {
     namespace HHOPOISSON
     {
-        using CurvedMesh::Mesh;
+        using PolyMesh2D::CurvedMesh::Mesh;
         using Functional::ScalarFunction2D;
         using Functional::Curve;
 

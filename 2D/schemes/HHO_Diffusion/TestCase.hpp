@@ -1,9 +1,3 @@
-// Class to provide various test cases for the homogeneous Poisson problem on the unit circle
-//
-//
-// Author: Liam Yemm (jerome.droniou@monash.edu)
-//
-
 #ifndef _TEST_CASE_HPP
 #define _TEST_CASE_HPP
 
