@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['derivative_25',['derivative',['../group__Functional.html#gada7695bae5ee11cf71caa02a7eb86f26',1,'PolyMesh2D::Functional::Family::derivative()'],['../group__Functional.html#ga317895a50d6f732706c7bb8828ba5b73',1,'PolyMesh2D::Functional::Function::derivative(const InputType x) const']]],
-  ['derivativetype_26',['DerivativeType',['../group__Functional.html#ga18f46948c4bd5e8b5bc9ebffcedb2631',1,'PolyMesh2D::Functional::Function']]],
-  ['diam_27',['diam',['../group__Mesh.html#ga4f77290856d6b4366365746af1572828',1,'PolyMesh2D::CurvedMesh::Polytope::diam()'],['../group__Mesh.html#ga94aff9286ee0251e443351214efe7c15',1,'PolyMesh2D::StraightMesh::Polytope::diam()']]],
-  ['dim_28',['dim',['../group__Mesh.html#ga949ee6658eb227a5cae7727bbb27c576',1,'PolyMesh2D::CurvedMesh::Mesh::dim()'],['../group__Mesh.html#ga987127e404502c38b023c8c6d596d4a0',1,'PolyMesh2D::StraightMesh::Mesh::dim()']]],
-  ['dimension_29',['dimension',['../group__Functional.html#ga5ddcdc65b740e97b1bdf670b0935e67e',1,'PolyMesh2D::Functional::Family']]]
+  ['edge_29',['edge',['../group__Mesh.html#ga9c26d6510d67f13bfdf21b0a1d6e611f',1,'PolyMesh2D::CurvedMesh::Mesh::edge()'],['../group__Mesh.html#ga2250d1f20cb27a15d69a73fb7cb78c9e',1,'PolyMesh2D::CurvedMesh::Polytope::edge()'],['../group__Mesh.html#gaaa61f6e848b99fd45e1fffcaccf83e23',1,'PolyMesh2D::StraightMesh::Mesh::edge()'],['../group__Mesh.html#gaee3a84b7f040d784cca6afaea009858e',1,'PolyMesh2D::StraightMesh::Polytope::edge()']]],
+  ['edge_30',['Edge',['../classPolyMesh2D_1_1CurvedMesh_1_1Edge.html',1,'PolyMesh2D::CurvedMesh::Edge'],['../classPolyMesh2D_1_1StraightMesh_1_1Edge.html',1,'PolyMesh2D::StraightMesh::Edge']]],
+  ['edge_5fnormal_31',['edge_normal',['../group__Mesh.html#gae519fd4323f21fe8d08e1bc20b973f99',1,'PolyMesh2D::CurvedMesh::Cell::edge_normal()'],['../group__Mesh.html#ga73dc06c655230f0d26290a60efd19560',1,'PolyMesh2D::StraightMesh::Cell::edge_normal()']]],
+  ['edge_5forientation_32',['edge_orientation',['../group__Mesh.html#ga4350c12d25092b865f99d3254bda85b8',1,'PolyMesh2D::CurvedMesh::Cell::edge_orientation()'],['../group__Mesh.html#ga38192fd1f4247db1e5013caad58e277f',1,'PolyMesh2D::StraightMesh::Cell::edge_orientation()']]]
 ];

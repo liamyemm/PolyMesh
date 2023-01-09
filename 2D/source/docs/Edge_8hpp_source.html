@@ -77,83 +77,8 @@ $(function() {
 <div class="title">Edge.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;Polytope.hpp&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;function.hpp&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef _EDGE_HPP</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define _EDGE_HPP</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacePolyMesh2D.html">PolyMesh2D</a></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">namespace </span>CurvedMesh</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classPolyMesh2D_1_1CurvedMesh_1_1Edge.html">   16</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classPolyMesh2D_1_1CurvedMesh_1_1Edge.html">Edge</a> : <span class="keyword">public</span> <a class="code" href="classPolyMesh2D_1_1CurvedMesh_1_1Polytope.html">Polytope</a></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <a class="code" href="classPolyMesh2D_1_1CurvedMesh_1_1Edge.html">Edge</a>(<span class="keywordtype">size_t</span> index, <a class="code" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Functional::Curve</a> &amp;<a class="code" href="group__Mesh.html#gacad02163d824c64f7f83e915d960f38a">parameterisation</a>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordtype">int</span> <a class="code" href="group__Mesh.html#gad47d794d8972bc633733638195ef9df5">vertex_orientation</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> vertex_index) <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="group__Mesh.html#gae83c05cb9950ce78198428991c958f9e">VectorRd</a> <a class="code" href="group__Mesh.html#ga05fb21a7083ecebef9812ecccb9acb90">tangent</a>(<span class="keywordtype">double</span> t) <span class="keyword">const</span>;                  </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="group__Mesh.html#gae83c05cb9950ce78198428991c958f9e">VectorRd</a> <a class="code" href="group__Mesh.html#gaac7ce72b7d379ef4bbc85cda1e46a80f">normal</a>(<span class="keywordtype">double</span> t) <span class="keyword">const</span>;                   </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keyword">const</span> <a class="code" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Functional::Curve</a> &amp;<a class="code" href="group__Mesh.html#gacad02163d824c64f7f83e915d960f38a">parameterisation</a>() <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            std::array&lt;VectorRd, 2&gt; coords() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordtype">void</span> plot(std::ofstream *out, <span class="keywordtype">int</span> partitions) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordtype">bool</span> is_straight() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordtype">void</span> set_straight();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Functional::Curve</a> _parameterisation;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordtype">bool</span> _is_straight;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        };</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">namespace </span>StraightMesh</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classPolyMesh2D_1_1StraightMesh_1_1Edge.html">   49</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classPolyMesh2D_1_1StraightMesh_1_1Edge.html">Edge</a> : <span class="keyword">public</span> <a class="code" href="classPolyMesh2D_1_1StraightMesh_1_1Polytope.html">Polytope</a></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="classPolyMesh2D_1_1StraightMesh_1_1Edge.html">Edge</a>(<span class="keywordtype">size_t</span> index, std::array&lt;VectorRd, 2&gt; coords);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">int</span> <a class="code" href="group__Mesh.html#ga230ff4f895859302ca9bb5d03c271bdf">vertex_orientation</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> vertex_index) <span class="keyword">const</span>; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="group__Mesh.html#gace9cb1ea94b88c2b760060306a008e2f">VectorRd</a> <a class="code" href="group__Mesh.html#ga3f70b053e29ac4621a1febadeae33cfd">tangent</a>() <span class="keyword">const</span>;                  </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="group__Mesh.html#gace9cb1ea94b88c2b760060306a008e2f">VectorRd</a> <a class="code" href="group__Mesh.html#ga1f9d4f4388c7280d9dc43cf46675e588">normal</a>() <span class="keyword">const</span>;                   </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            std::array&lt;VectorRd, 2&gt; coords() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordtype">void</span> plot(std::ofstream *out) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            std::array&lt;VectorRd, 2&gt; _coords;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="group__Mesh.html#gace9cb1ea94b88c2b760060306a008e2f">VectorRd</a> _normal;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="group__Mesh.html#gace9cb1ea94b88c2b760060306a008e2f">VectorRd</a> _tangent;  </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        };</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassPolyMesh2D_1_1CurvedMesh_1_1Edge_html"><div class="ttname"><a href="classPolyMesh2D_1_1CurvedMesh_1_1Edge.html">PolyMesh2D::CurvedMesh::Edge</a></div><div class="ttdef"><b>Definition:</b> Edge.hpp:17</div></div>
-<div class="ttc" id="aclassPolyMesh2D_1_1CurvedMesh_1_1Polytope_html"><div class="ttname"><a href="classPolyMesh2D_1_1CurvedMesh_1_1Polytope.html">PolyMesh2D::CurvedMesh::Polytope</a></div><div class="ttdef"><b>Definition:</b> Polytope.hpp:44</div></div>
-<div class="ttc" id="aclassPolyMesh2D_1_1Functional_1_1Curve_html"><div class="ttname"><a href="classPolyMesh2D_1_1Functional_1_1Curve.html">PolyMesh2D::Functional::Curve</a></div><div class="ttdef"><b>Definition:</b> function.hpp:95</div></div>
-<div class="ttc" id="aclassPolyMesh2D_1_1StraightMesh_1_1Edge_html"><div class="ttname"><a href="classPolyMesh2D_1_1StraightMesh_1_1Edge.html">PolyMesh2D::StraightMesh::Edge</a></div><div class="ttdef"><b>Definition:</b> Edge.hpp:50</div></div>
-<div class="ttc" id="aclassPolyMesh2D_1_1StraightMesh_1_1Polytope_html"><div class="ttname"><a href="classPolyMesh2D_1_1StraightMesh_1_1Polytope.html">PolyMesh2D::StraightMesh::Polytope</a></div><div class="ttdef"><b>Definition:</b> Polytope.hpp:118</div></div>
-<div class="ttc" id="agroup__Mesh_html_ga05fb21a7083ecebef9812ecccb9acb90"><div class="ttname"><a href="group__Mesh.html#ga05fb21a7083ecebef9812ecccb9acb90">PolyMesh2D::CurvedMesh::Edge::tangent</a></div><div class="ttdeci">VectorRd tangent(double t) const</div><div class="ttdoc">Return the tangent of the Edge at the parameter.</div><div class="ttdef"><b>Definition:</b> Edge.cpp:44</div></div>
-<div class="ttc" id="agroup__Mesh_html_ga1f9d4f4388c7280d9dc43cf46675e588"><div class="ttname"><a href="group__Mesh.html#ga1f9d4f4388c7280d9dc43cf46675e588">PolyMesh2D::StraightMesh::Edge::normal</a></div><div class="ttdeci">VectorRd normal() const</div><div class="ttdoc">Return the normal of the Edge at the parameter.</div><div class="ttdef"><b>Definition:</b> Edge.cpp:116</div></div>
-<div class="ttc" id="agroup__Mesh_html_ga230ff4f895859302ca9bb5d03c271bdf"><div class="ttname"><a href="group__Mesh.html#ga230ff4f895859302ca9bb5d03c271bdf">PolyMesh2D::StraightMesh::Edge::vertex_orientation</a></div><div class="ttdeci">int vertex_orientation(const size_t vertex_index) const</div><div class="ttdoc">Return the orientation of the Vertex located at vertex_index.</div><div class="ttdef"><b>Definition:</b> Edge.cpp:105</div></div>
-<div class="ttc" id="agroup__Mesh_html_ga3f70b053e29ac4621a1febadeae33cfd"><div class="ttname"><a href="group__Mesh.html#ga3f70b053e29ac4621a1febadeae33cfd">PolyMesh2D::StraightMesh::Edge::tangent</a></div><div class="ttdeci">VectorRd tangent() const</div><div class="ttdoc">Return the tangent of the Edge at the parameter.</div><div class="ttdef"><b>Definition:</b> Edge.cpp:111</div></div>
-<div class="ttc" id="agroup__Mesh_html_gaac7ce72b7d379ef4bbc85cda1e46a80f"><div class="ttname"><a href="group__Mesh.html#gaac7ce72b7d379ef4bbc85cda1e46a80f">PolyMesh2D::CurvedMesh::Edge::normal</a></div><div class="ttdeci">VectorRd normal(double t) const</div><div class="ttdoc">Return the normal of the Edge at the parameter.</div><div class="ttdef"><b>Definition:</b> Edge.cpp:49</div></div>
-<div class="ttc" id="agroup__Mesh_html_gacad02163d824c64f7f83e915d960f38a"><div class="ttname"><a href="group__Mesh.html#gacad02163d824c64f7f83e915d960f38a">PolyMesh2D::CurvedMesh::Edge::parameterisation</a></div><div class="ttdeci">const Functional::Curve &amp; parameterisation() const</div><div class="ttdoc">Return a const reference to the parameterisation of the Edge.</div><div class="ttdef"><b>Definition:</b> Edge.cpp:54</div></div>
-<div class="ttc" id="agroup__Mesh_html_gace9cb1ea94b88c2b760060306a008e2f"><div class="ttname"><a href="group__Mesh.html#gace9cb1ea94b88c2b760060306a008e2f">PolyMesh2D::StraightMesh::VectorRd</a></div><div class="ttdeci">Eigen::Vector2d VectorRd</div><div class="ttdoc">Alias for a 2d vector. Used for coordinates.</div><div class="ttdef"><b>Definition:</b> Polytope.hpp:107</div></div>
-<div class="ttc" id="agroup__Mesh_html_gad47d794d8972bc633733638195ef9df5"><div class="ttname"><a href="group__Mesh.html#gad47d794d8972bc633733638195ef9df5">PolyMesh2D::CurvedMesh::Edge::vertex_orientation</a></div><div class="ttdeci">int vertex_orientation(const size_t vertex_index) const</div><div class="ttdoc">Return the orientation of the Vertex located at vertex_index.</div><div class="ttdef"><b>Definition:</b> Edge.cpp:37</div></div>
-<div class="ttc" id="agroup__Mesh_html_gae83c05cb9950ce78198428991c958f9e"><div class="ttname"><a href="group__Mesh.html#gae83c05cb9950ce78198428991c958f9e">PolyMesh2D::CurvedMesh::VectorRd</a></div><div class="ttdeci">Eigen::Vector2d VectorRd</div><div class="ttdoc">Alias for a 2d vector. Used for coordinates.</div><div class="ttdef"><b>Definition:</b> Polytope.hpp:33</div></div>
-<div class="ttc" id="anamespacePolyMesh2D_html"><div class="ttname"><a href="namespacePolyMesh2D.html">PolyMesh2D</a></div><div class="ttdef"><b>Definition:</b> basis.hpp:8</div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;StraightMesh/StraightEdge.hpp&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;CurvedMesh/CurvedEdge.hpp&quot;</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

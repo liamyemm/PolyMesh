@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['edge_30',['edge',['../group__Mesh.html#ga9c26d6510d67f13bfdf21b0a1d6e611f',1,'PolyMesh2D::CurvedMesh::Mesh::edge()'],['../group__Mesh.html#gaaa61f6e848b99fd45e1fffcaccf83e23',1,'PolyMesh2D::StraightMesh::Mesh::edge()'],['../group__Mesh.html#ga2250d1f20cb27a15d69a73fb7cb78c9e',1,'PolyMesh2D::CurvedMesh::Polytope::edge()'],['../group__Mesh.html#gaee3a84b7f040d784cca6afaea009858e',1,'PolyMesh2D::StraightMesh::Polytope::edge()']]],
-  ['edge_31',['Edge',['../classPolyMesh2D_1_1CurvedMesh_1_1Edge.html',1,'PolyMesh2D::CurvedMesh::Edge'],['../classPolyMesh2D_1_1StraightMesh_1_1Edge.html',1,'PolyMesh2D::StraightMesh::Edge']]],
-  ['edge_5fnormal_32',['edge_normal',['../group__Mesh.html#gae519fd4323f21fe8d08e1bc20b973f99',1,'PolyMesh2D::CurvedMesh::Cell::edge_normal()'],['../group__Mesh.html#ga73dc06c655230f0d26290a60efd19560',1,'PolyMesh2D::StraightMesh::Cell::edge_normal()']]],
-  ['edge_5forientation_33',['edge_orientation',['../group__Mesh.html#ga4350c12d25092b865f99d3254bda85b8',1,'PolyMesh2D::CurvedMesh::Cell::edge_orientation()'],['../group__Mesh.html#ga38192fd1f4247db1e5013caad58e277f',1,'PolyMesh2D::StraightMesh::Cell::edge_orientation()']]]
+  ['family_33',['Family',['../group__Functional.html#ga63078cedbf5b4cb788343a0fa78716d1',1,'PolyMesh2D::Functional::Family::Family()'],['../classPolyMesh2D_1_1Functional_1_1Family.html',1,'PolyMesh2D::Functional::Family&lt; BasisType &gt;']]],
+  ['find_5fcell_34',['find_cell',['../group__Mesh.html#ga3a19e0d8b6fe093b7d93921cd559ae6e',1,'PolyMesh2D::StraightMesh::Mesh']]],
+  ['function_35',['Function',['../group__Functional.html#ga282df6476478f97874c63636a1249b74',1,'PolyMesh2D::Functional::Function::Function(const Value &amp;val, const Derivative &amp;deriv)'],['../group__Functional.html#gadb57f02ca3518e1af9c5174800462e3c',1,'PolyMesh2D::Functional::Function::Function(const Value &amp;val)'],['../group__Functional.html#gab239e3d1fd47ded15efc1fbcb25ed016',1,'PolyMesh2D::Functional::Function::Function()'],['../classPolyMesh2D_1_1Functional_1_1Function.html',1,'PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;']]],
+  ['functional_36',['Functional',['../group__Functional.html',1,'']]]
 ];

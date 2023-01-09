@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['cell_17',['cell',['../group__Mesh.html#gadf1b5e685b713d3262ffc2c9fd202797',1,'PolyMesh2D::CurvedMesh::Mesh::cell()'],['../group__Mesh.html#ga38a6e2db3f3d4719fb337ad36477571f',1,'PolyMesh2D::StraightMesh::Mesh::cell()'],['../group__Mesh.html#gaca5c8ec097222d13eb5be3331840ebe4',1,'PolyMesh2D::CurvedMesh::Polytope::cell()'],['../group__Mesh.html#ga088d4295e0f4835ef9a9591248b79261',1,'PolyMesh2D::StraightMesh::Polytope::cell()']]],
-  ['cell_18',['Cell',['../group__Mesh.html#ga0895159515e37c2318fe5258c44886e0',1,'PolyMesh2D::CurvedMesh::Cell::Cell()'],['../group__Mesh.html#gaaf4f647784a67bce5e743f847c359871',1,'PolyMesh2D::StraightMesh::Cell::Cell()'],['../classPolyMesh2D_1_1CurvedMesh_1_1Cell.html',1,'PolyMesh2D::CurvedMesh::Cell'],['../classPolyMesh2D_1_1StraightMesh_1_1Cell.html',1,'PolyMesh2D::StraightMesh::Cell']]],
-  ['center_5fmass_19',['center_mass',['../group__Mesh.html#ga26145c6dab59ef564df5e26046fd16db',1,'PolyMesh2D::CurvedMesh::Polytope::center_mass()'],['../group__Mesh.html#ga251a34edbff45089756cb31c35fbd5b5',1,'PolyMesh2D::StraightMesh::Polytope::center_mass()']]],
-  ['colvector_20',['ColVector',['../group__Functional.html#ga8a8f60389c1ec0852c939171f76c71e4',1,'PolyMesh2D::Functional']]],
-  ['compose_21',['compose',['../group__Functional.html#gaae99d867e4d33ee40ba64df7d632624b',1,'PolyMesh2D::Functional']]],
-  ['coords_22',['coords',['../group__Mesh.html#ga6ad10ce2f87e24e5b5122094e6256dbc',1,'PolyMesh2D::CurvedMesh::Vertex::coords()'],['../group__Mesh.html#gad3735b91d519303d1ac65db84609897f',1,'PolyMesh2D::StraightMesh::Vertex::coords()']]],
-  ['curve_23',['Curve',['../classPolyMesh2D_1_1Functional_1_1Curve.html',1,'PolyMesh2D::Functional']]],
-  ['curvededgebasis_24',['CurvedEdgeBasis',['../group__Functional.html#ga841338b7a75b175e8cd42d4cd50d86bc',1,'PolyMesh2D::Functional']]]
+  ['derivative_23',['Derivative',['../group__Functional.html#ga074f75ce974e81d5bc37f2a07a56e55c',1,'PolyMesh2D::Functional::Function']]],
+  ['derivative_24',['derivative',['../group__Functional.html#gada7695bae5ee11cf71caa02a7eb86f26',1,'PolyMesh2D::Functional::Family::derivative()'],['../group__Functional.html#gad464890fa6897b0e71d549d8bd475c14',1,'PolyMesh2D::Functional::Function::derivative(const InputType &amp;x) const']]],
+  ['derivativetype_25',['DerivativeType',['../group__Functional.html#ga18f46948c4bd5e8b5bc9ebffcedb2631',1,'PolyMesh2D::Functional::Function']]],
+  ['diam_26',['diam',['../group__Mesh.html#ga4f77290856d6b4366365746af1572828',1,'PolyMesh2D::CurvedMesh::Polytope::diam()'],['../group__Mesh.html#ga94aff9286ee0251e443351214efe7c15',1,'PolyMesh2D::StraightMesh::Polytope::diam()']]],
+  ['dim_27',['dim',['../group__Mesh.html#ga949ee6658eb227a5cae7727bbb27c576',1,'PolyMesh2D::CurvedMesh::Mesh::dim()'],['../group__Mesh.html#ga987127e404502c38b023c8c6d596d4a0',1,'PolyMesh2D::StraightMesh::Mesh::dim()']]],
+  ['dimension_28',['dimension',['../group__Functional.html#ga5ddcdc65b740e97b1bdf670b0935e67e',1,'PolyMesh2D::Functional::Family']]]
 ];

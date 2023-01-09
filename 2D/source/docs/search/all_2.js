@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['b_5fcell_12',['b_cell',['../group__Mesh.html#ga5ba33dfbfdeb4a826bd7a2265b5e408c',1,'PolyMesh2D::CurvedMesh::Mesh::b_cell()'],['../group__Mesh.html#ga95cdaef4a96372c44d02c568180040d9',1,'PolyMesh2D::StraightMesh::Mesh::b_cell()']]],
-  ['b_5fedge_13',['b_edge',['../group__Mesh.html#gab6035e5483c5e0425cc1479939ff5e54',1,'PolyMesh2D::CurvedMesh::Mesh::b_edge()'],['../group__Mesh.html#ga02bce69d16597e31b5d8a79254b15a0f',1,'PolyMesh2D::StraightMesh::Mesh::b_edge()']]],
-  ['b_5fvertex_14',['b_vertex',['../group__Mesh.html#ga9525baf36d2174bceed13ed798d0e7e9',1,'PolyMesh2D::CurvedMesh::Mesh::b_vertex()'],['../group__Mesh.html#ga309e1e73af82ff126e8334d9068d9b84',1,'PolyMesh2D::StraightMesh::Mesh::b_vertex()']]],
-  ['basis_15',['Basis',['../classPolyMesh2D_1_1Functional_1_1Basis.html',1,'PolyMesh2D::Functional']]],
-  ['build_5fthe_5fmesh_16',['build_the_mesh',['../group__Mesh.html#gae022c9b65e0ce9299764a51f56a76c32',1,'PolyMesh2D::StraightMesh::MeshBuilder']]]
+  ['cell_15',['cell',['../group__Mesh.html#gadf1b5e685b713d3262ffc2c9fd202797',1,'PolyMesh2D::CurvedMesh::Mesh::cell()'],['../group__Mesh.html#gaca5c8ec097222d13eb5be3331840ebe4',1,'PolyMesh2D::CurvedMesh::Polytope::cell()'],['../group__Mesh.html#ga38a6e2db3f3d4719fb337ad36477571f',1,'PolyMesh2D::StraightMesh::Mesh::cell()'],['../group__Mesh.html#ga088d4295e0f4835ef9a9591248b79261',1,'PolyMesh2D::StraightMesh::Polytope::cell()']]],
+  ['cell_16',['Cell',['../group__Mesh.html#ga0895159515e37c2318fe5258c44886e0',1,'PolyMesh2D::CurvedMesh::Cell::Cell()'],['../group__Mesh.html#gaaf4f647784a67bce5e743f847c359871',1,'PolyMesh2D::StraightMesh::Cell::Cell()'],['../classPolyMesh2D_1_1CurvedMesh_1_1Cell.html',1,'PolyMesh2D::CurvedMesh::Cell'],['../classPolyMesh2D_1_1StraightMesh_1_1Cell.html',1,'PolyMesh2D::StraightMesh::Cell']]],
+  ['center_5fmass_17',['center_mass',['../group__Mesh.html#ga26145c6dab59ef564df5e26046fd16db',1,'PolyMesh2D::CurvedMesh::Polytope::center_mass()'],['../group__Mesh.html#ga251a34edbff45089756cb31c35fbd5b5',1,'PolyMesh2D::StraightMesh::Polytope::center_mass()']]],
+  ['colvector_18',['ColVector',['../group__Functional.html#ga8a8f60389c1ec0852c939171f76c71e4',1,'PolyMesh2D::Functional']]],
+  ['compose_19',['compose',['../group__Functional.html#gaae99d867e4d33ee40ba64df7d632624b',1,'PolyMesh2D::Functional']]],
+  ['coords_20',['coords',['../group__Mesh.html#ga6ad10ce2f87e24e5b5122094e6256dbc',1,'PolyMesh2D::CurvedMesh::Vertex::coords()'],['../group__Mesh.html#gad3735b91d519303d1ac65db84609897f',1,'PolyMesh2D::StraightMesh::Vertex::coords()']]],
+  ['curve_21',['Curve',['../classPolyMesh2D_1_1Functional_1_1Curve.html',1,'PolyMesh2D::Functional']]],
+  ['curvededgebasis_22',['CurvedEdgeBasis',['../group__Functional.html#ga841338b7a75b175e8cd42d4cd50d86bc',1,'PolyMesh2D::Functional']]]
 ];
