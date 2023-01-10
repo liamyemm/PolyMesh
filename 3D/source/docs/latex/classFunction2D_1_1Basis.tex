@@ -1,0 +1,43 @@
+\hypertarget{classFunction2D_1_1Basis}{}\doxysection{Function2D\+::Basis$<$ input\+\_\+dim, output\+\_\+dim $>$ Class Template Reference}
+\label{classFunction2D_1_1Basis}\index{Function2D::Basis$<$ input\_dim, output\_dim $>$@{Function2D::Basis$<$ input\_dim, output\_dim $>$}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_a667c681ac8e2d5919cfb1da4c1a9eb5b}\label{classFunction2D_1_1Basis_a667c681ac8e2d5919cfb1da4c1a9eb5b}} 
+typedef Function$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Input\+Type {\bfseries Input\+Type}
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_a77124013caef1dcda9dcc2026c9bae2c}\label{classFunction2D_1_1Basis_a77124013caef1dcda9dcc2026c9bae2c}} 
+typedef Function$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Output\+Type {\bfseries Output\+Type}
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_af2546db9048fb4f57c745bf60338dfc0}\label{classFunction2D_1_1Basis_af2546db9048fb4f57c745bf60338dfc0}} 
+typedef Function$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Derivative\+Type {\bfseries Derivative\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_a04e17618144a34a87d11383d1a7a6ce1}\label{classFunction2D_1_1Basis_a04e17618144a34a87d11383d1a7a6ce1}} 
+{\bfseries Basis} (std\+::vector$<$ Function$<$ input\+\_\+dim, output\+\_\+dim $>$$>$ \&bases)
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_ae1c847d0468ae7fd8d4175a82c835752}\label{classFunction2D_1_1Basis_ae1c847d0468ae7fd8d4175a82c835752}} 
+size\+\_\+t {\bfseries dimension} () const
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_abc78e270eeed9d7958ab479682bae1cf}\label{classFunction2D_1_1Basis_abc78e270eeed9d7958ab479682bae1cf}} 
+void {\bfseries add\+\_\+basis\+\_\+function} (Function$<$ input\+\_\+dim, output\+\_\+dim $>$ func)
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_ae70ccb8cb0f9a5226c5a5b1dcba6d1a6}\label{classFunction2D_1_1Basis_ae70ccb8cb0f9a5226c5a5b1dcba6d1a6}} 
+void {\bfseries remove\+\_\+basis\+\_\+function} (const size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_ac52a2487b7e0125ea0f31603b2410ee1}\label{classFunction2D_1_1Basis_ac52a2487b7e0125ea0f31603b2410ee1}} 
+Output\+Type {\bfseries value} (size\+\_\+t i, const Input\+Type x) const
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_abd8f425097bef42a78636d74b1729b98}\label{classFunction2D_1_1Basis_abd8f425097bef42a78636d74b1729b98}} 
+Derivative\+Type {\bfseries derivative} (size\+\_\+t i, const Input\+Type x) const
+\item 
+\mbox{\Hypertarget{classFunction2D_1_1Basis_a8c3b18e017f1bad38610d0bf21aa045c}\label{classFunction2D_1_1Basis_a8c3b18e017f1bad38610d0bf21aa045c}} 
+const Function$<$ input\+\_\+dim, output\+\_\+dim $>$ \& {\bfseries function} (size\+\_\+t i) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+basis.\+hpp\end{DoxyCompactItemize}

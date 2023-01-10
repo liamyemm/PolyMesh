@@ -1,0 +1,102 @@
+\hypertarget{classHybridCore}{}\doxysection{Hybrid\+Core Class Reference}
+\label{classHybridCore}\index{HybridCore@{HybridCore}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classHybridCore_a8e958bd7756a339e64867d3803114147}\label{classHybridCore_a8e958bd7756a339e64867d3803114147}} 
+using {\bfseries Cell\+Basis\+Type} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Family2D}}
+\item 
+\mbox{\Hypertarget{classHybridCore_a6bebfeab52ba95cfd301fd9d877e6ed6}\label{classHybridCore_a6bebfeab52ba95cfd301fd9d877e6ed6}} 
+using {\bfseries Edge\+Basis\+Type} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Family1D}}
+\item 
+\mbox{\Hypertarget{classHybridCore_a8d5616a033627702d54a435a43b53f94}\label{classHybridCore_a8d5616a033627702d54a435a43b53f94}} 
+using {\bfseries Mesh\+Type} = \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHybridCore_a6b1c5112df348b985fc7d6ee1a5c2204}{Hybrid\+Core}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh\+Type}} $\ast$mesh\+\_\+ptr, size\+\_\+t cell\+\_\+deg, size\+\_\+t edge\+\_\+deg, bool use\+\_\+threads=true, bool ortho=true)
+\item 
+\mbox{\Hypertarget{classHybridCore_a7294d7de5bdb30bb7a64a4ea43d2760b}\label{classHybridCore_a7294d7de5bdb30bb7a64a4ea43d2760b}} 
+Eigen\+::\+Vector\+Xd {\bfseries restr} (const Eigen\+::\+Vector\+Xd \&UVec, const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_aabb4f5cfca020888b9d518d1acc41d52}\label{classHybridCore_aabb4f5cfca020888b9d518d1acc41d52}} 
+Eigen\+::\+Vector\+Xd {\bfseries interpolate} (const std\+::function$<$ double(Eigen\+::\+Vector2d)$>$ \&func) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a64231cda3a4b0a4202c0d6f53ecb4c6e}\label{classHybridCore_a64231cda3a4b0a4202c0d6f53ecb4c6e}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh\+Type}} $\ast$ {\bfseries get\+\_\+mesh} () const
+\item 
+\mbox{\Hypertarget{classHybridCore_aca13fb4be7d7756a70525f1413a6f457}\label{classHybridCore_aca13fb4be7d7756a70525f1413a6f457}} 
+size\+\_\+t {\bfseries cell\+\_\+degree} () const
+\item 
+\mbox{\Hypertarget{classHybridCore_ac78754a5f846409de70c4a6fadff8450}\label{classHybridCore_ac78754a5f846409de70c4a6fadff8450}} 
+size\+\_\+t {\bfseries edge\+\_\+degree} () const
+\item 
+\mbox{\Hypertarget{classHybridCore_aca3333adcbaf26572c0d36f5fdb54f7f}\label{classHybridCore_aca3333adcbaf26572c0d36f5fdb54f7f}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Cell\+Basis\+Type}} $\ast$ {\bfseries highorder\+\_\+basis} (const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a92f9d4ef6d4f9635a83842f1a96925be}\label{classHybridCore_a92f9d4ef6d4f9635a83842f1a96925be}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Edge\+Basis\+Type}} $\ast$ {\bfseries edge\+\_\+basis} (const size\+\_\+t iF) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a973e1912029467e953e6e6add29509d1}\label{classHybridCore_a973e1912029467e953e6e6add29509d1}} 
+Quadrature\+::\+Quadrature\+Rule$<$ Eigen\+::\+Vector2d $>$ {\bfseries quadT} (const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a87be9f15a4d84e221a18edadd1252e3f}\label{classHybridCore_a87be9f15a4d84e221a18edadd1252e3f}} 
+Quadrature\+::\+Quadrature\+Rule$<$ double $>$ {\bfseries quadE} (const size\+\_\+t iE) const
+\item 
+\mbox{\Hypertarget{classHybridCore_ade21328ec7e6fc889158b4392d636c6c}\label{classHybridCore_ade21328ec7e6fc889158b4392d636c6c}} 
+size\+\_\+t {\bfseries local\+\_\+cell\+\_\+dofs} (const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a9a69004577342bc6e8c7a28569bed927}\label{classHybridCore_a9a69004577342bc6e8c7a28569bed927}} 
+size\+\_\+t {\bfseries local\+\_\+highorder\+\_\+dofs} (const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a8725484275307a363e914bf34dd49757}\label{classHybridCore_a8725484275307a363e914bf34dd49757}} 
+size\+\_\+t {\bfseries local\+\_\+edge\+\_\+dofs} (const size\+\_\+t iE) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a1be1b2fddc15ce3fb182e6210f3e6c67}\label{classHybridCore_a1be1b2fddc15ce3fb182e6210f3e6c67}} 
+size\+\_\+t {\bfseries local\+\_\+boundary\+\_\+dofs} (const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a95badff98db6d8b5ca00e2a7935d0cb8}\label{classHybridCore_a95badff98db6d8b5ca00e2a7935d0cb8}} 
+size\+\_\+t {\bfseries global\+\_\+offset\+\_\+T} (const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a0cdccfcdad74ddfd8be329bf954d3cf6}\label{classHybridCore_a0cdccfcdad74ddfd8be329bf954d3cf6}} 
+size\+\_\+t {\bfseries global\+\_\+offset\+\_\+E} (const size\+\_\+t iE) const
+\item 
+\mbox{\Hypertarget{classHybridCore_ac7e183913ae8f9d9526e370be59be9b9}\label{classHybridCore_ac7e183913ae8f9d9526e370be59be9b9}} 
+size\+\_\+t {\bfseries local\+\_\+offset\+\_\+E} (const size\+\_\+t iT, const size\+\_\+t i\+TE) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a4621215d0bdb5e1e3f226b0619c758c8}\label{classHybridCore_a4621215d0bdb5e1e3f226b0619c758c8}} 
+size\+\_\+t {\bfseries local\+\_\+offset\+\_\+T} (const size\+\_\+t iT) const
+\item 
+\mbox{\Hypertarget{classHybridCore_a770398b19a8f357e44273f60971e53a8}\label{classHybridCore_a770398b19a8f357e44273f60971e53a8}} 
+size\+\_\+t {\bfseries total\+\_\+cell\+\_\+dofs} () const
+\item 
+\mbox{\Hypertarget{classHybridCore_a7fd312d5269f83f7bbff35b873a97cbb}\label{classHybridCore_a7fd312d5269f83f7bbff35b873a97cbb}} 
+size\+\_\+t {\bfseries total\+\_\+edge\+\_\+dofs} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHybridCore_a6b1c5112df348b985fc7d6ee1a5c2204}\label{classHybridCore_a6b1c5112df348b985fc7d6ee1a5c2204}} 
+\index{HybridCore@{HybridCore}!HybridCore@{HybridCore}}
+\index{HybridCore@{HybridCore}!HybridCore@{HybridCore}}
+\doxysubsubsection{\texorpdfstring{HybridCore()}{HybridCore()}}
+{\footnotesize\ttfamily Hybrid\+Core\+::\+Hybrid\+Core (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh\+Type}} $\ast$}]{mesh\+\_\+ptr,  }\item[{size\+\_\+t}]{cell\+\_\+deg,  }\item[{size\+\_\+t}]{edge\+\_\+deg,  }\item[{bool}]{use\+\_\+threads = {\ttfamily true},  }\item[{bool}]{ortho = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh\+\_\+ptr} & A pointer to the loaded mesh \\
+\hline
+{\em cell\+\_\+deg} & The degree of the cell polynomials \\
+\hline
+{\em edge\+\_\+deg} & The degree of the edge polynomials \\
+\hline
+{\em use\+\_\+threads} & Optional argument to indicate if threads should be used \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Hybrid\+Core.\+hpp\item 
+Hybrid\+Core.\+cpp\end{DoxyCompactItemize}

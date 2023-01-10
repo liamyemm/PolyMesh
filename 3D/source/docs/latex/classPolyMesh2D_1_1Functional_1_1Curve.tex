@@ -1,0 +1,56 @@
+\hypertarget{classPolyMesh2D_1_1Functional_1_1Curve}{}\doxysection{Poly\+Mesh2D\+::Functional\+::Curve Class Reference}
+\label{classPolyMesh2D_1_1Functional_1_1Curve}\index{PolyMesh2D::Functional::Curve@{PolyMesh2D::Functional::Curve}}
+
+
+{\ttfamily \#include $<$function.\+hpp$>$}
+
+
+
+Inheritance diagram for Poly\+Mesh2D\+::Functional\+::Curve\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classPolyMesh2D_1_1Functional_1_1Curve__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Poly\+Mesh2D\+::Functional\+::Curve\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classPolyMesh2D_1_1Functional_1_1Curve__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Curve} (const double t0, const double t1, const std\+::function$<$ \mbox{\hyperlink{group__Functional_ga8a8f60389c1ec0852c939171f76c71e4}{Col\+Vector}}(double)$>$ \&val, const std\+::function$<$ \mbox{\hyperlink{group__Functional_ga8a8f60389c1ec0852c939171f76c71e4}{Col\+Vector}}(double)$>$ \&deriv)
+\item 
+\mbox{\hyperlink{group__Functional_ga8a8f60389c1ec0852c939171f76c71e4}{Col\+Vector}} {\bfseries value} (const double t) const
+\item 
+\mbox{\hyperlink{group__Functional_ga8a8f60389c1ec0852c939171f76c71e4}{Col\+Vector}} {\bfseries derivative} (const double t) const
+\item 
+\mbox{\hyperlink{group__Functional_ga8a8f60389c1ec0852c939171f76c71e4}{Col\+Vector}} {\bfseries tangent} (const double t) const
+\item 
+\mbox{\hyperlink{group__Functional_ga8a8f60389c1ec0852c939171f76c71e4}{Col\+Vector}} {\bfseries normal} (const double t) const
+\item 
+double {\bfseries derivative\+\_\+norm} (const double t) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries tmin}
+\item 
+double {\bfseries tmax}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} is a templated class describing an abstract function that maps elements from \$R$^\wedge$n\$ to \$R$^\wedge$m\$. It takes in two template parameters -\/ the input dimension and output dimension. \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} is a wrapper class which stores a std\+::function describing the function value and another std\+::function describing the function derivative. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+function.\+hpp\item 
+function.\+cpp\end{DoxyCompactItemize}
