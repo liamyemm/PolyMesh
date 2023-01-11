@@ -1,9 +1,9 @@
 #include "StraightPolytope.hpp"
 
-#ifndef _CELL_HPP
-#define _CELL_HPP
+#ifndef _STRAIGHTCELL_HPP
+#define _STRAIGHTCELL_HPP
 
-namespace PolyMesh2D
+namespace PolyMesh3D
 {
     namespace StraightMesh
     {
@@ -12,27 +12,19 @@ namespace PolyMesh2D
          * @{
          */
 
-        using Triangle = std::array<VectorRd, 3>;
-
-        double signed_area(VectorRd A, VectorRd B, VectorRd C);
-
         class Cell : public Polytope
         {
         public:
-            Cell(size_t index, std::vector<Triangle> triangles); ///< Constructor for a Cell. Calls the base class constructor, sets _triangles to @arg triangles and computes the cell data (center_mass, diameter, measure, edge orientations)
+            Cell(size_t index, std::vector<Face *> faces); ///< Constructor for a Cell. Calls the base class constructor, sets _triangles to @arg triangles and computes the cell data (center_mass, diameter, measure, edge orientations)
 
-            std::vector<Triangle> triangulation() const { return _triangles; } ///< Return the triangulation of the Polytope
+            int face_orientation(const size_t face_index) const; ///< Return the orientation of the Face located at @arg face_index.
+            VectorRd face_normal(const size_t face_index) const; ///< Return the outer normal of the Face located at @arg face_index.
 
-            int edge_orientation(const size_t edge_index) const;           ///< Return the orientation of the Edge located at @arg edge_index.
-            VectorRd edge_normal(const size_t edge_index) const; ///< Return the outer normal of the Edge located at @arg edge_index.
-
-            void plot_triangulation(std::ofstream *out) const; ///< Plot the triangles to @arg out
+            bool test() const override; ///< Return a boolean determining if the geometries of the Cell are valid
 
         private:
-            std::vector<Triangle> _triangles;
-            std::vector<int> _edge_orientations;
-
-            void set_edge_orientations();
+            std::vector<int> _face_orientations;
+            void set_face_orientations();
         };
 
         //@}

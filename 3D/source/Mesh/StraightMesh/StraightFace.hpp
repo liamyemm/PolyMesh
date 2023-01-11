@@ -13,21 +13,25 @@ namespace PolyMesh2D
          * @{
          */
 
-        class Edge : public Polytope
+        class Face : public Polytope
         {
         public:
-            Edge(size_t index, std::array<VectorRd, 2> coords);
+            Face(size_t index, std::vector<Edge *> edges);
 
-            int vertex_orientation(const size_t vertex_index) const; ///< Return the orientation of the Vertex located at vertex_index (1 if it is in the direction of the tangent, -1 otherwise)
+            int edge_orientation(const size_t edge_index) const; ///< Return the orientation of the Edge located at edge_index
+            
+            VectorRd normal() const;      ///< Return the normal of the Face
+            VectorRd edge_normal() const; ///< Return the normal of the Edge
 
-            VectorRd tangent() const;                  ///< Return the tangent of the Edge
-            VectorRd normal() const;                   ///< Return the normal of the Edge
-
-            std::array<VectorRd, 2> coords() const; ///< Return an array of coordinates representing the coordinates of the vertices in the edge.
+            bool test() const override; ///< Return a boolean determining if the geometries of the Face are valid
 
         private:
-            std::array<VectorRd, 2> _coords;
-            VectorRd _tangent;  
+            VectorRd _normal;
+
+            std::vector<int> _edge_orientations;
+            std::vector<VectorRd> _outer_normals;
+
+            void set_edge_orientations();
         };
 
         //@}

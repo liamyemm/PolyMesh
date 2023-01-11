@@ -25,7 +25,7 @@ namespace PolyMesh3D
             bool valid = true;
             if(_vertices.size() != _edges.size())
             {
-                std::cerr << "**** Vertex " << _index <<" located at (" << _coords(0) << ", " << _coords(1) << ", " << _coords(2) << ") has " << _vertices.size() << " vertices and " << _edges.size() << " edges.\n";
+                std::cerr << "**** Vertex " << _index << " located at (" << _coords(0) << ", " << _coords(1) << ", " << _coords(2) << ") has " << _vertices.size() << " vertices and " << _edges.size() << " edges.\n";
                 valid = false;
             }
             return valid;

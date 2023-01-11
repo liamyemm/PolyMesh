@@ -2,51 +2,26 @@
 
 #include "StraightVertex.hpp"
 #include "StraightEdge.hpp"
+#include "StraightFace.hpp"
 #include "StraightCell.hpp"
 
-#include "GaussLegendre.hpp"
-#include "function.hpp"
-
-namespace PolyMesh2D
+namespace PolyMesh3D
 {
     namespace StraightMesh
     {
-        double signed_area(VectorRd A, VectorRd B, VectorRd C) // returns signed area of trangle ABC. Positive if anticlock, negative otherwise
-        {
-            return (A(0) * (B(1) - C(1)) + B(0) * (C(1) - A(1)) + C(0) * (A(1) - B(1))) / 2.0;
-        }
-
-        VectorRd triangle_center_mass(Triangle triangle)
-        {
-            return (triangle[0] + triangle[1] + triangle[2]) / 3.0;
-        }
-
-        double triangle_measure(Triangle triangle)
-        {
-            VectorRd A = triangle[0];
-            VectorRd B = triangle[1];
-            VectorRd C = triangle[2];
-            return std::abs((A(0) * (B(1) - C(1)) + B(0) * (C(1) - A(1)) + C(0) * (A(1) - B(1))) / 2.0);
-        }
-
-        Cell::Cell(size_t index, std::vector<Triangle> triangles) : Polytope::Polytope(index), _triangles(triangles)
+        Cell::Cell(size_t index, std::vector<Face *> faces) : Polytope::Polytope(index), _faces(faces)
         {
             std::vector<VectorRd> vertex_coords;
-
-            for (auto &triangle : _triangles)
+            for(auto & f : faces)
             {
-                double measure_of_triangle = triangle_measure(triangle);
-                _measure += measure_of_triangle;
-                _center_mass += measure_of_triangle * triangle_center_mass(triangle);
-                for (auto &coord : triangle)
+                for(auto &v : face->get_vertices())
                 {
-                    if (std::find(vertex_coords.begin(), vertex_coords.end(), coord) == vertex_coords.end())
+                    if (std::find(vertex_coords.begin(), vertex_coords.end(), v->coords()) == vertex_coords.end())
                     {
-                        vertex_coords.push_back(coord); // if coord not already in vertex_coords, add it
+                        vertex_coords.push_back(v->coords()); // if coord not already in vertex_coords, add it
                     }
                 }
             }
-            _center_mass /= _measure;
 
             for (auto it = vertex_coords.begin(); it != vertex_coords.end(); ++it)
             {
@@ -55,68 +30,74 @@ namespace PolyMesh2D
                     _diameter = std::max(_diameter, (*it - *jt).norm());
                 }
             }
-            set_edge_orientations();
-        }
 
-        void Cell::set_edge_orientations() // not very efficient - probably room for improvement
-        {
-            for (size_t iF = 0; iF < _edges.size(); ++iF)
+            set_face_orientations();
+            
+            for (size_t iF = 0; iF < _faces.size(); ++iF)
             {
-                VectorRd normal = _edges[iF]->normal();
-                std::array<VectorRd, 2> edge_coords = _edges[iF]->coords();
-
-                VectorRd center;
-
-                // find a cell simplex attached to the edge
-                bool found = false;
-                for (auto &cell_simplex : this->triangulation())
-                {
-                    double count = 0;
-                    for (size_t i = 0; (i < cell_simplex.size()) && count < 2; ++i)
-                    {
-                        if (std::find(edge_coords.begin(), edge_coords.end(), cell_simplex[i]) == edge_coords.end()) // requires numerical precision
-                        {
-                            ++count;
-                        }
-                    }
-                    if (count == 1) // only don't share one coordinate
-                    {
-                        center = triangle_center_mass(cell_simplex);
-                        found = true;
-                        break;
-                    }
-                }
-                assert(found);
-
-                _edge_orientations.push_back(Math::sgn((_edges[iF]->center_mass() - center).dot(normal)));
-                assert(_edge_orientations[iF] != 0);
+                outer_normals[iE] *= multiplier;
+                double temp = _faces[iF]->measure() * _faces[iF]->center_mass().dot(this->face_normal(iF));
+                _measure += temp;
+                _center_mass += temp * _faces[iF]->center_mass();
             }
+            _measure /= 3.0;
+            _center_mass /= (4.0 * _measure);
         }
 
-        int Cell::edge_orientation(const size_t edge_index) const
+        void Cell::set_face_orientations() 
         {
-            assert(edge_index < _edges.size());
-            return (_edge_orientations[edge_index]);
-        }
-
-        VectorRd Cell::edge_normal(const size_t edge_index) const
-        {
-            assert(edge_index < _edges.size());
-            return this->edge_orientation(edge_index) * (_edges[edge_index]->normal());
-        }
-
-        void Cell::plot_triangulation(std::ofstream *out) const
-        {
-            for (auto &triangle : _triangles)
+            VectorRd vertex_avg(VectorRd::Zero());
+            for(auto & v : _vertices)
             {
-                for (size_t i = 0; i < 3; ++i)
-                {
-                    size_t i_next = (i + 1) % 3;
-                    *out << triangle[i](0) << " " << triangle[i](1) << std::endl;
-                    *out << triangle[i_next](0) << " " << triangle[i_next](1) << std::endl;
-                    *out << std::endl;
-                }
+                vertex_avg += v->coords();
             }
+            for(size_t iF = 0; iF < _faces.size(); ++iF)
+            {
+                _face_orientations[iF] = Math::sgn(_faces[iF]->normal().dot(_faces[iF]->center_mass() - vertex_avg)); // star-shaped wrt vertex average
+            }
+
+        }
+
+        int Cell::face_orientation(const size_t face_index) const
+        {
+            assert(face_index < _faces.size());
+            return (_face_orientations[face_index]);
+        }
+
+        VectorRd Cell::face_normal(const size_t face_index) const
+        {
+            assert(face_index < _faces.size());
+            return this->face_orientation(face_index) * (_faces[face_index]->normal());
+        }
+
+
+
+        bool Cell::test() const
+        {
+            bool valid = true;
+            if(_faces.size() + _vertices.size() != _edges.size() + 2)
+            {
+                std::cerr << "**** Cell " << _index << " with center at (" << _center_mass(0) << ", " << _center_mass(1) << ", " << _center_mass(2) << ") does not satisfy Euler's formula (F + V = E + 2): has " << _vertices.size() << " vertices, " << _edges.size() << " edges, " << _faces.size() << " faces.\n";
+                valid = false;
+            }
+            if(_measure < 1E-14)
+            {
+                std::cerr << "**** Cell " << _index << " with center at (" << _center_mass(0) << ", " << _center_mass(1) << ", " << _center_mass(2) << ") has trivial measure: " << _measure << "\n";
+                valid = false;
+            }
+
+            // integrate nTF over the boundary. Should be zero.
+            VectorRd bdry_integral(VectorRd::Zero());
+            for(size_t iTF = 0; iTF < _faces.size(); ++iTF)
+            {
+                bdry_integral += this->face_normal(iTF) * _faces[iTF]->measure();
+            }
+            if(bdry_integral.norm() > 1E-14)
+            {
+                std::cerr << "**** Cell " << _index << " with center at (" << _center_mass(0) << ", " << _center_mass(1) << ", " << _center_mass(2) << ") has ill-formed boundary. Integral of outer normal on boundary has size " << bdry_integral.norm() << "\n";
+                valid = false;
+            }
+            return valid;
         }
     }
 }
