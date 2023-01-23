@@ -1,10 +1,9 @@
 #include "StraightPolytope.hpp"
-#include "function.hpp"
 
 #ifndef _STRAIGHTFACE_HPP
 #define _STRAIGHTFACE_HPP
 
-namespace PolyMesh2D
+namespace PolyMesh3D
 {
     namespace StraightMesh
     {
@@ -21,7 +20,7 @@ namespace PolyMesh2D
             int edge_orientation(const size_t edge_index) const; ///< Return the orientation of the Edge located at edge_index
             
             VectorRd normal() const;      ///< Return the normal of the Face
-            VectorRd edge_normal() const; ///< Return the normal of the Edge
+            VectorRd edge_normal(const size_t edge_index) const; ///< Return the normal of the Edge
 
             bool test() const override; ///< Return a boolean determining if the geometries of the Face are valid
 

@@ -51,18 +51,18 @@ INCLUDE_DIRECTORIES(${EXTERNAL_INCLUDES})
 #                             Directories for compiled libraries
 #------------------------------------------------------------------------------#
 
-INCLUDE_DIRECTORIES(source/Function)
+#INCLUDE_DIRECTORIES(source/Function)
 INCLUDE_DIRECTORIES(source/Quadrature)
 INCLUDE_DIRECTORIES(source/Mesh)
-INCLUDE_DIRECTORIES(source/Plot)
-INCLUDE_DIRECTORIES(source/HybridCore)
+#INCLUDE_DIRECTORIES(source/Plot)
+#INCLUDE_DIRECTORIES(source/HybridCore)
 INCLUDE_DIRECTORIES(source/Math)
 
-ADD_SUBDIRECTORY(source/Function)
+#ADD_SUBDIRECTORY(source/Function)
 ADD_SUBDIRECTORY(source/Quadrature)
 ADD_SUBDIRECTORY(source/Mesh)
-ADD_SUBDIRECTORY(source/Plot)
-ADD_SUBDIRECTORY(source/HybridCore)
+#ADD_SUBDIRECTORY(source/Plot)
+#ADD_SUBDIRECTORY(source/HybridCore)
 ADD_SUBDIRECTORY(source/Math)
 
 #------------------------------------------------------------------------------#

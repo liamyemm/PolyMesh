@@ -16,7 +16,7 @@ namespace PolyMesh3D
 
         std::vector<Vertex *> Polytope::get_vertices() const { return _vertices; }
         std::vector<Edge *> Polytope::get_edges() const { return _edges; }
-        std::vector<Edge *> Polytope::get_faces() const { return _faces; }
+        std::vector<Face *> Polytope::get_faces() const { return _faces; }
         std::vector<Cell *> Polytope::get_cells() const { return _cells; }
 
         size_t Polytope::n_vertices() const { return _vertices.size(); }

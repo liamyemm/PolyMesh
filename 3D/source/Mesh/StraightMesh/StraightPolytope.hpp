@@ -58,7 +58,7 @@ namespace PolyMesh3D
 
             std::vector<Vertex *> get_vertices() const; ///< Return the vertices of the StraightObject
             std::vector<Edge *> get_edges() const;      ///< Return the edges of the StraightObject
-            std::vector<Edge *> get_faces() const;      ///< Return the faces of the StraightObject
+            std::vector<Face *> get_faces() const;      ///< Return the faces of the StraightObject
             std::vector<Cell *> get_cells() const;      ///< Return the cells of the StraightObject
 
             size_t n_vertices() const; ///< Return the number of vertices of the StraightObject
@@ -73,7 +73,7 @@ namespace PolyMesh3D
 
             void add_vertex(Vertex *vertex); ///< Add a vertex to the StraightObject
             void add_edge(Edge *edge);       ///< Add an edge to the StraightObject
-            void add_face(Edge *edge);       ///< Add an face to the StraightObject
+            void add_face(Face *face);       ///< Add an face to the StraightObject
             void add_cell(Cell *cell);       ///< Add a cell to the StraightObject
 
             void remove_vertex(Vertex *vertex); ///< Remove a vertex from the StraightObject

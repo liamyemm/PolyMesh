@@ -5,7 +5,7 @@ INCLUDE_DIRECTORIES(StraightMesh)
 ADD_SUBDIRECTORY(CurvedMesh)
 ADD_SUBDIRECTORY(StraightMesh)
 
-FILE(GLOB source_list Polytope.* Vertex.* Edge.* Cell.* Mesh.* MeshBuilder2D.* MeshReaderTyp2.*)
+FILE(GLOB source_list Polytope.* Vertex.* Edge.* Face.* Cell.* Mesh.* mesh_reader.* mesh_builder.*)
 ADD_LIBRARY(mesh ${source_list})
 TARGET_LINK_LIBRARIES(mesh curved_mesh straight_mesh)
 

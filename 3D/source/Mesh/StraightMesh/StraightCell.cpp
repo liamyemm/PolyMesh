@@ -9,12 +9,13 @@ namespace PolyMesh3D
 {
     namespace StraightMesh
     {
-        Cell::Cell(size_t index, std::vector<Face *> faces) : Polytope::Polytope(index), _faces(faces)
+        Cell::Cell(size_t index, std::vector<Face *> faces) : Polytope::Polytope(index)
         {
+            _faces = faces;
             std::vector<VectorRd> vertex_coords;
             for(auto & f : faces)
             {
-                for(auto &v : face->get_vertices())
+                for(auto &v : f->get_vertices())
                 {
                     if (std::find(vertex_coords.begin(), vertex_coords.end(), v->coords()) == vertex_coords.end())
                     {
@@ -35,22 +36,25 @@ namespace PolyMesh3D
             
             for (size_t iF = 0; iF < _faces.size(); ++iF)
             {
-                outer_normals[iE] *= multiplier;
                 double temp = _faces[iF]->measure() * _faces[iF]->center_mass().dot(this->face_normal(iF));
                 _measure += temp;
                 _center_mass += temp * _faces[iF]->center_mass();
+                // _center_mass += _faces[iF]->center_mass();
             }
             _measure /= 3.0;
             _center_mass /= (4.0 * _measure);
+            // _center_mass /= 6.0;
         }
 
         void Cell::set_face_orientations() 
         {
             VectorRd vertex_avg(VectorRd::Zero());
-            for(auto & v : _vertices)
+            for(auto & f : _faces)
             {
-                vertex_avg += v->coords();
+                vertex_avg += f->center_mass();
             }
+            vertex_avg /= _faces.size();
+            _face_orientations.reserve(_faces.size());
             for(size_t iF = 0; iF < _faces.size(); ++iF)
             {
                 _face_orientations[iF] = Math::sgn(_faces[iF]->normal().dot(_faces[iF]->center_mass() - vertex_avg)); // star-shaped wrt vertex average

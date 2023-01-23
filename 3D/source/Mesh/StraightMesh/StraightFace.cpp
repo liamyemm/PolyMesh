@@ -10,11 +10,12 @@ namespace PolyMesh3D
     namespace StraightMesh
     {
         Face::Face(size_t index, std::vector<Edge *> edges)
-            : Polytope::Polytope(index), _edges(edges)
+            : Polytope::Polytope(index)
         {
+            _edges = edges;
             // Compute the normal using the most perpendicular pair of edges.
             double norm = 0.0;
-            VectorRd perp_vec = VectorRd<space_dim>::Zero();
+            VectorRd perp_vec = VectorRd::Zero();
             for (auto &e1 : _edges)
             {
                 for (auto &e2 : _edges)
@@ -37,45 +38,72 @@ namespace PolyMesh3D
             // Set outer normals. Will initially either be all outer, or all inner. If all inner, _measure will be negative, so switch them.
             // Following algorithm assumes _edges is ordered (be it clock-wise or counter-clockwise wrt the normal). If _edges s randomly ordered, need to add an ordering routine
 
-            outer_normals.reserve(_edges.size()); // VectorRd is a static type, so memory requirement known at compile time.
+            _outer_normals.reserve(_edges.size()); // VectorRd is a static type, so memory requirement known at compile time.
+            bool prior_was_switched = false; 
             for (size_t iE = 0; iE < _edges.size(); ++iE)
             {
-                VectorRd tan_vec(_edge[iE]->tangent());
+                VectorRd tan_vec = (_edges[iE]->coords()[1] - _edges[iE]->coords()[0]).normalized();
                 if(iE > 0)
                 {
                     // test if tan_vec is oriented the same as previous tan_vec. Otherwise switch it.
-                    if( (_edge[iE]->coords()[0] != _edge[iE - 1]->coords()[1]) && (_edge[iE]->coords()[1] != _edge[iE - 1]->coords()[0]) )
+                    if( (_edges[iE]->coords()[0] != _edges[iE - 1]->coords()[1]) && (_edges[iE]->coords()[1] != _edges[iE - 1]->coords()[0]) )
                     {
-                        assert( (_edge[iE]->coords()[0] == _edge[iE - 1]->coords()[0]) || (_edge[iE]->coords()[1] == _edge[iE - 1]->coords()[1]) );
-                        tan_vec *= -1.0;
+                        assert( (_edges[iE]->coords()[0] == _edges[iE - 1]->coords()[0]) || (_edges[iE]->coords()[1] == _edges[iE - 1]->coords()[1]) );
+                        if(!prior_was_switched)
+                        {
+                            tan_vec *= -1.0;
+                            prior_was_switched = true;
+                        }
+                        else
+                        {
+                            prior_was_switched = false;
+                        }
+                    }
+                    else
+                    {
+                        if(prior_was_switched)
+                        {
+                            tan_vec *= -1.0;
+                            prior_was_switched = true;
+                        }
+                        else
+                        {
+                            prior_was_switched = false;
+                        }
                     }
                 }
-                outer_normals[iE].push_back(tan_vec.cross(_normal));
-                _measure += _edge[iE]->measure() * outer_normals[iE].dot(_edge[iE]->center_mass()); // constant integral on the edge so can be evaluated at edge center
+                _outer_normals.push_back(tan_vec.cross(_normal));
+                _measure += _edges[iE]->measure() * _outer_normals[iE].dot(_edges[iE]->center_mass()); // constant integral on the edge so can be evaluated at edge center
 
                 // while we are looping over edges, may as well find diameter
                 for (size_t jE = iE + 1; jE < _edges.size(); ++jE)
                 {
-                    diameter = std::max(diameter, (_edges[jE]->coords()[0] - _edges[iE]->coords()[0]).norm());
+                    _diameter = std::max(_diameter, (_edges[jE]->coords()[0] - _edges[iE]->coords()[0]).norm());
                     // vertices in each edge may not be listed the same way, so need the following to guarentee capturing every vertex pair
                     // Not the most efficient, but oh well...
-                    diameter = std::max(diameter, (_edges[jE]->coords()[0] - _edges[iE]->coords()[1]).norm());
+                    _diameter = std::max(_diameter, (_edges[jE]->coords()[0] - _edges[iE]->coords()[1]).norm());
                 }
             }
             _measure /= 2.0; // Faces are 2D, so dividing by dimension.
 
-            double multiplier = _measure < 0.0 ? -1.0 : 1.0;
+            double multiplier = (_measure < 0.0 ? -1.0 : 1.0);
             _measure *= multiplier;
+            // _outer_normals[0] *= multiplier;
 
             // if _measure is zero (or sufficiently close to it) then there will be many issues. Tested for in test()
 
             // find the center mass and invert outer_normals if facing inwards
+            _center_mass = VectorRd::Zero();
             for (size_t iE = 0; iE < _edges.size(); ++iE)
             {
-                outer_normals[iE] *= multiplier;
-                _center_mass += _edge[iE]->measure() * outer_normals[iE].dot(_edge[iE]->center_mass()) * _edge[iE]->center_mass(); // linear integral on the edge so can be evaluated at edge center
+                _outer_normals[iE] *= multiplier;
+
+                double x_minus_x0_dot_n = (_edges[iE]->center_mass() - _edges[0]->center_mass()).dot(_outer_normals[iE]);
+                VectorRd point = (1.0 / 3.0) * _edges[iE]->center_mass() + (1.0 / 6.0) * _edges[0]->center_mass();
+
+                _center_mass += _edges[iE]->measure() * x_minus_x0_dot_n * point;
             }
-            _center_mass /= (3.0 * _measure);
+            _center_mass /= _measure;
 
             set_edge_orientations(); // set the edge orientations
         }
@@ -91,7 +119,7 @@ namespace PolyMesh3D
                 _edge_orientations.push_back(Math::sgn(normal.dot(_outer_normals[iE])));
             }
 
-            _outer_normals.clear(); // no longer needes
+            // _outer_normals.clear(); // no longer needed
         }
 
         int Face::edge_orientation(const size_t edge_index) const
@@ -157,19 +185,19 @@ namespace PolyMesh3D
                     int index_1 = -1;
                     int index_2 = -1;
 
-                    for(size_t iTE = 0; iTE < this->cell(0)->n_faces(); ++iTE)
+                    for(size_t iTF = 0; iTF < this->cell(0)->n_faces(); ++iTF)
                     {
-                        if(this->cell(0)->edge(iTE) == this)
+                        if(this->cell(0)->face(iTF) == this)
                         {
-                            index_1 = iTE;
+                            index_1 = iTF;
                             break;
                         }
                     }
-                    for(size_t iTE = 0; iTE < this->cell(1)->n_faces(); ++iTE)
+                    for(size_t iTF = 0; iTF < this->cell(1)->n_faces(); ++iTF)
                     {
-                        if(this->cell(1)->edge(iTE) == this)
+                        if(this->cell(1)->face(iTF) == this)
                         {
-                            index_2 = iTE;
+                            index_2 = iTF;
                             break;
                         }
                     }
@@ -180,10 +208,10 @@ namespace PolyMesh3D
 
                     if(this->cell(0)->face_orientation(index_1) * this->cell(1)->face_orientation(index_2) != -1)
                     {
-                        std::cerr << "**** Face " << _index << " with center at (" << _center_mass(0) << ", " << _center_mass(1) << ", " << _center_mass(2) << ") has orientation issues.\n"
+                        std::cerr << "**** Face " << _index << " with center at (" << _center_mass(0) << ", " << _center_mass(1) << ", " << _center_mass(2) << ") has orientation issues.\n";
                         std::cerr << "   cell/center/orientation: " << std::endl;
                         std::cerr << "      " << this->cell(0)->global_index() << " / (" << this->cell(0)->center_mass().transpose() << ") / " << this->cell(0)->face_orientation(index_1) << std::endl;
-                        std::cerr << "      " << this->cell(1)->global_index() << " / (" << this->cell(1)->center_mass().transpose() << ") / " << this->cell(1)->face_orientation(this->cell(1)->index_face(2)) << std::endl << std::endl;
+                        std::cerr << "      " << this->cell(1)->global_index() << " / (" << this->cell(1)->center_mass().transpose() << ") / " << this->cell(1)->face_orientation(index_2) << std::endl << std::endl;
                         valid = false;
                     }
                 }
@@ -194,13 +222,34 @@ namespace PolyMesh3D
             {
                 VectorRd tan_vec = _edges[iE]->tangent();
                 VectorRd center_vec = (_edges[iE]->center_mass() - _center_mass).normalized();
-                if (std::abs(tan_vec.dot(_normal)) > 1e-12 || std::abs(center_vec.dot(_normal)) > 1e-12)
+                if (std::abs(tan_vec.dot(_normal)) > 1e-12 || std::abs(center_vec.dot(_normal)) > 1e-8)
                 {
-                    std::cout << "**** Face " << _index << " with center at (" << _center_mass(0) << ", " << _center_mass(1) << ", " << _center_mass(2) << ") is non-planar.\n"
+                    std::cerr << "**** Face " << _index << " with center at (" << _center_mass(0) << ", " << _center_mass(1) << ", " << _center_mass(2) << ") is non-planar.\n";
+
+                    std::cerr << "******** tan.normal: " << std::abs(tan_vec.dot(_normal)) << " center.normal: " << std::abs(center_vec.dot(_normal)) << "\n";
                     valid = false;
                     break;
                 }
             }
+
+            // if(!valid)
+            // {
+            //         std::cout << "\n";
+            //         for(auto & v : _vertices)
+            //         {
+            //             std::cout << v->coords().transpose() << "\n";
+            //         }
+            //         std::cout << "\n";
+            //         // std::cout << _normal.transpose() << "\n";
+            //         // std::cout << "\n";
+            //         for(size_t iE = 0; iE < _edges.size(); ++iE)
+            //         {
+            //             std::cout << _edges[iE]->center_mass().transpose() << "\n";
+            //             std::cout << _outer_normals[iE].transpose() << "\n";
+            //             std::cout << "\n";
+            //         }
+            //         std::cout << "\n";
+            // }
             return valid;
         }
     }

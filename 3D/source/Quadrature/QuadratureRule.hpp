@@ -1,25 +1,29 @@
 #include "GaussLegendre.hpp"
+#include "Vertex.hpp"
 #include "Edge.hpp"
+#include "Face.hpp"
 #include "Cell.hpp"
 
 #ifndef _QUADRATURERULE_HPP
 #define _QUADRATURERULE_HPP
 
-namespace Quadrature
+namespace PolyMesh3D
 {
-    template <typename point_type> // doubles or Eigen::Vector2d
-    struct QuadratureNode
+    namespace Quadrature
     {
-        point_type x;
-        double w;
-        QuadratureNode(point_type x, double w) : x(x), w(w) {}
-    };
+        struct QuadratureNode
+        {
+            Eigen::Vector3d x;
+            double w;
+            QuadratureNode(Eigen::Vector3d x, double w) : x(x), w(w) {}
+        };
 
-    template <typename point_type>
-    using QuadratureRule = std::vector<QuadratureNode<point_type>>;
+        using QuadratureRule = std::vector<QuadratureNode>;
 
-    const QuadratureRule<double> generate_quadrature_rule(PolyMesh2D::CurvedMesh::Edge *edge, const GaussLegendre1D &quad);
-    const QuadratureRule<Eigen::Vector2d> generate_quadrature_rule(PolyMesh2D::CurvedMesh::Cell *cell, const std::vector<QuadratureRule<double>> &edge_quads, const GaussLegendre1D &quad);
-    const QuadratureRule<Eigen::Vector2d> generate_weighted_boundary_rule(PolyMesh2D::CurvedMesh::Cell *cell, const std::vector<QuadratureRule<double>> &edge_quads);
+        const QuadratureRule generate_quadrature_rule(StraightMesh::Edge *edge, const GaussLegendre1D &quad);
+        const QuadratureRule generate_quadrature_rule(StraightMesh::Face *face, const std::vector<QuadratureRule> &edge_quads, const GaussLegendre1D &quad);
+        const QuadratureRule generate_quadrature_rule(StraightMesh::Cell *cell, const std::vector<QuadratureRule> &face_quads, const GaussLegendre1D &quad);
+    }
 }
+
 #endif

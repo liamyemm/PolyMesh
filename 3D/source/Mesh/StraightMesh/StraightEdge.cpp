@@ -9,9 +9,11 @@ namespace PolyMesh3D
 {
     namespace StraightMesh
     {
-        Edge::Edge(size_t index, std::array<Vertex *, 2> vertices)
-            : Polytope::Polytope(index), _vertices(vertices)
+        Edge::Edge(size_t index, std::vector<Vertex *> vertices)
+            : Polytope::Polytope(index)
         {
+            assert(vertices.size() == 2);
+            _vertices = vertices;
             _center_mass = 0.5 * (_vertices[0]->coords() + _vertices[1]->coords());
             _measure = (_vertices[1]->coords() - _vertices[0]->coords()).norm();
             _diameter = _measure;

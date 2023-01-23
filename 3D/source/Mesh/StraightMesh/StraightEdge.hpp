@@ -3,7 +3,7 @@
 #ifndef _STRAIGHTEDGE_HPP
 #define _STRAIGHTEDGE_HPP
 
-namespace PolyMesh2D
+namespace PolyMesh3D
 {
     namespace StraightMesh
     {
@@ -15,7 +15,7 @@ namespace PolyMesh2D
         class Edge : public Polytope
         {
         public:
-            Edge(size_t index, std::array<Vertex *, 2> vertices);
+            Edge(size_t index, std::vector<Vertex *> vertices);
 
             int vertex_orientation(const size_t vertex_index) const; ///< Return the orientation of the Vertex located at vertex_index (1 if it is in the direction of the tangent, -1 otherwise)
 
