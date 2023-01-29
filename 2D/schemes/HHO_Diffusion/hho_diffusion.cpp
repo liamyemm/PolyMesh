@@ -953,7 +953,9 @@ std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, co
         // flux += flux_vec[iT];
     }
     // return {std::abs(pT_average - 0.47342316790031907514), std::abs(flux + Math::PI)};
-    return {pT_average, std::abs(pT_average - 0.46006947132345432649), std::sqrt(pT_H1_norm), std::abs(std::sqrt(pT_H1_norm) - 0.80699765696519920599)};
+    // return {pT_average, std::abs(pT_average - 0.46006947132345432649), std::sqrt(pT_H1_norm), std::abs(std::sqrt(pT_H1_norm) - 0.80699765696519920599)};
+    return {pT_average, std::abs(pT_average - 0.46006947132349923502), std::sqrt(pT_H1_norm), std::abs(std::sqrt(pT_H1_norm) - 0.8069976569614020212)};
+    
     // return {pT_average, std::sqrt(pT_H1_norm)};
     // return {std::sqrt(flux)};
 

@@ -27,10 +27,10 @@ std::unique_ptr<CurvedMesh::Mesh> MeshCutter::cut_mesh()
     }
     // make_convex(c_mesh.get());
     make_curved_cells(c_mesh.get());
-    // if (flag)
-    // {
-    //     make_isotropic(c_mesh.get());
-    // }
+    if (flag)
+    {
+        make_isotropic(c_mesh.get());
+    }
     // make_homogeneous(c_mesh.get());
     make_boundary(c_mesh.get());
 

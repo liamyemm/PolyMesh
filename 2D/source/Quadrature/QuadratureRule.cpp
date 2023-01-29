@@ -37,15 +37,15 @@ namespace Quadrature
         for (size_t iTF = 0; iTF < cell->n_edges(); ++iTF)
         {
             PolyMesh2D::CurvedMesh::Edge *edge = cell->edge(iTF);
-            // if(edge->is_straight())
-            // {
-            //     const size_t E_v0_index = edge->vertex(0)->global_index();
-            //     const size_t E_v1_index = edge->vertex(1)->global_index();
-            //     if( (E_v0_index == v0_index) || (E_v1_index == v0_index) )
-            //     {
-            //         continue; // skip straight edges with vertices at x0
-            //     }
-            // }
+             if(edge->is_straight())
+             {
+                 const size_t E_v0_index = edge->vertex(0)->global_index();
+                 const size_t E_v1_index = edge->vertex(1)->global_index();
+                 if( (E_v0_index == v0_index) || (E_v1_index == v0_index) )
+                 {
+                     continue; // skip straight edges with vertices at x0
+                 }
+             }
             for (size_t iqn_edge = 0; iqn_edge < edge_quads[iTF].size(); ++iqn_edge)
             {
                 double edge_point = edge_quads[iTF][iqn_edge].x;

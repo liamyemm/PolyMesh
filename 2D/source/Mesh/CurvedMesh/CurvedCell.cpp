@@ -31,16 +31,23 @@ namespace PolyMesh2D
                 double deltat_i = (_edges[i]->parameterisation().tmax - _edges[i]->parameterisation().tmin) / double(partitions);
                 for (unsigned part_i = 0; part_i < partitions; ++part_i)
                 {
-                    double t_val_i = _edges[i]->parameterisation().tmin + part_i * deltat_i;
-                    VectorRd point_i = _edges[i]->parameterisation().value(t_val_i);
+                    double t_val_i_1 = _edges[i]->parameterisation().tmin + part_i * deltat_i;
+                    double t_val_i_2 = _edges[i]->parameterisation().tmax - part_i * deltat_i;
+                    VectorRd point_i_1 = _edges[i]->parameterisation().value(t_val_i_1);
+                    VectorRd point_i_2 = _edges[i]->parameterisation().value(t_val_i_2);
                     for (size_t j = 0; j < _edges.size(); ++j)
                     {
                         double deltat_j = (_edges[j]->parameterisation().tmax - _edges[j]->parameterisation().tmin) / double(partitions);
                         for (unsigned part_j = 0; part_j < partitions; ++part_j)
                         {
-                            double t_val_j = _edges[j]->parameterisation().tmin + part_j * deltat_j;
-                            VectorRd point_j = _edges[j]->parameterisation().value(t_val_j);
-                            _diameter = std::max(_diameter, (point_i - point_j).norm());
+                            double t_val_j_1 = _edges[j]->parameterisation().tmin + part_j * deltat_j;
+                            double t_val_j_2 = _edges[j]->parameterisation().tmax - part_j * deltat_j;
+                            VectorRd point_j_1 = _edges[j]->parameterisation().value(t_val_j_1);
+                            VectorRd point_j_2 = _edges[j]->parameterisation().value(t_val_j_2);
+                            _diameter = std::max(_diameter, (point_i_1 - point_j_1).norm());
+                            _diameter = std::max(_diameter, (point_i_1 - point_j_2).norm());
+                            _diameter = std::max(_diameter, (point_i_2 - point_j_1).norm());
+                            _diameter = std::max(_diameter, (point_i_2 - point_j_2).norm());
                         }
                     }
                 }

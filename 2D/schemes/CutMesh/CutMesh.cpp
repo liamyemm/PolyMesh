@@ -18,7 +18,7 @@ using namespace PolyMesh2D;
 MeshCutter2::MeshCutter2(CurvedMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param) : m_s_mesh(s_mesh), m_level_set(level_set), m_param(param)
 {
     no_external = true;
-    make_straight = false;
+    make_straight = true;
 }
 
 std::unique_ptr<CurvedMesh::Mesh> MeshCutter2::cut_mesh()
