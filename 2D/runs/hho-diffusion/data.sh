@@ -4,8 +4,8 @@
 plotfile="plot"
 
 # Order
-k=1
-l=1
+k=2
+l=2
 
 #K[1]=0
 #K[2]=1
@@ -34,11 +34,11 @@ l=1
 use_threads="true"
 ortho="true"
 
-mesh[1]=$meshdir"/mesh2_1_transformed.typ2"
-mesh[2]=$meshdir"/mesh2_2_transformed.typ2"
-mesh[3]=$meshdir"/mesh2_3_transformed.typ2"
-mesh[4]=$meshdir"/mesh2_4_transformed.typ2"
-mesh[5]=$meshdir"/mesh2_5_transformed.typ2"
+#mesh[1]=$meshdir"/mesh2_1_transformed.typ2"
+#mesh[2]=$meshdir"/mesh2_2_transformed.typ2"
+#mesh[3]=$meshdir"/mesh2_3_transformed.typ2"
+mesh[1]=$meshdir"/mesh2_4_transformed.typ2"
+#mesh[5]=$meshdir"/mesh2_5_transformed.typ2"
 
 #mesh[1]=$meshdir"/mesh2_1.typ2"
 #mesh[2]=$meshdir"/mesh2_2.typ2"

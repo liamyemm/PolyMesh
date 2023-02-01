@@ -61,7 +61,8 @@ namespace PolyMesh2D
             void add_edge(Edge *edge);       ///<  adds a edge to the mesh
             void add_cell(Cell *cell);       ///<  adds a cell to the mesh
 
-            void remove_edge(Edge *edge); ///<  remove a cell from the mesh
+            void remove_vertex(Vertex *vertex); ///<  remove a vertex from the mesh
+            void remove_edge(Edge *edge); ///<  remove a edge from the mesh
             void remove_cell(Cell *cell); ///<  remove a cell from the mesh
 
             void add_b_vertex(Vertex *vertex); ///<  adds a boundary vertex to the mesh

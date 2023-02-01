@@ -1,0 +1,93 @@
+Simplify[Div[{{1, 1 - beta1}, {1 - beta1, 1}} . 
+    Grad[(R - (x^2 + y^2))^2*(-(1/(
+         1680 (-1 + beta1) (beta1 - 
+            beta2))) (-35 R (8 (beta1 - beta2) e2 - 
+             m1 R + (beta1^2 (m1 - beta2 m1) + m2 - 
+                beta2 (m1 + m2 + beta2 m2 + o2) + 
+                beta1 (2 beta2 m1 + 2 m2 + (-2 + beta2) beta2 m2 + 
+                   o2)) R) + 
+          48 (1 - beta1) ((-3 + 7 beta1 (-1 + beta2) - 
+                7 beta2) i1 + (3 - 7 (-2 + beta2) beta2) i2) R x - 
+          70 (16 (-beta1 + 
+                beta2) e2 + (5 (-1 + beta1) (-1 + beta1 (-1 + beta2) -
+                    beta2) m1 + (-5 + beta2 (-7 + 5 beta2) + 
+                   beta1 (2 - 5 (-2 + beta2) beta2)) m2 + 
+                5 (-beta1 + beta2) o2) R) x^2 + 
+          48 (1 - beta1) ((18 - 7 beta1 (-1 + beta2) + 
+                7 beta2) i1 + (-18 + 7 (-2 + beta2) beta2) i2) x^3 + 
+          105 ((-1 + beta1) (-7 + 3 beta1 (-1 + beta2) - 
+                3 beta2) m1 - 7 m2 - 
+             beta1 (-10 + 3 (-2 + beta2) beta2) m2 - 3 beta1 o2 + 
+             3 beta2 ((-3 + beta2) m2 + o2)) x^4 + 
+          48 (1 - beta1) ((9 - 14 beta1 + 5 beta2) i1 + 
+             9 (-1 + beta2) i2) R y - 
+          840 (beta1 - 
+             beta2) (2 (-1 + beta2) e2 + (m1 - 
+                beta1 m1 + (-1 + beta2) m2) R) x y - 
+          1680 (-1 + beta1) (beta1 - beta2) i1 x^2 y - 
+          1680 (-1 + beta1) (beta1 - beta2) m1 x^3 y - 
+          70 (16 (-beta1 + 
+                beta2) e2 + (5 (-1 + beta1) (-1 + beta1 (-1 + beta2) -
+                    beta2) m1 - 
+                5 (1 - beta2 (1 + beta2) + 
+                   beta1 (2 + (-2 + beta2) beta2)) m2 + 
+                7 (beta1 - beta2) o2) R) y^2 + 
+          48 (1 - beta1) ((-24 - 49 beta1 (-1 + beta2) + 
+                49 beta2) i1 + 24 i2 + 
+             49 (-2 + beta2) beta2 i2) x y^2 + 
+          210 ((-1 + beta1) (1 + 11 beta1 (-1 + beta2) - 
+                11 beta2) m1 - (-1 + (17 - 11 beta2) beta2 + 
+                beta1 (6 + 11 (-2 + beta2) beta2)) m2 + 
+             5 (beta1 - beta2) o2) x^2 y^2 - 
+          240 (1 - beta1) ((6 - 7 beta1 + beta2) i1 + 
+             6 (-1 + beta2) i2) y^3 - 
+          1680 (beta1 - 
+             beta2) ((-1 + beta1) m1 - (-1 + beta2) (m2 - 
+                o2)) x y^3 + 
+          105 ((-1 + beta1) (-7 + 3 beta1 (-1 + beta2) - 
+                3 beta2) m1 + (-7 + 7 beta2 + 3 beta2^2 - 
+                3 beta1 (2 - 2 beta2 + beta2^2)) m2 + 
+             13 (beta1 - beta2) o2) y^4)), {x, y}], {x, y}] - 
+  Div[{{1, 1 - beta2}, {1 - beta2, 1}} . 
+    Grad[(R - (x^2 + y^2))^2*(-(1/(
+         1680 (-1 + beta1) (beta1 - 
+            beta2))) (-35 R (8 (beta1 - 
+                beta2) e2 - ((1 + beta1 - 3 beta1^2 + 
+                   beta1^3) m1 + (-1 + 2 beta2 + 
+                   beta1 (-3 + beta1 + 2 beta2 - 
+                    beta1 beta2)) m2 + (-beta1 + beta2) o2) R) + 
+          48 (1 - beta1) ((-3 + 7 (-2 + beta1) beta1) i1 + 3 i2 + 
+             7 (beta1 + beta2 - beta1 beta2) i2) R x - 
+          70 (16 (-beta1 + 
+                beta2) e2 + (5 (1 + beta1 - 3 beta1^2 + 
+                   beta1^3) m1 - (5 + 2 beta2 + 
+                   beta1 (3 - 5 beta1 + 5 (-2 + beta1) beta2)) m2 + 
+                5 (-beta1 + beta2) o2) R) x^2 + 
+          48 (1 - beta1) ((18 - 7 (-2 + beta1) beta1) i1 + (-18 + 
+                7 beta1 (-1 + beta2) - 7 beta2) i2) x^3 - 
+          105 ((-7 + beta1 + 9 beta1^2 - 3 beta1^3) m1 + (7 + 
+                beta1 (-7 + 3 beta1 (-1 + beta2) - 6 beta2) + 
+                6 beta2) m2 + 3 (beta1 - beta2) o2) x^4 + 
+          48 (-1 + 
+             beta1) (9 (-1 + beta1) i1 + (9 + 5 beta1 - 
+                14 beta2) i2) R y - 
+          1680 (-1 + beta1) (beta1 - beta2) e2 x y - 
+          1680 (-1 + beta1) (beta1 - beta2) i2 x^2 y - 
+          1680 (-1 + beta1) (beta1 - beta2) m2 x^3 y - 
+          70 (16 (-beta1 + 
+                beta2) e2 + (5 (1 + beta1 - 3 beta1^2 + beta1^3) m1 - 
+                5 (1 + beta1 (3 + beta1 (-1 + beta2) - 2 beta2) - 
+                   2 beta2) m2 + 7 (beta1 - beta2) o2) R) y^2 + 
+          48 (1 - beta1) ((-24 - 49 (-2 + beta1) beta1) i1 + (24 + 
+                49 beta1 (-1 + beta2) - 49 beta2) i2) x y^2 + 
+          210 ((-1 + beta1) (1 + 11 (-2 + beta1) beta1) m1 - (-1 + 
+                beta1 (17 + 11 beta1 (-1 + beta2) - 22 beta2) + 
+                6 beta2) m2 + 5 (beta1 - beta2) o2) x^2 y^2 + 
+          240 (1 - 
+             beta1) (6 (-1 + beta1) i1 + (6 + beta1 - 
+                7 beta2) i2) y^3 - 
+          1680 (-1 + beta1) (beta1 - beta2) o2 x y^3 - 
+          105 ((-7 + beta1 + 9 beta1^2 - 3 beta1^3) m1 + (7 + 
+                3 beta1 (3 + beta1 (-1 + beta2) - 2 beta2) - 
+                10 beta2) m2 + 13 (-beta1 + beta2) o2) y^4)), {x, 
+      y}], {x, y}]]

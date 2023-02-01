@@ -1,0 +1,6 @@
+EdgeDegree: 2
+CellDegree: 2
+MeshSize: 0.220971
+NbCells: 16384
+NbEdges: 33024
+NbInternalEdges: 32512

@@ -229,6 +229,45 @@ namespace PolyMesh2D
             }
         }
 
+        void Mesh::remove_vertex(Vertex *vertex)
+        {
+            assert(std::find(_vertices.begin(), _vertices.end(), vertex) != _vertices.end());
+
+            size_t current_index = vertex->global_index();
+            for(size_t id = current_index + 1; id < _vertices.size(); ++id)
+            {
+                _vertices[id]->set_global_index(id - 1);
+            }
+
+            auto pos = std::find(_vertices.begin(), _vertices.end(), vertex);
+            _vertices.erase(pos);
+
+            auto pos_i = std::find(_i_vertices.begin(), _vertices.end(), vertex);
+            if (pos_i != _i_vertices.end())
+            {
+                _i_vertices.erase(pos_i);
+            }
+
+            auto pos_b = std::find(_b_vertices.begin(), _b_vertices.end(), vertex);
+            if (pos_b != _b_vertices.end())
+            {
+                _b_vertices.erase(pos_b);
+            }
+
+            for (auto &edge : vertex->get_edges())
+            {
+                edge->remove_vertex(vertex);
+            }
+
+            for (auto &cell : vertex->get_cells())
+            {
+                cell->remove_vertex(vertex);
+            }
+
+            delete vertex;
+        }
+
+
         void Mesh::remove_edge(Edge *edge)
         {
             // assert(edge->n_cells() == 0); // can only remove edges with no cells

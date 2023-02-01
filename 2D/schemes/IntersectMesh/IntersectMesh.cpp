@@ -19,18 +19,18 @@ std::unique_ptr<CurvedMesh::Mesh> MeshCutter::cut_mesh()
 {
     std::unique_ptr<CurvedMesh::Mesh> c_mesh = std::make_unique<CurvedMesh::Mesh>();
     make_internal_cells(c_mesh.get());
-    bool flag = true;
-    if (c_mesh->n_cells() == 2)
-    {
-        flag = false;
-        make_convex(c_mesh.get());
-    }
+    // bool flag = true;
+    // if (c_mesh->n_cells() == 2)
+    // {
+    //     flag = false;
+    //     make_convex(c_mesh.get());
+    // }
     // make_convex(c_mesh.get());
-    make_curved_cells(c_mesh.get());
-    if (flag)
-    {
-        make_isotropic(c_mesh.get());
-    }
+    // make_curved_cells(c_mesh.get());
+    // if (flag)
+    // {
+    //     make_isotropic(c_mesh.get());
+    // }
     // make_homogeneous(c_mesh.get());
     make_boundary(c_mesh.get());
 
@@ -41,20 +41,20 @@ void MeshCutter::make_internal_cells(CurvedMesh::Mesh *c_mesh)
 {
     for (auto &cell : m_s_mesh->get_cells())
     {
-        bool cell_internal = true;
+        // bool cell_internal = true;
 
-        for (auto &vertex : cell->get_vertices())
-        {
-            if (m_level_set.value(vertex->coords()) < 1E-1 * m_s_mesh->h_max())
-            // if (m_level_set.value(vertex->coords()) <= 0.0)
-            {
-                cell_internal = false;
-                break;
-            }
-        }
+        // for (auto &vertex : cell->get_vertices())
+        // {
+        //     if (m_level_set.value(vertex->coords()) < 1E-1 * m_s_mesh->h_max())
+        //     // if (m_level_set.value(vertex->coords()) <= 0.0)
+        //     {
+        //         cell_internal = false;
+        //         break;
+        //     }
+        // }
 
-        if (cell_internal)
-        {
+        // if (cell_internal)
+        // {
             std::vector<CurvedMesh::Vertex *> new_vertices;
 
             // create vertices
@@ -137,7 +137,7 @@ void MeshCutter::make_internal_cells(CurvedMesh::Mesh *c_mesh)
                 new_cell->add_vertex(vert);
             }
         }
-    }
+    // }
 }
 
 void MeshCutter::make_convex(CurvedMesh::Mesh *c_mesh)

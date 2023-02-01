@@ -21,16 +21,16 @@ int main(int arc, char **argv)
     //     new_verts.push_back(Eigen::Vector2d(v0, v1));
     // }
 
-    std::ofstream out("../../../typ2_meshes/mesh2_6_transformed.typ2");
+    std::ofstream out("../../../typ2_meshes/mesh2_6_transformed_10_10_shift_1.typ2");
 
     out << "Vertices"
         << "\n";
     out << vertices.size() << "\n";
     for (size_t iV = 0; iV < vertices.size(); iV++)
     {
-        out << std::setprecision(17) << (2.0 * vertices[iV][0] - 1.0);
+        out << std::setprecision(17) << (20.0 * vertices[iV][0] - 10.0);
         out << " ";
-        out << std::setprecision(17) << (2.0 * vertices[iV][1] - 1.0);
+        out << std::setprecision(17) << (20.0 * vertices[iV][1] - 10.0);
         out << "\n";
     }
 

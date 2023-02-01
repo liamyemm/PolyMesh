@@ -15,7 +15,8 @@ namespace PolyMesh2D
     public:
         // MeshCutter2(StraightMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param);
         MeshCutter2(CurvedMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param);
-        std::unique_ptr<CurvedMesh::Mesh> cut_mesh();
+        // std::unique_ptr<CurvedMesh::Mesh> cut_mesh();
+        void cut_mesh();
 
     private:
         void make_internal_cells(CurvedMesh::Mesh * c_mesh);

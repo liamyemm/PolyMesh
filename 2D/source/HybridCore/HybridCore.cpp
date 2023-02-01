@@ -21,7 +21,7 @@ HybridCore::HybridCore(
       m_edge_basis(mesh_ptr->n_edges())
 {
 
-    GaussLegendre1D low_quad(30);
+    GaussLegendre1D low_quad(2 * (m_edge_deg + 1));
     GaussLegendre1D high_quad(30);
 
     for (auto &e : m_mesh->get_edges())
