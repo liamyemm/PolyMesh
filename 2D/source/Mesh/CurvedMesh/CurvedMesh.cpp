@@ -270,7 +270,6 @@ namespace PolyMesh2D
 
         void Mesh::remove_edge(Edge *edge)
         {
-            // assert(edge->n_cells() == 0); // can only remove edges with no cells
             assert(std::find(_edges.begin(), _edges.end(), edge) != _edges.end());
 
             size_t current_index = edge->global_index();
@@ -306,11 +305,6 @@ namespace PolyMesh2D
 
             edge->vertex(0)->remove_vertex(edge->vertex(1));
             edge->vertex(1)->remove_vertex(edge->vertex(0));
-
-            // for (auto &cell : edge->get_cells())
-            // {
-            //     cell->remove_edge(edge);
-            // }
 
             delete edge;
         }

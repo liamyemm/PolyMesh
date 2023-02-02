@@ -5,16 +5,16 @@
 #include <common.hpp>
 #include <memory>
 
-#ifndef _CUTMESH_HPP
-#define _CUTMESH_HPP
+#ifndef _INTERSECTCURVEDMESH_HPP
+#define _INTERSECTCURVEDMESH_HPP
 
 namespace PolyMesh2D
 {
-    class MeshCutter2
+    class MeshIntersect
     {
     public:
         // MeshCutter2(StraightMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param);
-        MeshCutter2(CurvedMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param);
+        MeshIntersect(CurvedMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param);
         // std::unique_ptr<CurvedMesh::Mesh> cut_mesh();
         void cut_mesh();
 

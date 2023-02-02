@@ -1,4 +1,4 @@
-#include "CutMesh.hpp"
+#include "IntersectCurvedMesh.hpp"
 #include <set>
 #include <iterator>
 
@@ -15,14 +15,14 @@ using namespace PolyMesh2D;
 // {
 // }
 
-MeshCutter2::MeshCutter2(CurvedMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param) : m_s_mesh(s_mesh), m_level_set(level_set), m_param(param)
+MeshIntersect::MeshIntersect(CurvedMesh::Mesh *s_mesh, const Functional::ScalarFunction2D &level_set, const Functional::Curve &param) : m_s_mesh(s_mesh), m_level_set(level_set), m_param(param)
 {
     no_external = true;
-    make_straight = true;
+    make_straight = false;
 }
 
 // std::unique_ptr<CurvedMesh::Mesh> MeshCutter2::cut_mesh()
-void MeshCutter2::cut_mesh()
+void MeshIntersect::cut_mesh()
 {
 
     CurvedMesh::Mesh * c_mesh = m_s_mesh;
@@ -39,7 +39,7 @@ void MeshCutter2::cut_mesh()
     // return c_mesh;
 }
 
-void MeshCutter2::make_convex(CurvedMesh::Mesh *c_mesh)
+void MeshIntersect::make_convex(CurvedMesh::Mesh *c_mesh)
 {
     std::vector<CurvedMesh::Edge *> non_convex_edges = c_mesh->get_edges();
 
@@ -189,7 +189,7 @@ void MeshCutter2::make_convex(CurvedMesh::Mesh *c_mesh)
     }
 }
 
-void MeshCutter2::make_internal_cells(CurvedMesh::Mesh *c_mesh)
+void MeshIntersect::make_internal_cells(CurvedMesh::Mesh *c_mesh)
 {
     for (auto &cell : c_mesh->get_cells())
     {
@@ -197,8 +197,8 @@ void MeshCutter2::make_internal_cells(CurvedMesh::Mesh *c_mesh)
 
         for (auto &vertex : cell->get_vertices())
         {
-            // if (m_level_set.value(vertex->coords()) < 1E-2 * m_s_mesh->h_max())
-            if (m_level_set.value(vertex->coords()) <= 0.0)
+            if (m_level_set.value(vertex->coords()) < 1E-1 * m_s_mesh->h_max())
+            // if (m_level_set.value(vertex->coords()) <= 0.0)
             {
                 cell_internal = false;
                 break;
@@ -209,8 +209,8 @@ void MeshCutter2::make_internal_cells(CurvedMesh::Mesh *c_mesh)
 
         for (auto &vertex : cell->get_vertices())
         {
-            // if (m_level_set.value(vertex->coords()) > -1E-2 * m_s_mesh->h_max())
-            if (m_level_set.value(vertex->coords()) >= 0.0)
+            if (m_level_set.value(vertex->coords()) > -1E-1 * m_s_mesh->h_max())
+            // if (m_level_set.value(vertex->coords()) >= 0.0)
             {
                 cell_external = false;
                 break;
@@ -222,19 +222,8 @@ void MeshCutter2::make_internal_cells(CurvedMesh::Mesh *c_mesh)
             no_external = false;
         }
 
-        if (cell_internal || cell_external)
+        if ( !(cell_internal || cell_external) )
         {
-            continue;
-        }
-        else
-        {
-            // for(auto & e : cell->get_edges())
-            // {
-            //     if(m_level_set.value(e->vertex(0)->coords()) * m_level_set.value(e->vertex(1)->coords()) < 1E-15)
-            //     {
-            //         c_mesh->remove_edge(e);
-            //     }
-            // }
             c_mesh->remove_cell(cell);
         }
     }
@@ -247,188 +236,16 @@ void MeshCutter2::make_internal_cells(CurvedMesh::Mesh *c_mesh)
         }
     }
 
-    for (auto &v : c_mesh->get_vertices())
-    {
-        if(v->n_cells() == 0)
-        {
-            c_mesh->remove_vertex(v);
-        }
-    }
-
     // for (auto &v : c_mesh->get_vertices())
     // {
-    //     if(v->n_cells() == 0)
+    //     if(v->n_edges() == 0)
     //     {
     //         c_mesh->remove_vertex(v);
     //     }
     // }
-
-    // for (auto &cell : m_s_mesh->get_cells())
-    // {
-    //     bool cell_internal = true;
-
-    //     for (auto &vertex : cell->get_vertices())
-    //     {
-    //         if (m_level_set.value(vertex->coords()) < 1E-1 * m_s_mesh->h_max())
-    //         // if (m_level_set.value(vertex->coords()) <= 0.0)
-    //         {
-    //             cell_internal = false;
-    //             break;
-    //         }
-    //     }
-
-    //     bool cell_external = true;
-
-    //     for (auto &vertex : cell->get_vertices())
-    //     {
-    //         if (m_level_set.value(vertex->coords()) > -1E-1 * m_s_mesh->h_max())
-    //         // if (m_level_set.value(vertex->coords()) <= 0.0)
-    //         {
-    //             cell_external = false;
-    //             break;
-    //         }
-    //     }
-
-    //     if (cell_external)
-    //     {
-    //         no_external = false;
-    //     }
-
-    //     if (cell_internal || cell_external)
-    //     // if (cell_external)
-    //     // if (cell_internal)
-    //     {
-    //         std::vector<CurvedMesh::Vertex *> new_vertices;
-
-    //         // create vertices
-    //         for (auto &cell_vert : cell->get_vertices())
-    //         {
-    //             bool vert_exists = false;
-    //             for (auto &curved_vert : c_mesh->get_vertices())
-    //             {
-    //                 if (cell_vert->coords() == curved_vert->coords()) // numerical precision comparison
-    //                 {
-    //                     vert_exists = true;
-    //                     new_vertices.push_back(curved_vert);
-    //                     break;
-    //                 }
-    //             }
-    //             if (!vert_exists)
-    //             {
-    //                 CurvedMesh::Vertex *new_vert = new CurvedMesh::Vertex(c_mesh->n_vertices(), cell_vert->coords());
-    //                 new_vertices.push_back(new_vert);
-    //                 c_mesh->add_vertex(new_vert);
-    //             }
-    //         }
-
-    //         std::vector<CurvedMesh::Edge *> new_edges;
-
-    //         for (std::size_t i = 0; i < new_vertices.size(); ++i)
-    //         {
-    //             std::size_t i_next = (i + 1) % new_vertices.size();
-
-    //             bool edge_exists = false;
-    //             if (new_vertices[i]->n_vertices() > 0)
-    //             {
-    //                 std::vector<CurvedMesh::Vertex *> vlist = new_vertices[i]->get_vertices();
-    //                 for (size_t j = 0; j < vlist.size(); j++)
-    //                 {
-    //                     if (vlist[j]->global_index() == new_vertices[i_next]->global_index()) // The edge exists
-    //                     {
-    //                         new_edges.push_back(new_vertices[i]->edge(j));
-    //                         edge_exists = true;
-    //                         break;
-    //                     }
-    //                 }
-    //             }
-    //             if (!edge_exists)
-    //             {
-    //                 // edge does not exists - so create it
-    //                 CurvedMesh::Edge *new_edge;
-    //                 if ((std::abs(new_vertices[i]->coords().norm() - 1.0) < 1E-15) && (std::abs(new_vertices[i_next]->coords().norm() - 1.0) < 1E-15))
-    //                 {
-    //                     double tmin = Math::atan2(new_vertices[i]->coords()(1), new_vertices[i]->coords()(0), 1);
-    //                     double tmax = Math::atan2(new_vertices[i_next]->coords()(1), new_vertices[i_next]->coords()(0), 1);
-    //                     if (tmin > tmax)
-    //                     {
-    //                         std::swap(tmin, tmax);
-    //                     }
-    //                     bool tmax_fourth_quad = (tmax > 3.0 * Math::PI / 2.0);
-    //                     bool tmin_first_quad = (tmin < Math::PI / 2.0);
-    //                     if (tmin_first_quad && tmax_fourth_quad)
-    //                     {
-    //                         tmin += 2.0 * Math::PI;
-    //                         std::swap(tmin, tmax);
-    //                     }
-
-    //                     std::function<Eigen::Vector2d(double)> circle_val_outer = [](double t) -> Eigen::Vector2d
-    //                     { return Eigen::Vector2d(std::cos(t), std::sin(t)); };
-    //                     std::function<Eigen::Vector2d(double)> circle_deriv_outer = [](double t) -> Eigen::Vector2d
-    //                     { return Eigen::Vector2d(-std::sin(t), std::cos(t)); };
-
-    //                     PolyMesh2D::Functional::Curve edge_param(tmin, tmax, circle_val_outer, circle_deriv_outer);
-    //                     new_edge = new CurvedMesh::Edge(c_mesh->n_edges(), edge_param);
-    //                 }
-    //                 else
-    //                 {
-    //                     Functional::Curve edge_param = Functional::StraightLine(new_vertices[i]->coords(), new_vertices[i_next]->coords());
-    //                     new_edge = new CurvedMesh::Edge(c_mesh->n_edges(), edge_param);
-
-    //                     new_edge->set_straight();
-    //                 }
-
-    //                 if(cell->is_boundary())
-    //                 {
-    //                     CurvedMesh::Edge *cell_e;
-    //                     for(auto & e : cell->get_edges())
-    //                     {
-    //                         if( (e->center_mass() - new_edge->center_mass()).norm() < 1E-14)
-    //                         {
-    //                             cell_e = e;
-    //                             break;
-    //                         }
-    //                     }
-    //                     if(cell_e->is_boundary())
-    //                     {
-    //                         new_edge->set_boundary(true);
-    //                     }
-    //                 }
-
-    //                 c_mesh->add_edge(new_edge);
-    //                 new_edges.push_back(new_edge);
-
-    //                 // add vertices to edge
-    //                 new_edge->add_vertex(new_vertices[i]);
-    //                 new_edge->add_vertex(new_vertices[i_next]);
-
-    //                 // add edge to vertices
-    //                 new_vertices[i]->add_edge(new_edge);
-    //                 new_vertices[i_next]->add_edge(new_edge);
-
-    //                 // add vertices to vertices
-    //                 new_vertices[i]->add_vertex(new_vertices[i_next]);
-    //                 new_vertices[i_next]->add_vertex(new_vertices[i]);
-    //             }
-    //         }
-
-    //         // create cell
-    //         CurvedMesh::Cell *new_cell = new CurvedMesh::Cell(c_mesh->n_cells(), new_edges);
-    //         c_mesh->add_cell(new_cell);
-
-    //         for (auto &edge : new_edges)
-    //         {
-    //             edge->add_cell(new_cell);
-    //         }
-    //         for (auto &vert : new_vertices)
-    //         {
-    //             vert->add_cell(new_cell);
-    //             new_cell->add_vertex(vert);
-    //         }
-    //     }
-    // }
 }
 
-void MeshCutter2::make_curved_cells(CurvedMesh::Mesh *c_mesh)
+void MeshIntersect::make_curved_cells(CurvedMesh::Mesh *c_mesh)
 {
     std::vector<CurvedMesh::Edge *> current_edges = c_mesh->get_edges();
 
@@ -1522,7 +1339,7 @@ void MeshCutter2::make_curved_cells(CurvedMesh::Mesh *c_mesh)
     // }
 }
 
-void MeshCutter2::make_isotropic(CurvedMesh::Mesh *c_mesh)
+void MeshIntersect::make_isotropic(CurvedMesh::Mesh *c_mesh)
 {
     // std::vector<CurvedMesh::Cell *> mergable_cells = c_mesh->get_cells();
 
@@ -1661,7 +1478,7 @@ void MeshCutter2::make_isotropic(CurvedMesh::Mesh *c_mesh)
     }
 }
 
-void MeshCutter2::make_boundary(CurvedMesh::Mesh *c_mesh)
+void MeshIntersect::make_boundary(CurvedMesh::Mesh *c_mesh)
 {
     for (auto &edge : c_mesh->get_edges())
     {

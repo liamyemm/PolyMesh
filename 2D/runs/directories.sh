@@ -2,7 +2,7 @@
 # path of the folder from where this runseries.sh will be executed
 
 # Source of all the project
-root="/home/user1/github/codes/liamyemm/PolyMesh/2D"
+root="/home/liam/github/codes/liamyemm/PolyMesh/2D"
 
 # Location for the schemes' executable
 executable=$root"/build/schemes/$executable_name"

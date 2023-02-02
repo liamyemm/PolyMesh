@@ -6,7 +6,7 @@
 
 namespace PolyMesh2D
 {
-    namespace HHODIFFUSION
+    namespace HHOHELMHOLTZ
     {
         using Quadrature::GaussLegendre1D;
         using Quadrature::QuadratureRule;
@@ -26,25 +26,25 @@ namespace PolyMesh2D
 
             std::string mesh_name, plot_file;
             bool use_threads, orthonormalise;
-            unsigned cell_degree, edge_degree;
+            unsigned test_case, cell_degree, edge_degree;
+            char bdry_case;
         };
 
         class Model
         {
         public:
-            Model(const HybridCore &hho, const std::function<double(Eigen::Vector2d, PolyMesh2D::CurvedMesh::Cell *)> &src, std::function<Eigen::Matrix2d(CurvedMesh::Cell *)> diffusion);
+            Model(const HybridCore &hho, const ScalarFunction2D &src);
             void assemble(bool use_threads = true);
-            Eigen::VectorXd solve(const Eigen::VectorXd &UDir);
-            std::vector<double> compute_errors(const Eigen::VectorXd &approx_Uvec);
-            void plot(const Eigen::VectorXd &approx_Uvec, const std::string &plot_file);
+            Eigen::VectorXd solve();
+            std::vector<double> compute_errors(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const ScalarFunction2D &sol);
+            void plot(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::string &plot_file, const ScalarFunction2D &sol);
 
         private:
-            void local_diffusion_operator(const size_t iT);
+            void local_helmholtz_operator(const size_t iT, Eigen::MatrixXd &AT, Eigen::MatrixXd &PT);
             void local_source_term(const size_t iT, Eigen::VectorXd &bT);
 
             const HybridCore &m_hho;
-            const std::function<double(Eigen::Vector2d, PolyMesh2D::CurvedMesh::Cell *)> &m_src;
-            std::function<Eigen::Matrix2d(CurvedMesh::Cell *)> m_diffusion;
+            const ScalarFunction2D &m_src;
 
             Mesh *mesh_ptr;
 
