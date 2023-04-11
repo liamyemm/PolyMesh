@@ -1,0 +1,42 @@
+\hypertarget{classPolyMesh3D_1_1StraightMesh_1_1Edge}{}\doxysection{Poly\+Mesh3D\+::Straight\+Mesh\+::Edge Class Reference}
+\label{classPolyMesh3D_1_1StraightMesh_1_1Edge}\index{PolyMesh3D::StraightMesh::Edge@{PolyMesh3D::StraightMesh::Edge}}
+
+
+Inheritance diagram for Poly\+Mesh3D\+::Straight\+Mesh\+::Edge\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classPolyMesh3D_1_1StraightMesh_1_1Edge__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Poly\+Mesh3D\+::Straight\+Mesh\+::Edge\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{classPolyMesh3D_1_1StraightMesh_1_1Edge__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Edge} (size\+\_\+t index, std\+::vector$<$ \mbox{\hyperlink{classPolyMesh3D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ $>$ vertices)
+\item 
+int \mbox{\hyperlink{group__Mesh_ga0a45919eb23c90a14886d737edafd803}{vertex\+\_\+orientation}} (const size\+\_\+t vertex\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of the \mbox{\hyperlink{classPolyMesh3D_1_1StraightMesh_1_1Vertex}{Vertex}} located at vertex\+\_\+index (1 if it is in the direction of the tangent, -\/1 otherwise) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_ga8b49c7895218c6d3909b0d627a1d3fce}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_gab3e6b7fe7483240a71b3cade5531da42}{tangent}} () const
+\begin{DoxyCompactList}\small\item\em Return the tangent of the \mbox{\hyperlink{classPolyMesh3D_1_1StraightMesh_1_1Edge}{Edge}}. \end{DoxyCompactList}\item 
+std\+::array$<$ \mbox{\hyperlink{group__Mesh_ga8b49c7895218c6d3909b0d627a1d3fce}{Vector\+Rd}}, 2 $>$ \mbox{\hyperlink{group__Mesh_ga9a785096aa85ad08621a043284fa57d9}{coords}} () const
+\begin{DoxyCompactList}\small\item\em Return an array of coordinates representing the coordinates of the vertices in the edge. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__Mesh_ga74de06991eb288cd7ea0ec18a000d0c0}{test}} () const override
+\begin{DoxyCompactList}\small\item\em Return a boolean determining if the geometries of the \mbox{\hyperlink{classPolyMesh3D_1_1StraightMesh_1_1Edge}{Edge}} are valid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+3\+D/source/\+Mesh/\+Straight\+Mesh/\+Straight\+Edge.\+hpp\item 
+3\+D/source/\+Mesh/\+Straight\+Mesh/\+Straight\+Edge.\+cpp\end{DoxyCompactItemize}

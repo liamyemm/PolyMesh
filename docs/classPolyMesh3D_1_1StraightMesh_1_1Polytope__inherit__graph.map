@@ -1,0 +1,7 @@
+<map id="PolyMesh3D::StraightMesh::Polytope" name="PolyMesh3D::StraightMesh::Polytope">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,203,145"/>
+<area shape="rect" id="node2" href="$classPolyMesh3D_1_1StraightMesh_1_1Cell.html" title=" " alt="" coords="251,5,448,47"/>
+<area shape="rect" id="node3" href="$classPolyMesh3D_1_1StraightMesh_1_1Edge.html" title=" " alt="" coords="251,71,448,112"/>
+<area shape="rect" id="node4" href="$classPolyMesh3D_1_1StraightMesh_1_1Face.html" title=" " alt="" coords="251,136,448,177"/>
+<area shape="rect" id="node5" href="$classPolyMesh3D_1_1StraightMesh_1_1Vertex.html" title=" " alt="" coords="251,201,448,243"/>
+</map>

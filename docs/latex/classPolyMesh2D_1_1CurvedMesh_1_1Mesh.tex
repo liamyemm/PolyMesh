@@ -1,0 +1,115 @@
+\hypertarget{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{}\doxysection{Poly\+Mesh2D\+::Curved\+Mesh\+::Mesh Class Reference}
+\label{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}\index{PolyMesh2D::CurvedMesh::Mesh@{PolyMesh2D::CurvedMesh::Mesh}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__Mesh_ga162c2dec7cd16e6f884df9416e8634ea}{Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Null constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gafd5f1c350f0a83213d974ae2649e36e9}{$\sim$\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Destructor ensuring the deletion of the dynamically allocated vertices, edges, and cells. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gaf48e73b4ca5bd16e5dbd56e1849dee75}{Mesh}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be copied. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_ga0dceee5e56ab19bb19eeb0f95842f52c}{Mesh}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&\&) noexcept=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be moved. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \& \mbox{\hyperlink{group__Mesh_ga6c408ecfe16660fa448fc22d74e1d3cf}{operator=}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be copied. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \& \mbox{\hyperlink{group__Mesh_ga9f6f37a64e7857f81470c7160afd0486}{operator=}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&\&) noexcept=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be moved. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gac808c194db78b5de44d4a3db0111b6b8}{set\+\_\+name}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em set the name of the mesh \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{group__Mesh_ga9d7fac658db467440720d733a20d508f}{get\+\_\+name}} ()
+\begin{DoxyCompactList}\small\item\em getter for the mesh name \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group__Mesh_ga23d75b324565b249ba682589ee6a2445}{h\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em max diameter of cells \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga949ee6658eb227a5cae7727bbb27c576}{dim}} () const
+\begin{DoxyCompactList}\small\item\em dimension of the mesh \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga080022ba6a35353002bc93c07c7e86dc}{n\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of vertices in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gad4aeb03d414840a3e8e5e2e1eb863ee7}{n\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of edges in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gae33d1515ca0dab393ede5f7ab4f4e6bc}{n\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of cells in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga8cf3bacf0baac1ab94c28ada1b19d379}{n\+\_\+b\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary vertices in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gad9d179d97fb42f2e73c66cc1f7156923}{n\+\_\+b\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary edges in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gabbf985f2a6ad1ad18c512261c86cde1d}{n\+\_\+b\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary cells in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga416b2415e5a7daba57971a91141eb393}{n\+\_\+i\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of internal vertices in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gaa7c5e1dc0c1157a6283dd3891c3dd6a5}{n\+\_\+i\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of internal edges in the mesh. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gac180e7b993d1eb62ce4941add6f42248}{n\+\_\+i\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of internal cells in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaff528930d75233208a20e5aef871b745}{get\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the vertices in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gac94b086ec1b074d3209059ac3ae64ced}{get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the edges in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga29e7de5ec91eafce22af08c77102f74d}{get\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the cells in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga2212e52649d100c2eef6483c349fdd33}{get\+\_\+b\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary vertices in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gacd0df3e2f0bab8981bcffb7f9b0ea1cc}{get\+\_\+b\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary edges in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gadcdf351d70f91786885b7257ed4c6078}{get\+\_\+b\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary cells in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga92c14f54ec0a5bf61a0ec89cb407cedb}{get\+\_\+i\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal vertices in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaf8279c9348b87871bee0a02365701641}{get\+\_\+i\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal edges in the mesh. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga7cc06f1df7aaf569bdd850d4d1fb4184}{get\+\_\+i\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal cells in the mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga7525e07eacdb68355135445f55d787d8}{add\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds a vertex to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gaec2917c19490bbf0896d53422c5558f1}{add\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em adds a edge to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gaaabbe6bdf7fab3a86883be6cf5c9b11a}{add\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em adds a cell to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gac74192e2f61e8ac1293344f652292949}{remove\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em remove a vertex from the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gae09366f29321ffd937c43c1cc0540013}{remove\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em remove a edge from the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gad1d940a0e7c366aa410bcbf9fae2fc71}{remove\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em remove a cell from the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gaf4ee1a286a5045560299ce63cd41dfdb}{add\+\_\+b\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds a boundary vertex to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga3585bc408031410b26cf972f318dcce3}{add\+\_\+b\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em adds a boundary edge to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga1defc5b282af3cdd786a39013214ff4a}{add\+\_\+b\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em adds a boundary cell to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gafc99254c8ed55c886f7849d5bcd87bef}{add\+\_\+i\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds an internal vertex to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gaca9e8a5f48a2552ffbdd4c69431b8d3d}{add\+\_\+i\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em adds an internal edge to the mesh \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_ga39356fdfbf11e8dce7be51bde020a16e}{add\+\_\+i\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em adds an internal cell to the mesh \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a vertex using its global index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a edge using its global index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a cell using its global index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga9525baf36d2174bceed13ed798d0e7e9}{b\+\_\+vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a boundary vertex using an index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_gab6035e5483c5e0425cc1479939ff5e54}{b\+\_\+edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to boundary a edge using an index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_ga5ba33dfbfdeb4a826bd7a2265b5e408c}{b\+\_\+cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to boundary a cell using an index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_gaf6470abb78dc9adcbeb21f3e6a81ffae}{i\+\_\+vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal vertex using an index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga94b81da3636525c5e83585db2d448943}{i\+\_\+edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal edge using an index \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_ga594864271a48b764a143f5308e29ac1b}{i\+\_\+cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal cell using an index \end{DoxyCompactList}\item 
+void {\bfseries renum} (const char B, const std\+::vector$<$ size\+\_\+t $>$ new\+\_\+to\+\_\+old)
+\item 
+void {\bfseries plot\+\_\+mesh} (std\+::ofstream $\ast$out, int partitions) const
+\item 
+bool {\bfseries test} () const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+2\+D/source/\+Mesh/\+Curved\+Mesh/\+Curved\+Mesh.\+hpp\item 
+2\+D/source/\+Mesh/\+Curved\+Mesh/\+Curved\+Mesh.\+cpp\end{DoxyCompactItemize}

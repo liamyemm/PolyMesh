@@ -1,0 +1,67 @@
+\hypertarget{classPolyMesh2D_1_1Functional_1_1Basis}{}\doxysection{Poly\+Mesh2D\+::Functional\+::Basis$<$ input\+\_\+dim, output\+\_\+dim $>$ Class Template Reference}
+\label{classPolyMesh2D_1_1Functional_1_1Basis}\index{PolyMesh2D::Functional::Basis$<$ input\_dim, output\_dim $>$@{PolyMesh2D::Functional::Basis$<$ input\_dim, output\_dim $>$}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Input\+Type {\bfseries Input\+Type}
+\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Output\+Type {\bfseries Output\+Type}
+\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Derivative\+Type {\bfseries Derivative\+Type}
+\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Input\+Type {\bfseries Input\+Type}
+\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Output\+Type {\bfseries Output\+Type}
+\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Derivative\+Type {\bfseries Derivative\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Basis} (const std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$$>$ \&bases)
+\item 
+size\+\_\+t {\bfseries dimension} () const
+\item 
+void {\bfseries add\+\_\+basis\+\_\+function} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&func)
+\item 
+void {\bfseries remove\+\_\+basis\+\_\+function} (const size\+\_\+t i)
+\item 
+Output\+Type {\bfseries value} (const size\+\_\+t i, const Input\+Type \&x) const
+\item 
+Derivative\+Type {\bfseries derivative} (const size\+\_\+t i, const Input\+Type \&x) const
+\item 
+const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \& {\bfseries function} (const size\+\_\+t i) const
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}\label{classPolyMesh2D_1_1Functional_1_1Basis_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}} 
+{\bfseries Basis} (const std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$$>$ \&bases)
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_gad20c2177d198f86d84047f28e4de2e60}\label{classPolyMesh2D_1_1Functional_1_1Basis_gad20c2177d198f86d84047f28e4de2e60}} 
+size\+\_\+t {\bfseries dimension} () const
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_ga5d7504491b597fde5dce88510e616092}\label{classPolyMesh2D_1_1Functional_1_1Basis_ga5d7504491b597fde5dce88510e616092}} 
+void {\bfseries add\+\_\+basis\+\_\+function} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&func)
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_ga50319d0663bea19e7b9cd3ed3ae9be13}\label{classPolyMesh2D_1_1Functional_1_1Basis_ga50319d0663bea19e7b9cd3ed3ae9be13}} 
+void {\bfseries remove\+\_\+basis\+\_\+function} (const size\+\_\+t i)
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_ga1c2ee9b09cf8b3057d9eab1eb6802875}\label{classPolyMesh2D_1_1Functional_1_1Basis_ga1c2ee9b09cf8b3057d9eab1eb6802875}} 
+Output\+Type {\bfseries value} (const size\+\_\+t i, const Input\+Type \&x) const
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_ga048f8bac7bca0a7272fefe112ae0aad3}\label{classPolyMesh2D_1_1Functional_1_1Basis_ga048f8bac7bca0a7272fefe112ae0aad3}} 
+Derivative\+Type {\bfseries derivative} (const size\+\_\+t i, const Input\+Type \&x) const
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_ga26a62e838516c1f749bba5ab65ee8a7f}\label{classPolyMesh2D_1_1Functional_1_1Basis_ga26a62e838516c1f749bba5ab65ee8a7f}} 
+const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \& {\bfseries function} (const size\+\_\+t i) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const unsigned {\bfseries input\+\_\+dimension} = input\+\_\+dim
+\item 
+static const unsigned {\bfseries output\+\_\+dimension} = output\+\_\+dim
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+2\+D/source/\+Function/basis.\+hpp\end{DoxyCompactItemize}
