@@ -1,0 +1,885 @@
+\hypertarget{group__Mesh}{}\doxysection{Mesh}
+\label{group__Mesh}\index{Mesh@{Mesh}}
+
+
+Classes and methods for all objects (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}}, \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}}, \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}}, \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}}) in a \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}}.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Polytope}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Vertex}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshBuilder}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Builder}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshBuilder}{Mesh\+Builder}} class provides build tools to create a full mesh with all connectivities. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshReaderTyp2}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Reader\+Typ2}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshReaderTyp2}{Mesh\+Reader\+Typ2}} class provides functions to read a typ2 mesh file. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Polytope}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope}}
+\item 
+class \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Vertex}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__Mesh_gae83c05cb9950ce78198428991c958f9e}\label{group__Mesh_gae83c05cb9950ce78198428991c958f9e}} 
+using \mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Vector\+Rd}} = Eigen\+::\+Vector2d
+\begin{DoxyCompactList}\small\item\em Alias for a 2d vector. Used for coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf452bb2af50134967350770eda8264b7}\label{group__Mesh_gaf452bb2af50134967350770eda8264b7}} 
+using {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Triangle} = std\+::array$<$ \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}}, 3 $>$
+\item 
+\mbox{\Hypertarget{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}\label{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}} 
+using \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Vector\+Rd}} = Eigen\+::\+Vector2d
+\begin{DoxyCompactList}\small\item\em Alias for a 2d vector. Used for coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__Mesh_ga0895159515e37c2318fe5258c44886e0}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::\+Cell}} (size\+\_\+t index, std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ edges)
+\begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}}. Calls the base class constructor, sets \+\_\+edges to. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Mesh_ga4350c12d25092b865f99d3254bda85b8}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::edge\+\_\+orientation}} (const size\+\_\+t edge\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} located at. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_gae519fd4323f21fe8d08e1bc20b973f99}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::edge\+\_\+normal}} (const size\+\_\+t edge\+\_\+index, double t) const
+\begin{DoxyCompactList}\small\item\em Return the outer normal of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} located at. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gabc5c55d7e19c56768a17b0c51926ac62}\label{group__Mesh_gabc5c55d7e19c56768a17b0c51926ac62}} 
+bool \mbox{\hyperlink{group__Mesh_gabc5c55d7e19c56768a17b0c51926ac62}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::is\+\_\+straight}} () const
+\begin{DoxyCompactList}\small\item\em Return a boolean stating whether or not all the edges of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} are straight. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga1581448f01ce0b186325ecf91c39b669}\label{group__Mesh_ga1581448f01ce0b186325ecf91c39b669}} 
+bool {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::test} () const
+\item 
+\mbox{\Hypertarget{group__Mesh_gadab4ac45ea4157bbf7415e8943462e8e}\label{group__Mesh_gadab4ac45ea4157bbf7415e8943462e8e}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::set\+\_\+edge\+\_\+orientations} ()
+\item 
+\mbox{\Hypertarget{group__Mesh_ga19658f85edd645a8d140c16e0cb5aaa6}\label{group__Mesh_ga19658f85edd645a8d140c16e0cb5aaa6}} 
+{\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::\+Edge} (size\+\_\+t index, \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Functional\+::\+Curve}} \&\mbox{\hyperlink{group__Mesh_gacad02163d824c64f7f83e915d960f38a}{parameterisation}})
+\item 
+\mbox{\Hypertarget{group__Mesh_gad47d794d8972bc633733638195ef9df5}\label{group__Mesh_gad47d794d8972bc633733638195ef9df5}} 
+int \mbox{\hyperlink{group__Mesh_gad47d794d8972bc633733638195ef9df5}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::vertex\+\_\+orientation}} (const size\+\_\+t vertex\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} located at vertex\+\_\+index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga05fb21a7083ecebef9812ecccb9acb90}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::tangent}} (double t) const
+\begin{DoxyCompactList}\small\item\em Return the tangent of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} at the parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_gaac7ce72b7d379ef4bbc85cda1e46a80f}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::normal}} (double t) const
+\begin{DoxyCompactList}\small\item\em Return the normal of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} at the parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gacad02163d824c64f7f83e915d960f38a}\label{group__Mesh_gacad02163d824c64f7f83e915d960f38a}} 
+const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Functional\+::\+Curve}} \& \mbox{\hyperlink{group__Mesh_gacad02163d824c64f7f83e915d960f38a}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::parameterisation}} () const
+\begin{DoxyCompactList}\small\item\em Return a const reference to the parameterisation of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga3aae679422954b3a4a9d27b8765a34c3}\label{group__Mesh_ga3aae679422954b3a4a9d27b8765a34c3}} 
+std\+::array$<$ \mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}}, 2 $>$ {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::coords} () const
+\item 
+\mbox{\Hypertarget{group__Mesh_gad4ad629c19ef3fa9748503457d0e6b33}\label{group__Mesh_gad4ad629c19ef3fa9748503457d0e6b33}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::plot} (std\+::ofstream $\ast$out, int partitions) const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga4eed0a158276c87a1b926b700d7125da}\label{group__Mesh_ga4eed0a158276c87a1b926b700d7125da}} 
+bool {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::is\+\_\+straight} () const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga3b94d88a2c34da74bd8aea83341c59b2}\label{group__Mesh_ga3b94d88a2c34da74bd8aea83341c59b2}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::set\+\_\+straight} ()
+\item 
+\mbox{\Hypertarget{group__Mesh_gab4825e3caf078bb0b1e40ea39d46f7e8}\label{group__Mesh_gab4825e3caf078bb0b1e40ea39d46f7e8}} 
+bool {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::test} () const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga162c2dec7cd16e6f884df9416e8634ea}\label{group__Mesh_ga162c2dec7cd16e6f884df9416e8634ea}} 
+\mbox{\hyperlink{group__Mesh_ga162c2dec7cd16e6f884df9416e8634ea}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Null constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gafd5f1c350f0a83213d974ae2649e36e9}\label{group__Mesh_gafd5f1c350f0a83213d974ae2649e36e9}} 
+\mbox{\hyperlink{group__Mesh_gafd5f1c350f0a83213d974ae2649e36e9}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::$\sim$\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Destructor ensuring the deletion of the dynamically allocated vertices, edges, and cells. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf48e73b4ca5bd16e5dbd56e1849dee75}\label{group__Mesh_gaf48e73b4ca5bd16e5dbd56e1849dee75}} 
+\mbox{\hyperlink{group__Mesh_gaf48e73b4ca5bd16e5dbd56e1849dee75}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::\+Mesh}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga0dceee5e56ab19bb19eeb0f95842f52c}\label{group__Mesh_ga0dceee5e56ab19bb19eeb0f95842f52c}} 
+\mbox{\hyperlink{group__Mesh_ga0dceee5e56ab19bb19eeb0f95842f52c}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::\+Mesh}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&\&) noexcept=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be moved. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga6c408ecfe16660fa448fc22d74e1d3cf}\label{group__Mesh_ga6c408ecfe16660fa448fc22d74e1d3cf}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \& \mbox{\hyperlink{group__Mesh_ga6c408ecfe16660fa448fc22d74e1d3cf}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::operator=}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9f6f37a64e7857f81470c7160afd0486}\label{group__Mesh_ga9f6f37a64e7857f81470c7160afd0486}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \& \mbox{\hyperlink{group__Mesh_ga9f6f37a64e7857f81470c7160afd0486}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::operator=}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} \&\&) noexcept=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Mesh}{Mesh}} should not be moved. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gac808c194db78b5de44d4a3db0111b6b8}\label{group__Mesh_gac808c194db78b5de44d4a3db0111b6b8}} 
+void \mbox{\hyperlink{group__Mesh_gac808c194db78b5de44d4a3db0111b6b8}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::set\+\_\+name}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em set the name of the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9d7fac658db467440720d733a20d508f}\label{group__Mesh_ga9d7fac658db467440720d733a20d508f}} 
+std\+::string \mbox{\hyperlink{group__Mesh_ga9d7fac658db467440720d733a20d508f}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+name}} ()
+\begin{DoxyCompactList}\small\item\em getter for the mesh name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga23d75b324565b249ba682589ee6a2445}\label{group__Mesh_ga23d75b324565b249ba682589ee6a2445}} 
+double \mbox{\hyperlink{group__Mesh_ga23d75b324565b249ba682589ee6a2445}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::h\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em max diameter of cells \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga949ee6658eb227a5cae7727bbb27c576}\label{group__Mesh_ga949ee6658eb227a5cae7727bbb27c576}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga949ee6658eb227a5cae7727bbb27c576}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::dim}} () const
+\begin{DoxyCompactList}\small\item\em dimension of the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga080022ba6a35353002bc93c07c7e86dc}\label{group__Mesh_ga080022ba6a35353002bc93c07c7e86dc}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga080022ba6a35353002bc93c07c7e86dc}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gad4aeb03d414840a3e8e5e2e1eb863ee7}\label{group__Mesh_gad4aeb03d414840a3e8e5e2e1eb863ee7}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gad4aeb03d414840a3e8e5e2e1eb863ee7}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae33d1515ca0dab393ede5f7ab4f4e6bc}\label{group__Mesh_gae33d1515ca0dab393ede5f7ab4f4e6bc}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gae33d1515ca0dab393ede5f7ab4f4e6bc}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga8cf3bacf0baac1ab94c28ada1b19d379}\label{group__Mesh_ga8cf3bacf0baac1ab94c28ada1b19d379}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga8cf3bacf0baac1ab94c28ada1b19d379}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+b\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gad9d179d97fb42f2e73c66cc1f7156923}\label{group__Mesh_gad9d179d97fb42f2e73c66cc1f7156923}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gad9d179d97fb42f2e73c66cc1f7156923}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+b\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gabbf985f2a6ad1ad18c512261c86cde1d}\label{group__Mesh_gabbf985f2a6ad1ad18c512261c86cde1d}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gabbf985f2a6ad1ad18c512261c86cde1d}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+b\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga416b2415e5a7daba57971a91141eb393}\label{group__Mesh_ga416b2415e5a7daba57971a91141eb393}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga416b2415e5a7daba57971a91141eb393}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+i\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of internal vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaa7c5e1dc0c1157a6283dd3891c3dd6a5}\label{group__Mesh_gaa7c5e1dc0c1157a6283dd3891c3dd6a5}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gaa7c5e1dc0c1157a6283dd3891c3dd6a5}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+i\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of internal edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gac180e7b993d1eb62ce4941add6f42248}\label{group__Mesh_gac180e7b993d1eb62ce4941add6f42248}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gac180e7b993d1eb62ce4941add6f42248}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::n\+\_\+i\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of internal cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaff528930d75233208a20e5aef871b745}\label{group__Mesh_gaff528930d75233208a20e5aef871b745}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaff528930d75233208a20e5aef871b745}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gac94b086ec1b074d3209059ac3ae64ced}\label{group__Mesh_gac94b086ec1b074d3209059ac3ae64ced}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gac94b086ec1b074d3209059ac3ae64ced}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga29e7de5ec91eafce22af08c77102f74d}\label{group__Mesh_ga29e7de5ec91eafce22af08c77102f74d}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga29e7de5ec91eafce22af08c77102f74d}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga2212e52649d100c2eef6483c349fdd33}\label{group__Mesh_ga2212e52649d100c2eef6483c349fdd33}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga2212e52649d100c2eef6483c349fdd33}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+b\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gacd0df3e2f0bab8981bcffb7f9b0ea1cc}\label{group__Mesh_gacd0df3e2f0bab8981bcffb7f9b0ea1cc}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gacd0df3e2f0bab8981bcffb7f9b0ea1cc}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+b\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gadcdf351d70f91786885b7257ed4c6078}\label{group__Mesh_gadcdf351d70f91786885b7257ed4c6078}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gadcdf351d70f91786885b7257ed4c6078}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+b\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga92c14f54ec0a5bf61a0ec89cb407cedb}\label{group__Mesh_ga92c14f54ec0a5bf61a0ec89cb407cedb}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga92c14f54ec0a5bf61a0ec89cb407cedb}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+i\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf8279c9348b87871bee0a02365701641}\label{group__Mesh_gaf8279c9348b87871bee0a02365701641}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaf8279c9348b87871bee0a02365701641}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+i\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga7cc06f1df7aaf569bdd850d4d1fb4184}\label{group__Mesh_ga7cc06f1df7aaf569bdd850d4d1fb4184}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga7cc06f1df7aaf569bdd850d4d1fb4184}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::get\+\_\+i\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga7525e07eacdb68355135445f55d787d8}\label{group__Mesh_ga7525e07eacdb68355135445f55d787d8}} 
+void \mbox{\hyperlink{group__Mesh_ga7525e07eacdb68355135445f55d787d8}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds a vertex to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaec2917c19490bbf0896d53422c5558f1}\label{group__Mesh_gaec2917c19490bbf0896d53422c5558f1}} 
+void \mbox{\hyperlink{group__Mesh_gaec2917c19490bbf0896d53422c5558f1}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em adds a edge to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaaabbe6bdf7fab3a86883be6cf5c9b11a}\label{group__Mesh_gaaabbe6bdf7fab3a86883be6cf5c9b11a}} 
+void \mbox{\hyperlink{group__Mesh_gaaabbe6bdf7fab3a86883be6cf5c9b11a}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em adds a cell to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gac74192e2f61e8ac1293344f652292949}\label{group__Mesh_gac74192e2f61e8ac1293344f652292949}} 
+void \mbox{\hyperlink{group__Mesh_gac74192e2f61e8ac1293344f652292949}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::remove\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em remove a vertex from the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae09366f29321ffd937c43c1cc0540013}\label{group__Mesh_gae09366f29321ffd937c43c1cc0540013}} 
+void \mbox{\hyperlink{group__Mesh_gae09366f29321ffd937c43c1cc0540013}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::remove\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em remove a edge from the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gad1d940a0e7c366aa410bcbf9fae2fc71}\label{group__Mesh_gad1d940a0e7c366aa410bcbf9fae2fc71}} 
+void \mbox{\hyperlink{group__Mesh_gad1d940a0e7c366aa410bcbf9fae2fc71}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::remove\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em remove a cell from the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf4ee1a286a5045560299ce63cd41dfdb}\label{group__Mesh_gaf4ee1a286a5045560299ce63cd41dfdb}} 
+void \mbox{\hyperlink{group__Mesh_gaf4ee1a286a5045560299ce63cd41dfdb}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+b\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds a boundary vertex to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga3585bc408031410b26cf972f318dcce3}\label{group__Mesh_ga3585bc408031410b26cf972f318dcce3}} 
+void \mbox{\hyperlink{group__Mesh_ga3585bc408031410b26cf972f318dcce3}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+b\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em adds a boundary edge to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga1defc5b282af3cdd786a39013214ff4a}\label{group__Mesh_ga1defc5b282af3cdd786a39013214ff4a}} 
+void \mbox{\hyperlink{group__Mesh_ga1defc5b282af3cdd786a39013214ff4a}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+b\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em adds a boundary cell to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gafc99254c8ed55c886f7849d5bcd87bef}\label{group__Mesh_gafc99254c8ed55c886f7849d5bcd87bef}} 
+void \mbox{\hyperlink{group__Mesh_gafc99254c8ed55c886f7849d5bcd87bef}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+i\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds an internal vertex to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaca9e8a5f48a2552ffbdd4c69431b8d3d}\label{group__Mesh_gaca9e8a5f48a2552ffbdd4c69431b8d3d}} 
+void \mbox{\hyperlink{group__Mesh_gaca9e8a5f48a2552ffbdd4c69431b8d3d}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+i\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{edge}})
+\begin{DoxyCompactList}\small\item\em adds an internal edge to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga39356fdfbf11e8dce7be51bde020a16e}\label{group__Mesh_ga39356fdfbf11e8dce7be51bde020a16e}} 
+void \mbox{\hyperlink{group__Mesh_ga39356fdfbf11e8dce7be51bde020a16e}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::add\+\_\+i\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{cell}})
+\begin{DoxyCompactList}\small\item\em adds an internal cell to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}\label{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga9fa906817f9cc3e0c0081f6da3bd449c}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a vertex using its global index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}\label{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga9c26d6510d67f13bfdf21b0a1d6e611f}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a edge using its global index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}\label{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_gadf1b5e685b713d3262ffc2c9fd202797}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a cell using its global index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9525baf36d2174bceed13ed798d0e7e9}\label{group__Mesh_ga9525baf36d2174bceed13ed798d0e7e9}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga9525baf36d2174bceed13ed798d0e7e9}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::b\+\_\+vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a boundary vertex using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gab6035e5483c5e0425cc1479939ff5e54}\label{group__Mesh_gab6035e5483c5e0425cc1479939ff5e54}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_gab6035e5483c5e0425cc1479939ff5e54}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::b\+\_\+edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to boundary a edge using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga5ba33dfbfdeb4a826bd7a2265b5e408c}\label{group__Mesh_ga5ba33dfbfdeb4a826bd7a2265b5e408c}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_ga5ba33dfbfdeb4a826bd7a2265b5e408c}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::b\+\_\+cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to boundary a cell using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf6470abb78dc9adcbeb21f3e6a81ffae}\label{group__Mesh_gaf6470abb78dc9adcbeb21f3e6a81ffae}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_gaf6470abb78dc9adcbeb21f3e6a81ffae}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::i\+\_\+vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal vertex using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga94b81da3636525c5e83585db2d448943}\label{group__Mesh_ga94b81da3636525c5e83585db2d448943}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga94b81da3636525c5e83585db2d448943}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::i\+\_\+edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal edge using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga594864271a48b764a143f5308e29ac1b}\label{group__Mesh_ga594864271a48b764a143f5308e29ac1b}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_ga594864271a48b764a143f5308e29ac1b}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::i\+\_\+cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal cell using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga4d01246f13e96e3d3bdb8187966dfdb9}\label{group__Mesh_ga4d01246f13e96e3d3bdb8187966dfdb9}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::renum} (const char B, const std\+::vector$<$ size\+\_\+t $>$ new\+\_\+to\+\_\+old)
+\item 
+\mbox{\Hypertarget{group__Mesh_ga32f3ea9b0090402efd4e8c57a2ba507b}\label{group__Mesh_ga32f3ea9b0090402efd4e8c57a2ba507b}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::plot\+\_\+mesh} (std\+::ofstream $\ast$out, int partitions) const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga20bd51f1264f6e05080b9ccb85c07b53}\label{group__Mesh_ga20bd51f1264f6e05080b9ccb85c07b53}} 
+bool {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Mesh\+::test} () const
+\item 
+\mbox{\hyperlink{group__Mesh_ga806b5347f443b7c89788b7f861333cfb}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+Polytope}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em $<$ Constructor for the base class. Sets \+\_\+index to \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga87dc1668a08c478a6fa3659b2c9f555d}\label{group__Mesh_ga87dc1668a08c478a6fa3659b2c9f555d}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga87dc1668a08c478a6fa3659b2c9f555d}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::global\+\_\+index}} () const
+\begin{DoxyCompactList}\small\item\em Return the global index of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga4f77290856d6b4366365746af1572828}\label{group__Mesh_ga4f77290856d6b4366365746af1572828}} 
+double \mbox{\hyperlink{group__Mesh_ga4f77290856d6b4366365746af1572828}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::diam}} () const
+\begin{DoxyCompactList}\small\item\em Return the diameter of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga26145c6dab59ef564df5e26046fd16db}\label{group__Mesh_ga26145c6dab59ef564df5e26046fd16db}} 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga26145c6dab59ef564df5e26046fd16db}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::center\+\_\+mass}} () const
+\begin{DoxyCompactList}\small\item\em Return the center mass of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae3271c378f536816a8d40673539bb04e}\label{group__Mesh_gae3271c378f536816a8d40673539bb04e}} 
+double \mbox{\hyperlink{group__Mesh_gae3271c378f536816a8d40673539bb04e}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::measure}} () const
+\begin{DoxyCompactList}\small\item\em Return the Lebesgue measure of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga68fc5bc9f29404931afaf26b439dfb4c}\label{group__Mesh_ga68fc5bc9f29404931afaf26b439dfb4c}} 
+void \mbox{\hyperlink{group__Mesh_ga68fc5bc9f29404931afaf26b439dfb4c}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::set\+\_\+global\+\_\+index}} (const size\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Set the global index. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga900dc3865f8cc1b68d2fd244dd187b74}\label{group__Mesh_ga900dc3865f8cc1b68d2fd244dd187b74}} 
+bool \mbox{\hyperlink{group__Mesh_ga900dc3865f8cc1b68d2fd244dd187b74}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::is\+\_\+boundary}} () const
+\begin{DoxyCompactList}\small\item\em Return true if Curved\+Object is a boundary object, false otherwise. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae9c4bec460a02466f5b5a28debbf9b8b}\label{group__Mesh_gae9c4bec460a02466f5b5a28debbf9b8b}} 
+void \mbox{\hyperlink{group__Mesh_gae9c4bec460a02466f5b5a28debbf9b8b}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::set\+\_\+boundary}} (bool val)
+\begin{DoxyCompactList}\small\item\em Set the boundary value of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga6ac5b37bd4521713a76b264ad7487b79}\label{group__Mesh_ga6ac5b37bd4521713a76b264ad7487b79}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga6ac5b37bd4521713a76b264ad7487b79}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::get\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the vertices of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf12f7300c86919dc398c605d409a4d95}\label{group__Mesh_gaf12f7300c86919dc398c605d409a4d95}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaf12f7300c86919dc398c605d409a4d95}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the edges of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gafeaca84adbdf2cc05bbdd111524fe082}\label{group__Mesh_gafeaca84adbdf2cc05bbdd111524fe082}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gafeaca84adbdf2cc05bbdd111524fe082}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::get\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the cells of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaeb232918086a1d69b7986b5bcc97eeb4}\label{group__Mesh_gaeb232918086a1d69b7986b5bcc97eeb4}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_gaeb232918086a1d69b7986b5bcc97eeb4}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::n\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of vertices of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga18cb72c8d0fb3d2551c6b517167231d7}\label{group__Mesh_ga18cb72c8d0fb3d2551c6b517167231d7}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga18cb72c8d0fb3d2551c6b517167231d7}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::n\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of edges of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga2aece7e0ef78c5245038252983228697}\label{group__Mesh_ga2aece7e0ef78c5245038252983228697}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga2aece7e0ef78c5245038252983228697}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::n\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of cells of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}\label{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::vertex}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th vertex of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}\label{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::edge}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th edge of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}\label{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::cell}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th cell of the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gab61a1fcfa5c62d6ac31c72e90fb40408}\label{group__Mesh_gab61a1fcfa5c62d6ac31c72e90fb40408}} 
+void \mbox{\hyperlink{group__Mesh_gab61a1fcfa5c62d6ac31c72e90fb40408}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::add\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}{vertex}})
+\begin{DoxyCompactList}\small\item\em Add a vertex to the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga2d6d61566b3ab049554a43916fa382bd}\label{group__Mesh_ga2d6d61566b3ab049554a43916fa382bd}} 
+void \mbox{\hyperlink{group__Mesh_ga2d6d61566b3ab049554a43916fa382bd}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::add\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{edge}})
+\begin{DoxyCompactList}\small\item\em Add an edge to the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga7a8216957bf254a8531fa05e27451ac6}\label{group__Mesh_ga7a8216957bf254a8531fa05e27451ac6}} 
+void \mbox{\hyperlink{group__Mesh_ga7a8216957bf254a8531fa05e27451ac6}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::add\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{cell}})
+\begin{DoxyCompactList}\small\item\em Add a cell to the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9563ad918a3dab17a5c8e46be299ed1e}\label{group__Mesh_ga9563ad918a3dab17a5c8e46be299ed1e}} 
+void \mbox{\hyperlink{group__Mesh_ga9563ad918a3dab17a5c8e46be299ed1e}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::remove\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}{vertex}})
+\begin{DoxyCompactList}\small\item\em Remove a cell from the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga2ae1de5ed6069329474e162b97df4236}\label{group__Mesh_ga2ae1de5ed6069329474e162b97df4236}} 
+void \mbox{\hyperlink{group__Mesh_ga2ae1de5ed6069329474e162b97df4236}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::remove\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{edge}})
+\begin{DoxyCompactList}\small\item\em Remove a cell from the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga2bb72bd22701c8c640be5489df8269a5}\label{group__Mesh_ga2bb72bd22701c8c640be5489df8269a5}} 
+void \mbox{\hyperlink{group__Mesh_ga2bb72bd22701c8c640be5489df8269a5}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::remove\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{cell}})
+\begin{DoxyCompactList}\small\item\em Remove a cell from the Curved\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaecdb64b8e285efda5366317557b3f6f2}\label{group__Mesh_gaecdb64b8e285efda5366317557b3f6f2}} 
+int \mbox{\hyperlink{group__Mesh_gaecdb64b8e285efda5366317557b3f6f2}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::index\+\_\+vertex}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga8eeee7ab39872a8f6f73e69ad914dce1}{vertex}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga187565ff0da3975f95243bfb470bef06}\label{group__Mesh_ga187565ff0da3975f95243bfb470bef06}} 
+int \mbox{\hyperlink{group__Mesh_ga187565ff0da3975f95243bfb470bef06}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::index\+\_\+edge}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_ga2250d1f20cb27a15d69a73fb7cb78c9e}{edge}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of an edge. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga0b85ebdd8096b0204470ea4be13832cd}\label{group__Mesh_ga0b85ebdd8096b0204470ea4be13832cd}} 
+int \mbox{\hyperlink{group__Mesh_ga0b85ebdd8096b0204470ea4be13832cd}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::index\+\_\+cell}} (const \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_gaca5c8ec097222d13eb5be3331840ebe4}{cell}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae3d0a6b1fe93c24e557fd3bc211d5166}\label{group__Mesh_gae3d0a6b1fe93c24e557fd3bc211d5166}} 
+{\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Vertex\+::\+Vertex} (size\+\_\+t, \mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}})
+\item 
+\mbox{\Hypertarget{group__Mesh_ga6ad10ce2f87e24e5b5122094e6256dbc}\label{group__Mesh_ga6ad10ce2f87e24e5b5122094e6256dbc}} 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga6ad10ce2f87e24e5b5122094e6256dbc}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Vertex\+::coords}} () const
+\begin{DoxyCompactList}\small\item\em Return the coordinates of a \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9daa0d1f8e6f61493f0079c275ffeadb}\label{group__Mesh_ga9daa0d1f8e6f61493f0079c275ffeadb}} 
+bool {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Vertex\+::test} () const
+\item 
+\mbox{\hyperlink{group__Mesh_ga454a7191d35955588b8c0197e7a3cd6f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Builder\+::\+Mesh\+Builder}} ()
+\item 
+\mbox{\hyperlink{group__Mesh_gab622b73fd9dd603658e0dd467faaca55}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Builder\+::\+Mesh\+Builder}} (const std\+::string mesh\+\_\+file)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} $>$ \mbox{\hyperlink{group__Mesh_gae022c9b65e0ce9299764a51f56a76c32}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Builder\+::build\+\_\+the\+\_\+mesh}} ()
+\item 
+\mbox{\hyperlink{group__Mesh_ga2755437085852aa076b365372de072c9}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Reader\+Typ2\+::\+Mesh\+Reader\+Typ2}} (std\+::string file\+\_\+name)
+\item 
+void \mbox{\hyperlink{group__Mesh_ga16baf66c4f82fe7b5eaa0e152cc2f53e}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Reader\+Typ2\+::read\+\_\+mesh}} (std\+::vector$<$ std\+::array$<$ double, 2 $>$$>$ \&vertices, std\+::vector$<$ std\+::vector$<$ std\+::size\+\_\+t $>$$>$ \&cells)
+\item 
+\mbox{\Hypertarget{group__Mesh_ga3a0bb4f5c1353d187ab91e212c78c710}\label{group__Mesh_ga3a0bb4f5c1353d187ab91e212c78c710}} 
+double {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::signed\+\_\+area} (\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} A, \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} B, \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} C)
+\item 
+\mbox{\hyperlink{group__Mesh_gaaf4f647784a67bce5e743f847c359871}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::\+Cell}} (size\+\_\+t index, std\+::vector$<$ Triangle $>$ triangles)
+\begin{DoxyCompactList}\small\item\em Constructor for a \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}}. Calls the base class constructor, sets \+\_\+triangles to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga50c0ee9ac3950558757c304abedc9978}\label{group__Mesh_ga50c0ee9ac3950558757c304abedc9978}} 
+std\+::vector$<$ Triangle $>$ \mbox{\hyperlink{group__Mesh_ga50c0ee9ac3950558757c304abedc9978}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::triangulation}} () const
+\begin{DoxyCompactList}\small\item\em Return the triangulation of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Polytope}{Polytope}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__Mesh_ga38192fd1f4247db1e5013caad58e277f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::edge\+\_\+orientation}} (const size\+\_\+t edge\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} located at. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga73dc06c655230f0d26290a60efd19560}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::edge\+\_\+normal}} (const size\+\_\+t edge\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the outer normal of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} located at. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Mesh_gaa10bf33f8ae6fc8231e0974c5a323094}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::plot\+\_\+triangulation}} (std\+::ofstream $\ast$out) const
+\begin{DoxyCompactList}\small\item\em Plot the triangles to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga63ed281beb387972ac8abf24384a3a05}\label{group__Mesh_ga63ed281beb387972ac8abf24384a3a05}} 
+{\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::\+Edge} (size\+\_\+t index, std\+::array$<$ \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}}, 2 $>$ coords)
+\item 
+\mbox{\Hypertarget{group__Mesh_ga230ff4f895859302ca9bb5d03c271bdf}\label{group__Mesh_ga230ff4f895859302ca9bb5d03c271bdf}} 
+int \mbox{\hyperlink{group__Mesh_ga230ff4f895859302ca9bb5d03c271bdf}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::vertex\+\_\+orientation}} (const size\+\_\+t vertex\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Return the orientation of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} located at vertex\+\_\+index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga3f70b053e29ac4621a1febadeae33cfd}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::tangent}} () const
+\begin{DoxyCompactList}\small\item\em Return the tangent of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} at the parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga1f9d4f4388c7280d9dc43cf46675e588}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::normal}} () const
+\begin{DoxyCompactList}\small\item\em Return the normal of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} at the parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga6338426522632167669b409c66bac065}\label{group__Mesh_ga6338426522632167669b409c66bac065}} 
+std\+::array$<$ \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}}, 2 $>$ {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::coords} () const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga94f9e3b54639fd1e5564664717a54227}\label{group__Mesh_ga94f9e3b54639fd1e5564664717a54227}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::plot} (std\+::ofstream $\ast$out) const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga4d4f7cb8b14bc749070e5cc5e29889e9}\label{group__Mesh_ga4d4f7cb8b14bc749070e5cc5e29889e9}} 
+\mbox{\hyperlink{group__Mesh_ga4d4f7cb8b14bc749070e5cc5e29889e9}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Null constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga8177323fc65d672aae089f99bcf5057d}\label{group__Mesh_ga8177323fc65d672aae089f99bcf5057d}} 
+\mbox{\hyperlink{group__Mesh_ga8177323fc65d672aae089f99bcf5057d}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::$\sim$\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Destructor ensuring the deletion of the dynamically allocated vertices, edges, and cells. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaebe7d9b5e0cdc1678264fa484a20dad7}\label{group__Mesh_gaebe7d9b5e0cdc1678264fa484a20dad7}} 
+\mbox{\hyperlink{group__Mesh_gaebe7d9b5e0cdc1678264fa484a20dad7}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::\+Mesh}} (const \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} \&)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} should not be copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga6ba00f43a854dceaea7b3af25701d5ea}\label{group__Mesh_ga6ba00f43a854dceaea7b3af25701d5ea}} 
+\mbox{\hyperlink{group__Mesh_ga6ba00f43a854dceaea7b3af25701d5ea}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::\+Mesh}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} \&\&) noexcept=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} should not be moved. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga5ae7fc8d94f76574f63278e63ef2fb43}\label{group__Mesh_ga5ae7fc8d94f76574f63278e63ef2fb43}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} \& \mbox{\hyperlink{group__Mesh_ga5ae7fc8d94f76574f63278e63ef2fb43}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::operator=}} (const \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} \&)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} should not be copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga4a87e8de368d974670ce8e336c879245}\label{group__Mesh_ga4a87e8de368d974670ce8e336c879245}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} \& \mbox{\hyperlink{group__Mesh_ga4a87e8de368d974670ce8e336c879245}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::operator=}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} \&\&) noexcept=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} should not be moved. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga4ab353293fe00458d98f3238597e0afc}\label{group__Mesh_ga4ab353293fe00458d98f3238597e0afc}} 
+void \mbox{\hyperlink{group__Mesh_ga4ab353293fe00458d98f3238597e0afc}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::set\+\_\+name}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em set the name of the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9be12fbc6d1e7c4674dee4cb1a372ae7}\label{group__Mesh_ga9be12fbc6d1e7c4674dee4cb1a372ae7}} 
+std\+::string \mbox{\hyperlink{group__Mesh_ga9be12fbc6d1e7c4674dee4cb1a372ae7}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+name}} ()
+\begin{DoxyCompactList}\small\item\em getter for the mesh name \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae6893e14045e4e7f71ed444b22eb0baf}\label{group__Mesh_gae6893e14045e4e7f71ed444b22eb0baf}} 
+double \mbox{\hyperlink{group__Mesh_gae6893e14045e4e7f71ed444b22eb0baf}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::h\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em max diameter of cells \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga987127e404502c38b023c8c6d596d4a0}\label{group__Mesh_ga987127e404502c38b023c8c6d596d4a0}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga987127e404502c38b023c8c6d596d4a0}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::dim}} () const
+\begin{DoxyCompactList}\small\item\em dimension of the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga4cb193403ae95644cc9f94d879ea8839}\label{group__Mesh_ga4cb193403ae95644cc9f94d879ea8839}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga4cb193403ae95644cc9f94d879ea8839}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaebbac23d929b80dcf681bf2b6cc1658c}\label{group__Mesh_gaebbac23d929b80dcf681bf2b6cc1658c}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gaebbac23d929b80dcf681bf2b6cc1658c}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga3b5cf69e22e86820e732719ae38032c2}\label{group__Mesh_ga3b5cf69e22e86820e732719ae38032c2}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga3b5cf69e22e86820e732719ae38032c2}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf26c4a1215920a9c14bd9cd53f29a0e1}\label{group__Mesh_gaf26c4a1215920a9c14bd9cd53f29a0e1}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gaf26c4a1215920a9c14bd9cd53f29a0e1}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+b\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga3581d53b973be62d5e7230aa6e76fbf8}\label{group__Mesh_ga3581d53b973be62d5e7230aa6e76fbf8}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga3581d53b973be62d5e7230aa6e76fbf8}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+b\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaeccb6f6ce436b60c1edb47726a120623}\label{group__Mesh_gaeccb6f6ce436b60c1edb47726a120623}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gaeccb6f6ce436b60c1edb47726a120623}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+b\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of boundary cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga67e06d1ce6c6c4d577d96d5d881d05b0}\label{group__Mesh_ga67e06d1ce6c6c4d577d96d5d881d05b0}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga67e06d1ce6c6c4d577d96d5d881d05b0}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+i\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em number of internal vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaa87d392efd06950caddebed95b625e8d}\label{group__Mesh_gaa87d392efd06950caddebed95b625e8d}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_gaa87d392efd06950caddebed95b625e8d}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+i\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em number of internal edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga75897530ab8dd66eac96f754903b6bd5}\label{group__Mesh_ga75897530ab8dd66eac96f754903b6bd5}} 
+std\+::size\+\_\+t \mbox{\hyperlink{group__Mesh_ga75897530ab8dd66eac96f754903b6bd5}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::n\+\_\+i\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em number of internal cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga1d7e41f3d47e48f7c2eb98871509a72c}\label{group__Mesh_ga1d7e41f3d47e48f7c2eb98871509a72c}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga1d7e41f3d47e48f7c2eb98871509a72c}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga7d72a827d278e7604ed419159571b2c3}\label{group__Mesh_ga7d72a827d278e7604ed419159571b2c3}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga7d72a827d278e7604ed419159571b2c3}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gabd83b9f8348ac8098529c3f96e197e2d}\label{group__Mesh_gabd83b9f8348ac8098529c3f96e197e2d}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gabd83b9f8348ac8098529c3f96e197e2d}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf8a886596e829dfdef86a6b485d2d40e}\label{group__Mesh_gaf8a886596e829dfdef86a6b485d2d40e}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaf8a886596e829dfdef86a6b485d2d40e}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+b\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaab876e00619fa5311585033b96746802}\label{group__Mesh_gaab876e00619fa5311585033b96746802}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_gaab876e00619fa5311585033b96746802}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+b\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9d357b89118a7d60531bd3eeaf24c426}\label{group__Mesh_ga9d357b89118a7d60531bd3eeaf24c426}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga9d357b89118a7d60531bd3eeaf24c426}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+b\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the boundary cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9bcaa64b78e5dabd3de7730691113a26}\label{group__Mesh_ga9bcaa64b78e5dabd3de7730691113a26}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga9bcaa64b78e5dabd3de7730691113a26}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+i\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal vertices in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga4e4514d99205fc919df5f76f43bf2802}\label{group__Mesh_ga4e4514d99205fc919df5f76f43bf2802}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga4e4514d99205fc919df5f76f43bf2802}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+i\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal edges in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga0596c69136ab63d9d612cab436298efe}\label{group__Mesh_ga0596c69136ab63d9d612cab436298efe}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga0596c69136ab63d9d612cab436298efe}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::get\+\_\+i\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em lists the internal cells in the mesh. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga63bb4c2e099cf14db34ac52659c9c958}\label{group__Mesh_ga63bb4c2e099cf14db34ac52659c9c958}} 
+void \mbox{\hyperlink{group__Mesh_ga63bb4c2e099cf14db34ac52659c9c958}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_gafbadc66182647c404fa63b8ae8617cb3}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds a vertex to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga1001961e5998867ca636b1bd0b1c029f}\label{group__Mesh_ga1001961e5998867ca636b1bd0b1c029f}} 
+void \mbox{\hyperlink{group__Mesh_ga1001961e5998867ca636b1bd0b1c029f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_gaaa61f6e848b99fd45e1fffcaccf83e23}{edge}})
+\begin{DoxyCompactList}\small\item\em adds a edge to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga004aca71bf1a834b63124b58919881dc}\label{group__Mesh_ga004aca71bf1a834b63124b58919881dc}} 
+void \mbox{\hyperlink{group__Mesh_ga004aca71bf1a834b63124b58919881dc}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_ga38a6e2db3f3d4719fb337ad36477571f}{cell}})
+\begin{DoxyCompactList}\small\item\em adds a cell to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9ca7ff30b3d555f4dc157c8f6cb68769}\label{group__Mesh_ga9ca7ff30b3d555f4dc157c8f6cb68769}} 
+void \mbox{\hyperlink{group__Mesh_ga9ca7ff30b3d555f4dc157c8f6cb68769}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::remove\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_gaaa61f6e848b99fd45e1fffcaccf83e23}{edge}})
+\begin{DoxyCompactList}\small\item\em remove a cell from the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga4dbfe39cb0fe7188de7055e4bc9cc97f}\label{group__Mesh_ga4dbfe39cb0fe7188de7055e4bc9cc97f}} 
+void \mbox{\hyperlink{group__Mesh_ga4dbfe39cb0fe7188de7055e4bc9cc97f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::remove\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_ga38a6e2db3f3d4719fb337ad36477571f}{cell}})
+\begin{DoxyCompactList}\small\item\em remove a cell from the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga674b3f708df83836a09f610e8347e5dc}\label{group__Mesh_ga674b3f708df83836a09f610e8347e5dc}} 
+void \mbox{\hyperlink{group__Mesh_ga674b3f708df83836a09f610e8347e5dc}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+b\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_gafbadc66182647c404fa63b8ae8617cb3}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds a boundary vertex to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga343e94b131973df226f046edf4dc4367}\label{group__Mesh_ga343e94b131973df226f046edf4dc4367}} 
+void \mbox{\hyperlink{group__Mesh_ga343e94b131973df226f046edf4dc4367}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+b\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_gaaa61f6e848b99fd45e1fffcaccf83e23}{edge}})
+\begin{DoxyCompactList}\small\item\em adds a boundary edge to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga592e693ef35e2cde2f181823113715ab}\label{group__Mesh_ga592e693ef35e2cde2f181823113715ab}} 
+void \mbox{\hyperlink{group__Mesh_ga592e693ef35e2cde2f181823113715ab}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+b\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_ga38a6e2db3f3d4719fb337ad36477571f}{cell}})
+\begin{DoxyCompactList}\small\item\em adds a boundary cell to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaaa1d30bf4b25af4646d88a4fa079b89b}\label{group__Mesh_gaaa1d30bf4b25af4646d88a4fa079b89b}} 
+void \mbox{\hyperlink{group__Mesh_gaaa1d30bf4b25af4646d88a4fa079b89b}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+i\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_gafbadc66182647c404fa63b8ae8617cb3}{vertex}})
+\begin{DoxyCompactList}\small\item\em adds an internal vertex to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga192968a021c44b7976a8b260388164b3}\label{group__Mesh_ga192968a021c44b7976a8b260388164b3}} 
+void \mbox{\hyperlink{group__Mesh_ga192968a021c44b7976a8b260388164b3}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+i\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_gaaa61f6e848b99fd45e1fffcaccf83e23}{edge}})
+\begin{DoxyCompactList}\small\item\em adds an internal edge to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga19ecb37e7f86f74ab82d6846b1056cb7}\label{group__Mesh_ga19ecb37e7f86f74ab82d6846b1056cb7}} 
+void \mbox{\hyperlink{group__Mesh_ga19ecb37e7f86f74ab82d6846b1056cb7}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::add\+\_\+i\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_ga38a6e2db3f3d4719fb337ad36477571f}{cell}})
+\begin{DoxyCompactList}\small\item\em adds an internal cell to the mesh \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gafbadc66182647c404fa63b8ae8617cb3}\label{group__Mesh_gafbadc66182647c404fa63b8ae8617cb3}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_gafbadc66182647c404fa63b8ae8617cb3}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a vertex using its global index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaaa61f6e848b99fd45e1fffcaccf83e23}\label{group__Mesh_gaaa61f6e848b99fd45e1fffcaccf83e23}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_gaaa61f6e848b99fd45e1fffcaccf83e23}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a edge using its global index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga38a6e2db3f3d4719fb337ad36477571f}\label{group__Mesh_ga38a6e2db3f3d4719fb337ad36477571f}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_ga38a6e2db3f3d4719fb337ad36477571f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a cell using its global index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga309e1e73af82ff126e8334d9068d9b84}\label{group__Mesh_ga309e1e73af82ff126e8334d9068d9b84}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga309e1e73af82ff126e8334d9068d9b84}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::b\+\_\+vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to a boundary vertex using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga02bce69d16597e31b5d8a79254b15a0f}\label{group__Mesh_ga02bce69d16597e31b5d8a79254b15a0f}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga02bce69d16597e31b5d8a79254b15a0f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::b\+\_\+edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to boundary a edge using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga95cdaef4a96372c44d02c568180040d9}\label{group__Mesh_ga95cdaef4a96372c44d02c568180040d9}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_ga95cdaef4a96372c44d02c568180040d9}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::b\+\_\+cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to boundary a cell using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga951bafe54bebc9bb33d8af492a1dbfba}\label{group__Mesh_ga951bafe54bebc9bb33d8af492a1dbfba}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga951bafe54bebc9bb33d8af492a1dbfba}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::i\+\_\+vertex}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal vertex using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga6666d90cbbdc42e6577eb1252025f125}\label{group__Mesh_ga6666d90cbbdc42e6577eb1252025f125}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_ga6666d90cbbdc42e6577eb1252025f125}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::i\+\_\+edge}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal edge using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gab53d767b0a5227155afcb60c4387f93e}\label{group__Mesh_gab53d767b0a5227155afcb60c4387f93e}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_gab53d767b0a5227155afcb60c4387f93e}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::i\+\_\+cell}} (std\+::size\+\_\+t index) const
+\begin{DoxyCompactList}\small\item\em get a constant pointer to an internal cell using an index \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae91ec6ac477c6beb041626175f2f8fe2}\label{group__Mesh_gae91ec6ac477c6beb041626175f2f8fe2}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::renum} (const char B, const std\+::vector$<$ size\+\_\+t $>$ new\+\_\+to\+\_\+old)
+\item 
+\mbox{\Hypertarget{group__Mesh_gae9caaa64e0d0c0ce27cac373ce7db1f9}\label{group__Mesh_gae9caaa64e0d0c0ce27cac373ce7db1f9}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::plot\+\_\+mesh} (std\+::ofstream $\ast$out) const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga35c674ca70a7924deb6d290808c911e6}\label{group__Mesh_ga35c674ca70a7924deb6d290808c911e6}} 
+void {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::plot\+\_\+triangulation} (std\+::ofstream $\ast$out) const
+\item 
+\mbox{\Hypertarget{group__Mesh_ga3a19e0d8b6fe093b7d93921cd559ae6e}\label{group__Mesh_ga3a19e0d8b6fe093b7d93921cd559ae6e}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga3a19e0d8b6fe093b7d93921cd559ae6e}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::find\+\_\+cell}} (const \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} x) const
+\begin{DoxyCompactList}\small\item\em returns the index of the cell containing the point x \end{DoxyCompactList}\item 
+std\+::array$<$ double, 2 $>$ \mbox{\hyperlink{group__Mesh_gac33d343af5b7adbf421dfd1006e5867c}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::regularity}} ()
+\item 
+\mbox{\hyperlink{group__Mesh_gac5ff0f3ef9d38a3a1142a84804bd30f7}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+Polytope}} (size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em $<$ Constructor for the base class. Sets \+\_\+index to \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae378115d09c9963491c7cbdf7daef762}\label{group__Mesh_gae378115d09c9963491c7cbdf7daef762}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_gae378115d09c9963491c7cbdf7daef762}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::global\+\_\+index}} () const
+\begin{DoxyCompactList}\small\item\em Return the global index of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga94aff9286ee0251e443351214efe7c15}\label{group__Mesh_ga94aff9286ee0251e443351214efe7c15}} 
+double \mbox{\hyperlink{group__Mesh_ga94aff9286ee0251e443351214efe7c15}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::diam}} () const
+\begin{DoxyCompactList}\small\item\em Return the diameter of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga251a34edbff45089756cb31c35fbd5b5}\label{group__Mesh_ga251a34edbff45089756cb31c35fbd5b5}} 
+\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_ga251a34edbff45089756cb31c35fbd5b5}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::center\+\_\+mass}} () const
+\begin{DoxyCompactList}\small\item\em Return the center mass of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga3e7df184fe0d0f2f4378472b7af9afeb}\label{group__Mesh_ga3e7df184fe0d0f2f4378472b7af9afeb}} 
+double \mbox{\hyperlink{group__Mesh_ga3e7df184fe0d0f2f4378472b7af9afeb}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::measure}} () const
+\begin{DoxyCompactList}\small\item\em Return the Lebesgue measure of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gafd7649f0b1004c4d14fff9626438d03c}\label{group__Mesh_gafd7649f0b1004c4d14fff9626438d03c}} 
+void \mbox{\hyperlink{group__Mesh_gafd7649f0b1004c4d14fff9626438d03c}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::set\+\_\+global\+\_\+index}} (const size\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Set the global index. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga5e34171cc2851f1fa7846e95f8933797}\label{group__Mesh_ga5e34171cc2851f1fa7846e95f8933797}} 
+bool \mbox{\hyperlink{group__Mesh_ga5e34171cc2851f1fa7846e95f8933797}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::is\+\_\+boundary}} () const
+\begin{DoxyCompactList}\small\item\em Return true if Straight\+Object is a boundary object, false otherwise. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gad8257a6685f5c511e678cea61ff6caa5}\label{group__Mesh_gad8257a6685f5c511e678cea61ff6caa5}} 
+void \mbox{\hyperlink{group__Mesh_gad8257a6685f5c511e678cea61ff6caa5}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::set\+\_\+boundary}} (bool val)
+\begin{DoxyCompactList}\small\item\em Set the boundary value of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga32cf9e5ed55e74e44756beea65c50f38}\label{group__Mesh_ga32cf9e5ed55e74e44756beea65c50f38}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga32cf9e5ed55e74e44756beea65c50f38}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::get\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the vertices of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga57bf0c1b2f835ad04723528dafd1af16}\label{group__Mesh_ga57bf0c1b2f835ad04723528dafd1af16}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga57bf0c1b2f835ad04723528dafd1af16}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::get\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the edges of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga215419da6a9f23fa563c41c655389a84}\label{group__Mesh_ga215419da6a9f23fa563c41c655389a84}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ $>$ \mbox{\hyperlink{group__Mesh_ga215419da6a9f23fa563c41c655389a84}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::get\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the cells of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaa4967f864a36fa47038ce54f4394ccc1}\label{group__Mesh_gaa4967f864a36fa47038ce54f4394ccc1}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_gaa4967f864a36fa47038ce54f4394ccc1}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::n\+\_\+vertices}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of vertices of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga190ea6225b1200da0f540b1979ccc0ce}\label{group__Mesh_ga190ea6225b1200da0f540b1979ccc0ce}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_ga190ea6225b1200da0f540b1979ccc0ce}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::n\+\_\+edges}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of edges of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf97ec041d30bf8bbf38f0ddaccdeff77}\label{group__Mesh_gaf97ec041d30bf8bbf38f0ddaccdeff77}} 
+size\+\_\+t \mbox{\hyperlink{group__Mesh_gaf97ec041d30bf8bbf38f0ddaccdeff77}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::n\+\_\+cells}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of cells of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga9b99db79b5bf4abf55ff4678e8497096}\label{group__Mesh_ga9b99db79b5bf4abf55ff4678e8497096}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ \mbox{\hyperlink{group__Mesh_ga9b99db79b5bf4abf55ff4678e8497096}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::vertex}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th vertex of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaee3a84b7f040d784cca6afaea009858e}\label{group__Mesh_gaee3a84b7f040d784cca6afaea009858e}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ \mbox{\hyperlink{group__Mesh_gaee3a84b7f040d784cca6afaea009858e}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::edge}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th edge of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga088d4295e0f4835ef9a9591248b79261}\label{group__Mesh_ga088d4295e0f4835ef9a9591248b79261}} 
+\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ \mbox{\hyperlink{group__Mesh_ga088d4295e0f4835ef9a9591248b79261}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::cell}} (const size\+\_\+t i) const
+\begin{DoxyCompactList}\small\item\em Return the i-\/th cell of the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga16d78674eb5fbbd193a41983a588f635}\label{group__Mesh_ga16d78674eb5fbbd193a41983a588f635}} 
+void \mbox{\hyperlink{group__Mesh_ga16d78674eb5fbbd193a41983a588f635}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::add\+\_\+vertex}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9b99db79b5bf4abf55ff4678e8497096}{vertex}})
+\begin{DoxyCompactList}\small\item\em Add a vertex to the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gae9d330ac1f734fe7e73c2d9fb9e9d537}\label{group__Mesh_gae9d330ac1f734fe7e73c2d9fb9e9d537}} 
+void \mbox{\hyperlink{group__Mesh_gae9d330ac1f734fe7e73c2d9fb9e9d537}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::add\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_gaee3a84b7f040d784cca6afaea009858e}{edge}})
+\begin{DoxyCompactList}\small\item\em Add an edge to the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaeb4793e52bf9b61c7ca50cd91bb1a447}\label{group__Mesh_gaeb4793e52bf9b61c7ca50cd91bb1a447}} 
+void \mbox{\hyperlink{group__Mesh_gaeb4793e52bf9b61c7ca50cd91bb1a447}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::add\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_ga088d4295e0f4835ef9a9591248b79261}{cell}})
+\begin{DoxyCompactList}\small\item\em Add a cell to the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gac17da682d9d3cb489f1e491b4bba959c}\label{group__Mesh_gac17da682d9d3cb489f1e491b4bba959c}} 
+void \mbox{\hyperlink{group__Mesh_gac17da682d9d3cb489f1e491b4bba959c}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::remove\+\_\+edge}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_gaee3a84b7f040d784cca6afaea009858e}{edge}})
+\begin{DoxyCompactList}\small\item\em Remove a cell from the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga1b302b06b2e7d9b42ef2f22f1700812b}\label{group__Mesh_ga1b302b06b2e7d9b42ef2f22f1700812b}} 
+void \mbox{\hyperlink{group__Mesh_ga1b302b06b2e7d9b42ef2f22f1700812b}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::remove\+\_\+cell}} (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_ga088d4295e0f4835ef9a9591248b79261}{cell}})
+\begin{DoxyCompactList}\small\item\em Remove a cell from the Straight\+Object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga3c1638a693801042f8ed152115d5e525}\label{group__Mesh_ga3c1638a693801042f8ed152115d5e525}} 
+int \mbox{\hyperlink{group__Mesh_ga3c1638a693801042f8ed152115d5e525}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::index\+\_\+vertex}} (const \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$\mbox{\hyperlink{group__Mesh_ga9b99db79b5bf4abf55ff4678e8497096}{vertex}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a vertex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga1d5d7f4e1616c121220b3928d206b843}\label{group__Mesh_ga1d5d7f4e1616c121220b3928d206b843}} 
+int \mbox{\hyperlink{group__Mesh_ga1d5d7f4e1616c121220b3928d206b843}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::index\+\_\+edge}} (const \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$\mbox{\hyperlink{group__Mesh_gaee3a84b7f040d784cca6afaea009858e}{edge}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of an edge. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_gaf24adb75c4f2978b51a7399a8f54837a}\label{group__Mesh_gaf24adb75c4f2978b51a7399a8f54837a}} 
+int \mbox{\hyperlink{group__Mesh_gaf24adb75c4f2978b51a7399a8f54837a}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::index\+\_\+cell}} (const \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$\mbox{\hyperlink{group__Mesh_ga088d4295e0f4835ef9a9591248b79261}{cell}}) const
+\begin{DoxyCompactList}\small\item\em Returns the local index of a cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Mesh_ga6afb20d9f99605b9c125955f50da6fed}\label{group__Mesh_ga6afb20d9f99605b9c125955f50da6fed}} 
+{\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Vertex\+::\+Vertex} (size\+\_\+t, \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}})
+\item 
+\mbox{\Hypertarget{group__Mesh_gad3735b91d519303d1ac65db84609897f}\label{group__Mesh_gad3735b91d519303d1ac65db84609897f}} 
+\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} \mbox{\hyperlink{group__Mesh_gad3735b91d519303d1ac65db84609897f}{Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Vertex\+::coords}} () const
+\begin{DoxyCompactList}\small\item\em Return the coordinates of a \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__Mesh_gafcd32a05135eba7421f170b68a6f29fb}\label{group__Mesh_gafcd32a05135eba7421f170b68a6f29fb}} 
+size\+\_\+t {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+index}
+\item 
+\mbox{\Hypertarget{group__Mesh_gac069c3af7dd0862df395ebd61cacfaae}\label{group__Mesh_gac069c3af7dd0862df395ebd61cacfaae}} 
+\mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+center\+\_\+mass}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga2bc8cd2086507be80a5a3e1d159be028}\label{group__Mesh_ga2bc8cd2086507be80a5a3e1d159be028}} 
+double {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+measure}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga89f82aecf3fa4fa9da2a4869d2fed32b}\label{group__Mesh_ga89f82aecf3fa4fa9da2a4869d2fed32b}} 
+double {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+diameter}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga570190e47aee9b68af31b759e5cd67f5}\label{group__Mesh_ga570190e47aee9b68af31b759e5cd67f5}} 
+bool {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+is\+\_\+boundary}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga5c9b865a67ea709828824e0801fafa01}\label{group__Mesh_ga5c9b865a67ea709828824e0801fafa01}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Vertex}{Vertex}} $\ast$ $>$ {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+vertices}
+\item 
+\mbox{\Hypertarget{group__Mesh_gadb27c3d25e78d44d9f92405695a7f2b9}\label{group__Mesh_gadb27c3d25e78d44d9f92405695a7f2b9}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$ {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+edges}
+\item 
+\mbox{\Hypertarget{group__Mesh_gad79cc0f8bf47fec53e8cd17e6f372d90}\label{group__Mesh_gad79cc0f8bf47fec53e8cd17e6f372d90}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}} $\ast$ $>$ {\bfseries Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+\_\+cells}
+\item 
+\mbox{\Hypertarget{group__Mesh_gabbd42eb8ea331607f87140a030b288ea}\label{group__Mesh_gabbd42eb8ea331607f87140a030b288ea}} 
+size\+\_\+t {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+index}
+\item 
+\mbox{\Hypertarget{group__Mesh_gad1858dc2100cb870b8befdf536ee5430}\label{group__Mesh_gad1858dc2100cb870b8befdf536ee5430}} 
+\mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+center\+\_\+mass}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga157ad7e182d28862bc864ee4c5bd9807}\label{group__Mesh_ga157ad7e182d28862bc864ee4c5bd9807}} 
+double {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+measure}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga0f74ed7b0b2e2604f69d893a0ef92611}\label{group__Mesh_ga0f74ed7b0b2e2604f69d893a0ef92611}} 
+double {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+diameter}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga3bca3c82e024a50b3a2a48eba0a221ea}\label{group__Mesh_ga3bca3c82e024a50b3a2a48eba0a221ea}} 
+bool {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+is\+\_\+boundary}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga840dfb465b2272ec2133dcba19799944}\label{group__Mesh_ga840dfb465b2272ec2133dcba19799944}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}} $\ast$ $>$ {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+vertices}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga48a4e080bb35ed513c45b7b8498c94e6}\label{group__Mesh_ga48a4e080bb35ed513c45b7b8498c94e6}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} $\ast$ $>$ {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+edges}
+\item 
+\mbox{\Hypertarget{group__Mesh_ga4962e340cd260960e6f3f0af70cdd89b}\label{group__Mesh_ga4962e340cd260960e6f3f0af70cdd89b}} 
+std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}} $\ast$ $>$ {\bfseries Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+\_\+cells}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classes and methods for all objects (\mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Vertex}{Vertex}}, \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}}, \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}}, \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}}) in a \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}}. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__Mesh_gae022c9b65e0ce9299764a51f56a76c32}\label{group__Mesh_gae022c9b65e0ce9299764a51f56a76c32}} 
+\index{Mesh@{Mesh}!build\_the\_mesh@{build\_the\_mesh}}
+\index{build\_the\_mesh@{build\_the\_mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{build\_the\_mesh()}{build\_the\_mesh()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Mesh}{Mesh}} $>$ Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Builder\+::build\+\_\+the\+\_\+mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Build mesh \mbox{\Hypertarget{group__Mesh_ga0895159515e37c2318fe5258c44886e0}\label{group__Mesh_ga0895159515e37c2318fe5258c44886e0}} 
+\index{Mesh@{Mesh}!Cell@{Cell}}
+\index{Cell@{Cell}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} $\ast$ $>$}]{edges }\end{DoxyParamCaption})}
+
+
+
+Constructor for a \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Cell}}. Calls the base class constructor, sets \+\_\+edges to. 
+
+\begin{DoxyItemize}
+\item edges and computes the cell data (center\+\_\+mass, diameter, measure, edge orientations) \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_gaaf4f647784a67bce5e743f847c359871}\label{group__Mesh_gaaf4f647784a67bce5e743f847c359871}} 
+\index{Mesh@{Mesh}!Cell@{Cell}}
+\index{Cell@{Cell}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index,  }\item[{std\+::vector$<$ Triangle $>$}]{triangles }\end{DoxyParamCaption})}
+
+
+
+Constructor for a \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Cell}{Cell}}. Calls the base class constructor, sets \+\_\+triangles to. 
+
+\begin{DoxyItemize}
+\item triangles and computes the cell data (center\+\_\+mass, diameter, measure, edge orientations) \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_ga73dc06c655230f0d26290a60efd19560}\label{group__Mesh_ga73dc06c655230f0d26290a60efd19560}} 
+\index{Mesh@{Mesh}!edge\_normal@{edge\_normal}}
+\index{edge\_normal@{edge\_normal}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{edge\_normal()}{edge\_normal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::edge\+\_\+normal (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{edge\+\_\+index }\end{DoxyParamCaption}) const}
+
+
+
+Return the outer normal of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} located at. 
+
+\begin{DoxyItemize}
+\item edge\+\_\+index. \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_gae519fd4323f21fe8d08e1bc20b973f99}\label{group__Mesh_gae519fd4323f21fe8d08e1bc20b973f99}} 
+\index{Mesh@{Mesh}!edge\_normal@{edge\_normal}}
+\index{edge\_normal@{edge\_normal}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{edge\_normal()}{edge\_normal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::edge\+\_\+normal (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{edge\+\_\+index,  }\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+Return the outer normal of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} located at. 
+
+\begin{DoxyItemize}
+\item edge\+\_\+index evaluated at the parameter @t. \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_ga4350c12d25092b865f99d3254bda85b8}\label{group__Mesh_ga4350c12d25092b865f99d3254bda85b8}} 
+\index{Mesh@{Mesh}!edge\_orientation@{edge\_orientation}}
+\index{edge\_orientation@{edge\_orientation}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{edge\_orientation()}{edge\_orientation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell\+::edge\+\_\+orientation (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{edge\+\_\+index }\end{DoxyParamCaption}) const}
+
+
+
+Return the orientation of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} located at. 
+
+\begin{DoxyItemize}
+\item edge\+\_\+index. \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_ga38192fd1f4247db1e5013caad58e277f}\label{group__Mesh_ga38192fd1f4247db1e5013caad58e277f}} 
+\index{Mesh@{Mesh}!edge\_orientation@{edge\_orientation}}
+\index{edge\_orientation@{edge\_orientation}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{edge\_orientation()}{edge\_orientation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::edge\+\_\+orientation (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{edge\+\_\+index }\end{DoxyParamCaption}) const}
+
+
+
+Return the orientation of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} located at. 
+
+\begin{DoxyItemize}
+\item edge\+\_\+index. \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_ga454a7191d35955588b8c0197e7a3cd6f}\label{group__Mesh_ga454a7191d35955588b8c0197e7a3cd6f}} 
+\index{Mesh@{Mesh}!MeshBuilder@{MeshBuilder}}
+\index{MeshBuilder@{MeshBuilder}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{MeshBuilder()}{MeshBuilder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Builder\+::\+Mesh\+Builder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshBuilder}{Mesh\+Builder}}. \mbox{\Hypertarget{group__Mesh_gab622b73fd9dd603658e0dd467faaca55}\label{group__Mesh_gab622b73fd9dd603658e0dd467faaca55}} 
+\index{Mesh@{Mesh}!MeshBuilder@{MeshBuilder}}
+\index{MeshBuilder@{MeshBuilder}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{MeshBuilder()}{MeshBuilder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Builder\+::\+Mesh\+Builder (\begin{DoxyParamCaption}\item[{const std\+::string}]{mesh\+\_\+file }\end{DoxyParamCaption})}
+
+Overloaded constructor for \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1MeshBuilder}{Mesh\+Builder}} so read\+\_\+mesh can be called from \mbox{\hyperlink{group__Mesh_gae022c9b65e0ce9299764a51f56a76c32}{build\+\_\+the\+\_\+mesh()}}. \mbox{\Hypertarget{group__Mesh_ga2755437085852aa076b365372de072c9}\label{group__Mesh_ga2755437085852aa076b365372de072c9}} 
+\index{Mesh@{Mesh}!MeshReaderTyp2@{MeshReaderTyp2}}
+\index{MeshReaderTyp2@{MeshReaderTyp2}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{MeshReaderTyp2()}{MeshReaderTyp2()}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Reader\+Typ2\+::\+Mesh\+Reader\+Typ2 (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+\_\+name }\end{DoxyParamCaption})}
+
+Constructor for mesh reader
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & name of the file name, needs to include the full path \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Mesh_ga1f9d4f4388c7280d9dc43cf46675e588}\label{group__Mesh_ga1f9d4f4388c7280d9dc43cf46675e588}} 
+\index{Mesh@{Mesh}!normal@{normal}}
+\index{normal@{normal}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{normal()}{normal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::normal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return the normal of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} at the parameter. 
+
+\begin{DoxyItemize}
+\item t \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_gaac7ce72b7d379ef4bbc85cda1e46a80f}\label{group__Mesh_gaac7ce72b7d379ef4bbc85cda1e46a80f}} 
+\index{Mesh@{Mesh}!normal@{normal}}
+\index{normal@{normal}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{normal()}{normal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::normal (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+Return the normal of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} at the parameter. 
+
+\begin{DoxyItemize}
+\item t \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_gaa10bf33f8ae6fc8231e0974c5a323094}\label{group__Mesh_gaa10bf33f8ae6fc8231e0974c5a323094}} 
+\index{Mesh@{Mesh}!plot\_triangulation@{plot\_triangulation}}
+\index{plot\_triangulation@{plot\_triangulation}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{plot\_triangulation()}{plot\_triangulation()}}
+{\footnotesize\ttfamily void Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Cell\+::plot\+\_\+triangulation (\begin{DoxyParamCaption}\item[{std\+::ofstream $\ast$}]{out }\end{DoxyParamCaption}) const}
+
+
+
+Plot the triangles to. 
+
+\begin{DoxyItemize}
+\item out \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_ga806b5347f443b7c89788b7f861333cfb}\label{group__Mesh_ga806b5347f443b7c89788b7f861333cfb}} 
+\index{Mesh@{Mesh}!Polytope@{Polytope}}
+\index{Polytope@{Polytope}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Polytope()}{Polytope()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Polytope\+::\+Polytope (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+$<$ Constructor for the base class. Sets \+\_\+index to 
+
+\begin{DoxyItemize}
+\item index, \+\_\+center\+\_\+mass, \+\_\+measure, \+\_\+diameter to zero, and \+\_\+is\+\_\+boundary to false. \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_gac5ff0f3ef9d38a3a1142a84804bd30f7}\label{group__Mesh_gac5ff0f3ef9d38a3a1142a84804bd30f7}} 
+\index{Mesh@{Mesh}!Polytope@{Polytope}}
+\index{Polytope@{Polytope}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Polytope()}{Polytope()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Polytope\+::\+Polytope (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+
+
+$<$ Constructor for the base class. Sets \+\_\+index to 
+
+\begin{DoxyItemize}
+\item index, \+\_\+center\+\_\+mass, \+\_\+measure, \+\_\+diameter to zero, and \+\_\+is\+\_\+boundary to false. \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_ga16baf66c4f82fe7b5eaa0e152cc2f53e}\label{group__Mesh_ga16baf66c4f82fe7b5eaa0e152cc2f53e}} 
+\index{Mesh@{Mesh}!read\_mesh@{read\_mesh}}
+\index{read\_mesh@{read\_mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{read\_mesh()}{read\_mesh()}}
+{\footnotesize\ttfamily void Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+Reader\+Typ2\+::read\+\_\+mesh (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::array$<$ double, 2 $>$$>$ \&}]{vertices,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::size\+\_\+t $>$$>$ \&}]{cells }\end{DoxyParamCaption})}
+
+Reads the file into the specified containers
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertices} & reference to a vector to hold the vertices coordinates \\
+\hline
+{\em cells} & reference to a vector to hold the cell vertices \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Mesh_gac33d343af5b7adbf421dfd1006e5867c}\label{group__Mesh_gac33d343af5b7adbf421dfd1006e5867c}} 
+\index{Mesh@{Mesh}!regularity@{regularity}}
+\index{regularity@{regularity}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{regularity()}{regularity()}}
+{\footnotesize\ttfamily std\+::array$<$ double, 2 $>$ Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Mesh\+::regularity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Regularity factor = 1st component\+: maximum of
+\begin{DoxyItemize}
+\item diameter of cell / (measure of cell)$^\wedge$\{1/dim\}
+\item diameter of cell / diameter of edge \mbox{[}for each edge of the cell\mbox{]}
+\end{DoxyItemize}
+
+2nd component\+: evaluation of max of ratio \char`\"{}diam of cell / radius ball inscribed in cell\char`\"{}\mbox{\Hypertarget{group__Mesh_ga3f70b053e29ac4621a1febadeae33cfd}\label{group__Mesh_ga3f70b053e29ac4621a1febadeae33cfd}} 
+\index{Mesh@{Mesh}!tangent@{tangent}}
+\index{tangent@{tangent}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{tangent()}{tangent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Mesh_gace9cb1ea94b88c2b760060306a008e2f}{Vector\+Rd}} Poly\+Mesh2\+D\+::\+Straight\+Mesh\+::\+Edge\+::tangent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Return the tangent of the \mbox{\hyperlink{classPolyMesh2D_1_1StraightMesh_1_1Edge}{Edge}} at the parameter. 
+
+\begin{DoxyItemize}
+\item t \end{DoxyItemize}
+\mbox{\Hypertarget{group__Mesh_ga05fb21a7083ecebef9812ecccb9acb90}\label{group__Mesh_ga05fb21a7083ecebef9812ecccb9acb90}} 
+\index{Mesh@{Mesh}!tangent@{tangent}}
+\index{tangent@{tangent}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{tangent()}{tangent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__Mesh_gae83c05cb9950ce78198428991c958f9e}{Vector\+Rd}} Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Edge\+::tangent (\begin{DoxyParamCaption}\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+
+Return the tangent of the \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Edge}{Edge}} at the parameter. 
+
+\begin{DoxyItemize}
+\item t \end{DoxyItemize}

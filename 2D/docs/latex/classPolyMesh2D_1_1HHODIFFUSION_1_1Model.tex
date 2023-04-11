@@ -1,0 +1,26 @@
+\hypertarget{classPolyMesh2D_1_1HHODIFFUSION_1_1Model}{}\doxysection{Poly\+Mesh2D\+::HHODIFFUSION\+::Model Class Reference}
+\label{classPolyMesh2D_1_1HHODIFFUSION_1_1Model}\index{PolyMesh2D::HHODIFFUSION::Model@{PolyMesh2D::HHODIFFUSION::Model}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_a5889a56e6f077cce807ad6c62aa08bf4}\label{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_a5889a56e6f077cce807ad6c62aa08bf4}} 
+{\bfseries Model} (const \mbox{\hyperlink{classHybridCore}{Hybrid\+Core}} \&hho, const std\+::function$<$ double(Eigen\+::\+Vector2d, \mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Poly\+Mesh2\+D\+::\+Curved\+Mesh\+::\+Cell}} $\ast$)$>$ \&src, std\+::function$<$ Eigen\+::\+Matrix2d(\mbox{\hyperlink{classPolyMesh2D_1_1CurvedMesh_1_1Cell}{Curved\+Mesh\+::\+Cell}} $\ast$)$>$ diffusion)
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_a3cd111e6a725629571014745fabfa2b9}\label{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_a3cd111e6a725629571014745fabfa2b9}} 
+void {\bfseries assemble} (bool use\+\_\+threads=true)
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_abc8b78b2cd912b1096fa119bfe84e2e7}\label{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_abc8b78b2cd912b1096fa119bfe84e2e7}} 
+Eigen\+::\+Vector\+Xd {\bfseries solve} (const Eigen\+::\+Vector\+Xd \&UDir)
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_a7ce0c002c3283e8f5a3c438757810b4c}\label{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_a7ce0c002c3283e8f5a3c438757810b4c}} 
+std\+::vector$<$ double $>$ {\bfseries compute\+\_\+errors} (const Eigen\+::\+Vector\+Xd \&approx\+\_\+\+Uvec)
+\item 
+\mbox{\Hypertarget{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_aeffd2d8c081d5f2c78f436b741557f1e}\label{classPolyMesh2D_1_1HHODIFFUSION_1_1Model_aeffd2d8c081d5f2c78f436b741557f1e}} 
+void {\bfseries plot} (const Eigen\+::\+Vector\+Xd \&approx\+\_\+\+Uvec, const std\+::string \&plot\+\_\+file)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+hho\+\_\+diffusion.\+hpp\item 
+hho\+\_\+diffusion.\+cpp\end{DoxyCompactItemize}
