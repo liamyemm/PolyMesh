@@ -38,8 +38,12 @@ using MeshType = PolyMesh2D::CurvedMesh::Mesh;
     size_t edge_degree() const;
 
     CellBasisType *highorder_basis(const size_t iT) const;
-    // CellBasisType *cell_basis(const size_t iT) const;
-    EdgeBasisType *edge_basis(const size_t iF) const;
+    CellBasisType *cell_basis(const size_t iT) const;
+    EdgeBasisType *edge_basis(const size_t iE) const;
+
+    void enrich_highorder_basis(const size_t iT, const PolyMesh2D::Functional::ScalarFunction2D &func);
+    void enrich_cell_basis(const size_t iT, const PolyMesh2D::Functional::ScalarFunction2D &func);
+    void enrich_edge_basis(const size_t iE, const PolyMesh2D::Functional::ScalarFunction1D &func);
 
     Quadrature::QuadratureRule<Eigen::Vector2d> quadT(const size_t iT) const;
     Quadrature::QuadratureRule<double> quadE(const size_t iE) const;

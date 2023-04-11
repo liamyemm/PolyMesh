@@ -21,6 +21,9 @@ namespace PolyMesh2D
             typedef typename Function<input_dim, output_dim>::OutputType OutputType;
             typedef typename Function<input_dim, output_dim>::DerivativeType DerivativeType;
 
+            static const unsigned input_dimension = input_dim;
+            static const unsigned output_dimension = output_dim;
+
             Basis() {}
             ~Basis() {}
             Basis(const std::vector<Function<input_dim, output_dim>> &bases) : __basis(bases) {}
@@ -32,7 +35,7 @@ namespace PolyMesh2D
 
             void add_basis_function(const Function<input_dim, output_dim> &func)
             {
-                return __basis.push_back(func);
+                __basis.push_back(func);
             }
 
             void remove_basis_function(const size_t i) // remove basis function at ith index
@@ -104,6 +107,27 @@ namespace PolyMesh2D
             inline size_t dimension() const
             {
                 return m_basis.dimension();
+            }
+
+            // template<size_t input_dim, size_t output_dim>
+            void add_basis_function(const Function<BasisType::input_dimension, BasisType::output_dimension> &func)
+            {
+                m_basis.add_basis_function(func);
+                // Eigen::MatrixXd new_mat = Eigen::MatrixXd::Identity(m_basis.dimension(), m_basis.dimension());
+                // new_mat.topLeftCorner(m_basis.dimension() - 1, m_basis.dimension() - 1) = m_matrix;
+                // m_matrix = new_mat;
+            }
+
+            void remove_basis_function(const size_t i) // remove basis function at ith index
+            {
+                assert(i < dimension());
+                m_basis.remove_basis_function(i);
+            }
+
+            void reset_matrix(const Eigen::MatrixXd &matrix)
+            {
+                assert((size_t)matrix.cols() == m_basis.dimension());
+                m_matrix = matrix;
             }
 
             /// Evaluate the i-th Function at point x

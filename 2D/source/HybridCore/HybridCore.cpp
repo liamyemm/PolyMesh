@@ -1,14 +1,52 @@
 #include <HybridCore.hpp>
 #include <parallel_for.hpp>
 
-using Quadrature::QuadratureRule;
+Eigen::MatrixXd orthonormalize(Eigen::MatrixXd &gram_mat)
+{
+    size_t dimension = gram_mat.rows();
+    assert((size_t)gram_mat.cols() == dimension);
+
+    Eigen::MatrixXd B = Eigen::MatrixXd::Zero(dimension, dimension);
+    double norm = std::sqrt(gram_mat(0, 0));
+    B(0, 0) = (1.0 / norm);
+    gram_mat.row(0) /= norm;
+    Eigen::VectorXd tmp = gram_mat.row(0).transpose();
+    gram_mat.col(0) = tmp;
+
+    for (size_t i = 1; i < dimension; ++i)
+    {
+        Eigen::RowVectorXd coeffs = Eigen::RowVectorXd::Zero(i);
+        for (size_t j = 0; j < i; j++)
+        {
+            coeffs(j) = -gram_mat(i, j);
+        }
+
+        for (size_t j = 0; j < i; j++)
+        {
+            gram_mat.row(i) += coeffs(j) * gram_mat.row(j);
+        }
+
+        norm = std::sqrt(gram_mat(i, i));
+        coeffs /= norm;
+        gram_mat.row(i) /= norm;
+
+        tmp = gram_mat.row(i).transpose();
+        gram_mat.col(i) = tmp;
+
+        B.row(i).head(i) = coeffs * B.topLeftCorner(i, i);
+        B(i, i) = (1.0 / norm);
+    }
+    return B;
+}
+
 using Quadrature::GaussLegendre1D;
+using Quadrature::QuadratureRule;
 
 HybridCore::HybridCore(
     MeshType *mesh_ptr, ///< A pointer to the loaded mesh
-    size_t cell_deg,              ///< The degree of the cell polynomials
-    size_t edge_deg,              ///< The degree of the edge polynomials
-    bool use_threads,             ///< Optional argument to indicate if threads should be used
+    size_t cell_deg,    ///< The degree of the cell polynomials
+    size_t edge_deg,    ///< The degree of the edge polynomials
+    bool use_threads,   ///< Optional argument to indicate if threads should be used
     bool ortho)
 
     : m_mesh(mesh_ptr),
@@ -21,12 +59,13 @@ HybridCore::HybridCore(
       m_edge_basis(mesh_ptr->n_edges())
 {
 
-    GaussLegendre1D low_quad(2 * (m_edge_deg + 1));
-    GaussLegendre1D high_quad(30);
+    // GaussLegendre1D low_quad(2 * (m_edge_deg + 1));
+    GaussLegendre1D low_quad(45);
+    GaussLegendre1D high_quad(45);
 
     for (auto &e : m_mesh->get_edges())
     {
-        if(e->is_straight())
+        if (e->is_straight())
         {
             edge_quads.push_back(generate_quadrature_rule(e, low_quad));
         }
@@ -125,60 +164,32 @@ HybridCore::CellBasisType HybridCore::construct_cell_basis(const size_t iT, cons
 
     if (m_ortho)
     {
-        double norm = std::sqrt(basis_integrals(0, 0));
-        B(0, 0) = (1.0 / norm);
-        basis_integrals.row(0) /= norm;
-        Eigen::VectorXd tmp = basis_integrals.row(0).transpose();
-        basis_integrals.col(0) = tmp;
-
-        for (size_t i = 1; i < mono_basis.dimension(); ++i)
-        {
-            Eigen::RowVectorXd coeffs = Eigen::RowVectorXd::Zero(i);
-            for (size_t j = 0; j < i; j++)
-            {
-                coeffs(j) = -basis_integrals(i, j);
-            }
-
-            for (size_t j = 0; j < i; j++)
-            {
-                basis_integrals.row(i) += coeffs(j) * basis_integrals.row(j);
-            }
-
-            norm = std::sqrt(basis_integrals(i, i));
-            coeffs /= norm;
-            basis_integrals.row(i) /= norm;
-
-            tmp = basis_integrals.row(i).transpose();
-            basis_integrals.col(i) = tmp;
-
-            B.row(i).head(i) = coeffs * B.topLeftCorner(i, i);
-            B(i, i) = (1.0 / norm);
-        }
+        B = orthonormalize(basis_integrals);
     }
 
     return CellBasisType(mono_basis, B);
 }
 
-void removeRow(Eigen::MatrixXd& matrix, unsigned int rowToRemove)
+void removeRow(Eigen::MatrixXd &matrix, unsigned int rowToRemove)
 {
-    unsigned int numRows = matrix.rows()-1;
+    unsigned int numRows = matrix.rows() - 1;
     unsigned int numCols = matrix.cols();
 
-    if( rowToRemove < numRows )
-        matrix.block(rowToRemove,0,numRows-rowToRemove,numCols) = matrix.bottomRows(numRows-rowToRemove);
+    if (rowToRemove < numRows)
+        matrix.block(rowToRemove, 0, numRows - rowToRemove, numCols) = matrix.bottomRows(numRows - rowToRemove);
 
-    matrix.conservativeResize(numRows,numCols);
+    matrix.conservativeResize(numRows, numCols);
 }
 
-void removeColumn(Eigen::MatrixXd& matrix, unsigned int colToRemove)
+void removeColumn(Eigen::MatrixXd &matrix, unsigned int colToRemove)
 {
     unsigned int numRows = matrix.rows();
-    unsigned int numCols = matrix.cols()-1;
+    unsigned int numCols = matrix.cols() - 1;
 
-    if( colToRemove < numCols )
-        matrix.block(0,colToRemove,numRows,numCols-colToRemove) = matrix.rightCols(numCols-colToRemove);
+    if (colToRemove < numCols)
+        matrix.block(0, colToRemove, numRows, numCols - colToRemove) = matrix.rightCols(numCols - colToRemove);
 
-    matrix.conservativeResize(numRows,numCols);
+    matrix.conservativeResize(numRows, numCols);
 }
 
 HybridCore::EdgeBasisType HybridCore::construct_edge_basis(const size_t iE)
@@ -235,7 +246,7 @@ HybridCore::EdgeBasisType HybridCore::construct_edge_basis(const size_t iE)
                     break;
                 }
             }
-            if(to_remove)
+            if (to_remove)
             {
                 mono_basis.remove_basis_function(basis_col - shift);
                 ++shift;
@@ -266,38 +277,229 @@ HybridCore::EdgeBasisType HybridCore::construct_edge_basis(const size_t iE)
 
     if (m_ortho)
     {
-        double norm = std::sqrt(new_basis_integrals(0, 0));
-        B(0, 0) = (1.0 / norm);
-        new_basis_integrals.row(0) /= norm;
-        Eigen::VectorXd tmp = new_basis_integrals.row(0).transpose();
-        new_basis_integrals.col(0) = tmp;
-
-        for (size_t i = 1; i < mono_basis.dimension(); ++i)
-        {
-            Eigen::RowVectorXd coeffs = Eigen::RowVectorXd::Zero(i);
-            for (size_t j = 0; j < i; j++)
-            {
-                coeffs(j) = -new_basis_integrals(i, j);
-            }
-
-            for (size_t j = 0; j < i; j++)
-            {
-                new_basis_integrals.row(i) += coeffs(j) * new_basis_integrals.row(j);
-            }
-
-            norm = std::sqrt(new_basis_integrals(i, i));
-            coeffs /= norm;
-            new_basis_integrals.row(i) /= norm;
-
-            tmp = new_basis_integrals.row(i).transpose();
-            new_basis_integrals.col(i) = tmp;
-
-            B.row(i).head(i) = coeffs * B.topLeftCorner(i, i);
-            B(i, i) = (1.0 / norm);
-        }
+        B = orthonormalize(new_basis_integrals);
     }
 
     return EdgeBasisType(mono_basis, B);
+}
+
+// void HybridCore::enrich_highorder_basis(const size_t iT, const PolyMesh2D::Functional::ScalarFunction2D &func)
+// {
+//     assert(iT < m_highorder_basis.size());
+//     m_highorder_basis[iT]->add_basis_function(func);
+
+//     size_t dimension = m_highorder_basis[iT]->dimension();
+//     Eigen::MatrixXd B = Eigen::MatrixXd::Identity(dimension, dimension);
+//     B.topLeftCorner(dimension - 1, dimension - 1) = m_highorder_basis[iT]->matrix();
+
+//     m_highorder_basis[iT]->reset_matrix(B);
+
+//     if (m_ortho)
+//     {
+//         Eigen::MatrixXd basis_integrals = Eigen::MatrixXd::Zero(dimension, dimension);
+//         basis_integrals.topLeftCorner(dimension - 1, dimension - 1) = Eigen::MatrixXd::Identity(dimension - 1, dimension - 1);
+
+//         for (size_t i = 0; i < dimension; ++i)
+//         {
+//             size_t j = dimension - 1;
+//             for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+//             {
+//                 basis_integrals(i, j) += cell_quads[iT][iqn].w * m_highorder_basis[iT]->value(i, cell_quads[iT][iqn].x) * func.value(cell_quads[iT][iqn].x);
+//             }
+//             basis_integrals(j, i) = basis_integrals(i, j);
+//         }
+
+//         B = orthonormalize(basis_integrals);
+
+//         m_highorder_basis[iT]->reset_matrix(B);
+//     }
+// }
+
+// void HybridCore::enrich_cell_basis(const size_t iT, const PolyMesh2D::Functional::ScalarFunction2D &func)
+// {
+//     assert(iT < m_cell_basis.size());
+//     m_cell_basis[iT]->add_basis_function(func);
+
+//     size_t dimension = m_cell_basis[iT]->dimension();
+//     Eigen::MatrixXd B = Eigen::MatrixXd::Identity(dimension, dimension);
+//     B.topLeftCorner(dimension - 1, dimension - 1) = m_cell_basis[iT]->matrix();
+
+//     m_cell_basis[iT]->reset_matrix(B);
+
+//     if (m_ortho)
+//     {
+//         Eigen::MatrixXd basis_integrals = Eigen::MatrixXd::Zero(dimension, dimension);
+//         basis_integrals.topLeftCorner(dimension - 1, dimension - 1) = Eigen::MatrixXd::Identity(dimension - 1, dimension - 1);
+
+//         for (size_t i = 0; i < dimension; ++i)
+//         {
+//             size_t j = dimension - 1;
+//             for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+//             {
+//                 basis_integrals(i, j) += cell_quads[iT][iqn].w * m_cell_basis[iT]->value(i, cell_quads[iT][iqn].x) * func.value(cell_quads[iT][iqn].x);
+//             }
+//             basis_integrals(j, i) = basis_integrals(i, j);
+//         }
+
+//         B = orthonormalize(basis_integrals);
+
+//         m_cell_basis[iT]->reset_matrix(B);
+//     }
+// }
+
+void HybridCore::enrich_highorder_basis(const size_t iT, const PolyMesh2D::Functional::ScalarFunction2D &func)
+{
+    // assuming orthonormalization
+    assert(iT < m_highorder_basis.size());
+
+    size_t dimension = m_highorder_basis[iT]->dimension() + 1;
+    Eigen::MatrixXd basis_integrals = Eigen::MatrixXd::Zero(dimension, dimension);
+
+    for (size_t i = 0; i < dimension - 1; ++i)
+    {
+        for (size_t j = 0; j < dimension - 1; ++j)
+        {
+            for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+            {
+                basis_integrals(i, j) += cell_quads[iT][iqn].w * m_highorder_basis[iT]->value(i, cell_quads[iT][iqn].x) * m_highorder_basis[iT]->value(j, cell_quads[iT][iqn].x);
+            }
+        basis_integrals(j, i) = basis_integrals(i, j);
+        }
+    }
+    for (size_t i = 0; i < dimension - 1; ++i)
+    {
+        size_t j = dimension - 1;
+        for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+        {
+            basis_integrals(i, j) += cell_quads[iT][iqn].w * m_highorder_basis[iT]->value(i, cell_quads[iT][iqn].x) * func.value(cell_quads[iT][iqn].x);
+        }
+        basis_integrals(j, i) = basis_integrals(i, j);
+    }
+    for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+    {
+        basis_integrals(dimension - 1, dimension - 1) += cell_quads[iT][iqn].w * func.value(cell_quads[iT][iqn].x) * func.value(cell_quads[iT][iqn].x);
+    }
+
+    Eigen::VectorXcd eigs = basis_integrals.eigenvalues();
+    double max_eig = std::abs(eigs(0));
+    double min_eig = std::abs(eigs(0));
+    for (int i = 1; i < eigs.size(); ++i)
+    {
+        max_eig = std::max(max_eig, std::abs(eigs(i)));
+        min_eig = std::min(min_eig, std::abs(eigs(i)));
+    }
+
+    if (std::abs(min_eig / max_eig) > 1E-15)
+    {
+        // enrich
+        m_highorder_basis[iT]->add_basis_function(func);
+        Eigen::MatrixXd B = orthonormalize(basis_integrals);
+        m_highorder_basis[iT]->reset_matrix(B);
+    }
+}
+
+void HybridCore::enrich_cell_basis(const size_t iT, const PolyMesh2D::Functional::ScalarFunction2D &func)
+{
+    // assuming orthonormalization
+    assert(iT < m_cell_basis.size());
+
+    size_t dimension = m_cell_basis[iT]->dimension() + 1;
+    Eigen::MatrixXd basis_integrals = Eigen::MatrixXd::Zero(dimension, dimension);
+
+    for (size_t i = 0; i < dimension - 1; ++i)
+    {
+        for (size_t j = 0; j < dimension - 1; ++j)
+        {
+            for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+            {
+                basis_integrals(i, j) += cell_quads[iT][iqn].w * m_cell_basis[iT]->value(i, cell_quads[iT][iqn].x) * m_cell_basis[iT]->value(j, cell_quads[iT][iqn].x);
+            }
+        basis_integrals(j, i) = basis_integrals(i, j);
+        }
+    }
+
+    for (size_t i = 0; i < dimension - 1; ++i)
+    {
+        size_t j = dimension - 1;
+        for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+        {
+            basis_integrals(i, j) += cell_quads[iT][iqn].w * m_cell_basis[iT]->value(i, cell_quads[iT][iqn].x) * func.value(cell_quads[iT][iqn].x);
+        }
+        basis_integrals(j, i) = basis_integrals(i, j);
+    }
+    for (size_t iqn = 0; iqn < cell_quads[iT].size(); ++iqn)
+    {
+        basis_integrals(dimension - 1, dimension - 1) += cell_quads[iT][iqn].w * func.value(cell_quads[iT][iqn].x) * func.value(cell_quads[iT][iqn].x);
+    }
+
+    Eigen::VectorXcd eigs = basis_integrals.eigenvalues();
+    double max_eig = std::abs(eigs(0));
+    double min_eig = std::abs(eigs(0));
+    for (int i = 1; i < eigs.size(); ++i)
+    {
+        max_eig = std::max(max_eig, std::abs(eigs(i)));
+        min_eig = std::min(min_eig, std::abs(eigs(i)));
+    }
+
+    if (std::abs(min_eig / max_eig) > 1E-15)
+    {
+        // enrich
+        m_cell_basis[iT]->add_basis_function(func);
+        Eigen::MatrixXd B = orthonormalize(basis_integrals);
+        m_cell_basis[iT]->reset_matrix(B);
+    }
+}
+
+void HybridCore::enrich_edge_basis(const size_t iE, const PolyMesh2D::Functional::ScalarFunction1D &func)
+{
+    // assuming orthonormalization
+    assert(iE < m_edge_basis.size());
+
+    size_t dimension = m_edge_basis[iE]->dimension() + 1;
+    Eigen::MatrixXd basis_integrals = Eigen::MatrixXd::Zero(dimension, dimension);
+
+    for (size_t i = 0; i < dimension - 1; ++i)
+    {
+        for (size_t j = 0; j < dimension - 1; ++j)
+        {
+            for (size_t iqn = 0; iqn < edge_quads[iE].size(); ++iqn)
+            {
+                basis_integrals(i, j) += edge_quads[iE][iqn].w * m_edge_basis[iE]->value(i, edge_quads[iE][iqn].x) * m_edge_basis[iE]->value(j, edge_quads[iE][iqn].x);
+            }
+        basis_integrals(j, i) = basis_integrals(i, j);
+        }
+    }
+
+    for (size_t i = 0; i < dimension - 1; ++i)
+    {
+        size_t j = dimension - 1;
+        for (size_t iqn = 0; iqn < edge_quads[iE].size(); ++iqn)
+        {
+            basis_integrals(i, j) += edge_quads[iE][iqn].w * m_edge_basis[iE]->value(i, edge_quads[iE][iqn].x) * func.value(edge_quads[iE][iqn].x);
+        }
+        basis_integrals(j, i) = basis_integrals(i, j);
+    }
+    for (size_t iqn = 0; iqn < edge_quads[iE].size(); ++iqn)
+    {
+        basis_integrals(dimension - 1, dimension - 1) += edge_quads[iE][iqn].w * func.value(edge_quads[iE][iqn].x) * func.value(edge_quads[iE][iqn].x);
+    }
+
+    Eigen::VectorXcd eigs = basis_integrals.eigenvalues();
+    double max_eig = std::abs(eigs(0));
+    double min_eig = std::abs(eigs(0));
+    for (int i = 1; i < eigs.size(); ++i)
+    {
+        max_eig = std::max(max_eig, std::abs(eigs(i)));
+        min_eig = std::min(min_eig, std::abs(eigs(i)));
+    }
+
+    if (std::abs(min_eig / max_eig) > 1E-15)
+    {
+        // enrich
+        m_edge_basis[iE]->add_basis_function(func);
+        Eigen::MatrixXd B = orthonormalize(basis_integrals);
+        m_edge_basis[iE]->reset_matrix(B);
+    }
 }
 
 Eigen::VectorXd HybridCore::restr(const Eigen::VectorXd &UVec, const size_t iT) const
@@ -417,11 +619,11 @@ HybridCore::CellBasisType *HybridCore::highorder_basis(const size_t iT) const
     assert(iT < m_highorder_basis.size());
     return m_highorder_basis[iT].get();
 }
-// HybridCore::CellBasisType *HybridCore::cell_basis(const size_t iT) const
-// {
-//     assert(iT < m_cell_basis.size());
-//     return m_cell_basis[iT].get();
-// }
+HybridCore::CellBasisType *HybridCore::cell_basis(const size_t iT) const
+{
+    assert(iT < m_cell_basis.size());
+    return m_cell_basis[iT].get();
+}
 HybridCore::EdgeBasisType *HybridCore::edge_basis(const size_t iE) const
 {
     assert(iE < m_edge_basis.size());
@@ -431,8 +633,8 @@ HybridCore::EdgeBasisType *HybridCore::edge_basis(const size_t iE) const
 size_t HybridCore::local_cell_dofs(const size_t iT) const
 {
     // return m_cell_basis[iT]->dimension();
-    // return m_cell_basis[iT]->dimension();
-    return (m_cell_deg + 1) * (m_cell_deg + 2) / 2;
+    return m_cell_basis[iT]->dimension();
+    // return (m_cell_deg + 1) * (m_cell_deg + 2) / 2;
 }
 size_t HybridCore::local_highorder_dofs(const size_t iT) const
 {
