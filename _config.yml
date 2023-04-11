@@ -1,0 +1,14 @@
+# Site settings
+title: PolyMesh
+description: A brief description of my website goes here.
+url: https://liamyemm.github.io/PolyMesh/
+
+# Build settings
+theme: jekyll
+paginate: 10
+
+# Deployment settings
+deploy:
+  provider: github-pages
+  token: ${{ secrets.GITHUB_TOKEN }}
+
