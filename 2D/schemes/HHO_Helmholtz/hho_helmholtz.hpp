@@ -4,6 +4,10 @@
 #include <unsupported/Eigen/SparseExtra> // Eigen::SparseMatrix
 #include <Eigen/Dense> // Eigen::Matrix
 
+#ifdef WITH_MKL
+#include <Eigen/PardisoSupport>
+#endif
+
 namespace PolyMesh2D
 {
     namespace HHOHELMHOLTZ
@@ -26,16 +30,16 @@ namespace PolyMesh2D
 
             std::string mesh_name, plot_file;
             bool use_threads, orthonormalise;
-            unsigned test_case, cell_degree, edge_degree;
-            char bdry_case;
+            unsigned cell_degree, edge_degree;
+            double wave_number;
         };
 
         class Model
         {
         public:
-            Model(const HybridCore &hho, const ScalarFunction2D &src);
+            Model(const HybridCore &hho, const ScalarFunction2D &src, const double wave_number);
             void assemble(bool use_threads = true);
-            Eigen::VectorXd solve();
+            Eigen::VectorXd solve(const Eigen::VectorXd &UDir);
             std::vector<double> compute_errors(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const ScalarFunction2D &sol);
             void plot(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::string &plot_file, const ScalarFunction2D &sol);
 
@@ -45,6 +49,8 @@ namespace PolyMesh2D
 
             const HybridCore &m_hho;
             const ScalarFunction2D &m_src;
+
+            const double m_wave_number;
 
             Mesh *mesh_ptr;
 

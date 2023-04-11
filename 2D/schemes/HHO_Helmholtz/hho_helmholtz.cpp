@@ -9,7 +9,7 @@
 
 // mesh intersection
 #include "../IntersectMesh/IntersectMesh.hpp"
-#include "TestCase.hpp"
+#include "Enrichment.hpp"
 
 // boost libraries
 #include <boost/program_options.hpp> // boost::program_options
@@ -37,9 +37,28 @@ int main(const int argc, const char **argv)
         std::cerr << msg;
     }
 
-    TestCase TC(params.test_case, params.bdry_case);
+    // PolyMesh2D::HHOPOISSON::TestCase TC(params.test_case, params.bdry_case);
 
-    PolyMesh2D::MeshCutter mesh_cutter(straight_mesh.get(), TC.get_level_set(), TC.get_boundary_param());
+    std::function<Eigen::Vector2d(double)> circle_val = [](double t) -> Eigen::Vector2d
+    { return Eigen::Vector2d(std::cos(t), std::sin(t)); };
+    std::function<Eigen::Vector2d(double)> circle_deriv = [](double t) -> Eigen::Vector2d
+    { return Eigen::Vector2d(-std::sin(t), std::cos(t)); };
+
+    PolyMesh2D::Functional::Curve bdry_param(0.0, 2.0 * Math::PI, circle_val, circle_deriv);
+
+    std::function<double(PolyMesh2D::Functional::ColVector)> LS = [](const PolyMesh2D::Functional::ColVector &x) -> double
+    {
+        return 1.0 - (x(0) * x(0) + x(1) * x(1));
+    };
+
+    std::function<PolyMesh2D::Functional::RowVector(PolyMesh2D::Functional::ColVector)> LS_grad = [](const PolyMesh2D::Functional::ColVector &x) -> PolyMesh2D::Functional::RowVector
+    {
+        return -2.0 * PolyMesh2D::Functional::RowVector(x(0), x(1));
+    };
+
+    ScalarFunction2D level_set(LS, LS_grad);
+
+    PolyMesh2D::MeshCutter mesh_cutter(straight_mesh.get(), level_set, bdry_param);
     std::unique_ptr<Mesh> curved_mesh = mesh_cutter.cut_mesh();
 
     straight_mesh.reset(); // delete straight mesh
@@ -57,20 +76,73 @@ int main(const int argc, const char **argv)
     // Print the data
     std::cout << "[Scheme] Data:\n";
     std::cout << "     No. cells = " << curved_mesh->n_cells() << ", No. edges = " << curved_mesh->n_edges() << ", No. vertices = " << curved_mesh->n_vertices() << "\n";
-    std::cout << "     TestCase = " << params.test_case << "\n";
+    // std::cout << "     TestCase = " << params.test_case << "\n";
     std::cout << "     Mesh = " << params.mesh_name << "\n";
     std::cout << "     Degrees: edge = " << params.edge_degree << "; cell = " << params.cell_degree << "\n";
     std::cout << "     Using threads = " << (params.use_threads ? "true" : "false") << std::endl;
 
     HybridCore hho(curved_mesh.get(), params.cell_degree, params.edge_degree, params.use_threads, params.orthonormalise);
 
-    ScalarFunction2D source(TC.src());
-    ScalarFunction2D exact_sol(TC.sol());
+    double lambda = params.wave_number;
 
-    Model model(hho, source);
+    std::function<double(Eigen::Vector2d)> u = [&lambda](const Eigen::Vector2d x) -> double
+    {
+        // return std::cyl_bessel_j(0, lambda * x.norm()) / std::cyl_bessel_j(0, lambda);
+
+
+        // return std::cos(lambda * x.norm()) - std::cos(lambda);
+        return (std::cyl_bessel_j(0, lambda * x.norm()) / std::cyl_bessel_j(0, lambda) - 1.0) / std::pow(lambda, 2);
+    };
+    std::function<Eigen::RowVector2d(Eigen::Vector2d)> Du = [&lambda](const Eigen::Vector2d x) -> Eigen::RowVector2d
+    {
+        // double multiplier = (x.norm() < 1E-15 ? 0.0 : 1.0 / x.norm());
+        // Eigen::RowVector2d r_hat(multiplier * x.transpose());
+        // return -lambda * std::cyl_bessel_j(1, lambda * x.norm()) * r_hat / std::cyl_bessel_j(0, lambda);
+        // return r_hat;
+
+        if(x.norm() < 1E-15)
+        {
+            return 0.0 * x.transpose();
+        }
+
+        return -((std::cyl_bessel_j(1, lambda * x.norm()) / std::cyl_bessel_j(0, lambda)) / lambda) * x.transpose() / x.norm();
+    };
+    std::function<double(Eigen::Vector2d)> src = [&lambda](const Eigen::Vector2d x) -> double
+    {
+        // if(x.norm() < 1E-15)
+        // {
+        //     return lambda * lambda * (std::cos(lambda) + 1.0);
+        // }
+        // return lambda * std::sin(lambda * x.norm()) / x.norm() + lambda * lambda * std::cos(lambda);
+        // return 0.0;
+        return 1.0;
+    };
+    std::function<double(Eigen::Vector2d)> bdry = [](const Eigen::Vector2d x) -> double
+    {
+        // return 1.0;
+        return 0.0;
+    };
+
+    // Enrichment en(lambda);
+    // en.globally_enrich(hho);
+
+    ScalarFunction2D source(src);
+    ScalarFunction2D exact_sol(u, Du);
+
+    Model model(hho, source, lambda);
 
     model.assemble(params.use_threads);
-    Eigen::VectorXd approx_Uvec(model.solve());
+
+    size_t n_fixed_dofs = 0;
+    for (auto &b_edge : curved_mesh->get_b_edges())
+    {
+        n_fixed_dofs += hho.local_edge_dofs(b_edge->global_index());
+    }
+
+    Eigen::VectorXd UDir(hho.interpolate(bdry).tail(n_fixed_dofs));
+    // Eigen::VectorXd UDir(Eigen::VectorXd::Zero(n_fixed_dofs));
+    Eigen::VectorXd approx_Uvec(model.solve(UDir));
+
     Eigen::VectorXd interp_Uvec(hho.interpolate(exact_sol.get_value()));
 
     auto errors = model.compute_errors(approx_Uvec, interp_Uvec, exact_sol);
@@ -108,7 +180,7 @@ ModelParameters::ModelParameters(const int argc, const char **argv)
 
     // Program options
     po::options_description desc("Allowed options");
-    desc.add_options()("help,h", "Produce help message")("mesh,m", po::value<std::string>(), "Set the mesh")("testcase,t", po::value<unsigned>(), "Set the exact solution")("celldegree,l", po::value<unsigned>(), "Set the degree of the cell polynomials")("edgedegree,k", po::value<unsigned>(), "Set the degree of the edge polynomials")("plot,p", po::value<std::string>(), "Plot to file")("use_threads,u", po::value<bool>(), "Using multithreading")("orthonormalise,o", po::value<bool>(), "Orthonormalise the basis functions")("boundary,b", po::value<char>(), "Set the boundary ('E' = ellipse, 'C' = circle)");
+    desc.add_options()("help,h", "Produce help message")("mesh,m", po::value<std::string>(), "Set the mesh")("wave_number", po::value<double>(), "Set the eave number")("celldegree,l", po::value<unsigned>(), "Set the degree of the cell polynomials")("edgedegree,k", po::value<unsigned>(), "Set the degree of the edge polynomials")("plot,p", po::value<std::string>(), "Plot to file")("use_threads,u", po::value<bool>(), "Using multithreading")("orthonormalise,o", po::value<bool>(), "Orthonormalise the basis functions");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -124,17 +196,8 @@ ModelParameters::ModelParameters(const int argc, const char **argv)
     // Get mesh file
     mesh_name = (vm.count("mesh") ? vm["mesh"].as<std::string>() : "../../../typ2_meshes/mesh2_2_transformed.typ2");
 
-    // Get test case
-    test_case = (vm.count("testcase") ? vm["testcase"].as<unsigned>() : 1);
-
-    if (test_case != 1 && test_case != 2 && test_case != 3)
-    {
-        std::cout << "Invalid choice of test case\n";
-        exit(1);
-    }
-
-    // Get test case
-    bdry_case = (vm.count("boundary") ? vm["boundary"].as<char>() : 'C');
+    // Get wave number
+    wave_number = (vm.count("wave_number") ? vm["wave_number"].as<double>() : 0);
 
     // Get polynomial degrees
     edge_degree = (vm.count("edgedegree") ? vm["edgedegree"].as<unsigned>() : 0);
@@ -155,7 +218,7 @@ ModelParameters::ModelParameters(const int argc, const char **argv)
     orthonormalise = (vm.count("orthonormalise") ? vm["orthonormalise"].as<bool>() : true);
 }
 
-Model::Model(const HybridCore &hho, const ScalarFunction2D &src) : m_hho(hho), m_src(src), mesh_ptr(m_hho.get_mesh()) {}
+Model::Model(const HybridCore &hho, const ScalarFunction2D &src, const double wave_number) : m_hho(hho), m_src(src), m_wave_number(wave_number), mesh_ptr(m_hho.get_mesh()) {}
 
 void Model::assemble(bool use_threads)
 {
@@ -264,56 +327,101 @@ void Model::assemble(bool use_threads)
     std::cout << "     Assembly time = " << assembly_timer.elapsed().wall * pow(10, -9) << "s\n";
 }
 
-Eigen::VectorXd Model::solve()
+Eigen::VectorXd Model::solve(const Eigen::VectorXd &UDir)
 {
     std::cout << "\n[Scheme] Solving the linear system\n";
 
     // Start the timer
-    boost::timer::cpu_timer assembly_timer;
-    assembly_timer.start();
+    boost::timer::cpu_timer timer;
+    timer.start();
 
-    size_t n_fixed_dofs = 0;
-
-    for (size_t iF = 0; iF < mesh_ptr->n_edges(); ++iF)
-    {
-        if (!(mesh_ptr->edge(iF)->is_boundary()))
-        {
-            continue;
-        }
-        n_fixed_dofs += m_hho.local_edge_dofs(iF);
-    }
+    size_t n_fixed_dofs = UDir.size();
     const size_t n_unknowns = m_hho.total_edge_dofs() - n_fixed_dofs;
 
-    Eigen::SparseMatrix<double> SysMat = GlobMat.topLeftCorner(n_unknowns, n_unknowns);
-    Eigen::VectorXd UDir = Eigen::VectorXd::Zero(n_fixed_dofs);
+    Eigen::SparseMatrix<double> SysMat(GlobMat.topLeftCorner(n_unknowns, n_unknowns));
+    // Eigen::VectorXd UDir = Eigen::VectorXd::Zero(n_fixed_dofs);
 
-    Eigen::VectorXd B = GlobRHS.segment(0, n_unknowns) - GlobMat.topRightCorner(n_unknowns, n_fixed_dofs) * UDir;
+    Eigen::VectorXd B(GlobRHS.segment(0, n_unknowns) - GlobMat.topRightCorner(n_unknowns, n_fixed_dofs) * UDir);
 
-    // Solve the statically condesed system using BiCGSTAB
-    Eigen::BiCGSTAB<Eigen::SparseMatrix<double>> solver;
-    solver.compute(SysMat);
+    // Eigen::BiCGSTAB<Eigen::SparseMatrix<double>> solver;
+    // Eigen::PardisoLU<Eigen::SparseMatrix<double>> solver;
+    // solver.compute(SysMat);
+
+    Eigen::SparseLU<Eigen::SparseMatrix<double>, Eigen::COLAMDOrdering<int>> solver;
+    // Eigen::SparseLU<Eigen::SparseMatrix<double>, Eigen::AMDOrdering<int>> solver;
+    solver.analyzePattern(SysMat);
+    solver.factorize(SysMat);
 
     // xF = INV( AII - AIT * INV_ATT * ATI ) * ( BI - AIT * INV_ATT * BT - (AID - AIT * INV_ATT * ATD * UD) )
-    Eigen::VectorXd xF = solver.solve(B);
+    Eigen::VectorXd xF(solver.solve(B));
 
     // Print solver iterations and estimated error
-    std::cout << "     [solver] #iterations: " << solver.iterations() << ", estimated error: " << solver.error() << std::endl;
+    // std::cout << "     [solver] #iterations: " << solver.iterations() << ", estimated error: " << solver.error() << std::endl;
     // _iterations = solver.iterations();
 
     // Find the residual of the system
-    // solving_error = (SysMat * xF - B).norm();
+    std::cout << "     [solver] residual: " << (SysMat * xF - B).norm() / B.norm() << std::endl;
 
     // Set each part of the solution
-    Eigen::VectorXd Xh = Eigen::VectorXd::Zero(m_hho.total_cell_dofs() + m_hho.total_edge_dofs());
+    Eigen::VectorXd Xh(Eigen::VectorXd::Zero(m_hho.total_cell_dofs() + m_hho.total_edge_dofs()));
     Xh.tail(n_fixed_dofs) = UDir;
     Xh.segment(m_hho.total_cell_dofs(), n_unknowns) = xF;
 
     //                         = INV_ATT_BT - INV_ATT * ATF * UF
     Xh.head(m_hho.total_cell_dofs()) = ScRHS - ScBeMat * Xh.tail(m_hho.total_edge_dofs());
 
-    std::cout << "     Solving time = " << assembly_timer.elapsed().wall * pow(10, -9) << "s\n";
+    std::cout << "     Solving time = " << timer.elapsed().wall * pow(10, -9) << "s\n";
 
     return Xh;
+
+    // std::cout << "\n[Scheme] Solving the linear system\n";
+
+    // // Start the timer
+    // boost::timer::cpu_timer assembly_timer;
+    // assembly_timer.start();
+
+    // size_t n_fixed_dofs = 0;
+
+    // for (size_t iF = 0; iF < mesh_ptr->n_edges(); ++iF)
+    // {
+    //     if (!(mesh_ptr->edge(iF)->is_boundary()))
+    //     {
+    //         continue;
+    //     }
+    //     n_fixed_dofs += m_hho.local_edge_dofs(iF);
+    // }
+    // const size_t n_unknowns = m_hho.total_edge_dofs() - n_fixed_dofs;
+
+    // Eigen::SparseMatrix<double> SysMat = GlobMat.topLeftCorner(n_unknowns, n_unknowns);
+    // Eigen::VectorXd UDir = Eigen::VectorXd::Zero(n_fixed_dofs);
+
+    // Eigen::VectorXd B = GlobRHS.segment(0, n_unknowns) - GlobMat.topRightCorner(n_unknowns, n_fixed_dofs) * UDir;
+
+    // // Solve the statically condesed system using BiCGSTAB
+    // Eigen::BiCGSTAB<Eigen::SparseMatrix<double>> solver;
+    // solver.compute(SysMat);
+
+    // // xF = INV( AII - AIT * INV_ATT * ATI ) * ( BI - AIT * INV_ATT * BT - (AID - AIT * INV_ATT * ATD * UD) )
+    // Eigen::VectorXd xF = solver.solve(B);
+
+    // // Print solver iterations and estimated error
+    // std::cout << "     [solver] #iterations: " << solver.iterations() << ", estimated error: " << solver.error() << std::endl;
+    // // _iterations = solver.iterations();
+
+    // // Find the residual of the system
+    // // solving_error = (SysMat * xF - B).norm();
+
+    // // Set each part of the solution
+    // Eigen::VectorXd Xh = Eigen::VectorXd::Zero(m_hho.total_cell_dofs() + m_hho.total_edge_dofs());
+    // Xh.tail(n_fixed_dofs) = UDir;
+    // Xh.segment(m_hho.total_cell_dofs(), n_unknowns) = xF;
+
+    // //                         = INV_ATT_BT - INV_ATT * ATF * UF
+    // Xh.head(m_hho.total_cell_dofs()) = ScRHS - ScBeMat * Xh.tail(m_hho.total_edge_dofs());
+
+    // std::cout << "     Solving time = " << assembly_timer.elapsed().wall * pow(10, -9) << "s\n";
+
+    // return Xh;
 }
 
 std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const ScalarFunction2D &sol)
@@ -499,8 +607,22 @@ void Model::local_helmholtz_operator(const size_t iT, Eigen::MatrixXd &AT, Eigen
     }
 
     // Get L_T matrix to impose average condition on P_T later
-    Eigen::MatrixXd LTtLT = M_CELL_HIGH.col(0) * M_CELL_HIGH.row(0);
-    double scalT = ST.norm() / LTtLT.norm();
+    Eigen::MatrixXd L_HIGH_CELL = (M_CELL_CELL.col(0) * M_CELL_HIGH.row(0)).transpose();
+
+    Eigen::MatrixXd L_HIGH_HIGH = M_CELL_HIGH.row(0).transpose() * M_CELL_HIGH.row(0);
+
+    double scalT = ST_high_high.norm() / L_HIGH_HIGH.norm();
+
+    // std::cout << "\n";
+    // std::cout << n_local_highorder_dofs << "\n";
+    // std::cout << n_local_cell_dofs << "\n";
+    // std::cout << LTtLT.rows() << "\n";
+    // std::cout << LTtLT.cols() << "\n";
+    // std::cout << ST_high_cell.rows() << "\n";
+    // std::cout << ST_high_cell.cols() << "\n\n";
+
+    // std::cout << "\n\n" << n_local_dofs << "\n\n";
+
 
     std::vector<Eigen::Triplet<double>> triplets_M_BDRY_BDRY;
     std::vector<Eigen::Triplet<double>> triplets_M_BDRY_HIGH;
@@ -510,7 +632,8 @@ void Model::local_helmholtz_operator(const size_t iT, Eigen::MatrixXd &AT, Eigen
 
     // Set cell - cell term of RHS of P_T
     Eigen::MatrixXd BP = Eigen::MatrixXd::Zero(n_local_highorder_dofs, n_local_dofs);
-    BP.topLeftCorner(n_local_highorder_dofs, n_local_cell_dofs) = ST_high_cell + scalT * LTtLT;
+    BP.topLeftCorner(n_local_highorder_dofs, n_local_cell_dofs) = ST_high_cell + scalT * L_HIGH_CELL;
+    // + scalT * LTtLT;
 
     for (size_t iTF = 0; iTF < n_local_edges; iTF++)
     {
@@ -569,7 +692,7 @@ void Model::local_helmholtz_operator(const size_t iT, Eigen::MatrixXd &AT, Eigen
     M_BDRY_BDRY.setFromTriplets(std::begin(triplets_M_BDRY_BDRY), std::end(triplets_M_BDRY_BDRY));
     M_BDRY_HIGH.setFromTriplets(std::begin(triplets_M_BDRY_HIGH), std::end(triplets_M_BDRY_HIGH));
 
-    PT = (ST_high_high + scalT * LTtLT).ldlt().solve(BP);
+    PT = (ST_high_high + scalT * L_HIGH_HIGH).ldlt().solve(BP);
     Eigen::MatrixXd ATCONS = PT.transpose() * ST_high_high * PT;
 
     Eigen::MatrixXd DT = M_CELL_CELL.inverse() * M_CELL_HIGH * PT;
@@ -582,9 +705,11 @@ void Model::local_helmholtz_operator(const size_t iT, Eigen::MatrixXd &AT, Eigen
     Eigen::MatrixXd STAB_OPERATOR = M_BDRY_BDRY_INV_M_BDRY_HIGH * PT;
     STAB_OPERATOR.bottomRightCorner(n_local_bdry_dofs, n_local_bdry_dofs) -= Eigen::MatrixXd::Identity(n_local_bdry_dofs, n_local_bdry_dofs);
 
-    Eigen::MatrixXd ATSTAB = DT.transpose() * ST_cell_cell * DT + (1.0 / cell->diam()) * STAB_OPERATOR.transpose() * M_BDRY_BDRY * STAB_OPERATOR;
+    // Eigen::MatrixXd ATSTAB = DT.transpose() * ST_cell_cell * DT + (1.0 / cell->diam()) * STAB_OPERATOR.transpose() * M_BDRY_BDRY * STAB_OPERATOR;
+    Eigen::MatrixXd ATSTAB = m_wave_number * m_wave_number * (1.0 / std::pow(cell->diam(), 2)) * DT.transpose() * M_CELL_CELL * DT + (1.0 / cell->diam()) * STAB_OPERATOR.transpose() * M_BDRY_BDRY * STAB_OPERATOR;
 
     AT = ATCONS + ATSTAB;
+    AT.topLeftCorner(n_local_cell_dofs, n_local_cell_dofs) -= m_wave_number * m_wave_number * M_CELL_CELL;
 }
 
 void Model::local_source_term(const size_t iT, Eigen::VectorXd &bT)

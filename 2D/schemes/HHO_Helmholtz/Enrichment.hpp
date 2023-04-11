@@ -4,25 +4,22 @@
 // Author: Liam Yemm (liam.yemm@monash.edu)
 //
 
-#ifndef _TEST_CASE_HPP
-#define _TEST_CASE_HPP
+#ifndef _ENRICHMENT_HPP
+#define _ENRICHMENT_HPP
 
 #include "function.hpp"
+#include "HybridCore.hpp"
 #include "Mesh.hpp"
 #include "math.hpp"
 
-/*!
- * @defgroup TestCases
- *	@brief Defines test cases (exact solutions, source terms)
- */
-
 namespace PolyMesh2D
 {
-    namespace HHOPOISSON
+    namespace HHOHELMHOLTZ
     {
-        using PolyMesh2D::CurvedMesh::Mesh;
-        using Functional::ScalarFunction2D;
         using Functional::Curve;
+        using Functional::ScalarFunction1D;
+        using Functional::ScalarFunction2D;
+        using PolyMesh2D::CurvedMesh::Mesh;
 
         // @addtogroup TestCases
         //@{
@@ -32,7 +29,7 @@ namespace PolyMesh2D
         // ----------------------------------------------------------------------------
 
         /// The TestCase class provides definition of test cases
-        class TestCase
+        class Enrichment
         {
         public:
             typedef typename ScalarFunction2D::InputType InputType;
@@ -40,33 +37,26 @@ namespace PolyMesh2D
             typedef typename ScalarFunction2D::DerivativeType DerivativeType;
 
             /// Initialise data
-            TestCase(
-                unsigned id_test_case, ///< The id of the test case.
-                char bdry = 'C'///< The id of the bdry curve: 'C' = circle, 'E' = ellipse
-            );
+            Enrichment(
+                double lambda);
 
-            /// Returns the exact solution
-            ScalarFunction2D sol();
+            void globally_enrich(HybridCore &hho);
+            void locally_enrich(HybridCore &hho);
 
-            /// Returns the exact source term
-            ScalarFunction2D src();
-
-            Curve get_boundary_param();
-            ScalarFunction2D get_level_set();
+            // ScalarFunction2D loc_enrichment(const Eigen::Vector2d &cell_center) const;
+            // ScalarFunction2D loc_enrichment_laplace(const Eigen::Vector2d &cell_center) const;
+            // ScalarFunction1D loc_enrichment_neumann_trace(const Eigen::Vector2d &cell_center, const Curve &edge_param) const;
 
         private:
-            unsigned m_id_test_case;
+            const double m_lambda;
 
-            Curve bdry_param;
-            ScalarFunction2D level_set;
+            ScalarFunction2D glob_enrichment() const;
+            ScalarFunction2D glob_enrichment_laplace() const;
+            ScalarFunction1D glob_enrichment_neumann_trace(const Curve &edge_param) const;
 
-            std::function<double(Functional::ColVector)> level_set_laplace;
-            std::function<double(double)> u = [](const double t) -> double
-            {
-                return 0.0;
-            };
-            std::function<double(double)> Du = u;
-            std::function<double(double)> DDu = u;
+            ScalarFunction2D loc_enrichment(const Eigen::Vector2d &cell_center) const;
+            ScalarFunction2D loc_enrichment_laplace(const Eigen::Vector2d &cell_center) const;
+            ScalarFunction1D loc_enrichment_neumann_trace(const Eigen::Vector2d &cell_center, const Curve &edge_param) const;
         };
 
         inline void reorder_edges(Mesh *mesh_ptr)
@@ -103,4 +93,4 @@ namespace PolyMesh2D
     }
 }
 
-#endif //_TEST_CASE_HPP
+#endif //_ENRICHMENT_HPP

@@ -1,6 +1,6 @@
-ADD_EXECUTABLE(hho_poisson $<TARGET_OBJECTS:IntersectMesh> $<TARGET_OBJECTS:TestCase> hho_poisson.cpp)
+ADD_EXECUTABLE(hho_helmholtz $<TARGET_OBJECTS:IntersectMesh> $<TARGET_OBJECTS:Enrichment> hho_helmholtz.cpp)
 
-TARGET_LINK_LIBRARIES(hho_poisson ${Boost_LIBRARIES})
-TARGET_LINK_LIBRARIES(hho_poisson function mesh quadrature plot hybridcore)
-TARGET_INCLUDE_DIRECTORIES(hho_poisson PUBLIC ${EIGEN3_INCLUDE_DIR})
+TARGET_LINK_LIBRARIES(hho_helmholtz ${Boost_LIBRARIES})
+TARGET_LINK_LIBRARIES(hho_helmholtz function mesh quadrature plot hybridcore ${EXTERNAL_LIBRARIES})
+TARGET_INCLUDE_DIRECTORIES(hho_helmholtz PUBLIC ${EIGEN3_INCLUDE_DIR})
 
