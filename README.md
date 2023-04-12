@@ -1,6 +1,6 @@
 # PolyMesh Library
 
-The PolyMesh library is a C++ library for implementing polytopal methods for partial differential equations, with a particular focus on hybrid high-order methods. It allows for the use of very general curved meshes and enriched polynomial spaces.
+The PolyMesh library is a C++ library for implementing polytopal methods for partial differential equations, with a particular focus on hybrid high-order methods. It allows for the use of very general and possibly curved meshes and for enriched polynomial spaces.
 
 For more information on using the PolyMesh library, see the documentation at https://liamyemm.github.io/PolyMesh/.
 
@@ -24,6 +24,10 @@ git clone git@github.com:liamyemm/PolyMesh.git
 2. Navigate to the PolyMesh directory:
 
 cd PolyMesh
+
+3. Navigate to the directory for the 2D version (or 3D code):
+
+cd 2D
 
 
 3. Create a build directory:
