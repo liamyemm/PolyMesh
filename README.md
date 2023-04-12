@@ -25,7 +25,7 @@ git clone git@github.com:liamyemm/PolyMesh.git
 
 cd PolyMesh
 
-3. Navigate to the directory for the 2D version (or 3D code):
+3. Navigate to the directory for the 2D version (or 3D version):
 
 cd 2D
 
