@@ -13,11 +13,11 @@ Templated class for defining a basis of functions of arbitrary input and output 
 \begin{DoxyCompactItemize}
 \item 
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}}
-\begin{DoxyCompactList}\small\item\em Alias for the input type of basis functions. \end{DoxyCompactList}\item 
+\item 
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} \mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}}
-\begin{DoxyCompactList}\small\item\em Alias for the output type of basis functions. \end{DoxyCompactList}\item 
+\item 
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} \mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}}
-\begin{DoxyCompactList}\small\item\em Alias for the derivative type of basis functions. \end{DoxyCompactList}\item 
+\item 
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} {\bfseries Input\+Type}
 \item 
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} {\bfseries Output\+Type}
@@ -28,21 +28,21 @@ typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{group__Functional_ga2f6377be89d6c92b61518eb9f78b8100}{Basis}} ()
-\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{group__Functional_gab841c96929573c44c716166106bbb11a}{$\sim$\+Basis}} ()
-\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{group__Functional_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}{Basis}} (const std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$$>$ \&bases)
-\begin{DoxyCompactList}\small\item\em Constructor with a set of basis functions. \end{DoxyCompactList}\item 
+\item 
 size\+\_\+t \mbox{\hyperlink{group__Functional_gad20c2177d198f86d84047f28e4de2e60}{dimension}} () const
-\begin{DoxyCompactList}\small\item\em Get the number of basis functions. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{group__Functional_ga5d7504491b597fde5dce88510e616092}{add\+\_\+basis\+\_\+function}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&func)
-\begin{DoxyCompactList}\small\item\em Add a basis function. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{group__Functional_ga50319d0663bea19e7b9cd3ed3ae9be13}{remove\+\_\+basis\+\_\+function}} (const size\+\_\+t i)
-\begin{DoxyCompactList}\small\item\em Remove a basis function at a given index. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} \mbox{\hyperlink{group__Functional_ga1c2ee9b09cf8b3057d9eab1eb6802875}{value}} (const size\+\_\+t i, const \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \&x) const
-\begin{DoxyCompactList}\small\item\em Evaluate the i-\/th basis function at point x. \end{DoxyCompactList}\item 
+\item 
 \mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} \mbox{\hyperlink{group__Functional_ga048f8bac7bca0a7272fefe112ae0aad3}{derivative}} (const size\+\_\+t i, const \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \&x) const
-\begin{DoxyCompactList}\small\item\em Evaluate the derivative of the i-\/th basis function at point x. \end{DoxyCompactList}\item 
+\item 
 const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \& \mbox{\hyperlink{group__Functional_ga26a62e838516c1f749bba5ab65ee8a7f}{function}} (const size\+\_\+t i) const
 \item 
 \mbox{\Hypertarget{classPolyMesh2D_1_1Functional_1_1Basis_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}\label{classPolyMesh2D_1_1Functional_1_1Basis_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}} 
@@ -70,9 +70,9 @@ const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ 
 \begin{DoxyCompactItemize}
 \item 
 static const unsigned \mbox{\hyperlink{group__Functional_ga5bf5af90b94281e4858555e8e9adeaf3}{input\+\_\+dimension}} = input\+\_\+dim
-\begin{DoxyCompactList}\small\item\em Number of input dimensions. \end{DoxyCompactList}\item 
+\item 
 static const unsigned \mbox{\hyperlink{group__Functional_ga89a89eb8790247b9d88fb736cc5b34c4}{output\+\_\+dimension}} = output\+\_\+dim
-\begin{DoxyCompactList}\small\item\em Number of output dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
