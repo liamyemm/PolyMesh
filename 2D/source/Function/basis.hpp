@@ -23,19 +23,13 @@ namespace PolyMesh2D
         class Basis
         {
         public:
-            /**
-             * Alias for the input type of basis functions
-             **/
+            /** Alias for the input type of basis functions **/
             typedef typename Function<input_dim, output_dim>::InputType InputType;
 
-            /**
-             * Alias for the output type of basis functions
-             **/
+            /** Alias for the output type of basis functions **/
             typedef typename Function<input_dim, output_dim>::OutputType OutputType;
 
-            /**
-             * Alias for the derivative type of basis functions
-             **/
+            /** Alias for the derivative type of basis functions **/
             typedef typename Function<input_dim, output_dim>::DerivativeType DerivativeType;
 
             /**
@@ -159,9 +153,14 @@ namespace PolyMesh2D
         class Family
         {
         public:
-            typedef typename BasisType::InputType InputType;           ///< Type of the input to the functions in the family
-            typedef typename BasisType::OutputType OutputType;         ///< Type of the output of the functions in the family
-            typedef typename BasisType::DerivativeType DerivativeType; ///< Type of the derivative of the functions in the family
+            /** An alias for the input type of the basis **/
+            typedef typename BasisType::InputType InputType;
+
+            /** An alias for the output type of the basis **/
+            typedef typename BasisType::OutputType OutputType;
+
+            /** An alias for the derivative type of the basis **/
+            typedef typename BasisType::DerivativeType DerivativeType; 
 
             /**
              * Constructor for the Family class
@@ -169,8 +168,8 @@ namespace PolyMesh2D
              * @param matrix The coefficient matrix whose i-th line contains the coefficient of the expansion of the i-th Function of the family in the basis
              **/
             Family(
-                const BasisType &basis,       ///< The basis in which the family is expressed
-                const Eigen::MatrixXd &matrix ///< The coefficient matrix whose i-th line contains the coefficient of the expansion of the i-th Function of the family in the basis
+                const BasisType &basis,       
+                const Eigen::MatrixXd &matrix 
                 )
                 : m_basis(basis),
                   m_matrix(matrix)

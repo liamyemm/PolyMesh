@@ -1,1 +1,60 @@
-\mbox{\hyperlink{namespacePolyMesh2D}{Poly\+Mesh2D}} (sources\+: \href{https://github.com/liamyemm/PolyMesh}{\texttt{ https\+://github.\+com/liamyemm/\+Poly\+Mesh}}) provides a suite of C++ tools to implement numerical schemes for elliptic PDEs on generic polytopal meshes in two dimensions. 
+The Poly\+Mesh library is a C++ library for implementing polytopal methods for partial differential equations, with a particular focus on hybrid high-\/order methods. It allows for the use of very general curved meshes and enriched polynomial spaces.
+
+For more information on using the Poly\+Mesh library, see the documentation at \href{https://liamyemm.github.io/PolyMesh/}{\texttt{ https\+://liamyemm.\+github.\+io/\+Poly\+Mesh/}}.
+
+\doxysection*{Dependencies}
+
+The Poly\+Mesh library depends on the following libraries\+:
+
+
+\begin{DoxyItemize}
+\item Eigen library
+\item Boost library
+\item CMake
+\end{DoxyItemize}
+
+\doxysection*{Installation}
+
+To install the Poly\+Mesh library, follow these steps\+:
+
+
+\begin{DoxyEnumerate}
+\item Clone the Poly\+Mesh library source code from Git\+Hub\+:
+\end{DoxyEnumerate}
+
+git clone \href{mailto:git@github.com}{\texttt{ git@github.\+com}}\+:liamyemm/\+Poly\+Mesh.\+git
+
+
+\begin{DoxyEnumerate}
+\item Navigate to the Poly\+Mesh directory\+:
+\end{DoxyEnumerate}
+
+cd Poly\+Mesh
+
+
+\begin{DoxyEnumerate}
+\item Create a build directory\+:
+\end{DoxyEnumerate}
+
+mkdir build
+
+
+\begin{DoxyEnumerate}
+\item Navigate to the build directory\+:
+\end{DoxyEnumerate}
+
+cd build
+
+
+\begin{DoxyEnumerate}
+\item Run CMake to generate the build files\+:
+\end{DoxyEnumerate}
+
+cmake ..
+
+
+\begin{DoxyEnumerate}
+\item Compile the library\+:
+\end{DoxyEnumerate}
+
+make 

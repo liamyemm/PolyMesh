@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PolyMesh2D: README</title>
+<title>PolyMesh2D: PolyMesh Library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,10 +70,44 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">README </div>  </div>
+<div class="title">PolyMesh Library </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="el" href="namespacePolyMesh2D.html">PolyMesh2D</a> (sources: <a href="https://github.com/liamyemm/PolyMesh">https://github.com/liamyemm/PolyMesh</a>) provides a suite of C++ tools to implement numerical schemes for elliptic PDEs on generic polytopal meshes in two dimensions. </p>
+<div class="textblock"><p>The PolyMesh library is a C++ library for implementing polytopal methods for partial differential equations, with a particular focus on hybrid high-order methods. It allows for the use of very general curved meshes and enriched polynomial spaces.</p>
+<p>For more information on using the PolyMesh library, see the documentation at <a href="https://liamyemm.github.io/PolyMesh/">https://liamyemm.github.io/PolyMesh/</a>.</p>
+<h1>Dependencies</h1>
+<p>The PolyMesh library depends on the following libraries:</p>
+<ul>
+<li>Eigen library</li>
+<li>Boost library</li>
+<li>CMake</li>
+</ul>
+<h1>Installation</h1>
+<p>To install the PolyMesh library, follow these steps:</p>
+<ol type="1">
+<li>Clone the PolyMesh library source code from GitHub:</li>
+</ol>
+<p>git clone <a href="#" onclick="location.href='mai'+'lto:'+'git'+'@g'+'ith'+'ub'+'.co'+'m'; return false;">git@g<span style="display: none;">.nosp@m.</span>ithu<span style="display: none;">.nosp@m.</span>b.com</a>:liamyemm/PolyMesh.git</p>
+<ol type="1">
+<li>Navigate to the PolyMesh directory:</li>
+</ol>
+<p>cd PolyMesh</p>
+<ol type="1">
+<li>Create a build directory:</li>
+</ol>
+<p>mkdir build</p>
+<ol type="1">
+<li>Navigate to the build directory:</li>
+</ol>
+<p>cd build</p>
+<ol type="1">
+<li>Run CMake to generate the build files:</li>
+</ol>
+<p>cmake ..</p>
+<ol type="1">
+<li>Compile the library:</li>
+</ol>
+<p>make </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

@@ -184,9 +184,9 @@ namespace PolyMesh2D
                     } // for i
                 }
             }
-            for (size_t i = 0; i <= l; i++)
+            for (size_t i = 0; i <= degree - 1; i++)
             {
-                auto func = compose(ScalarMonomial({i, l - i}), transform);
+                auto func = compose(Monomial({i, degree - 1 - i}), transform);
                 basis.add_basis_function(func * transform);
             } 
             return basis;

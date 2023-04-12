@@ -25,15 +25,12 @@ typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<
 \item 
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} \mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Derivative\+Type}}
 \item 
-\mbox{\Hypertarget{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}\label{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}} 
 typedef Basis\+Type\+::\+Input\+Type \mbox{\hyperlink{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Input\+Type}}
-\begin{DoxyCompactList}\small\item\em Type of the input to the functions in the family. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}\label{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}} 
+\item 
 typedef Basis\+Type\+::\+Output\+Type \mbox{\hyperlink{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Output\+Type}}
-\begin{DoxyCompactList}\small\item\em Type of the output of the functions in the family. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}\label{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}} 
+\item 
 typedef Basis\+Type\+::\+Derivative\+Type \mbox{\hyperlink{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Derivative\+Type}}
-\begin{DoxyCompactList}\small\item\em Type of the derivative of the functions in the family. \end{DoxyCompactList}\item 
+\item 
 using \mbox{\hyperlink{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Basis1D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 1, 1 $>$
 \item 
 using \mbox{\hyperlink{group__Functional_gadbf974e6e445d7a9c240c93e09db03e4}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Basis2D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 2, 1 $>$
@@ -254,25 +251,46 @@ Classes and methods for generic functions and bases of function spaces.
 \mbox{\Hypertarget{group__Functional_gadff4d66c59ac508f066753f5780e63b2}\label{group__Functional_gadff4d66c59ac508f066753f5780e63b2}} 
 \index{Functional@{Functional}!DerivativeType@{DerivativeType}}
 \index{DerivativeType@{DerivativeType}!Functional@{Functional}}
-\doxysubsubsection{\texorpdfstring{DerivativeType}{DerivativeType}}
+\doxysubsubsection{\texorpdfstring{DerivativeType}{DerivativeType}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$input\+\_\+dim, output\+\_\+dim$>$\+::\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}}}
 
-Alias for the derivative type of basis functions \mbox{\Hypertarget{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}\label{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}} 
+Alias for the derivative type of basis functions \mbox{\Hypertarget{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}\label{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}} 
+\index{Functional@{Functional}!DerivativeType@{DerivativeType}}
+\index{DerivativeType@{DerivativeType}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{DerivativeType}{DerivativeType}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+typedef Basis\+Type\+::\+Derivative\+Type \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::\mbox{\hyperlink{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}{Derivative\+Type}}}
+
+An alias for the derivative type of the basis \mbox{\Hypertarget{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}\label{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}} 
 \index{Functional@{Functional}!InputType@{InputType}}
 \index{InputType@{InputType}!Functional@{Functional}}
-\doxysubsubsection{\texorpdfstring{InputType}{InputType}}
+\doxysubsubsection{\texorpdfstring{InputType}{InputType}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$input\+\_\+dim, output\+\_\+dim$>$\+::\mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}}}
 
-Alias for the input type of basis functions \mbox{\Hypertarget{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}\label{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}} 
+Alias for the input type of basis functions \mbox{\Hypertarget{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}\label{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}} 
+\index{Functional@{Functional}!InputType@{InputType}}
+\index{InputType@{InputType}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{InputType}{InputType}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+typedef Basis\+Type\+::\+Input\+Type \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::\mbox{\hyperlink{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}{Input\+Type}}}
+
+An alias for the input type of the basis \mbox{\Hypertarget{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}\label{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}} 
 \index{Functional@{Functional}!OutputType@{OutputType}}
 \index{OutputType@{OutputType}!Functional@{Functional}}
-\doxysubsubsection{\texorpdfstring{OutputType}{OutputType}}
+\doxysubsubsection{\texorpdfstring{OutputType}{OutputType}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
 typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$input\+\_\+dim, output\+\_\+dim$>$\+::\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}}}
 
-Alias for the output type of basis functions \mbox{\Hypertarget{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}\label{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}} 
+Alias for the output type of basis functions \mbox{\Hypertarget{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}\label{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}} 
+\index{Functional@{Functional}!OutputType@{OutputType}}
+\index{OutputType@{OutputType}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{OutputType}{OutputType}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+typedef Basis\+Type\+::\+Output\+Type \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::\mbox{\hyperlink{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}{Output\+Type}}}
+
+An alias for the output type of the basis \mbox{\Hypertarget{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}\label{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}} 
 \index{Functional@{Functional}!ScalarBasis1D@{ScalarBasis1D}}
 \index{ScalarBasis1D@{ScalarBasis1D}!Functional@{Functional}}
 \doxysubsubsection{\texorpdfstring{ScalarBasis1D}{ScalarBasis1D}}
@@ -488,13 +506,6 @@ size\+\_\+t The number of functions in the family
 \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}} (\begin{DoxyParamCaption}\item[{const Basis\+Type \&}]{basis,  }\item[{const Eigen\+::\+Matrix\+Xd \&}]{matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Constructor for the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}} class 
-\begin{DoxyParams}{Parameters}
-{\em basis} & The basis in which the family is expressed \\
-\hline
-{\em matrix} & The coefficient matrix whose i-\/th line contains the coefficient of the expansion of the i-\/th \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} of the family in the basis \\
-\hline
-\end{DoxyParams}
-
 \begin{DoxyParams}{Parameters}
 {\em basis} & The basis in which the family is expressed \\
 \hline
