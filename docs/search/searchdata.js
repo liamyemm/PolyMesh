@@ -4,9 +4,10 @@ var indexSectionsWithContent =
   1: "bcefghmpqtv",
   2: "p",
   3: "abcdefghimnoprstvw~",
-  4: "cdimorsv",
-  5: "fmpt",
-  6: "r"
+  4: "iot",
+  5: "cdimorsv",
+  6: "fmpt",
+  7: "r"
 };
 
 var indexSectionNames =
@@ -15,9 +16,10 @@ var indexSectionNames =
   1: "classes",
   2: "namespaces",
   3: "functions",
-  4: "typedefs",
-  5: "groups",
-  6: "pages"
+  4: "variables",
+  5: "typedefs",
+  6: "groups",
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -26,8 +28,9 @@ var indexSectionLabels =
   1: "Classes",
   2: "Namespaces",
   3: "Functions",
-  4: "Typedefs",
-  5: "Modules",
-  6: "Pages"
+  4: "Variables",
+  5: "Typedefs",
+  6: "Modules",
+  7: "Pages"
 };
 

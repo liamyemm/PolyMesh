@@ -9,9 +9,9 @@ Classes and methods for generic functions and bases of function spaces.
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em Templated class for defining a basis of functions of arbitrary input and output dimensions. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em A class representing a family of functions expressed in a given basis with coefficients stored in a matrix. This class allows the evaluation of functions in the family and their derivatives at any given point in the domain of the functions. The family is represented by a Basis\+Type object which defines the basis in which the family is expressed, and a coefficient matrix whose i-\/th line contains the coefficient of the expansion of the i-\/th function of the family in the basis. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Poly\+Mesh2\+D\+::\+Functional\+::\+Function$<$ input\+\_\+dim, output\+\_\+dim $>$}}
 \item 
 class \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve}}
@@ -20,47 +20,47 @@ class \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Poly\+Mesh2\+D\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}\label{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}} 
-typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Input\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Input\+Type}
-\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Input\+Type}}
+\begin{DoxyCompactList}\small\item\em Alias for the input type of basis functions. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}\label{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}} 
-typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Output\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Output\+Type}
-\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} \mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Output\+Type}}
+\begin{DoxyCompactList}\small\item\em Alias for the output type of basis functions. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_gadff4d66c59ac508f066753f5780e63b2}\label{group__Functional_gadff4d66c59ac508f066753f5780e63b2}} 
-typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Derivative\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Derivative\+Type}
-\item 
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} \mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Derivative\+Type}}
+\begin{DoxyCompactList}\small\item\em Alias for the derivative type of basis functions. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}\label{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}} 
-typedef Basis\+Type\+::\+Input\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Input\+Type}
-\item 
+typedef Basis\+Type\+::\+Input\+Type \mbox{\hyperlink{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Input\+Type}}
+\begin{DoxyCompactList}\small\item\em Type of the input to the functions in the family. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}\label{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}} 
-typedef Basis\+Type\+::\+Output\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Output\+Type}
-\item 
+typedef Basis\+Type\+::\+Output\+Type \mbox{\hyperlink{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Output\+Type}}
+\begin{DoxyCompactList}\small\item\em Type of the output of the functions in the family. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}\label{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}} 
-typedef Basis\+Type\+::\+Derivative\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Derivative\+Type}
-\item 
+typedef Basis\+Type\+::\+Derivative\+Type \mbox{\hyperlink{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Derivative\+Type}}
+\begin{DoxyCompactList}\small\item\em Type of the derivative of the functions in the family. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}\label{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Basis1D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 1, 1 $>$
-\item 
+using \mbox{\hyperlink{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Basis1D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 1, 1 $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 1D scalar \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_gadbf974e6e445d7a9c240c93e09db03e4}\label{group__Functional_gadbf974e6e445d7a9c240c93e09db03e4}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Basis2D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 2, 1 $>$
-\item 
+using \mbox{\hyperlink{group__Functional_gadbf974e6e445d7a9c240c93e09db03e4}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Basis2D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 2, 1 $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 2D scalar \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga4af39529f1e82da3a8e63defc97d66bb}\label{group__Functional_ga4af39529f1e82da3a8e63defc97d66bb}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Basis1D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 1, 2 $>$
-\item 
+using \mbox{\hyperlink{group__Functional_ga4af39529f1e82da3a8e63defc97d66bb}{Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Basis1D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 1, 2 $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 1D vector \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}\label{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Basis2D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 2, 2 $>$
-\item 
+using \mbox{\hyperlink{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}{Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Basis2D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}$<$ 2, 2 $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 2D vector \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga0233c5c6589241ae058ab85201611cf4}\label{group__Functional_ga0233c5c6589241ae058ab85201611cf4}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Family1D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis1D}} $>$
-\item 
+using \mbox{\hyperlink{group__Functional_ga0233c5c6589241ae058ab85201611cf4}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Family1D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}{Scalar\+Basis1D}} $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 1D scalar \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga8757d39fad044f53c2638063a1ce33d1}\label{group__Functional_ga8757d39fad044f53c2638063a1ce33d1}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Family2D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis2D}} $>$
-\item 
+using \mbox{\hyperlink{group__Functional_ga8757d39fad044f53c2638063a1ce33d1}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Family2D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{group__Functional_gadbf974e6e445d7a9c240c93e09db03e4}{Scalar\+Basis2D}} $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 2D scalar \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_gaf13682c53733cdc98565a56ad859c5cd}\label{group__Functional_gaf13682c53733cdc98565a56ad859c5cd}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Family1D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Vector\+Basis1D}} $>$
-\item 
+using \mbox{\hyperlink{group__Functional_gaf13682c53733cdc98565a56ad859c5cd}{Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Family1D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{group__Functional_ga4af39529f1e82da3a8e63defc97d66bb}{Vector\+Basis1D}} $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 1D vector \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga2fdbfe431f67e21f5e7e3576567ccfbc}\label{group__Functional_ga2fdbfe431f67e21f5e7e3576567ccfbc}} 
-using {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Family2D} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Vector\+Basis2D}} $>$
-\item 
+using \mbox{\hyperlink{group__Functional_ga2fdbfe431f67e21f5e7e3576567ccfbc}{Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Family2D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}$<$ \mbox{\hyperlink{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}{Vector\+Basis2D}} $>$
+\begin{DoxyCompactList}\small\item\em Alias for a 2D vector \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga3a7fe371023df0751b773b41155ca4a9}\label{group__Functional_ga3a7fe371023df0751b773b41155ca4a9}} 
 {\footnotesize template$<$unsigned rows, unsigned cols$>$ }\\using \mbox{\hyperlink{group__Functional_ga3a7fe371023df0751b773b41155ca4a9}{Poly\+Mesh2\+D\+::\+Functional\+::\+Matrix\+Type}} = std\+::conditional\+\_\+t$<$ rows==1 \&\&cols==1, double, Eigen\+::\+Matrix$<$ double, rows, cols $>$ $>$
 \begin{DoxyCompactList}\small\item\em An alias for an Eigen\+::\+Matrix which reduces to a double when the matrix is of dimension 1x1. \end{DoxyCompactList}\item 
@@ -78,10 +78,10 @@ using \mbox{\hyperlink{group__Functional_ga18f46948c4bd5e8b5bc9ebffcedb2631}{Pol
 \begin{DoxyCompactList}\small\item\em The type of output the function derivative returns. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_gaf97734a8e9b5ac348b416d133ebac304}\label{group__Functional_gaf97734a8e9b5ac348b416d133ebac304}} 
 using \mbox{\hyperlink{group__Functional_gaf97734a8e9b5ac348b416d133ebac304}{Poly\+Mesh2\+D\+::\+Functional\+::\+Function$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Value}} = std\+::function$<$ \mbox{\hyperlink{group__Functional_ga0ba45d677c1ed7fe423558045f74c8af}{Output\+Type}}(\mbox{\hyperlink{group__Functional_gaf10e0e5222c08c59c9b07f4c228bae33}{Input\+Type}})$>$
-\begin{DoxyCompactList}\small\item\em An alias for a lambda function which defines the function value. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em An alias for a std\+::function which maps Input\+Type to Output\+Type. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga074f75ce974e81d5bc37f2a07a56e55c}\label{group__Functional_ga074f75ce974e81d5bc37f2a07a56e55c}} 
 using \mbox{\hyperlink{group__Functional_ga074f75ce974e81d5bc37f2a07a56e55c}{Poly\+Mesh2\+D\+::\+Functional\+::\+Function$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Derivative}} = std\+::function$<$ \mbox{\hyperlink{group__Functional_ga18f46948c4bd5e8b5bc9ebffcedb2631}{Derivative\+Type}}(\mbox{\hyperlink{group__Functional_gaf10e0e5222c08c59c9b07f4c228bae33}{Input\+Type}})$>$
-\begin{DoxyCompactList}\small\item\em An alias for a lambda function which defines the function derivative. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em An alias for a std\+::function which maps Input\+Type to Derivative\+Type. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_gabea498a99aaba02a878188919273cb5d}\label{group__Functional_gabea498a99aaba02a878188919273cb5d}} 
 using \mbox{\hyperlink{group__Functional_gabea498a99aaba02a878188919273cb5d}{Poly\+Mesh2\+D\+::\+Functional\+::\+Scalar\+Function1D}} = \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ 1, 1 $>$
 \begin{DoxyCompactList}\small\item\em An alias for a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} that maps R to R. \end{DoxyCompactList}\item 
@@ -101,13 +101,13 @@ using \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Pol
 using \mbox{\hyperlink{group__Functional_gaed903cb2b3852d1823a032714a86bd3e}{Poly\+Mesh2\+D\+::\+Functional\+::\+Row\+Vector}} = Eigen\+::\+Matrix$<$ double, 1, 2 $>$
 \begin{DoxyCompactList}\small\item\em A row vector in two dimensions. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}\label{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}} 
-typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Input\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Input\+Type}
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Input\+Type}
 \item 
 \mbox{\Hypertarget{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}\label{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}} 
-typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Output\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Output\+Type}
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Output\+Type}
 \item 
 \mbox{\Hypertarget{group__Functional_gadff4d66c59ac508f066753f5780e63b2}\label{group__Functional_gadff4d66c59ac508f066753f5780e63b2}} 
-typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::Derivative\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Derivative\+Type}
+typedef \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Derivative\+Type}
 \item 
 \mbox{\Hypertarget{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}\label{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}} 
 typedef Basis\+Type\+::\+Input\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Input\+Type}
@@ -136,53 +136,44 @@ using \mbox{\hyperlink{group__Functional_ga074f75ce974e81d5bc37f2a07a56e55c}{Pol
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{group__Functional_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}\label{group__Functional_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}} 
-{\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Basis} (const std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$$>$ \&bases)
-\item 
-\mbox{\Hypertarget{group__Functional_gad20c2177d198f86d84047f28e4de2e60}\label{group__Functional_gad20c2177d198f86d84047f28e4de2e60}} 
-size\+\_\+t {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::dimension} () const
-\item 
-\mbox{\Hypertarget{group__Functional_ga5d7504491b597fde5dce88510e616092}\label{group__Functional_ga5d7504491b597fde5dce88510e616092}} 
-void {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::add\+\_\+basis\+\_\+function} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&func)
-\item 
-\mbox{\Hypertarget{group__Functional_ga50319d0663bea19e7b9cd3ed3ae9be13}\label{group__Functional_ga50319d0663bea19e7b9cd3ed3ae9be13}} 
-void {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::remove\+\_\+basis\+\_\+function} (const size\+\_\+t i)
-\item 
-\mbox{\Hypertarget{group__Functional_ga1c2ee9b09cf8b3057d9eab1eb6802875}\label{group__Functional_ga1c2ee9b09cf8b3057d9eab1eb6802875}} 
-Output\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::value} (const size\+\_\+t i, const Input\+Type \&x) const
-\item 
-\mbox{\Hypertarget{group__Functional_ga048f8bac7bca0a7272fefe112ae0aad3}\label{group__Functional_ga048f8bac7bca0a7272fefe112ae0aad3}} 
-Derivative\+Type {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::derivative} (const size\+\_\+t i, const Input\+Type \&x) const
-\item 
-\mbox{\Hypertarget{group__Functional_ga26a62e838516c1f749bba5ab65ee8a7f}\label{group__Functional_ga26a62e838516c1f749bba5ab65ee8a7f}} 
-const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \& {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::function} (const size\+\_\+t i) const
+\mbox{\Hypertarget{group__Functional_ga2f6377be89d6c92b61518eb9f78b8100}\label{group__Functional_ga2f6377be89d6c92b61518eb9f78b8100}} 
+\mbox{\hyperlink{group__Functional_ga2f6377be89d6c92b61518eb9f78b8100}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Basis}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Functional_gab841c96929573c44c716166106bbb11a}\label{group__Functional_gab841c96929573c44c716166106bbb11a}} 
+\mbox{\hyperlink{group__Functional_gab841c96929573c44c716166106bbb11a}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::$\sim$\+Basis}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Functional_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\+Basis}} (const std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$$>$ \&bases)
+\begin{DoxyCompactList}\small\item\em Constructor with a set of basis functions. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{group__Functional_gad20c2177d198f86d84047f28e4de2e60}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::dimension}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of basis functions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Functional_ga5d7504491b597fde5dce88510e616092}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::add\+\_\+basis\+\_\+function}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&func)
+\begin{DoxyCompactList}\small\item\em Add a basis function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Functional_ga50319d0663bea19e7b9cd3ed3ae9be13}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::remove\+\_\+basis\+\_\+function}} (const size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Remove a basis function at a given index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} \mbox{\hyperlink{group__Functional_ga1c2ee9b09cf8b3057d9eab1eb6802875}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::value}} (const size\+\_\+t i, const \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \&x) const
+\begin{DoxyCompactList}\small\item\em Evaluate the i-\/th basis function at point x. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} \mbox{\hyperlink{group__Functional_ga048f8bac7bca0a7272fefe112ae0aad3}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::derivative}} (const size\+\_\+t i, const \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \&x) const
+\begin{DoxyCompactList}\small\item\em Evaluate the derivative of the i-\/th basis function at point x. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \& \mbox{\hyperlink{group__Functional_ga26a62e838516c1f749bba5ab65ee8a7f}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::function}} (const size\+\_\+t i) const
 \item 
 \mbox{\hyperlink{group__Functional_ga63078cedbf5b4cb788343a0fa78716d1}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::\+Family}} (const Basis\+Type \&basis, const Eigen\+::\+Matrix\+Xd \&\mbox{\hyperlink{group__Functional_gab0c0ede4052782039c77277d8684ab2c}{matrix}})
-\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_ga5ddcdc65b740e97b1bdf670b0935e67e}\label{group__Functional_ga5ddcdc65b740e97b1bdf670b0935e67e}} 
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}} class. \end{DoxyCompactList}\item 
 size\+\_\+t \mbox{\hyperlink{group__Functional_ga5ddcdc65b740e97b1bdf670b0935e67e}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::dimension}} () const
-\begin{DoxyCompactList}\small\item\em Dimension of the family. This is actually the number of Functions in the family, not necessarily linearly independent. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_gad5b6e3a22f8d4b94dc81267070beb959}\label{group__Functional_gad5b6e3a22f8d4b94dc81267070beb959}} 
-void {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::add\+\_\+basis\+\_\+function} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ Basis\+Type\+::input\+\_\+dimension, Basis\+Type\+::output\+\_\+dimension $>$ \&func)
-\item 
-\mbox{\Hypertarget{group__Functional_gab2e82645e1dea47f8cc33f5214e49ebe}\label{group__Functional_gab2e82645e1dea47f8cc33f5214e49ebe}} 
-void {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::remove\+\_\+basis\+\_\+function} (const size\+\_\+t i)
-\item 
-\mbox{\Hypertarget{group__Functional_ga1816a3f07619513aedb4b78161cdf00f}\label{group__Functional_ga1816a3f07619513aedb4b78161cdf00f}} 
-void {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::reset\+\_\+matrix} (const Eigen\+::\+Matrix\+Xd \&\mbox{\hyperlink{group__Functional_gab0c0ede4052782039c77277d8684ab2c}{matrix}})
-\item 
-\mbox{\Hypertarget{group__Functional_ga3eb439c0c958bfc230775bf12ecdeffe}\label{group__Functional_ga3eb439c0c958bfc230775bf12ecdeffe}} 
-Output\+Type \mbox{\hyperlink{group__Functional_ga3eb439c0c958bfc230775bf12ecdeffe}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::value}} (const size\+\_\+t i, const Input\+Type \&x) const
-\begin{DoxyCompactList}\small\item\em Evaluate the i-\/th \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} at point x. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_gada7695bae5ee11cf71caa02a7eb86f26}\label{group__Functional_gada7695bae5ee11cf71caa02a7eb86f26}} 
-Derivative\+Type \mbox{\hyperlink{group__Functional_gada7695bae5ee11cf71caa02a7eb86f26}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::derivative}} (const size\+\_\+t i, const Input\+Type \&x) const
+\begin{DoxyCompactList}\small\item\em Returns the dimension of the family This is actually the number of Functions in the family, not necessarily linearly independent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Functional_gad5b6e3a22f8d4b94dc81267070beb959}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::add\+\_\+basis\+\_\+function}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ Basis\+Type\+::input\+\_\+dimension, Basis\+Type\+::output\+\_\+dimension $>$ \&func)
+\begin{DoxyCompactList}\small\item\em Adds a basis function to the family. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Functional_gab2e82645e1dea47f8cc33f5214e49ebe}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::remove\+\_\+basis\+\_\+function}} (const size\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em Removes a basis function from the family. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__Functional_ga1816a3f07619513aedb4b78161cdf00f}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::reset\+\_\+matrix}} (const Eigen\+::\+Matrix\+Xd \&\mbox{\hyperlink{group__Functional_gab0c0ede4052782039c77277d8684ab2c}{matrix}})
+\begin{DoxyCompactList}\small\item\em Resets the coefficient matrix of the family. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}{Output\+Type}} \mbox{\hyperlink{group__Functional_ga3eb439c0c958bfc230775bf12ecdeffe}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::value}} (const size\+\_\+t i, const \mbox{\hyperlink{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}{Input\+Type}} \&x) const
+\begin{DoxyCompactList}\small\item\em Evaluate the i-\/th function in the family at a given point x. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}{Derivative\+Type}} \mbox{\hyperlink{group__Functional_gada7695bae5ee11cf71caa02a7eb86f26}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::derivative}} (const size\+\_\+t i, const \mbox{\hyperlink{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}{Input\+Type}} \&x) const
 \begin{DoxyCompactList}\small\item\em Evaluate the gradient of the i-\/th \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} at point x. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_gab0c0ede4052782039c77277d8684ab2c}\label{group__Functional_gab0c0ede4052782039c77277d8684ab2c}} 
 const Eigen\+::\+Matrix\+Xd \& \mbox{\hyperlink{group__Functional_gab0c0ede4052782039c77277d8684ab2c}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::matrix}} () const
 \begin{DoxyCompactList}\small\item\em Return the coefficient matrix. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_ga0c5b97b79eaf61e508693f6359cf19bd}\label{group__Functional_ga0c5b97b79eaf61e508693f6359cf19bd}} 
 const Basis\+Type \& \mbox{\hyperlink{group__Functional_ga0c5b97b79eaf61e508693f6359cf19bd}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family$<$ Basis\+Type $>$\+::ancestor}} () const
-\begin{DoxyCompactList}\small\item\em Return the ancestor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Return the ancestor basis functions. \end{DoxyCompactList}\item 
 const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \mbox{\hyperlink{group__Functional_ga6803b4b3057529c838656bbbde0715f4}{Poly\+Mesh2\+D\+::\+Functional\+::\+Straight\+Line}} (const \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \&v0, const \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \&v1)
 \item 
 const \mbox{\hyperlink{group__Functional_ga6e6be9e6fc6e94363afed284e1839be2}{Scalar\+Function2D}} \mbox{\hyperlink{group__Functional_gaecdb0043e90ddcb1806ea1847645b477}{Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial}} (const std\+::array$<$ size\+\_\+t, 2 $>$ \&powers)
@@ -191,13 +182,15 @@ const \mbox{\hyperlink{group__Functional_gabea498a99aaba02a878188919273cb5d}{Sca
 \item 
 const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \mbox{\hyperlink{group__Functional_ga7c78ba68c8d322cd8fe168bca3392eb4}{Poly\+Mesh2\+D\+::\+Functional\+::\+Vector\+Monomial}} (const std\+::array$<$ size\+\_\+t, 2 $>$ \&powers, const size\+\_\+t d)
 \item 
-const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis2D}} \mbox{\hyperlink{group__Functional_ga5672ea4d66c12f56f6b9f7ef56bcd144}{Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis}} (const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&transform, const size\+\_\+t degree)
+const \mbox{\hyperlink{group__Functional_gadbf974e6e445d7a9c240c93e09db03e4}{Scalar\+Basis2D}} \mbox{\hyperlink{group__Functional_ga5672ea4d66c12f56f6b9f7ef56bcd144}{Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis}} (const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&transform, const size\+\_\+t degree)
 \item 
-const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Vector\+Basis2D}} \mbox{\hyperlink{group__Functional_ga85432c4e6c024c6d3cf9ebea3dddb548}{Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Vector\+Basis}} (const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&transform, const size\+\_\+t degree)
+const \mbox{\hyperlink{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}{Vector\+Basis2D}} \mbox{\hyperlink{group__Functional_ga85432c4e6c024c6d3cf9ebea3dddb548}{Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Vector\+Basis}} (const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&transform, const size\+\_\+t degree)
 \item 
-const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis1D}} \mbox{\hyperlink{group__Functional_ga841338b7a75b175e8cd42d4cd50d86bc}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curved\+Edge\+Basis}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&edge\+\_\+param, const size\+\_\+t degree)
+const \mbox{\hyperlink{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}{Vector\+Basis2D}} \mbox{\hyperlink{group__Functional_gaa6184d61bbf3656091edfed176062d7d}{Poly\+Mesh2\+D\+::\+Functional\+::\+Raviart\+Thomas\+Nedelec\+Basis}} (const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&transform, const size\+\_\+t degree)
 \item 
-const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis1D}} \mbox{\hyperlink{group__Functional_ga85a28aa0ddf7dec284fac0d5616d147a}{Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&edge\+\_\+param, const size\+\_\+t degree)
+const \mbox{\hyperlink{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}{Scalar\+Basis1D}} \mbox{\hyperlink{group__Functional_ga841338b7a75b175e8cd42d4cd50d86bc}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curved\+Edge\+Basis}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&edge\+\_\+param, const size\+\_\+t degree)
+\item 
+const \mbox{\hyperlink{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}{Scalar\+Basis1D}} \mbox{\hyperlink{group__Functional_ga85a28aa0ddf7dec284fac0d5616d147a}{Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&edge\+\_\+param, const size\+\_\+t degree)
 \item 
 const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \mbox{\hyperlink{group__Functional_ga7260480e729950d35f8f1034fec55039}{Poly\+Mesh2\+D\+::\+Functional\+::restriction}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&curve, const double t0, const double t1)
 \item 
@@ -222,41 +215,49 @@ const \mbox{\hyperlink{group__Functional_gaf97734a8e9b5ac348b416d133ebac304}{Val
 \mbox{\Hypertarget{group__Functional_ga5746657a64398c9b83a24adde845af73}\label{group__Functional_ga5746657a64398c9b83a24adde845af73}} 
 const \mbox{\hyperlink{group__Functional_ga074f75ce974e81d5bc37f2a07a56e55c}{Derivative}} \& \mbox{\hyperlink{group__Functional_ga5746657a64398c9b83a24adde845af73}{Poly\+Mesh2\+D\+::\+Functional\+::\+Function$<$ input\+\_\+dim, output\+\_\+dim $>$\+::get\+\_\+derivative}} () const
 \begin{DoxyCompactList}\small\item\em A method to return the raw lambda describing the function derivative. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{group__Functional_gaa7f579d168de542cbec6b8076d5a2bde}\label{group__Functional_gaa7f579d168de542cbec6b8076d5a2bde}} 
-{\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::\+Curve} (const double t0, const double t1, const std\+::function$<$ \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}}(double)$>$ \&val, const std\+::function$<$ \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}}(double)$>$ \&deriv)
-\item 
+{\footnotesize template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ }\\\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \mbox{\hyperlink{group__Functional_gac3a46e8b3ce45611e8acdeeafb67737d}{Poly\+Mesh2\+D\+::\+Functional\+::operator+}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&f1, const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&f2)
+\begin{DoxyCompactList}\small\item\em Overloaded operator to add two functions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ }\\\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \mbox{\hyperlink{group__Functional_ga30fbcc29bbd7e55e484b0c43ca204c24}{Poly\+Mesh2\+D\+::\+Functional\+::operator-\/}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&f1, const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&f2)
+\begin{DoxyCompactList}\small\item\em Overloaded operator to subtract two functions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ }\\\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \mbox{\hyperlink{group__Functional_gab004615bc7259b28cfd2444e872619e8}{Poly\+Mesh2\+D\+::\+Functional\+::operator$\ast$}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, 1 $>$ \&f1, const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&f2)
+\begin{DoxyCompactList}\small\item\em Overloaded operator to multiply a function by a scalar valued function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{group__Functional_ga4eea65776fd60d06929e624526332cc7}\label{group__Functional_ga4eea65776fd60d06929e624526332cc7}} 
+\mbox{\hyperlink{group__Functional_ga4eea65776fd60d06929e624526332cc7}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::\+Curve}} ()
+\begin{DoxyCompactList}\small\item\em A null constructor for a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__Functional_gaa7f579d168de542cbec6b8076d5a2bde}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::\+Curve}} (const double t0, const double t1, const std\+::function$<$ \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}}(double)$>$ \&val, const std\+::function$<$ \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}}(double)$>$ \&deriv)
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} constructor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga95b1eb601bf5e5189ff2f022a8f579dc}\label{group__Functional_ga95b1eb601bf5e5189ff2f022a8f579dc}} 
-\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::value} (const double t) const
-\item 
+\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \mbox{\hyperlink{group__Functional_ga95b1eb601bf5e5189ff2f022a8f579dc}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::value}} (const double t) const
+\begin{DoxyCompactList}\small\item\em A method to return the value of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} at the parameter t. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga47c4f79b33512989ab00c263ab721971}\label{group__Functional_ga47c4f79b33512989ab00c263ab721971}} 
-\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::derivative} (const double t) const
-\item 
+\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \mbox{\hyperlink{group__Functional_ga47c4f79b33512989ab00c263ab721971}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::derivative}} (const double t) const
+\begin{DoxyCompactList}\small\item\em A method to return the derivative of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} at the parameter t. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga068ac0c78844239797d15d0e56d9ac8b}\label{group__Functional_ga068ac0c78844239797d15d0e56d9ac8b}} 
-\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::tangent} (const double t) const
-\item 
+\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \mbox{\hyperlink{group__Functional_ga068ac0c78844239797d15d0e56d9ac8b}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::tangent}} (const double t) const
+\begin{DoxyCompactList}\small\item\em A method to return the tangent vector of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} at the parameter t. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga3aba22e38ae7f315c111cb8173952340}\label{group__Functional_ga3aba22e38ae7f315c111cb8173952340}} 
-\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::normal} (const double t) const
-\item 
+\mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \mbox{\hyperlink{group__Functional_ga3aba22e38ae7f315c111cb8173952340}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::normal}} (const double t) const
+\begin{DoxyCompactList}\small\item\em A method to return the normal vector of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} at the parameter t. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga190422361994885f23fdb35b488aa917}\label{group__Functional_ga190422361994885f23fdb35b488aa917}} 
-double {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::derivative\+\_\+norm} (const double t) const
-\item 
+double \mbox{\hyperlink{group__Functional_ga190422361994885f23fdb35b488aa917}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::derivative\+\_\+norm}} (const double t) const
+\begin{DoxyCompactList}\small\item\em A method to return the norm of the derivative of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} at the parameter t. \end{DoxyCompactList}\item 
 {\footnotesize template$<$unsigned input\+\_\+dim, unsigned intermediate\+\_\+dim, unsigned output\+\_\+dim$>$ }\\const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \mbox{\hyperlink{group__Functional_gaae99d867e4d33ee40ba64df7d632624b}{Poly\+Mesh2\+D\+::\+Functional\+::compose}} (const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ intermediate\+\_\+dim, output\+\_\+dim $>$ \&f, const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, intermediate\+\_\+dim $>$ \&g)
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{group__Functional_ga5bf5af90b94281e4858555e8e9adeaf3}\label{group__Functional_ga5bf5af90b94281e4858555e8e9adeaf3}} 
-static const unsigned {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::input\+\_\+dimension} = input\+\_\+dim
-\item 
+static const unsigned \mbox{\hyperlink{group__Functional_ga5bf5af90b94281e4858555e8e9adeaf3}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::input\+\_\+dimension}} = input\+\_\+dim
+\begin{DoxyCompactList}\small\item\em Number of input dimensions. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga89a89eb8790247b9d88fb736cc5b34c4}\label{group__Functional_ga89a89eb8790247b9d88fb736cc5b34c4}} 
-static const unsigned {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::output\+\_\+dimension} = output\+\_\+dim
-\item 
+static const unsigned \mbox{\hyperlink{group__Functional_ga89a89eb8790247b9d88fb736cc5b34c4}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis$<$ input\+\_\+dim, output\+\_\+dim $>$\+::output\+\_\+dimension}} = output\+\_\+dim
+\begin{DoxyCompactList}\small\item\em Number of output dimensions. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_ga87c53c4f4524bd4585246c2a605390da}\label{group__Functional_ga87c53c4f4524bd4585246c2a605390da}} 
-double {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::tmin}
-\item 
+double \mbox{\hyperlink{group__Functional_ga87c53c4f4524bd4585246c2a605390da}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::tmin}}
+\begin{DoxyCompactList}\small\item\em The start point of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}}. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{group__Functional_gae1966a1b2675cdb9ba0fcd71ddc5215e}\label{group__Functional_gae1966a1b2675cdb9ba0fcd71ddc5215e}} 
-double {\bfseries Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::tmax}
-\end{DoxyCompactItemize}
+double \mbox{\hyperlink{group__Functional_gae1966a1b2675cdb9ba0fcd71ddc5215e}{Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::tmax}}
+\begin{DoxyCompactList}\small\item\em The end point of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -265,6 +266,68 @@ Classes and methods for generic functions and bases of function spaces.
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__Functional_gad5b6e3a22f8d4b94dc81267070beb959}\label{group__Functional_gad5b6e3a22f8d4b94dc81267070beb959}} 
+\index{Functional@{Functional}!add\_basis\_function@{add\_basis\_function}}
+\index{add\_basis\_function@{add\_basis\_function}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{add\_basis\_function()}{add\_basis\_function()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+void \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::add\+\_\+basis\+\_\+function (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ Basis\+Type\+::input\+\_\+dimension, Basis\+Type\+::output\+\_\+dimension $>$ \&}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a basis function to the family. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & The basis function to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_ga5d7504491b597fde5dce88510e616092}\label{group__Functional_ga5d7504491b597fde5dce88510e616092}} 
+\index{Functional@{Functional}!add\_basis\_function@{add\_basis\_function}}
+\index{add\_basis\_function@{add\_basis\_function}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{add\_basis\_function()}{add\_basis\_function()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+void \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::add\+\_\+basis\+\_\+function (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a basis function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & The basis function to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_ga0c5b97b79eaf61e508693f6359cf19bd}\label{group__Functional_ga0c5b97b79eaf61e508693f6359cf19bd}} 
+\index{Functional@{Functional}!ancestor@{ancestor}}
+\index{ancestor@{ancestor}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{ancestor()}{ancestor()}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+const Basis\+Type\& \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::ancestor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the ancestor basis functions. 
+
+\begin{DoxyReturn}{Returns}
+The ancestor basis functions. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}\label{group__Functional_ga4ede8ac4e208ad5d5b5cd5db9d5ea035}} 
+\index{Functional@{Functional}!Basis@{Basis}}
+\index{Basis@{Basis}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{Basis()}{Basis()}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Basis}} (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$$>$ \&}]{bases }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with a set of basis functions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bases} & A vector of basis functions \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{group__Functional_gaae99d867e4d33ee40ba64df7d632624b}\label{group__Functional_gaae99d867e4d33ee40ba64df7d632624b}} 
 \index{Functional@{Functional}!compose@{compose}}
 \index{compose@{compose}!Functional@{Functional}}
@@ -281,11 +344,32 @@ Given two functions $g:\mathbb{R}^n\to\mathbb{R}^k$ and $f:\mathbb{R}^k\to\mathb
 {\em output\+\_\+dim} & ( $m$ in description above) -\/ The output dimension of the second function, $f$. Must be a strictly positive integer value. \\
 \hline
 \end{DoxyTemplParams}
+\mbox{\Hypertarget{group__Functional_gaa7f579d168de542cbec6b8076d5a2bde}\label{group__Functional_gaa7f579d168de542cbec6b8076d5a2bde}} 
+\index{Functional@{Functional}!Curve@{Curve}}
+\index{Curve@{Curve}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{Curve()}{Curve()}}
+{\footnotesize\ttfamily Poly\+Mesh2\+D\+::\+Functional\+::\+Curve\+::\+Curve (\begin{DoxyParamCaption}\item[{const double}]{t0,  }\item[{const double}]{t1,  }\item[{const std\+::function$<$ \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}}(double)$>$ \&}]{val,  }\item[{const std\+::function$<$ \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}}(double)$>$ \&}]{deriv }\end{DoxyParamCaption})}
+
+
+
+The \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tmin} & The start point of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} in parameter space. \\
+\hline
+{\em tmax} & The end point of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} in parameter space. \\
+\hline
+{\em val} & The value of the function. \\
+\hline
+{\em deriv} & The derivative of the function. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{group__Functional_ga841338b7a75b175e8cd42d4cd50d86bc}\label{group__Functional_ga841338b7a75b175e8cd42d4cd50d86bc}} 
 \index{Functional@{Functional}!CurvedEdgeBasis@{CurvedEdgeBasis}}
 \index{CurvedEdgeBasis@{CurvedEdgeBasis}!Functional@{Functional}}
 \doxysubsubsection{\texorpdfstring{CurvedEdgeBasis()}{CurvedEdgeBasis()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis1D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Curved\+Edge\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&}]{param,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const \mbox{\hyperlink{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}{Scalar\+Basis1D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Curved\+Edge\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&}]{param,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
 
 Generates a set of functions which span $\mathbb{P}^0(E) + \mathbb{P}^k(\mathbb{R}^2)^2\cdot\mathbf{n}_E $ on a given \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} $E$. 
 \begin{DoxyParams}{Parameters}
@@ -294,6 +378,76 @@ Generates a set of functions which span $\mathbb{P}^0(E) + \mathbb{P}^k(\mathbb{
 {\em degree} & The degree of the polynomial space. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_ga048f8bac7bca0a7272fefe112ae0aad3}\label{group__Functional_ga048f8bac7bca0a7272fefe112ae0aad3}} 
+\index{Functional@{Functional}!derivative@{derivative}}
+\index{derivative@{derivative}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{derivative()}{derivative()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+\mbox{\hyperlink{group__Functional_gadff4d66c59ac508f066753f5780e63b2}{Derivative\+Type}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::derivative (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i,  }\item[{const \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluate the derivative of the i-\/th basis function at point x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the basis function to evaluate \\
+\hline
+{\em x} & The input point at which to evaluate the basis function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Derivative\+Type The derivative value of the basis function 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_gada7695bae5ee11cf71caa02a7eb86f26}\label{group__Functional_gada7695bae5ee11cf71caa02a7eb86f26}} 
+\index{Functional@{Functional}!derivative@{derivative}}
+\index{derivative@{derivative}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{derivative()}{derivative()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+\mbox{\hyperlink{group__Functional_ga03ac8be1cae711ce9e3be91ec91bb6e7}{Derivative\+Type}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::derivative (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i,  }\item[{const \mbox{\hyperlink{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}{Input\+Type}} \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluate the gradient of the i-\/th \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} at point x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} to evaluate. \\
+\hline
+{\em x} & The point at which to evaluate the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The gradient of the i-\/th \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} at point x. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_gad20c2177d198f86d84047f28e4de2e60}\label{group__Functional_gad20c2177d198f86d84047f28e4de2e60}} 
+\index{Functional@{Functional}!dimension@{dimension}}
+\index{dimension@{dimension}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{dimension()}{dimension()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+size\+\_\+t \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::dimension (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of basis functions. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t Number of basis functions 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_ga5ddcdc65b740e97b1bdf670b0935e67e}\label{group__Functional_ga5ddcdc65b740e97b1bdf670b0935e67e}} 
+\index{Functional@{Functional}!dimension@{dimension}}
+\index{dimension@{dimension}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{dimension()}{dimension()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+size\+\_\+t \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::dimension (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the dimension of the family This is actually the number of Functions in the family, not necessarily linearly independent. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t The number of functions in the family 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__Functional_ga63078cedbf5b4cb788343a0fa78716d1}\label{group__Functional_ga63078cedbf5b4cb788343a0fa78716d1}} 
 \index{Functional@{Functional}!Family@{Family}}
 \index{Family@{Family}!Functional@{Functional}}
@@ -303,7 +457,7 @@ Generates a set of functions which span $\mathbb{P}^0(E) + \mathbb{P}^k(\mathbb{
 
 
 
-Constructor. 
+Constructor for the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Family}} class. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -312,6 +466,33 @@ Constructor.
 {\em matrix} & The coefficient matrix whose i-\/th line contains the coefficient of the expansion of the i-\/th \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} of the family in the basis \\
 \hline
 \end{DoxyParams}
+
+\begin{DoxyParams}{Parameters}
+{\em basis} & The basis in which the family is expressed \\
+\hline
+{\em matrix} & The coefficient matrix whose i-\/th line contains the coefficient of the expansion of the i-\/th \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} of the family in the basis \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_ga26a62e838516c1f749bba5ab65ee8a7f}\label{group__Functional_ga26a62e838516c1f749bba5ab65ee8a7f}} 
+\index{Functional@{Functional}!function@{function}}
+\index{function@{function}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{function()}{function()}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$input\+\_\+dim, output\+\_\+dim$>$\& \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::function (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns a const reference to the i-\/th basis \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}. 
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the basis \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A const reference to the i-\/th basis \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em An} & exception if the index is out of bounds. This function returns a const reference to the i-\/th basis \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} in this basis set. If the index is out of bounds (i.\+e. greater than or equal to the dimension of this basis set), an exception is thrown with an error message indicating the index that was out of bounds. \\
+\hline
+\end{DoxyExceptions}
 \mbox{\Hypertarget{group__Functional_gadb57f02ca3518e1af9c5174800462e3c}\label{group__Functional_gadb57f02ca3518e1af9c5174800462e3c}} 
 \index{Functional@{Functional}!Function@{Function}}
 \index{Function@{Function}!Functional@{Functional}}
@@ -346,12 +527,36 @@ A constructor for a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{
 {\em deriv} & The derivative of the function. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_gab0c0ede4052782039c77277d8684ab2c}\label{group__Functional_gab0c0ede4052782039c77277d8684ab2c}} 
+\index{Functional@{Functional}!matrix@{matrix}}
+\index{matrix@{matrix}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{matrix()}{matrix()}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+const Eigen\+::\+Matrix\+Xd\& \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the coefficient matrix. 
+
+\begin{DoxyReturn}{Returns}
+The coefficient matrix. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{group__Functional_gafa49f81cd2982b2aca0aad8157555cfe}\label{group__Functional_gafa49f81cd2982b2aca0aad8157555cfe}} 
 \index{Functional@{Functional}!min\_distance@{min\_distance}}
 \index{min\_distance@{min\_distance}!Functional@{Functional}}
 \doxysubsubsection{\texorpdfstring{min\_distance()}{min\_distance()}}
 {\footnotesize\ttfamily const double Poly\+Mesh2\+D\+::\+Functional\+::min\+\_\+distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&}]{curve,  }\item[{const Eigen\+::\+Vector2d \&}]{point }\end{DoxyParamCaption})}
 
+Uses a bisection method to find a point on a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} which minimises the distance to a given point. This method assumes the signed curvature does not change sign so that there exists at most one local maximum and one local minimum (given an infintite domain extension of the curve) 
+\begin{DoxyParams}{Parameters}
+{\em curve} & The \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} we are minimising the distance to. \\
+\hline
+{\em point} & The point we are minimising the distance to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The parameter value of the curve which minimises the distance to point.
+\end{DoxyReturn}
 Uses a bisection method to find a point on a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} which minimises the distance to a given point. This method assumes the signed curvature does not change sign so that there exists a most one local maximum and one local minimum (given an infintite domain extension of the curve) 
 \begin{DoxyParams}{Parameters}
 {\em curve} & The \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} we are minimising the distance to. \\
@@ -388,7 +593,7 @@ Constructs a scalar-\/valued monomial function in 2 dimensions.
 \index{Functional@{Functional}!MonomialScalarBasis@{MonomialScalarBasis}}
 \index{MonomialScalarBasis@{MonomialScalarBasis}!Functional@{Functional}}
 \doxysubsubsection{\texorpdfstring{MonomialScalarBasis()}{MonomialScalarBasis()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis1D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&}]{param,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const \mbox{\hyperlink{group__Functional_gab63b3c0e5b211bdcffb10d18313d91d8}{Scalar\+Basis1D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} \&}]{param,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
 
 Generates a scalar-\/valued shifted monomial basis in the parameter of a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}}. i.\+e. If the \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} is defined by $E=\{\gamma(t)\}$ then the basis is in the coordinate $t$. 
 \begin{DoxyParams}{Parameters}
@@ -401,8 +606,15 @@ Generates a scalar-\/valued shifted monomial basis in the parameter of a \mbox{\
 \index{Functional@{Functional}!MonomialScalarBasis@{MonomialScalarBasis}}
 \index{MonomialScalarBasis@{MonomialScalarBasis}!Functional@{Functional}}
 \doxysubsubsection{\texorpdfstring{MonomialScalarBasis()}{MonomialScalarBasis()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Scalar\+Basis2D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&}]{transform,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const \mbox{\hyperlink{group__Functional_gadbf974e6e445d7a9c240c93e09db03e4}{Scalar\+Basis2D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Scalar\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&}]{transform,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
 
+Generates a scalar-\/valued monomial basis in 2 dimensions. 
+\begin{DoxyParams}{Parameters}
+{\em transform} & describes a coordinate transformation under which the monomial is described. i.\+e. if the transformation is $\mathbf{y} = \mathbf{f}(\mathbf{x})$, then each basis function is a monomial in $\mathbf{y}$. transform is required to be affine (and non-\/degenerate) for the basis to span the same space as the polynomials in $\mathbf{x}$. No checks are performed to verify this. \\
+\hline
+{\em degree} & determines the degree of the polynomial space.\\
+\hline
+\end{DoxyParams}
 Generates a scalar-\/valued monomial basis in 2 dimensions. 
 \begin{DoxyParams}{Parameters}
 {\em transform} & describes a coordinate transformation under which the monomial is described. i.\+e. if the transformation is $\mathbf{y} = \mathbf{f}(\mathbf{y})$, then each basis function is a monomial in $\mathbf{y}$. transform is required to be affine (and non-\/degenerate) for the basis to span the same space as the polynomials in $\mathbf{x}$. No checks are performed to verify this. \\
@@ -414,13 +626,165 @@ Generates a scalar-\/valued monomial basis in 2 dimensions.
 \index{Functional@{Functional}!MonomialVectorBasis@{MonomialVectorBasis}}
 \index{MonomialVectorBasis@{MonomialVectorBasis}!Functional@{Functional}}
 \doxysubsubsection{\texorpdfstring{MonomialVectorBasis()}{MonomialVectorBasis()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Vector\+Basis2D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Vector\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&}]{transform,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily const \mbox{\hyperlink{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}{Vector\+Basis2D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Monomial\+Vector\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&}]{transform,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
 
+Generates a vector-\/valued monomial basis in 2 dimensions. 
+\begin{DoxyParams}{Parameters}
+{\em transform} & describes a coordinate transformation under which the monomial is described. i.\+e. if the transformation is $\mathbf{y} = \mathbf{f}(\mathbf{x})$, then each basis function is a monomial in $\mathbf{y}$. transform is required to be affine (and non-\/degenerate) for the basis to span the same space as the polynomials in $\mathbf{x}$. No checks are performed to verify this. \\
+\hline
+{\em degree} & determines the degree of the polynomial space.\\
+\hline
+\end{DoxyParams}
 Generates a vector-\/valued monomial basis in 2 dimensions. 
 \begin{DoxyParams}{Parameters}
 {\em transform} & describes a coordinate transformation under which the monomial is described. i.\+e. if the transformation is $\mathbf{y} = \mathbf{f}(\mathbf{y})$, then each basis function is a monomial in $\mathbf{y}$. transform is required to be affine (and non-\/degenerate) for the basis to span the same space as the polynomials in $\mathbf{x}$. No checks are performed to verify this. \\
 \hline
 {\em degree} & determines the degree of the polynomial space. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_gab004615bc7259b28cfd2444e872619e8}\label{group__Functional_gab004615bc7259b28cfd2444e872619e8}} 
+\index{Functional@{Functional}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$input\+\_\+dim, output\+\_\+dim$>$ Poly\+Mesh2\+D\+::\+Functional\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, 1 $>$ \&}]{f1,  }\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&}]{f2 }\end{DoxyParamCaption})}
+
+
+
+Overloaded operator to multiply a function by a scalar valued function. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em input\+\_\+dim} & The number of input dimensions. \\
+\hline
+{\em output\+\_\+dim} & The number of output dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & The first function to be multiplied -\/ must be scalar valued. \\
+\hline
+{\em f2} & The second function to be multiplied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} object which is the product of f1 and f2. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_gac3a46e8b3ce45611e8acdeeafb67737d}\label{group__Functional_gac3a46e8b3ce45611e8acdeeafb67737d}} 
+\index{Functional@{Functional}!operator+@{operator+}}
+\index{operator+@{operator+}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$input\+\_\+dim, output\+\_\+dim$>$ Poly\+Mesh2\+D\+::\+Functional\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&}]{f1,  }\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&}]{f2 }\end{DoxyParamCaption})}
+
+
+
+Overloaded operator to add two functions. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em input\+\_\+dim} & The number of input dimensions. \\
+\hline
+{\em output\+\_\+dim} & The number of output dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & The first function to be added. \\
+\hline
+{\em f2} & The second function to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} object which is the sum of f1 and f2. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_ga30fbcc29bbd7e55e484b0c43ca204c24}\label{group__Functional_ga30fbcc29bbd7e55e484b0c43ca204c24}} 
+\index{Functional@{Functional}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+\mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$input\+\_\+dim, output\+\_\+dim$>$ Poly\+Mesh2\+D\+::\+Functional\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&}]{f1,  }\item[{const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}}$<$ input\+\_\+dim, output\+\_\+dim $>$ \&}]{f2 }\end{DoxyParamCaption})}
+
+
+
+Overloaded operator to subtract two functions. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em input\+\_\+dim} & The number of input dimensions. \\
+\hline
+{\em output\+\_\+dim} & The number of output dimensions. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & The first function to be subtracted. \\
+\hline
+{\em f2} & The second function to be subtracted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Function}{Function}} object which is the f1 -\/ f2. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_gaa6184d61bbf3656091edfed176062d7d}\label{group__Functional_gaa6184d61bbf3656091edfed176062d7d}} 
+\index{Functional@{Functional}!RaviartThomasNedelecBasis@{RaviartThomasNedelecBasis}}
+\index{RaviartThomasNedelecBasis@{RaviartThomasNedelecBasis}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{RaviartThomasNedelecBasis()}{RaviartThomasNedelecBasis()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{group__Functional_ga6f9ca377dda35cb4c51e72c2abd527f4}{Vector\+Basis2D}} Poly\+Mesh2\+D\+::\+Functional\+::\+Raviart\+Thomas\+Nedelec\+Basis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__Functional_ga36d2c17c207e14e9c8d7281a040e7834}{Vector\+Function2D}} \&}]{transform,  }\item[{const size\+\_\+t}]{degree }\end{DoxyParamCaption})}
+
+Generates a basis for the Raviart-\/\+Thomas-\/\+Nedelec space $\mathbb{RTN}^{k}(T) = \mathbb{P}^{k-1}(T)^d + \mathbf{x}\mathbb{P}^{k-1}(T)$ in 2 dimensions. 
+\begin{DoxyParams}{Parameters}
+{\em transform} & describes a coordinate transformation under which the basis is described. i.\+e. if the transformation is $\mathbf{y} = \mathbf{f}(\mathbf{x})$, then the basis for the the Raviart-\/\+Thomas-\/\+Nedelec is given by vector valued monomials in $\mathbf{y}$ plus $\mathbf{y}$ times scalar valued monomials in $\mathbf{y}$. transform is required to be affine (and non-\/degenerate) for the basis to span the same space as the Raviart-\/\+Thomas-\/\+Nedelec space in $\mathbf{x}$. No checks are performed to verify this. \\
+\hline
+{\em degree} & determines the degree of the Raviart-\/\+Thomas-\/\+Nedelec space. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_ga50319d0663bea19e7b9cd3ed3ae9be13}\label{group__Functional_ga50319d0663bea19e7b9cd3ed3ae9be13}} 
+\index{Functional@{Functional}!remove\_basis\_function@{remove\_basis\_function}}
+\index{remove\_basis\_function@{remove\_basis\_function}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{remove\_basis\_function()}{remove\_basis\_function()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+void \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::remove\+\_\+basis\+\_\+function (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove a basis function at a given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the basis function to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_gab2e82645e1dea47f8cc33f5214e49ebe}\label{group__Functional_gab2e82645e1dea47f8cc33f5214e49ebe}} 
+\index{Functional@{Functional}!remove\_basis\_function@{remove\_basis\_function}}
+\index{remove\_basis\_function@{remove\_basis\_function}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{remove\_basis\_function()}{remove\_basis\_function()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+void \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::remove\+\_\+basis\+\_\+function (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes a basis function from the family. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the basis function to remove \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__Functional_ga1816a3f07619513aedb4b78161cdf00f}\label{group__Functional_ga1816a3f07619513aedb4b78161cdf00f}} 
+\index{Functional@{Functional}!reset\_matrix@{reset\_matrix}}
+\index{reset\_matrix@{reset\_matrix}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{reset\_matrix()}{reset\_matrix()}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+void \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::reset\+\_\+matrix (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Matrix\+Xd \&}]{matrix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resets the coefficient matrix of the family. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & The new coefficient matrix \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{group__Functional_ga7260480e729950d35f8f1034fec55039}\label{group__Functional_ga7260480e729950d35f8f1034fec55039}} 
@@ -444,7 +808,49 @@ Constructs a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} wh
 \doxysubsubsection{\texorpdfstring{StraightLine()}{StraightLine()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} Poly\+Mesh2\+D\+::\+Functional\+::\+Straight\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \&}]{v0,  }\item[{const \mbox{\hyperlink{group__Functional_gac750112aea471e4727a130e93bd9ad0e}{Col\+Vector}} \&}]{v1 }\end{DoxyParamCaption})}
 
-Constructs a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} object describing an arclength parameterisation of a line segment starting at v0 and terminating at v1. \mbox{\Hypertarget{group__Functional_ga7c78ba68c8d322cd8fe168bca3392eb4}\label{group__Functional_ga7c78ba68c8d322cd8fe168bca3392eb4}} 
+Constructs a \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Curve}{Curve}} object describing an arclength parameterisation of a line segment starting at v0 and terminating at v1. \mbox{\Hypertarget{group__Functional_ga1c2ee9b09cf8b3057d9eab1eb6802875}\label{group__Functional_ga1c2ee9b09cf8b3057d9eab1eb6802875}} 
+\index{Functional@{Functional}!value@{value}}
+\index{value@{value}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$unsigned input\+\_\+dim, unsigned output\+\_\+dim$>$ \\
+\mbox{\hyperlink{group__Functional_ga5c2dd6806ba3f624446a2cb61b51b4e5}{Output\+Type}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Basis}{Poly\+Mesh2\+D\+::\+Functional\+::\+Basis}}$<$ input\+\_\+dim, output\+\_\+dim $>$\+::value (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i,  }\item[{const \mbox{\hyperlink{group__Functional_ga54c3f023e9ed4c9e2aa0a8a400179538}{Input\+Type}} \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluate the i-\/th basis function at point x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the basis function to evaluate \\
+\hline
+{\em x} & The input point at which to evaluate the basis function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output\+Type The output value of the basis function 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_ga3eb439c0c958bfc230775bf12ecdeffe}\label{group__Functional_ga3eb439c0c958bfc230775bf12ecdeffe}} 
+\index{Functional@{Functional}!value@{value}}
+\index{value@{value}!Functional@{Functional}}
+\doxysubsubsection{\texorpdfstring{value()}{value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basis\+Type $>$ \\
+\mbox{\hyperlink{group__Functional_ga51864c9c657ac4cc389de861c67c27f0}{Output\+Type}} \mbox{\hyperlink{classPolyMesh2D_1_1Functional_1_1Family}{Poly\+Mesh2\+D\+::\+Functional\+::\+Family}}$<$ Basis\+Type $>$\+::value (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{i,  }\item[{const \mbox{\hyperlink{group__Functional_ga6d519a0c8ae5e1a54f86419acb8fde06}{Input\+Type}} \&}]{x }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evaluate the i-\/th function in the family at a given point x. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the function to evaluate \\
+\hline
+{\em x} & The point at which to evaluate the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output\+Type The value of the function at the given point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__Functional_ga7c78ba68c8d322cd8fe168bca3392eb4}\label{group__Functional_ga7c78ba68c8d322cd8fe168bca3392eb4}} 
 \index{Functional@{Functional}!VectorMonomial@{VectorMonomial}}
 \index{VectorMonomial@{VectorMonomial}!Functional@{Functional}}
 \doxysubsubsection{\texorpdfstring{VectorMonomial()}{VectorMonomial()}}

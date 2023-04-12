@@ -13,37 +13,96 @@ namespace PolyMesh2D
          * @{
          */
 
+        /**
+         * @brief Templated class for defining a basis of functions of arbitrary input and output dimensions
+         *
+         * @tparam input_dim Number of input dimensions
+         * @tparam output_dim Number of output dimensions
+         */
         template <unsigned input_dim, unsigned output_dim>
         class Basis
         {
         public:
+            /**
+             * @brief Alias for the input type of basis functions
+             */
             typedef typename Function<input_dim, output_dim>::InputType InputType;
+
+            /**
+             * @brief Alias for the output type of basis functions
+             */
             typedef typename Function<input_dim, output_dim>::OutputType OutputType;
+
+            /**
+             * @brief Alias for the derivative type of basis functions
+             */
             typedef typename Function<input_dim, output_dim>::DerivativeType DerivativeType;
 
+            /**
+             * @brief Number of input dimensions
+             */
             static const unsigned input_dimension = input_dim;
+
+            /**
+             * @brief Number of output dimensions
+             */
             static const unsigned output_dimension = output_dim;
 
+            /**
+             * @brief Constructor
+             */
             Basis() {}
+
+            /**
+             * @brief Destructor
+             */
             ~Basis() {}
+
+            /**
+             * @brief Constructor with a set of basis functions
+             *
+             * @param bases A vector of basis functions
+             */
             Basis(const std::vector<Function<input_dim, output_dim>> &bases) : __basis(bases) {}
 
+            /**
+             * @brief Get the number of basis functions
+             *
+             * @return size_t Number of basis functions
+             */
             size_t dimension() const
             {
                 return __basis.size();
             }
 
+            /**
+             * @brief Add a basis function
+             *
+             * @param func The basis function to add
+             */
             void add_basis_function(const Function<input_dim, output_dim> &func)
             {
                 __basis.push_back(func);
             }
 
+            /**
+             * @brief Remove a basis function at a given index
+             *
+             * @param i The index of the basis function to remove
+             */
             void remove_basis_function(const size_t i) // remove basis function at ith index
             {
                 assert(i < dimension());
                 __basis.erase(std::begin(__basis) + i);
             }
 
+            /**
+             * @brief Evaluate the i-th basis function at point x
+             *
+             * @param i The index of the basis function to evaluate
+             * @param x The input point at which to evaluate the basis function
+             * @return OutputType The output value of the basis function
+             */
             OutputType value(const size_t i, const InputType &x) const
             {
                 if (i < dimension())
@@ -56,6 +115,13 @@ namespace PolyMesh2D
                 }
             }
 
+            /**
+             * @brief Evaluate the derivative of the i-th basis function at point x
+             *
+             * @param i The index of the basis function to evaluate
+             * @param x The input point at which to evaluate the basis function
+             * @return DerivativeType The derivative value of the basis function
+             */
             DerivativeType derivative(const size_t i, const InputType &x) const
             {
                 if (i < dimension())
@@ -68,6 +134,15 @@ namespace PolyMesh2D
                 }
             }
 
+            /**
+                Returns a const reference to the i-th basis Function.
+                @param i The index of the basis Function to retrieve.
+                @return A const reference to the i-th basis Function.
+                @throws An exception if the index is out of bounds.
+                This function returns a const reference to the i-th basis Function in this basis set.
+                If the index is out of bounds (i.e. greater than or equal to the dimension of this basis set),
+                an exception is thrown with an error message indicating the index that was out of bounds.
+                */
             const Function<input_dim, output_dim> &function(const size_t i) const
             {
                 if (i < dimension())
@@ -84,14 +159,23 @@ namespace PolyMesh2D
             std::vector<Function<input_dim, output_dim>> __basis;
         };
 
+        /**
+            @brief A class representing a family of functions expressed in a given basis with coefficients stored in a matrix. This class allows the evaluation of functions in the family and their derivatives at any given point in the domain of the functions. The family is represented by a BasisType object which defines the basis in which the family is expressed, and a coefficient matrix whose i-th line contains the coefficient of the expansion of the i-th function of the family in the basis.
+            @tparam BasisType Type of the basis object used to represent the family
+            */
         template <typename BasisType>
         class Family
         {
         public:
-            typedef typename BasisType::InputType InputType;
-            typedef typename BasisType::OutputType OutputType;
-            typedef typename BasisType::DerivativeType DerivativeType;
-            /// Constructor
+            typedef typename BasisType::InputType InputType;           ///< Type of the input to the functions in the family
+            typedef typename BasisType::OutputType OutputType;         ///< Type of the output of the functions in the family
+            typedef typename BasisType::DerivativeType DerivativeType; ///< Type of the derivative of the functions in the family
+
+            /**
+                @brief Constructor for the Family class
+                @param basis The basis in which the family is expressed
+                @param matrix The coefficient matrix whose i-th line contains the coefficient of the expansion of the i-th Function of the family in the basis
+                */
             Family(
                 const BasisType &basis,       ///< The basis in which the family is expressed
                 const Eigen::MatrixXd &matrix ///< The coefficient matrix whose i-th line contains the coefficient of the expansion of the i-th Function of the family in the basis
@@ -103,34 +187,51 @@ namespace PolyMesh2D
                 assert((size_t)m_matrix.rows() == m_basis.dimension());
             }
 
-            /// Dimension of the family. This is actually the number of Functions in the family, not necessarily linearly independent
+            /**
+                @brief Returns the dimension of the family
+                This is actually the number of Functions in the family, not necessarily linearly independent
+                @return size_t The number of functions in the family
+                */
             inline size_t dimension() const
             {
                 return m_basis.dimension();
             }
 
-            // template<size_t input_dim, size_t output_dim>
+            /**
+                @brief Adds a basis function to the family
+                @param func The basis function to add
+                */
             void add_basis_function(const Function<BasisType::input_dimension, BasisType::output_dimension> &func)
             {
                 m_basis.add_basis_function(func);
-                // Eigen::MatrixXd new_mat = Eigen::MatrixXd::Identity(m_basis.dimension(), m_basis.dimension());
-                // new_mat.topLeftCorner(m_basis.dimension() - 1, m_basis.dimension() - 1) = m_matrix;
-                // m_matrix = new_mat;
             }
 
+            /**
+                @brief Removes a basis function from the family
+                @param i The index of the basis function to remove
+                */
             void remove_basis_function(const size_t i) // remove basis function at ith index
             {
                 assert(i < dimension());
                 m_basis.remove_basis_function(i);
             }
 
+            /**
+                @brief Resets the coefficient matrix of the family
+                @param matrix The new coefficient matrix
+                */
             void reset_matrix(const Eigen::MatrixXd &matrix)
             {
                 assert((size_t)matrix.cols() == m_basis.dimension());
                 m_matrix = matrix;
             }
 
-            /// Evaluate the i-th Function at point x
+            /**
+                @brief Evaluate the i-th function in the family at a given point x
+                @param i The index of the function to evaluate
+                @param x The point at which to evaluate the function
+                @return OutputType The value of the function at the given point
+                */
             OutputType value(const size_t i, const InputType &x) const
             {
                 OutputType f = m_matrix(i, 0) * m_basis.value(0, x);
@@ -141,7 +242,12 @@ namespace PolyMesh2D
                 return f;
             }
 
-            /// Evaluate the gradient of the i-th Function at point x
+            /**
+                 @brief Evaluate the gradient of the i-th Function at point x.
+                @param i The index of the Function to evaluate.
+                @param x The point at which to evaluate the Function.
+                @return The gradient of the i-th Function at point x.
+                */
             DerivativeType derivative(const size_t i, const InputType &x) const
             {
                 DerivativeType G = m_matrix(i, 0) * m_basis.derivative(0, x);
@@ -152,14 +258,20 @@ namespace PolyMesh2D
                 return G;
             }
 
-            /// Return the coefficient matrix
-            inline const Eigen::MatrixXd &matrix() const
+            /**
+                @brief Return the coefficient matrix.
+                @return The coefficient matrix.
+                */
+            const Eigen::MatrixXd &matrix() const
             {
                 return m_matrix;
             }
 
-            /// Return the ancestor
-            inline const BasisType &ancestor() const
+            /**
+                @brief Return the ancestor basis functions.
+                @return The ancestor basis functions.
+                */
+            const BasisType &ancestor() const
             {
                 return m_basis;
             }
@@ -169,14 +281,125 @@ namespace PolyMesh2D
             Eigen::MatrixXd m_matrix;
         };
 
+        // template <typename BasisType>
+        // class Family
+        // {
+        // public:
+        //     typedef typename BasisType::InputType InputType;
+        //     typedef typename BasisType::OutputType OutputType;
+        //     typedef typename BasisType::DerivativeType DerivativeType;
+        //     /// Constructor
+        //     Family(
+        //         const BasisType &basis,       ///< The basis in which the family is expressed
+        //         const Eigen::MatrixXd &matrix ///< The coefficient matrix whose i-th line contains the coefficient of the expansion of the i-th Function of the family in the basis
+        //         )
+        //         : m_basis(basis),
+        //           m_matrix(matrix)
+        //     {
+        //         assert((size_t)m_matrix.cols() == m_basis.dimension());
+        //         assert((size_t)m_matrix.rows() == m_basis.dimension());
+        //     }
+
+        //     /// Dimension of the family. This is actually the number of Functions in the family, not necessarily linearly independent
+        //     inline size_t dimension() const
+        //     {
+        //         return m_basis.dimension();
+        //     }
+
+        //     void add_basis_function(const Function<BasisType::input_dimension, BasisType::output_dimension> &func)
+        //     {
+        //         m_basis.add_basis_function(func);
+        //     }
+
+        //     void remove_basis_function(const size_t i) // remove basis function at ith index
+        //     {
+        //         assert(i < dimension());
+        //         m_basis.remove_basis_function(i);
+        //     }
+
+        //     void reset_matrix(const Eigen::MatrixXd &matrix)
+        //     {
+        //         assert((size_t)matrix.cols() == m_basis.dimension());
+        //         m_matrix = matrix;
+        //     }
+
+        //     /// Evaluate the i-th Function at point x
+        //     OutputType value(const size_t i, const InputType &x) const
+        //     {
+        //         OutputType f = m_matrix(i, 0) * m_basis.value(0, x);
+        //         for (auto j = 1; j < m_matrix.cols(); j++)
+        //         {
+        //             f += m_matrix(i, j) * m_basis.value(j, x);
+        //         } // for j
+        //         return f;
+        //     }
+
+        //     /// Evaluate the gradient of the i-th Function at point x
+        //     DerivativeType derivative(const size_t i, const InputType &x) const
+        //     {
+        //         DerivativeType G = m_matrix(i, 0) * m_basis.derivative(0, x);
+        //         for (auto j = 1; j < m_matrix.cols(); j++)
+        //         {
+        //             G += m_matrix(i, j) * m_basis.derivative(j, x);
+        //         } // for j
+        //         return G;
+        //     }
+
+        //     /// Return the coefficient matrix
+        //     inline const Eigen::MatrixXd &matrix() const
+        //     {
+        //         return m_matrix;
+        //     }
+
+        //     /// Return the ancestor
+        //     inline const BasisType &ancestor() const
+        //     {
+        //         return m_basis;
+        //     }
+
+        // private:
+        //     BasisType m_basis;
+        //     Eigen::MatrixXd m_matrix;
+        // };
+
+        /**
+            @brief Alias for a 1D scalar Basis.
+            */
         using ScalarBasis1D = Basis<1, 1>;
+
+        /**
+            @brief Alias for a 2D scalar Basis.
+            */
         using ScalarBasis2D = Basis<2, 1>;
+
+        /**
+            @brief Alias for a 1D vector Basis.
+            */
         using VectorBasis1D = Basis<1, 2>;
+
+        /**
+            @brief Alias for a 2D vector Basis.
+            */
         using VectorBasis2D = Basis<2, 2>;
 
+        /**
+            @brief Alias for a 1D scalar Basis Family.
+            */
         using ScalarFamily1D = Family<ScalarBasis1D>;
+
+        /**
+            @brief Alias for a 2D scalar Basis Family.
+            */
         using ScalarFamily2D = Family<ScalarBasis2D>;
+
+        /**
+            @brief Alias for a 1D vector Basis Family.
+            */
         using VectorFamily1D = Family<VectorBasis1D>;
+
+        /**
+            @brief Alias for a 2D vector Basis Family.
+            */
         using VectorFamily2D = Family<VectorBasis2D>;
 
         //@}

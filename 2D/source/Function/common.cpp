@@ -170,6 +170,28 @@ namespace PolyMesh2D
             return basis;
         }
 
+        const VectorBasis2D RaviartThomasNedelecBasis(const VectorFunction2D &transform, const size_t degree)
+        {
+            VectorBasis2D basis;
+            for (size_t d = 0; d < 2; ++d)
+            {
+                for (size_t l = 0; l <= degree - 1; l++)
+                {
+                    for (size_t i = 0; i <= l; i++)
+                    {
+                        auto func = compose(VectorMonomial({i, l - i}, d), transform);
+                        basis.add_basis_function(func);
+                    } // for i
+                }
+            }
+            for (size_t i = 0; i <= l; i++)
+            {
+                auto func = compose(ScalarMonomial({i, l - i}), transform);
+                basis.add_basis_function(func * transform);
+            } 
+            return basis;
+        }
+
         double bisection_method(const std::function<double(double)> &f, const double t0, const double t1)
         {
             assert(f(t0) * f(t1) < 0.0);
