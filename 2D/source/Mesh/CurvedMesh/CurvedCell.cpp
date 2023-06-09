@@ -4,7 +4,7 @@
 #include "CurvedEdge.hpp"
 #include "CurvedCell.hpp"
 
-#include "GaussLegendre.hpp"
+#include "QuadratureRule.hpp"
 #include "function.hpp"
 
 namespace PolyMesh2D
@@ -55,7 +55,7 @@ namespace PolyMesh2D
 
             unsigned quad_degree = (_is_straight ? 2 : 20); // if straight, max degree of integration is that of x(x.n) which is 2.
 
-            Quadrature::GaussLegendre1D quad(quad_degree);
+            Quadrature::QuadratureRule<double> quad(Quadrature::gauss_jacobi(0, 0, quad_degree));
 
             // compute _measure and _center_mass via integration on boundary
             for (size_t iE = 0; iE < _edges.size(); ++iE)
@@ -68,7 +68,7 @@ namespace PolyMesh2D
                 double edge_len = b - a;
                 assert(edge_len > 0.0);
 
-                for (size_t iqn = 0; iqn < quad.n_points(); ++iqn)
+                for (size_t iqn = 0; iqn < quad.size(); ++iqn)
                 {
                     double point = edge_len * quad.point(iqn) + a;
                     double tmp = edge_len * quad.weight(iqn) * edge_param.value(point).dot(this->edge_normal(iE, point)) * edge_param.derivative(point).norm();
@@ -130,7 +130,7 @@ namespace PolyMesh2D
 
             unsigned quad_degree = (_is_straight ? 0 : 20); // if straight, max degree of integration is 0.
 
-            Quadrature::GaussLegendre1D quad(quad_degree);
+            Quadrature::QuadratureRule<double> quad(Quadrature::gauss_jacobi(0, 0, quad_degree));
 
             // compute _measure and _center_mass via integration on boundary
             for (size_t iE = 0; iE < _edges.size(); ++iE)
@@ -143,7 +143,7 @@ namespace PolyMesh2D
                 double edge_len = b - a;
                 assert(edge_len > 0.0);
 
-                for (size_t iqn = 0; iqn < quad.n_points(); ++iqn)
+                for (size_t iqn = 0; iqn < quad.size(); ++iqn)
                 {
                     double point = edge_len * quad.point(iqn) + a;
                     integral += edge_len * quad.weight(iqn) * const_vec.dot(this->edge_normal(iE, point)) * edge_param.derivative(point).norm();

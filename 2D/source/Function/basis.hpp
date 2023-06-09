@@ -162,6 +162,8 @@ namespace PolyMesh2D
             /** An alias for the derivative type of the basis **/
             typedef typename BasisType::DerivativeType DerivativeType; 
 
+            Family( ) {}
+
             /**
              * Constructor for the Family class
              * @param basis The basis in which the family is expressed
@@ -293,22 +295,22 @@ namespace PolyMesh2D
         using VectorBasis2D = Basis<2, 2>;
 
         /**
-         * Alias for a 1D scalar Basis Family.
+         * Alias for a 1D scalar Family.
          **/
         using ScalarFamily1D = Family<ScalarBasis1D>;
 
         /**
-         * Alias for a 2D scalar Basis Family.
+         * Alias for a 2D scalar Family.
          **/
         using ScalarFamily2D = Family<ScalarBasis2D>;
 
         /**
-         * Alias for a 1D vector Basis Family.
+         * Alias for a 1D vector Family.
          */
         using VectorFamily1D = Family<VectorBasis1D>;
 
         /**
-         * Alias for a 2D vector Basis Family.
+         * Alias for a 2D vector Family.
          **/
         using VectorFamily2D = Family<VectorBasis2D>;
 

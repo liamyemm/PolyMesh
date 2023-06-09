@@ -72,6 +72,32 @@ namespace PolyMesh2D
             return VectorFunction2D(val, deriv);
         }
 
+        const VectorFunction1D VectorMonomial(const size_t power, const size_t index)
+        {
+            if (index > 1)
+            {
+                throw "ERROR - index out of bounds\n";
+            }
+
+            using InputType = VectorFunction1D::InputType;
+            using OutputType = VectorFunction1D::OutputType;
+            using DerivativeType = VectorFunction1D::DerivativeType;
+
+            std::function<OutputType(InputType)> val = [power, index](const InputType &x) -> OutputType
+            {
+                OutputType val = OutputType::Zero();
+                val(index) = std::pow(x, power);
+                return val;
+            };
+            std::function<DerivativeType(InputType)> deriv = [power, index](const InputType &x) -> DerivativeType
+            {
+                DerivativeType deriv = DerivativeType::Zero();
+                deriv(index) = power * std::pow(x, power - 1);
+                return deriv;
+            };
+            return VectorFunction1D(val, deriv);
+        }
+
         const ScalarBasis2D MonomialScalarBasis(const VectorFunction2D &transform, const size_t degree)
         {
             ScalarBasis2D basis;
@@ -80,6 +106,7 @@ namespace PolyMesh2D
                 for (size_t i = 0; i <= l; i++)
                 {
                     auto func = compose(Monomial({i, l - i}), transform);
+                    // auto func = Monomial({i, l - i});
                     basis.add_basis_function(func);
                 } // for i
             }
@@ -89,13 +116,14 @@ namespace PolyMesh2D
         const VectorBasis2D MonomialVectorBasis(const VectorFunction2D &transform, const size_t degree)
         {
             VectorBasis2D basis;
-            for (size_t d = 0; d < 2; ++d)
+            for (size_t l = 0; l <= degree; l++)
             {
-                for (size_t l = 0; l <= degree; l++)
+                for (size_t i = 0; i <= l; i++)
                 {
-                    for (size_t i = 0; i <= l; i++)
+                    for (size_t d = 0; d < 2; ++d)
                     {
                         auto func = compose(VectorMonomial({i, l - i}, d), transform);
+                        // auto func = VectorMonomial({i, l - i}, d);
                         basis.add_basis_function(func);
                     } // for i
                 }
@@ -131,14 +159,61 @@ namespace PolyMesh2D
             basis.add_basis_function(const_func);
             for (size_t i = 0; i < vector_basis.dimension(); ++i)
             {
-                auto &vec_i = vector_basis.function(i).get_value();
+                auto &vec_i = vector_basis.function(i);
 
                 std::function<double(double)> func = [vec_i, edge_param](const double x) -> double
                 {
-                    return vec_i(edge_param.value(x)).dot(edge_param.normal(x));
+                    return vec_i.value(edge_param.value(x)).dot(edge_param.normal(x));
                 };
 
-                basis.add_basis_function(func);
+                basis.add_basis_function(Function<1, 1>(func));
+            }
+            return basis;
+        }
+
+        const VectorBasis1D CurvedEdgeVectorBasis(const Curve &edge_param, const size_t degree)
+        {
+            Eigen::Vector2d xT = edge_param.value(0.5 * (edge_param.tmax + edge_param.tmin));
+            double hT = edge_param.tmax - edge_param.tmin;
+
+            std::function<VectorType<2>(VectorType<2>)> transform_val = [xT, hT](const VectorType<2> &x) -> VectorType<2>
+            {
+                return (1.0 / hT) * (x - xT);
+            };
+
+            std::function<MatrixType<2, 2>(VectorType<2>)> transform_deriv = [xT, hT](const VectorType<2> &x) -> MatrixType<2, 2>
+            {
+                return (1.0 / hT) * Eigen::Matrix2d::Identity();
+            };
+
+            VectorFunction2D transform(transform_val, transform_deriv);
+
+            VectorBasis2D vector_basis = MonomialVectorBasis(transform, degree);
+            VectorBasis1D basis;
+            std::function<ColVector(double)> const_func_1_val = [](const double x) -> ColVector
+            { return ColVector(1.0, 0.0); };
+            std::function<ColVector(double)> const_func_2_val = [](const double x) -> ColVector
+            { return ColVector(0.0, 1.0); };
+            std::function<ColVector(double)> const_func_deriv = [](const double x) -> ColVector
+            { return ColVector::Zero(); };
+
+            VectorFunction1D const_func_1(const_func_1_val, const_func_deriv);
+            VectorFunction1D const_func_2(const_func_2_val, const_func_deriv);
+            basis.add_basis_function(const_func_1);
+            basis.add_basis_function(const_func_2);
+            for (size_t i = 0; i < vector_basis.dimension(); ++i)
+            {
+                for (size_t d = 0; d < 2; ++d)
+                {
+                    auto &vec_i = vector_basis.function(i);
+
+                    std::function<ColVector(double)> func = [vec_i, edge_param, d](const double x) -> ColVector
+                    {
+                        return (edge_param.normal(x)(d)) * vec_i.value(edge_param.value(x));
+                    };
+
+                    basis.add_basis_function(Function<1, 2>(func));
+                }
             }
             return basis;
         }
@@ -170,14 +245,43 @@ namespace PolyMesh2D
             return basis;
         }
 
+        const VectorBasis1D MonomialVectorBasis(const Curve &edge_param, const size_t degree)
+        {
+            VectorBasis1D basis;
+
+            double tmin = edge_param.tmin;
+            double tmax = edge_param.tmax;
+
+            std::function<double(double)> transform_val = [tmin, tmax](const double t) -> double
+            {
+                return (t - tmin) / (tmax - tmin);
+            };
+
+            std::function<double(double)> transform_deriv = [tmin, tmax](const double t) -> double
+            {
+                return 1.0 / (tmax - tmin);
+            };
+
+            ScalarFunction1D transform(transform_val, transform_deriv);
+            for (size_t d = 0; d < 2; ++d)
+            {
+                for (size_t i = 0; i <= degree; ++i)
+                {
+                    // basis.add_basis_function(VectorMonomial(i, d));
+                    basis.add_basis_function(compose(VectorMonomial(i, d), transform));
+                }
+            }
+            return basis;
+        }
+
         const VectorBasis2D RaviartThomasNedelecBasis(const VectorFunction2D &transform, const size_t degree)
         {
             VectorBasis2D basis;
-            for (size_t d = 0; d < 2; ++d)
+            for (size_t l = 0; l <= degree - 1; l++)
             {
-                for (size_t l = 0; l <= degree - 1; l++)
+                for (size_t i = 0; i <= l; i++)
                 {
-                    for (size_t i = 0; i <= l; i++)
+                    for (size_t d = 0; d < 2; ++d)
                     {
                         auto func = compose(VectorMonomial({i, l - i}, d), transform);
                         basis.add_basis_function(func);
@@ -188,7 +292,7 @@ namespace PolyMesh2D
             {
                 auto func = compose(Monomial({i, degree - 1 - i}), transform);
                 basis.add_basis_function(func * transform);
-            } 
+            }
             return basis;
         }
 
@@ -211,7 +315,7 @@ namespace PolyMesh2D
                 {
                     return c;
                 }
-                if(Math::sgn(f(c)) == Math::sgn(f(a)))
+                if (Math::sgn(f(c)) == Math::sgn(f(a)))
                 {
                     a = c;
                 }
@@ -238,12 +342,12 @@ namespace PolyMesh2D
 
             unsigned n_partitions = 10; // probably overkill, but I am not certain.
             double delta = (curve.tmax - curve.tmin) / n_partitions;
-            for(unsigned i = 0; i < n_partitions; ++i)
+            for (unsigned i = 0; i < n_partitions; ++i)
             {
                 double t_start = curve.tmin + i * delta;
                 double t_end = curve.tmin + (i + 1) * delta;
 
-                if(std::abs(find_roots_of(t_start)) < 1E-15)
+                if (std::abs(find_roots_of(t_start)) < 1E-15)
                 {
                     t_vals.push_back(t_start);
                 }
@@ -258,9 +362,9 @@ namespace PolyMesh2D
 
             double t = t_vals[0];
 
-            for(size_t i = 1; i < t_vals.size(); ++i)
+            for (size_t i = 1; i < t_vals.size(); ++i)
             {
-                if((curve.value(t_vals[i]) - point).norm() < (curve.value(t) - point).norm())
+                if ((curve.value(t_vals[i]) - point).norm() < (curve.value(t) - point).norm())
                 {
                     t = t_vals[i]; // find the minimiser
                 }
@@ -269,17 +373,16 @@ namespace PolyMesh2D
             return t;
         }
 
-
         const Curve restriction(const Curve &curve, const double t0, const double t1)
         {
             double tmin = std::min(t0, t1);
             double tmax = std::max(t0, t1);
 
-            if((curve.value(curve.tmax) - curve.value(curve.tmin)).norm() < 1E-15) // closed curve
+            if ((curve.value(curve.tmax) - curve.value(curve.tmin)).norm() < 1E-15) // closed curve
             {
                 bool tmax_fourth_quad = (tmax > curve.tmin + 0.75 * (curve.tmax - curve.tmin));
                 bool tmin_first_quad = (tmin < curve.tmin + 0.25 * (curve.tmax - curve.tmin));
-                if(tmin_first_quad && tmax_fourth_quad)
+                if (tmin_first_quad && tmax_fourth_quad)
                 {
                     tmin += curve.tmax; // assumes periodic. will cause issues otherwise
                     double tmp = tmax;
@@ -288,7 +391,70 @@ namespace PolyMesh2D
                 }
             }
 
-            return Curve(tmin, tmax, curve.get_value(), curve.get_derivative());
+            Curve ret(curve);
+            ret.tmin = tmin;
+            ret.tmax = tmax;
+
+            // return Curve(tmin, tmax, curve.get_value(), curve.get_derivative());
+            return ret;
+        }
+
+        const Function<2, 2> gradient(const Function<2, 1> &func)
+        {
+            std::function<VectorType<2>(VectorType<2>)> grad = [func](const VectorType<2> &x) -> VectorType<2>
+            {
+                return func.derivative(x).transpose();
+            };
+
+            Function<2, 2> ret(grad);
+
+            std::vector<Functional::Pole<Eigen::Vector2d>> poles(func.get_poles());
+            for (auto &pole : poles) pole.order = pole.order + 1;
+
+            ret.set_poles(poles);
+            return ret;
+        }
+
+        const Function<2, 2> curl(const Function<2, 1> &func)
+        {
+            std::function<VectorType<2>(VectorType<2>)> curl = [func](const VectorType<2> & x) -> VectorType<2>
+            {
+                return ColVector(func.derivative(x)(1), -func.derivative(x)(0));
+            };
+
+            Function<2, 2> ret(curl);
+
+            std::vector<Functional::Pole<Eigen::Vector2d>> poles(func.get_poles());
+            for (auto &pole : poles) pole.order = pole.order + 1;
+
+            ret.set_poles(poles);
+            return ret;
+        }
+
+        const Function<1, 1> dot_n(const Function<1, 2> &func, const Curve &param)
+        {
+            std::function<double(double)> dot = [func, param](const double x) -> double
+            {
+                return func.value(x).dot(param.normal(x));
+            };
+
+            Function<1, 1> ret(dot);
+
+            ret.set_poles(func.get_poles());
+            return ret;
+        }
+
+        const Function<1, 2> times_n(const Function<1, 1> &func, const Curve &param)
+        {
+            std::function<Eigen::Vector2d(double)> times = [func, param](const double x) -> Eigen::Vector2d
+            {
+                return func.value(x) * (param.normal(x));
+            };
+
+            Function<1, 2> ret(times);
+
+            ret.set_poles(func.get_poles());
+            return ret;
         }
     }
 }

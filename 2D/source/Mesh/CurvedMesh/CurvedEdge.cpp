@@ -4,7 +4,7 @@
 #include "CurvedEdge.hpp"
 #include "CurvedCell.hpp"
 
-#include "GaussLegendre.hpp"
+#include "QuadratureRule.hpp"
 
 namespace PolyMesh2D
 {
@@ -15,7 +15,7 @@ namespace PolyMesh2D
             : Polytope::Polytope(index), _parameterisation(parameterisation)
         {
             // compute _measure and _center_mass via integration
-            Quadrature::GaussLegendre1D quad(20);
+            Quadrature::QuadratureRule<double> quad(Quadrature::gauss_jacobi(0, 0, 20));
 
             double a = _parameterisation.tmin;
             double b = _parameterisation.tmax;
@@ -23,7 +23,7 @@ namespace PolyMesh2D
             double len = b - a;
             assert(len > 0.0);
 
-            for (size_t iqn = 0; iqn < quad.n_points(); ++iqn)
+            for (size_t iqn = 0; iqn < quad.size(); ++iqn)
             {
                 double point = len * quad.point(iqn) + a;
                 double tmp = len * quad.weight(iqn) * _parameterisation.derivative(point).norm();

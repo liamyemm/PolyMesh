@@ -1,6 +1,5 @@
 #include "StraightMesh.hpp"
 #include <iostream>
-#include "GaussLegendre.hpp"
 
 namespace PolyMesh2D
 {

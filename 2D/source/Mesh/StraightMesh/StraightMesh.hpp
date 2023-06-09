@@ -18,6 +18,11 @@ namespace PolyMesh2D
         class Mesh
         {
         public:
+            using CellType = Cell;
+            using EdgeType = Edge;
+            using VertexType = Vertex;
+            using PointType = Eigen::Vector2d;
+            
             Mesh();  ///< Null constructor.
             ~Mesh(); ///< Destructor ensuring the deletion of the dynamically allocated vertices, edges, and cells.
 

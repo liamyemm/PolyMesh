@@ -1,3 +1,3 @@
-FILE(GLOB source_list HybridCore.* parallel_for.*)
+FILE(GLOB source_list HybridCore.*)
 ADD_LIBRARY(hybridcore ${source_list})
-TARGET_LINK_LIBRARIES(hybridcore mesh function quadrature)
+TARGET_LINK_LIBRARIES(hybridcore mesh function quadrature thread)

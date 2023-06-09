@@ -57,4 +57,26 @@ namespace Math
         }
         return val;
     }
+
+    // const double scalar_product(Eigen::MatrixXd A, Eigen::MatrixXd B)
+    // {
+    //     Eigen::Map<Eigen::VectorXd> vec_A(A.data(), A.cols() * A.rows());
+    //     Eigen::Map<Eigen::VectorXd> vec_B(B.data(), B.cols() * B.rows());
+    //     return vec_A.dot(vec_B);
+    // }
+
+    // const double scalar_product(Eigen::VectorXd A, Eigen::VectorXd B)
+    // {
+    //     return A.dot(B);
+    // }
+
+    const double scalar_product(double x, double y)
+    {
+        return x * y;
+    }
+    
+    const double norm(double x)
+    {
+        return std::abs(x); 
+    }
 }

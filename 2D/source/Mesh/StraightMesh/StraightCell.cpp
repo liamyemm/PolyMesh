@@ -4,9 +4,6 @@
 #include "StraightEdge.hpp"
 #include "StraightCell.hpp"
 
-#include "GaussLegendre.hpp"
-#include "function.hpp"
-
 namespace PolyMesh2D
 {
     namespace StraightMesh

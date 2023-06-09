@@ -10,12 +10,12 @@ namespace PolyMesh2D
             // __derivative = deriv;
         }
 
-        ColVector Curve::value(const double t) const
+        ColVector Curve::value(const double &t) const
         {
             assert(input_check(t));
             return VectorFunction1D::value(t);
         }
-        ColVector Curve::derivative(const double t) const
+        ColVector Curve::derivative(const double &t) const
         {
             assert(input_check(t));
             return VectorFunction1D::derivative(t);

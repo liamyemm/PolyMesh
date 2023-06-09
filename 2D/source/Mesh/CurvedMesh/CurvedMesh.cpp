@@ -1,6 +1,5 @@
 #include "CurvedMesh.hpp"
 #include <iostream>
-#include "GaussLegendre.hpp"
 
 namespace PolyMesh2D
 {
@@ -433,46 +432,46 @@ namespace PolyMesh2D
 
             // Ensure boundary normals are oriented correctly by testing that \sum_{F\in\Fhb} \int_F v . nTF = 0 for a constant vector v
 
-            double integral = 0.0;
-            Eigen::Vector2d const_vec(1.0, 1.0);
+            // double integral = 0.0;
+            // Eigen::Vector2d const_vec(1.0, 1.0);
 
-            unsigned quad_degree = 20;
+            // unsigned quad_degree = 20;
 
-            Quadrature::GaussLegendre1D quad(quad_degree);
+            // Quadrature::GaussLegendre1D quad(quad_degree);
 
-            for (size_t ibE = 0; ibE < _b_edges.size(); ++ibE)
-            {
-                Functional::Curve edge_param = _b_edges[ibE]->parameterisation();
+            // for (size_t ibE = 0; ibE < _b_edges.size(); ++ibE)
+            // {
+            //     Functional::Curve edge_param = _b_edges[ibE]->parameterisation();
 
-                double a = edge_param.tmin;
-                double b = edge_param.tmax;
+            //     double a = edge_param.tmin;
+            //     double b = edge_param.tmax;
 
-                double edge_len = b - a;
-                assert(edge_len > 0.0);
+            //     double edge_len = b - a;
+            //     assert(edge_len > 0.0);
 
-                int normal_direction;
+            //     int normal_direction;
 
-                for(size_t iTE = 0; iTE < _b_edges[ibE]->cell(0)->n_edges(); ++iTE)
-                {
-                    if(_b_edges[ibE]->cell(0)->edge(iTE) == _b_edges[ibE])
-                    {
-                        normal_direction = _b_edges[ibE]->cell(0)->edge_orientation(iTE);
-                        break;
-                    }
-                }
+            //     for(size_t iTE = 0; iTE < _b_edges[ibE]->cell(0)->n_edges(); ++iTE)
+            //     {
+            //         if(_b_edges[ibE]->cell(0)->edge(iTE) == _b_edges[ibE])
+            //         {
+            //             normal_direction = _b_edges[ibE]->cell(0)->edge_orientation(iTE);
+            //             break;
+            //         }
+            //     }
 
-                for (size_t iqn = 0; iqn < quad.n_points(); ++iqn)
-                {
-                    double point = edge_len * quad.point(iqn) + a;
-                    integral += normal_direction * edge_len * quad.weight(iqn) * const_vec.dot(_b_edges[ibE]->normal(point)) * edge_param.derivative(point).norm();
-                }
-            }
+            //     for (size_t iqn = 0; iqn < quad.n_points(); ++iqn)
+            //     {
+            //         double point = edge_len * quad.point(iqn) + a;
+            //         integral += normal_direction * edge_len * quad.weight(iqn) * const_vec.dot(_b_edges[ibE]->normal(point)) * edge_param.derivative(point).norm();
+            //     }
+            // }
 
-            if (std::abs(integral) > 1E-12)
-            {
-                std::cout << "Error! Mesh has boundary integral evaluated to " << integral << ".\n";
-                valid = false;
-            }
+            // if (std::abs(integral) > 1E-12)
+            // {
+            //     std::cout << "Error! Mesh has boundary integral evaluated to " << integral << ".\n";
+            //     valid = false;
+            // }
             return valid;
         }
     }
