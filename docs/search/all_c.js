@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['curvedmesh_117',['CurvedMesh',['../namespacePolyMesh2D_1_1CurvedMesh.html',1,'PolyMesh2D']]],
-  ['functional_118',['Functional',['../namespacePolyMesh2D_1_1Functional.html',1,'PolyMesh2D']]],
-  ['parameterisation_119',['parameterisation',['../group__Mesh.html#gacad02163d824c64f7f83e915d960f38a',1,'PolyMesh2D::CurvedMesh::Edge']]],
-  ['plot_120',['Plot',['../group__Plot.html',1,'']]],
-  ['plot_5ftriangulation_121',['plot_triangulation',['../group__Mesh.html#gaa10bf33f8ae6fc8231e0974c5a323094',1,'PolyMesh2D::StraightMesh::Cell']]],
-  ['polymesh_20library_122',['PolyMesh Library',['../md_README.html',1,'']]],
-  ['polymesh2d_123',['PolyMesh2D',['../namespacePolyMesh2D.html',1,'']]],
-  ['polytope_124',['Polytope',['../classPolyMesh2D_1_1CurvedMesh_1_1Polytope.html',1,'PolyMesh2D::CurvedMesh::Polytope'],['../classPolyMesh2D_1_1StraightMesh_1_1Polytope.html',1,'PolyMesh2D::StraightMesh::Polytope'],['../classPolyMesh3D_1_1StraightMesh_1_1Polytope.html',1,'PolyMesh3D::StraightMesh::Polytope'],['../group__Mesh.html#ga806b5347f443b7c89788b7f861333cfb',1,'PolyMesh2D::CurvedMesh::Polytope::Polytope()'],['../group__Mesh.html#gac5ff0f3ef9d38a3a1142a84804bd30f7',1,'PolyMesh2D::StraightMesh::Polytope::Polytope()'],['../group__Mesh.html#gaaa5f50d37abc8d0b25487650eb80676e',1,'PolyMesh3D::StraightMesh::Polytope::Polytope()']]],
-  ['straightmesh_125',['StraightMesh',['../namespacePolyMesh2D_1_1StraightMesh.html',1,'PolyMesh2D::StraightMesh'],['../namespacePolyMesh3D_1_1StraightMesh.html',1,'PolyMesh3D::StraightMesh']]]
+  ['operator_2a_126',['operator*',['../group__Functional.html#gab004615bc7259b28cfd2444e872619e8',1,'PolyMesh2D::Functional']]],
+  ['operator_3d_127',['operator=',['../group__Mesh.html#ga6c408ecfe16660fa448fc22d74e1d3cf',1,'PolyMesh2D::CurvedMesh::Mesh::operator=(const Mesh &amp;)=delete'],['../group__Mesh.html#ga9f6f37a64e7857f81470c7160afd0486',1,'PolyMesh2D::CurvedMesh::Mesh::operator=(Mesh &amp;&amp;) noexcept=delete'],['../group__Mesh.html#ga5ae7fc8d94f76574f63278e63ef2fb43',1,'PolyMesh2D::StraightMesh::Mesh::operator=(const Mesh &amp;)=delete'],['../group__Mesh.html#ga4a87e8de368d974670ce8e336c879245',1,'PolyMesh2D::StraightMesh::Mesh::operator=(Mesh &amp;&amp;) noexcept=delete'],['../group__Mesh.html#ga445d2556a718f0437f4e12e721ba5188',1,'PolyMesh3D::StraightMesh::Mesh::operator=(const Mesh &amp;)=delete'],['../group__Mesh.html#gabe937ba5ce1383373a31b214d75f56a5',1,'PolyMesh3D::StraightMesh::Mesh::operator=(Mesh &amp;&amp;) noexcept=delete']]],
+  ['operator_5b_5d_128',['operator[]',['../structPolyMesh2D_1_1Quadrature_1_1QuadratureRule.html#aac2766fc49840bc87236cda295360000',1,'PolyMesh2D::Quadrature::QuadratureRule']]],
+  ['output_5fdimension_129',['output_dimension',['../group__Functional.html#ga89a89eb8790247b9d88fb736cc5b34c4',1,'PolyMesh2D::Functional::Basis']]],
+  ['outputtype_130',['OutputType',['../group__Functional.html#ga5c2dd6806ba3f624446a2cb61b51b4e5',1,'PolyMesh2D::Functional::Basis::OutputType()'],['../group__Functional.html#ga51864c9c657ac4cc389de861c67c27f0',1,'PolyMesh2D::Functional::Family::OutputType()'],['../group__Functional.html#ga0ba45d677c1ed7fe423558045f74c8af',1,'PolyMesh2D::Functional::Function::OutputType()'],['../group__Functional.html#ga0ba45d677c1ed7fe423558045f74c8af',1,'PolyMesh2D::Functional::Function::OutputType()']]]
 ];

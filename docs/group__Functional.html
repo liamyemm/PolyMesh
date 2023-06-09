@@ -90,6 +90,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html">PolyMesh2D::Functional::Family&lt; BasisType &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class representing a family of functions expressed in a given basis with coefficients stored in a matrix. This class allows the evaluation of functions in the family and their derivatives at any given point in the domain of the functions. The family is represented by a BasisType object which defines the basis in which the family is expressed, and a coefficient matrix whose i-th line contains the coefficient of the expansion of the i-th function of the family in the basis.  <a href="classPolyMesh2D_1_1Functional_1_1Family.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">PolyMesh2D::Functional::Pole&lt; PointType &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">PolyMesh2D::Functional::Curve</a></td></tr>
@@ -262,6 +264,8 @@ Functions</h2></td></tr>
 <tr class="separator:gaecdb0043e90ddcb1806ea1847645b477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac322965fd95c32c800141c02c5770a05"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#gabea498a99aaba02a878188919273cb5d">ScalarFunction1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gac322965fd95c32c800141c02c5770a05">PolyMesh2D::Functional::Monomial</a> (const size_t power)</td></tr>
 <tr class="separator:gac322965fd95c32c800141c02c5770a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga57e04591bdc2f4e9935ef6b8c0660a9f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#ga422088ca928dddd921241d168feffd2c">VectorFunction1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga57e04591bdc2f4e9935ef6b8c0660a9f">PolyMesh2D::Functional::VectorMonomial</a> (const size_t power, const size_t index)</td></tr>
+<tr class="separator:ga57e04591bdc2f4e9935ef6b8c0660a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7c78ba68c8d322cd8fe168bca3392eb4"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#ga36d2c17c207e14e9c8d7281a040e7834">VectorFunction2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga7c78ba68c8d322cd8fe168bca3392eb4">PolyMesh2D::Functional::VectorMonomial</a> (const std::array&lt; size_t, 2 &gt; &amp;powers, const size_t d)</td></tr>
 <tr class="separator:ga7c78ba68c8d322cd8fe168bca3392eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5672ea4d66c12f56f6b9f7ef56bcd144"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#gadbf974e6e445d7a9c240c93e09db03e4">ScalarBasis2D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga5672ea4d66c12f56f6b9f7ef56bcd144">PolyMesh2D::Functional::MonomialScalarBasis</a> (const <a class="el" href="group__Functional.html#ga36d2c17c207e14e9c8d7281a040e7834">VectorFunction2D</a> &amp;transform, const size_t degree)</td></tr>
@@ -272,12 +276,53 @@ Functions</h2></td></tr>
 <tr class="separator:gaa6184d61bbf3656091edfed176062d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga841338b7a75b175e8cd42d4cd50d86bc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#gab63b3c0e5b211bdcffb10d18313d91d8">ScalarBasis1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga841338b7a75b175e8cd42d4cd50d86bc">PolyMesh2D::Functional::CurvedEdgeBasis</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;edge_param, const size_t degree)</td></tr>
 <tr class="separator:ga841338b7a75b175e8cd42d4cd50d86bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3056bd9cb57c13282bf28d7b9265a6fb"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#ga4af39529f1e82da3a8e63defc97d66bb">VectorBasis1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga3056bd9cb57c13282bf28d7b9265a6fb">PolyMesh2D::Functional::CurvedEdgeVectorBasis</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;edge_param, const size_t degree)</td></tr>
+<tr class="separator:ga3056bd9cb57c13282bf28d7b9265a6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga85a28aa0ddf7dec284fac0d5616d147a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#gab63b3c0e5b211bdcffb10d18313d91d8">ScalarBasis1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga85a28aa0ddf7dec284fac0d5616d147a">PolyMesh2D::Functional::MonomialScalarBasis</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;edge_param, const size_t degree)</td></tr>
 <tr class="separator:ga85a28aa0ddf7dec284fac0d5616d147a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7a4a7b7bbad5cbeede498529746b1bc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="group__Functional.html#ga4af39529f1e82da3a8e63defc97d66bb">VectorBasis1D</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gab7a4a7b7bbad5cbeede498529746b1bc">PolyMesh2D::Functional::MonomialVectorBasis</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;edge_param, const size_t degree)</td></tr>
+<tr class="separator:gab7a4a7b7bbad5cbeede498529746b1bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7260480e729950d35f8f1034fec55039"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga7260480e729950d35f8f1034fec55039">PolyMesh2D::Functional::restriction</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;curve, const double t0, const double t1)</td></tr>
 <tr class="separator:ga7260480e729950d35f8f1034fec55039"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafa49f81cd2982b2aca0aad8157555cfe"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gafa49f81cd2982b2aca0aad8157555cfe">PolyMesh2D::Functional::min_distance</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;curve, const Eigen::Vector2d &amp;point)</td></tr>
 <tr class="separator:gafa49f81cd2982b2aca0aad8157555cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacfb310e1e983e27f903c6642b0b422b7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gacfb310e1e983e27f903c6642b0b422b7">PolyMesh2D::Functional::gradient</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 1 &gt; &amp;func)</td></tr>
+<tr class="memdesc:gacfb310e1e983e27f903c6642b0b422b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a function object which returns the gradient of a 2D scalar function.  <a href="group__Functional.html#gacfb310e1e983e27f903c6642b0b422b7">More...</a><br /></td></tr>
+<tr class="separator:gacfb310e1e983e27f903c6642b0b422b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga29d0407a5d9bd1256a3bdca3be58fbee"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga29d0407a5d9bd1256a3bdca3be58fbee">PolyMesh2D::Functional::curl</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 1 &gt; &amp;func)</td></tr>
+<tr class="memdesc:ga29d0407a5d9bd1256a3bdca3be58fbee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a function object which returns the vector curl of a 2D scalar function.  <a href="group__Functional.html#ga29d0407a5d9bd1256a3bdca3be58fbee">More...</a><br /></td></tr>
+<tr class="separator:ga29d0407a5d9bd1256a3bdca3be58fbee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafbbce5a853a44d9d928601de01238e25"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gafbbce5a853a44d9d928601de01238e25">PolyMesh2D::Functional::curl</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 2 &gt; &amp;func)</td></tr>
+<tr class="memdesc:gafbbce5a853a44d9d928601de01238e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a function object which returns the scalar curl of a 2D vector function.  <a href="group__Functional.html#gafbbce5a853a44d9d928601de01238e25">More...</a><br /></td></tr>
+<tr class="separator:gafbbce5a853a44d9d928601de01238e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc3f188895c050d6611edb62809a01a2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gabc3f188895c050d6611edb62809a01a2">PolyMesh2D::Functional::dot_n</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 2 &gt; &amp;func, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;param)</td></tr>
+<tr class="memdesc:gabc3f188895c050d6611edb62809a01a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a function object which returns the the dot product of a vector valued function with the normal of a given curve.  <a href="group__Functional.html#gabc3f188895c050d6611edb62809a01a2">More...</a><br /></td></tr>
+<tr class="separator:gabc3f188895c050d6611edb62809a01a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed65a29f5d26c3a456c2d9518eba4b2a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gaed65a29f5d26c3a456c2d9518eba4b2a">PolyMesh2D::Functional::times_n</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 1 &gt; &amp;func, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;param)</td></tr>
+<tr class="memdesc:gaed65a29f5d26c3a456c2d9518eba4b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a function object which returns the the product of a vector valued function with the normal of a given curve.  <a href="group__Functional.html#gaed65a29f5d26c3a456c2d9518eba4b2a">More...</a><br /></td></tr>
+<tr class="separator:gaed65a29f5d26c3a456c2d9518eba4b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74ef28a6ed183a323f3c0ede713490f0"><td class="memTemplParams" colspan="2">template&lt;unsigned output_dim&gt; </td></tr>
+<tr class="memitem:ga74ef28a6ed183a323f3c0ede713490f0"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, output_dim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga74ef28a6ed183a323f3c0ede713490f0">PolyMesh2D::Functional::trace</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;func, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;param)</td></tr>
+<tr class="memdesc:ga74ef28a6ed183a323f3c0ede713490f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the trace of a function along a given curve.  <a href="group__Functional.html#ga74ef28a6ed183a323f3c0ede713490f0">More...</a><br /></td></tr>
+<tr class="separator:ga74ef28a6ed183a323f3c0ede713490f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga82b84bee00f56580dad499aef0a45414"><td class="memTemplParams" colspan="2">template&lt;unsigned output_dim&gt; </td></tr>
+<tr class="memitem:ga82b84bee00f56580dad499aef0a45414"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, output_dim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga82b84bee00f56580dad499aef0a45414">PolyMesh2D::Functional::neumann_trace</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;func, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;param)</td></tr>
+<tr class="memdesc:ga82b84bee00f56580dad499aef0a45414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the Neumann trace of a function along a given curve.  <a href="group__Functional.html#ga82b84bee00f56580dad499aef0a45414">More...</a><br /></td></tr>
+<tr class="separator:ga82b84bee00f56580dad499aef0a45414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga349fbb24ec83396e5c2d4462e5d9a047"><td class="memTemplParams" colspan="2">template&lt;unsigned output_dim&gt; </td></tr>
+<tr class="memitem:ga349fbb24ec83396e5c2d4462e5d9a047"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga349fbb24ec83396e5c2d4462e5d9a047">PolyMesh2D::Functional::gradient_product</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;func1, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;func2)</td></tr>
+<tr class="memdesc:ga349fbb24ec83396e5c2d4462e5d9a047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a function object which returns the scalar product of the gradients of two <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> objects.  <a href="group__Functional.html#ga349fbb24ec83396e5c2d4462e5d9a047">More...</a><br /></td></tr>
+<tr class="separator:ga349fbb24ec83396e5c2d4462e5d9a047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabbec055ae85028bfa0380646f104e181"><td class="memTemplParams" colspan="2">template&lt;unsigned input_dim, unsigned output_dim&gt; </td></tr>
+<tr class="memitem:gabbec055ae85028bfa0380646f104e181"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#gabbec055ae85028bfa0380646f104e181">PolyMesh2D::Functional::component</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;func, size_t index)</td></tr>
+<tr class="separator:gabbec055ae85028bfa0380646f104e181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae435562b099f6613e226b4a5ecf3bf7a"><td class="memItemLeft" align="right" valign="top"><a id="gae435562b099f6613e226b4a5ecf3bf7a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PolyMesh2D::Functional::Pole&lt; PointType &gt;::Pole</b> (const PointType &amp;loc, const double &amp;ord)</td></tr>
+<tr class="separator:gae435562b099f6613e226b4a5ecf3bf7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7bac2d2173a0b94f69328bfbffae414"><td class="memTemplParams" colspan="2"><a id="gae7bac2d2173a0b94f69328bfbffae414"></a>
+template&lt;typename PointType &gt; </td></tr>
+<tr class="memitem:gae7bac2d2173a0b94f69328bfbffae414"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; PointType &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>PolyMesh2D::Functional::combine_poles</b> (const std::vector&lt; <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; PointType &gt;&gt; &amp;poles1, const std::vector&lt; <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; PointType &gt;&gt; &amp;poles2)</td></tr>
+<tr class="separator:gae7bac2d2173a0b94f69328bfbffae414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga282df6476478f97874c63636a1249b74"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga282df6476478f97874c63636a1249b74">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::Function</a> (const <a class="el" href="group__Functional.html#gaf97734a8e9b5ac348b416d133ebac304">Value</a> &amp;val, const <a class="el" href="group__Functional.html#ga074f75ce974e81d5bc37f2a07a56e55c">Derivative</a> &amp;deriv)</td></tr>
 <tr class="memdesc:ga282df6476478f97874c63636a1249b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constructor for a <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> with a value and a derivative.  <a href="group__Functional.html#ga282df6476478f97874c63636a1249b74">More...</a><br /></td></tr>
 <tr class="separator:ga282df6476478f97874c63636a1249b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -286,7 +331,7 @@ Functions</h2></td></tr>
 <tr class="separator:gadb57f02ca3518e1af9c5174800462e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab239e3d1fd47ded15efc1fbcb25ed016"><td class="memItemLeft" align="right" valign="top"><a id="gab239e3d1fd47ded15efc1fbcb25ed016"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gab239e3d1fd47ded15efc1fbcb25ed016">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::Function</a> ()</td></tr>
-<tr class="memdesc:gab239e3d1fd47ded15efc1fbcb25ed016"><td class="mdescLeft">&#160;</td><td class="mdescRight">A null constructor. <br /></td></tr>
+<tr class="memdesc:gab239e3d1fd47ded15efc1fbcb25ed016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
 <tr class="separator:gab239e3d1fd47ded15efc1fbcb25ed016"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5e5e28ecd9ea47055b5a356572666c62"><td class="memItemLeft" align="right" valign="top"><a id="ga5e5e28ecd9ea47055b5a356572666c62"></a>
 virtual <a class="el" href="group__Functional.html#ga0ba45d677c1ed7fe423558045f74c8af">OutputType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga5e5e28ecd9ea47055b5a356572666c62">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::value</a> (const <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &amp;x) const</td></tr>
@@ -296,20 +341,16 @@ virtual <a class="el" href="group__Functional.html#ga0ba45d677c1ed7fe423558045f7
 virtual <a class="el" href="group__Functional.html#ga18f46948c4bd5e8b5bc9ebffcedb2631">DerivativeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga2b45d89be3ceda1ec258966a0dd023cf">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::derivative</a> (const <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &amp;x) const</td></tr>
 <tr class="memdesc:ga2b45d89be3ceda1ec258966a0dd023cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the derivative of the function at a point x. <br /></td></tr>
 <tr class="separator:ga2b45d89be3ceda1ec258966a0dd023cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5492706073ada6d15bbee50e8c102157"><td class="memItemLeft" align="right" valign="top"><a id="ga5492706073ada6d15bbee50e8c102157"></a>
-const <a class="el" href="group__Functional.html#gaf97734a8e9b5ac348b416d133ebac304">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga5492706073ada6d15bbee50e8c102157">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::get_value</a> () const</td></tr>
-<tr class="memdesc:ga5492706073ada6d15bbee50e8c102157"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the raw lambda describing the function value. <br /></td></tr>
-<tr class="separator:ga5492706073ada6d15bbee50e8c102157"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5746657a64398c9b83a24adde845af73"><td class="memItemLeft" align="right" valign="top"><a id="ga5746657a64398c9b83a24adde845af73"></a>
-const <a class="el" href="group__Functional.html#ga074f75ce974e81d5bc37f2a07a56e55c">Derivative</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga5746657a64398c9b83a24adde845af73">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::get_derivative</a> () const</td></tr>
-<tr class="memdesc:ga5746657a64398c9b83a24adde845af73"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the raw lambda describing the function derivative. <br /></td></tr>
-<tr class="separator:ga5746657a64398c9b83a24adde845af73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac3a46e8b3ce45611e8acdeeafb67737d"><td class="memTemplParams" colspan="2">template&lt;unsigned input_dim, unsigned output_dim&gt; </td></tr>
-<tr class="memitem:gac3a46e8b3ce45611e8acdeeafb67737d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#gac3a46e8b3ce45611e8acdeeafb67737d">PolyMesh2D::Functional::operator+</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;f1, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;f2)</td></tr>
-<tr class="separator:gac3a46e8b3ce45611e8acdeeafb67737d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga30fbcc29bbd7e55e484b0c43ca204c24"><td class="memTemplParams" colspan="2">template&lt;unsigned input_dim, unsigned output_dim&gt; </td></tr>
-<tr class="memitem:ga30fbcc29bbd7e55e484b0c43ca204c24"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga30fbcc29bbd7e55e484b0c43ca204c24">PolyMesh2D::Functional::operator-</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;f1, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;f2)</td></tr>
-<tr class="separator:ga30fbcc29bbd7e55e484b0c43ca204c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73247de806f7a18756c28f88dce66b9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga73247de806f7a18756c28f88dce66b9d">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::set_poles</a> (const std::vector&lt; <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt;&gt; &amp;poles)</td></tr>
+<tr class="separator:ga73247de806f7a18756c28f88dce66b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab3e2fb2f256952695a391e5ad46f907b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gab3e2fb2f256952695a391e5ad46f907b">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::get_poles</a> () const</td></tr>
+<tr class="separator:gab3e2fb2f256952695a391e5ad46f907b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02d606722dd3618ee9f47b69bcce3bc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga02d606722dd3618ee9f47b69bcce3bc7">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::pole</a> (size_t index) const</td></tr>
+<tr class="separator:ga02d606722dd3618ee9f47b69bcce3bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac189f35bbba891c8d7d74d23abeadecf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gac189f35bbba891c8d7d74d23abeadecf">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::add_pole</a> (const <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt; &amp;<a class="el" href="group__Functional.html#ga02d606722dd3618ee9f47b69bcce3bc7">pole</a>)</td></tr>
+<tr class="separator:gac189f35bbba891c8d7d74d23abeadecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga13fd8da3a29357ba00c6bc9b4ad6588f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga13fd8da3a29357ba00c6bc9b4ad6588f">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::differentiable</a> () const</td></tr>
+<tr class="separator:ga13fd8da3a29357ba00c6bc9b4ad6588f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab004615bc7259b28cfd2444e872619e8"><td class="memTemplParams" colspan="2">template&lt;unsigned input_dim, unsigned output_dim&gt; </td></tr>
 <tr class="memitem:gab004615bc7259b28cfd2444e872619e8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#gab004615bc7259b28cfd2444e872619e8">PolyMesh2D::Functional::operator*</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt; &amp;f1, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;f2)</td></tr>
 <tr class="separator:gab004615bc7259b28cfd2444e872619e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -320,14 +361,14 @@ const <a class="el" href="group__Functional.html#ga074f75ce974e81d5bc37f2a07a56e
 <tr class="memitem:gaa7f579d168de542cbec6b8076d5a2bde"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#gaa7f579d168de542cbec6b8076d5a2bde">PolyMesh2D::Functional::Curve::Curve</a> (const double t0, const double t1, const std::function&lt; <a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>(double)&gt; &amp;val, const std::function&lt; <a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>(double)&gt; &amp;deriv)</td></tr>
 <tr class="memdesc:gaa7f579d168de542cbec6b8076d5a2bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> constructor.  <a href="group__Functional.html#gaa7f579d168de542cbec6b8076d5a2bde">More...</a><br /></td></tr>
 <tr class="separator:gaa7f579d168de542cbec6b8076d5a2bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga95b1eb601bf5e5189ff2f022a8f579dc"><td class="memItemLeft" align="right" valign="top"><a id="ga95b1eb601bf5e5189ff2f022a8f579dc"></a>
-<a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga95b1eb601bf5e5189ff2f022a8f579dc">PolyMesh2D::Functional::Curve::value</a> (const double t) const</td></tr>
-<tr class="memdesc:ga95b1eb601bf5e5189ff2f022a8f579dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the value of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> at the parameter t. <br /></td></tr>
-<tr class="separator:ga95b1eb601bf5e5189ff2f022a8f579dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga47c4f79b33512989ab00c263ab721971"><td class="memItemLeft" align="right" valign="top"><a id="ga47c4f79b33512989ab00c263ab721971"></a>
-<a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga47c4f79b33512989ab00c263ab721971">PolyMesh2D::Functional::Curve::derivative</a> (const double t) const</td></tr>
-<tr class="memdesc:ga47c4f79b33512989ab00c263ab721971"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the derivative of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> at the parameter t. <br /></td></tr>
-<tr class="separator:ga47c4f79b33512989ab00c263ab721971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b58c9983681f981fbf4e4175f7abbbe"><td class="memItemLeft" align="right" valign="top"><a id="ga2b58c9983681f981fbf4e4175f7abbbe"></a>
+<a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga2b58c9983681f981fbf4e4175f7abbbe">PolyMesh2D::Functional::Curve::value</a> (const double &amp;t) const override</td></tr>
+<tr class="memdesc:ga2b58c9983681f981fbf4e4175f7abbbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the value of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> at the parameter t. <br /></td></tr>
+<tr class="separator:ga2b58c9983681f981fbf4e4175f7abbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c617c361e36511f03a43ada12f9bda7"><td class="memItemLeft" align="right" valign="top"><a id="ga1c617c361e36511f03a43ada12f9bda7"></a>
+<a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga1c617c361e36511f03a43ada12f9bda7">PolyMesh2D::Functional::Curve::derivative</a> (const double &amp;t) const override</td></tr>
+<tr class="memdesc:ga1c617c361e36511f03a43ada12f9bda7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the derivative of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> at the parameter t. <br /></td></tr>
+<tr class="separator:ga1c617c361e36511f03a43ada12f9bda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga068ac0c78844239797d15d0e56d9ac8b"><td class="memItemLeft" align="right" valign="top"><a id="ga068ac0c78844239797d15d0e56d9ac8b"></a>
 <a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga068ac0c78844239797d15d0e56d9ac8b">PolyMesh2D::Functional::Curve::tangent</a> (const double t) const</td></tr>
 <tr class="memdesc:ga068ac0c78844239797d15d0e56d9ac8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the tangent vector of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> at the parameter t. <br /></td></tr>
@@ -343,6 +384,28 @@ double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
 <tr class="memitem:gaae99d867e4d33ee40ba64df7d632624b"><td class="memTemplParams" colspan="2">template&lt;unsigned input_dim, unsigned intermediate_dim, unsigned output_dim&gt; </td></tr>
 <tr class="memitem:gaae99d867e4d33ee40ba64df7d632624b"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#gaae99d867e4d33ee40ba64df7d632624b">PolyMesh2D::Functional::compose</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; intermediate_dim, output_dim &gt; &amp;f, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, intermediate_dim &gt; &amp;g)</td></tr>
 <tr class="separator:gaae99d867e4d33ee40ba64df7d632624b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2bd34ce81a33d259acaa45d0a8d3ee18"><td class="memTemplParams" colspan="2">template&lt;unsigned input_dim&gt; </td></tr>
+<tr class="memitem:ga2bd34ce81a33d259acaa45d0a8d3ee18"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga2bd34ce81a33d259acaa45d0a8d3ee18">PolyMesh2D::Functional::scalar_product</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt; &amp;f, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt; &amp;g)</td></tr>
+<tr class="memdesc:ga2bd34ce81a33d259acaa45d0a8d3ee18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the scalar product of two functions.  <a href="group__Functional.html#ga2bd34ce81a33d259acaa45d0a8d3ee18">More...</a><br /></td></tr>
+<tr class="separator:ga2bd34ce81a33d259acaa45d0a8d3ee18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91c6dd780b795f6e2869649ad6bcce5f"><td class="memTemplParams" colspan="2">template&lt;unsigned input_dim&gt; </td></tr>
+<tr class="memitem:ga91c6dd780b795f6e2869649ad6bcce5f"><td class="memTemplItemLeft" align="right" valign="top">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga91c6dd780b795f6e2869649ad6bcce5f">PolyMesh2D::Functional::scalar_product</a> (const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 2 &gt; &amp;f, const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 2 &gt; &amp;g)</td></tr>
+<tr class="memdesc:ga91c6dd780b795f6e2869649ad6bcce5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the scalar product of two functions.  <a href="group__Functional.html#ga91c6dd780b795f6e2869649ad6bcce5f">More...</a><br /></td></tr>
+<tr class="separator:ga91c6dd780b795f6e2869649ad6bcce5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5492706073ada6d15bbee50e8c102157"><td class="memItemLeft" align="right" valign="top"><a id="ga5492706073ada6d15bbee50e8c102157"></a>
+const <a class="el" href="group__Functional.html#gaf97734a8e9b5ac348b416d133ebac304">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga5492706073ada6d15bbee50e8c102157">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::get_value</a> () const</td></tr>
+<tr class="memdesc:ga5492706073ada6d15bbee50e8c102157"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the raw lambda describing the function value. <br /></td></tr>
+<tr class="separator:ga5492706073ada6d15bbee50e8c102157"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5746657a64398c9b83a24adde845af73"><td class="memItemLeft" align="right" valign="top"><a id="ga5746657a64398c9b83a24adde845af73"></a>
+const <a class="el" href="group__Functional.html#ga074f75ce974e81d5bc37f2a07a56e55c">Derivative</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga5746657a64398c9b83a24adde845af73">PolyMesh2D::Functional::Function&lt; input_dim, output_dim &gt;::get_derivative</a> () const</td></tr>
+<tr class="memdesc:ga5746657a64398c9b83a24adde845af73"><td class="mdescLeft">&#160;</td><td class="mdescRight">A method to return the raw lambda describing the function derivative. <br /></td></tr>
+<tr class="separator:ga5746657a64398c9b83a24adde845af73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga95b1eb601bf5e5189ff2f022a8f579dc"><td class="memItemLeft" align="right" valign="top"><a id="ga95b1eb601bf5e5189ff2f022a8f579dc"></a>
+<a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PolyMesh2D::Functional::Curve::value</b> (const double t) const</td></tr>
+<tr class="separator:ga95b1eb601bf5e5189ff2f022a8f579dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47c4f79b33512989ab00c263ab721971"><td class="memItemLeft" align="right" valign="top"><a id="ga47c4f79b33512989ab00c263ab721971"></a>
+<a class="el" href="group__Functional.html#gac750112aea471e4727a130e93bd9ad0e">ColVector</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PolyMesh2D::Functional::Curve::derivative</b> (const double t) const</td></tr>
+<tr class="separator:ga47c4f79b33512989ab00c263ab721971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -350,6 +413,12 @@ Variables</h2></td></tr>
 <tr class="separator:ga5bf5af90b94281e4858555e8e9adeaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga89a89eb8790247b9d88fb736cc5b34c4"><td class="memItemLeft" align="right" valign="top">static const unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga89a89eb8790247b9d88fb736cc5b34c4">PolyMesh2D::Functional::Basis&lt; input_dim, output_dim &gt;::output_dimension</a> = output_dim</td></tr>
 <tr class="separator:ga89a89eb8790247b9d88fb736cc5b34c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb17c4f1dccf51876817b37dd90152e9"><td class="memItemLeft" align="right" valign="top"><a id="gaeb17c4f1dccf51876817b37dd90152e9"></a>
+PointType&#160;</td><td class="memItemRight" valign="bottom"><b>PolyMesh2D::Functional::Pole&lt; PointType &gt;::location</b></td></tr>
+<tr class="separator:gaeb17c4f1dccf51876817b37dd90152e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b0eb5e7ed7851a449c7032f4865975d"><td class="memItemLeft" align="right" valign="top"><a id="ga2b0eb5e7ed7851a449c7032f4865975d"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>PolyMesh2D::Functional::Pole&lt; PointType &gt;::order</b></td></tr>
+<tr class="separator:ga2b0eb5e7ed7851a449c7032f4865975d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga87c53c4f4524bd4585246c2a605390da"><td class="memItemLeft" align="right" valign="top"><a id="ga87c53c4f4524bd4585246c2a605390da"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Functional.html#ga87c53c4f4524bd4585246c2a605390da">PolyMesh2D::Functional::Curve::tmin</a></td></tr>
 <tr class="memdesc:ga87c53c4f4524bd4585246c2a605390da"><td class="mdescLeft">&#160;</td><td class="mdescRight">The start point of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a>. <br /></td></tr>
@@ -505,7 +574,7 @@ template&lt;typename BasisType &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Alias for a 1D scalar <a class="el" href="classPolyMesh2D_1_1Functional_1_1Basis.html" title="Templated class for defining a basis of functions of arbitrary input and output dimensions.">Basis</a> <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
+<p>Alias for a 1D scalar <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
 
 </div>
 </div>
@@ -520,7 +589,7 @@ template&lt;typename BasisType &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Alias for a 2D scalar <a class="el" href="classPolyMesh2D_1_1Functional_1_1Basis.html" title="Templated class for defining a basis of functions of arbitrary input and output dimensions.">Basis</a> <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
+<p>Alias for a 2D scalar <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
 
 </div>
 </div>
@@ -565,7 +634,7 @@ template&lt;typename BasisType &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Alias for a 1D vector <a class="el" href="classPolyMesh2D_1_1Functional_1_1Basis.html" title="Templated class for defining a basis of functions of arbitrary input and output dimensions.">Basis</a> <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
+<p>Alias for a 1D vector <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
 
 </div>
 </div>
@@ -580,7 +649,7 @@ template&lt;typename BasisType &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Alias for a 2D vector <a class="el" href="classPolyMesh2D_1_1Functional_1_1Basis.html" title="Templated class for defining a basis of functions of arbitrary input and output dimensions.">Basis</a> <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
+<p>Alias for a 2D vector <a class="el" href="classPolyMesh2D_1_1Functional_1_1Family.html" title="A class representing a family of functions expressed in a given basis with coefficients stored in a m...">Family</a>. </p>
 
 </div>
 </div>
@@ -647,6 +716,33 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
 <p>Add a basis function </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">func</td><td>The basis function to add </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gac189f35bbba891c8d7d74d23abeadecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac189f35bbba891c8d7d74d23abeadecf">&#9670;&nbsp;</a></span>add_pole()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function</a>&lt; input_dim, output_dim &gt;::add_pole </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pole</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add a pole to the function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pole</td><td>The pole to be added. </td></tr>
   </table>
   </dd>
 </dl>
@@ -743,6 +839,54 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
 
 </div>
 </div>
+<a id="gabbec055ae85028bfa0380646f104e181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabbec055ae85028bfa0380646f104e181">&#9670;&nbsp;</a></span>component()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt;input_dim, 1&gt; PolyMesh2D::Functional::component </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extracts a component from a higher-dimensional function.</p>
+<p>This method takes a higher-dimensional function and extracts a single component from it, resulting in a new function with a reduced output dimension of 1. The component to extract is specified by the <code>index</code> parameter.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">input_dim</td><td>The dimension of the input space. </td></tr>
+    <tr><td class="paramname">output_dim</td><td>The dimension of the output space of the original function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The original function from which to extract the component. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the component to extract. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new function with a reduced output dimension of 1, representing the extracted component.</dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd><code>index</code> must be less than <code>output_dim</code> of the original function. </dd></dl>
+
+</div>
+</div>
 <a id="gaae99d867e4d33ee40ba64df7d632624b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaae99d867e4d33ee40ba64df7d632624b">&#9670;&nbsp;</a></span>compose()</h2>
 
@@ -778,6 +922,60 @@ template&lt;unsigned input_dim, unsigned intermediate_dim, unsigned output_dim&g
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga29d0407a5d9bd1256a3bdca3be58fbee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga29d0407a5d9bd1256a3bdca3be58fbee">&#9670;&nbsp;</a></span>curl() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 2 &gt; PolyMesh2D::Functional::curl </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a function object which returns the vector curl of a 2D scalar function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to compute the curl of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the curl of the input function. </dd></dl>
+
+</div>
+</div>
+<a id="gafbbce5a853a44d9d928601de01238e25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafbbce5a853a44d9d928601de01238e25">&#9670;&nbsp;</a></span>curl() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt;2, 1&gt; PolyMesh2D::Functional::curl </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a function object which returns the scalar curl of a 2D vector function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to compute the curl of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the curl of the input function. </dd></dl>
 
 </div>
 </div>
@@ -858,6 +1056,41 @@ template&lt;unsigned input_dim, unsigned intermediate_dim, unsigned output_dim&g
       </table>
 </div><div class="memdoc">
 <p>Generates a set of functions which span \(\mathbb{P}^0(E) + \mathbb{P}^k(\mathbb{R}^2)^2\cdot\mathbf{n}_E \) on a given <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> \(E\). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>The parameterisation of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> \(E\). </td></tr>
+    <tr><td class="paramname">degree</td><td>The degree of the polynomial space. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga3056bd9cb57c13282bf28d7b9265a6fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3056bd9cb57c13282bf28d7b9265a6fb">&#9670;&nbsp;</a></span>CurvedEdgeVectorBasis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="group__Functional.html#ga4af39529f1e82da3a8e63defc97d66bb">VectorBasis1D</a> PolyMesh2D::Functional::CurvedEdgeVectorBasis </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>degree</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generates a set of functions which span \(\mathbb{P}^0(E)^2 + \mathbb{P}^k(\mathbb{R}^2)^{2\times 2} \mathbf{n}_E \) on a given <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> \(E\). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">param</td><td>The parameterisation of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> \(E\). </td></tr>
     <tr><td class="paramname">degree</td><td>The degree of the polynomial space. </td></tr>
@@ -959,6 +1192,24 @@ template&lt;typename BasisType &gt; </div>
 
 </div>
 </div>
+<a id="ga13fd8da3a29357ba00c6bc9b4ad6588f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga13fd8da3a29357ba00c6bc9b4ad6588f">&#9670;&nbsp;</a></span>differentiable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function</a>&lt; input_dim, output_dim &gt;::differentiable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Check if the function is differentiable.</p>
+<dl class="section return"><dt>Returns</dt><dd>True if the function is differentiable, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="gad20c2177d198f86d84047f28e4de2e60"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gad20c2177d198f86d84047f28e4de2e60">&#9670;&nbsp;</a></span>dimension() <span class="overload">[1/2]</span></h2>
 
@@ -1012,6 +1263,44 @@ template&lt;typename BasisType &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Returns the dimension of the family This is actually the number of Functions in the family, not necessarily linearly independent </p><dl class="section return"><dt>Returns</dt><dd>size_t The number of functions in the family </dd></dl>
+
+</div>
+</div>
+<a id="gabc3f188895c050d6611edb62809a01a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabc3f188895c050d6611edb62809a01a2">&#9670;&nbsp;</a></span>dot_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 1 &gt; PolyMesh2D::Functional::dot_n </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a function object which returns the the dot product of a vector valued function with the normal of a given curve. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to compute dot product with. </td></tr>
+    <tr><td class="paramname">param</td><td>The curve whose normal we take the dot product with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the dot product of a vector valued function with the normal. </dd></dl>
 
 </div>
 </div>
@@ -1108,6 +1397,9 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function</a>&lt; input_dim, output_dim &gt;::<a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> </td>
@@ -1117,6 +1409,11 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>A constructor for a <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> which only stores a value. </p>
@@ -1136,6 +1433,9 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
 <div class="memproto">
 <div class="memtemplate">
 template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function</a>&lt; input_dim, output_dim &gt;::<a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> </td>
@@ -1155,6 +1455,11 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>A constructor for a <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> with a value and a derivative. </p>
@@ -1165,6 +1470,97 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="gab3e2fb2f256952695a391e5ad46f907b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab3e2fb2f256952695a391e5ad46f907b">&#9670;&nbsp;</a></span>get_poles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; typename <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt;::<a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt; &gt; <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function</a>&lt; input_dim, output_dim &gt;::get_poles</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the poles of the function.</p>
+<dl class="section return"><dt>Returns</dt><dd>The vector of poles. </dd></dl>
+
+</div>
+</div>
+<a id="gacfb310e1e983e27f903c6642b0b422b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gacfb310e1e983e27f903c6642b0b422b7">&#9670;&nbsp;</a></span>gradient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 2 &gt; PolyMesh2D::Functional::gradient </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, 1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a function object which returns the gradient of a 2D scalar function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to compute the gradient of. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the gradient of the input function. </dd></dl>
+
+</div>
+</div>
+<a id="ga349fbb24ec83396e5c2d4462e5d9a047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga349fbb24ec83396e5c2d4462e5d9a047">&#9670;&nbsp;</a></span>gradient_product()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt;2, 1&gt; PolyMesh2D::Functional::gradient_product </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a function object which returns the scalar product of the gradients of two <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> objects. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">output_dim</td><td>The number of output dimensions of the input functions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func1</td><td>The first function. </td></tr>
+    <tr><td class="paramname">func2</td><td>The second function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the scalar product of the gradients of two input functions. </dd></dl>
 
 </div>
 </div>
@@ -1365,8 +1761,43 @@ template&lt;typename BasisType &gt; </div>
 
 </div>
 </div>
+<a id="gab7a4a7b7bbad5cbeede498529746b1bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab7a4a7b7bbad5cbeede498529746b1bc">&#9670;&nbsp;</a></span>MonomialVectorBasis() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="group__Functional.html#ga4af39529f1e82da3a8e63defc97d66bb">VectorBasis1D</a> PolyMesh2D::Functional::MonomialVectorBasis </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>degree</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generates a vector-valued shifted monomial basis in the parameter of a <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a>. i.e. If the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> is defined by \(E=\{\gamma(t)\}\) then the basis is in the coordinate \(t\). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>The parameterisation of the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> \(E\). Required to be affine (i.e. a straight line segment) in order for the space to be equivalent to the restriction of the polynomial space \(\mathbb{P}^k(\mathbb{R}^2)\) to the <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> \(E\). </td></tr>
+    <tr><td class="paramname">degree</td><td>The degree of the polynomial space. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ga85432c4e6c024c6d3cf9ebea3dddb548"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga85432c4e6c024c6d3cf9ebea3dddb548">&#9670;&nbsp;</a></span>MonomialVectorBasis()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga85432c4e6c024c6d3cf9ebea3dddb548">&#9670;&nbsp;</a></span>MonomialVectorBasis() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1404,6 +1835,52 @@ template&lt;typename BasisType &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ga82b84bee00f56580dad499aef0a45414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga82b84bee00f56580dad499aef0a45414">&#9670;&nbsp;</a></span>neumann_trace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt;1, output_dim&gt; PolyMesh2D::Functional::neumann_trace </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the Neumann trace of a function along a given curve. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">output_dim</td><td>The number of output dimensions of the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to compute the Neumann trace of. </td></tr>
+    <tr><td class="paramname">param</td><td>The curve along which the Neumann trace is computed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the Neumann trace of the input function. </dd></dl>
 
 </div>
 </div>
@@ -1452,8 +1929,8 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
 
 </div>
 </div>
-<a id="gac3a46e8b3ce45611e8acdeeafb67737d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac3a46e8b3ce45611e8acdeeafb67737d">&#9670;&nbsp;</a></span>operator+()</h2>
+<a id="ga02d606722dd3618ee9f47b69bcce3bc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga02d606722dd3618ee9f47b69bcce3bc7">&#9670;&nbsp;</a></span>pole()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1461,84 +1938,22 @@ template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
 template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt;input_dim, output_dim&gt; PolyMesh2D::Functional::operator+ </td>
+          <td class="memname"><a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; typename <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt;::<a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt; <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function</a>&lt; input_dim, output_dim &gt;::pole </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>f1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>f2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Overloaded operator to add two functions. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">input_dim</td><td>The number of input dimensions. </td></tr>
-    <tr><td class="paramname">output_dim</td><td>The number of output dimensions. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Get a specific pole of the function by index.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">f1</td><td>The first function to be added. </td></tr>
-    <tr><td class="paramname">f2</td><td>The second function to be added. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the pole to retrieve. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object which is the sum of f1 and f2. </dd></dl>
-
-</div>
-</div>
-<a id="ga30fbcc29bbd7e55e484b0c43ca204c24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga30fbcc29bbd7e55e484b0c43ca204c24">&#9670;&nbsp;</a></span>operator-()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt;input_dim, output_dim&gt; PolyMesh2D::Functional::operator- </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>f1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, output_dim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>f2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Overloaded operator to subtract two functions. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">input_dim</td><td>The number of input dimensions. </td></tr>
-    <tr><td class="paramname">output_dim</td><td>The number of output dimensions. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">f1</td><td>The first function to be subtracted. </td></tr>
-    <tr><td class="paramname">f2</td><td>The second function to be subtracted. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A new <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object which is the f1 - f2. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The pole at the specified index. </dd></dl>
 
 </div>
 </div>
@@ -1721,6 +2136,127 @@ template&lt;typename BasisType &gt; </div>
 
 </div>
 </div>
+<a id="ga2bd34ce81a33d259acaa45d0a8d3ee18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2bd34ce81a33d259acaa45d0a8d3ee18">&#9670;&nbsp;</a></span>scalar_product() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned input_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt; PolyMesh2D::Functional::scalar_product </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the scalar product of two functions. </p>
+<p>This function computes the scalar product of two scalar-valued functions <code>f</code> and <code>g</code>, which must have the same input dimension <code>input_dim</code>. The result is a scalar-valued function with input dimension <code>input_dim</code>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">input_dim</td><td>The input dimension of the functions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>The first function. </td></tr>
+    <tr><td class="paramname">g</td><td>The second function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A scalar-valued function representing the scalar product of <code>f</code> and <code>g</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga91c6dd780b795f6e2869649ad6bcce5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga91c6dd780b795f6e2869649ad6bcce5f">&#9670;&nbsp;</a></span>scalar_product() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned input_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 1 &gt; PolyMesh2D::Functional::scalar_product </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; input_dim, 2 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the scalar product of two functions. </p>
+<p>This function computes the scalar product of two vector-valued functions <code>f</code> and <code>g</code>, which must have the same input dimension <code>input_dim</code>. The result is a scalar-valued function with input dimension <code>input_dim</code>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">input_dim</td><td>The input dimension of the functions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>The first function. </td></tr>
+    <tr><td class="paramname">g</td><td>The second function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A scalar-valued function representing the scalar product of <code>f</code> and <code>g</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ga73247de806f7a18756c28f88dce66b9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga73247de806f7a18756c28f88dce66b9d">&#9670;&nbsp;</a></span>set_poles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned input_dim, unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">PolyMesh2D::Functional::Function</a>&lt; input_dim, output_dim &gt;::set_poles </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structPolyMesh2D_1_1Functional_1_1Pole.html">Pole</a>&lt; <a class="el" href="group__Functional.html#gaf10e0e5222c08c59c9b07f4c228bae33">InputType</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>poles</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the poles of the function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">poles</td><td>The vector of poles to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ga6803b4b3057529c838656bbbde0715f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga6803b4b3057529c838656bbbde0715f4">&#9670;&nbsp;</a></span>StraightLine()</h2>
 
@@ -1747,6 +2283,91 @@ template&lt;typename BasisType &gt; </div>
       </table>
 </div><div class="memdoc">
 <p>Constructs a <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> object describing an arclength parameterisation of a line segment starting at v0 and terminating at v1. </p>
+
+</div>
+</div>
+<a id="gaed65a29f5d26c3a456c2d9518eba4b2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaed65a29f5d26c3a456c2d9518eba4b2a">&#9670;&nbsp;</a></span>times_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 2 &gt; PolyMesh2D::Functional::times_n </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 1, 1 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a function object which returns the the product of a vector valued function with the normal of a given curve. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to compute product with. </td></tr>
+    <tr><td class="paramname">param</td><td>The curve whose normal we take the product with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the product of a vector valued function with the normal. </dd></dl>
+
+</div>
+</div>
+<a id="ga74ef28a6ed183a323f3c0ede713490f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga74ef28a6ed183a323f3c0ede713490f0">&#9670;&nbsp;</a></span>trace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;unsigned output_dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt;1, output_dim&gt; PolyMesh2D::Functional::trace </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a>&lt; 2, output_dim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classPolyMesh2D_1_1Functional_1_1Curve.html">Curve</a> &amp;&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the trace of a function along a given curve. </p>
+<p>This function calculates the trace of a given function along a specified curve. The trace represents the values of the function projected onto the curve.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">output_dim</td><td>The number of output dimensions of the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to compute the trace of. </td></tr>
+    <tr><td class="paramname">param</td><td>The curve along which the trace is computed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classPolyMesh2D_1_1Functional_1_1Function.html">Function</a> object representing the trace of the input function. </dd></dl>
 
 </div>
 </div>
@@ -1842,8 +2463,43 @@ template&lt;typename BasisType &gt; </div>
 
 </div>
 </div>
+<a id="ga57e04591bdc2f4e9935ef6b8c0660a9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga57e04591bdc2f4e9935ef6b8c0660a9f">&#9670;&nbsp;</a></span>VectorMonomial() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="group__Functional.html#ga422088ca928dddd921241d168feffd2c">VectorFunction1D</a> PolyMesh2D::Functional::VectorMonomial </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>power</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructs a vector-valued monomial function in 1 dimension. Only one component of the vector is non zero.</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>determines which vector component is non-zero </td></tr>
+    <tr><td class="paramname">power</td><td>is a positive integer value which determines the power of the monomial. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ga7c78ba68c8d322cd8fe168bca3392eb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7c78ba68c8d322cd8fe168bca3392eb4">&#9670;&nbsp;</a></span>VectorMonomial()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7c78ba68c8d322cd8fe168bca3392eb4">&#9670;&nbsp;</a></span>VectorMonomial() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

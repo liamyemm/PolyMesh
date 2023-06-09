@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tmax_337',['tmax',['../group__Functional.html#gae1966a1b2675cdb9ba0fcd71ddc5215e',1,'PolyMesh2D::Functional::Curve']]],
-  ['tmin_338',['tmin',['../group__Functional.html#ga87c53c4f4524bd4585246c2a605390da',1,'PolyMesh2D::Functional::Curve']]]
+  ['points_405',['points',['../structPolyMesh2D_1_1Quadrature_1_1QuadratureRule.html#a5f792c45d9af2b6a9bf7ef4233b37f4d',1,'PolyMesh2D::Quadrature::QuadratureRule']]]
 ];
