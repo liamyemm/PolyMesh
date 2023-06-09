@@ -1,0 +1,1 @@
+c++ -std=c++17 -g -Wall -Wno-maybe-uninitialized -DWITH_MKL -std=c++17 -g -Wall -Wno-maybe-uninitialized -O3 -DOPTIMIZE -pthread CMakeFiles/transform_mesh.dir/TransformMesh.cpp.o -o transform_mesh  ../../source/Mesh/libmesh.a ../../source/Mesh/CurvedMesh/libcurved_mesh.a ../../source/Mesh/StraightMesh/libstraight_mesh.a -lfunction -lquadrature ../../source/Math/libmath.a 

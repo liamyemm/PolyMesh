@@ -1,0 +1,2 @@
+/usr/bin/ar qc libquadrature.a CMakeFiles/quadrature.dir/GaussLegendre.cpp.o CMakeFiles/quadrature.dir/QuadratureRule.cpp.o
+/usr/bin/ranlib libquadrature.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstraight_mesh.a CMakeFiles/straight_mesh.dir/StraightCell.cpp.o CMakeFiles/straight_mesh.dir/StraightEdge.cpp.o CMakeFiles/straight_mesh.dir/StraightFace.cpp.o CMakeFiles/straight_mesh.dir/StraightMesh.cpp.o CMakeFiles/straight_mesh.dir/StraightPolytope.cpp.o CMakeFiles/straight_mesh.dir/StraightVertex.cpp.o
+/usr/bin/ranlib libstraight_mesh.a

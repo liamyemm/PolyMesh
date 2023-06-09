@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcurved_mesh.a CMakeFiles/curved_mesh.dir/CurvedCell.cpp.o CMakeFiles/curved_mesh.dir/CurvedEdge.cpp.o CMakeFiles/curved_mesh.dir/CurvedFace.cpp.o CMakeFiles/curved_mesh.dir/CurvedMesh.cpp.o CMakeFiles/curved_mesh.dir/CurvedPolytope.cpp.o CMakeFiles/curved_mesh.dir/CurvedVertex.cpp.o
+/usr/bin/ranlib libcurved_mesh.a
