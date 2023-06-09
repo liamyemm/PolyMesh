@@ -1,9 +1,0 @@
-EdgeDegree: 0
-CellDegree: 0
-L2Error: 2.55887
-H1Error: 3.06018
-EnergyError: -nan
-MeshSize: 0.0950394
-NbCells: 852
-NbEdges: 1764
-NbInternalEdges: 1644
