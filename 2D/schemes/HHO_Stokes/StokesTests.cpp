@@ -26,7 +26,7 @@ namespace PolyMesh2D
         std::function<double(Eigen::Vector2d)> value = [u_func, lambda](const Eigen::Vector2d &x) -> double
         {
             Eigen::Vector2d u = u_func.value(x);
-            return 1.0 / (lambda + 1.0) * (x(1) * u(0) - x(0) * u(1));
+            return (1.0 / (lambda + 1.0)) * (x(1) * u(0) - x(0) * u(1));
         };
         std::function<Eigen::RowVector2d(Eigen::Vector2d)> deriv = [u_func](const Eigen::Vector2d &x) -> Eigen::RowVector2d
         {

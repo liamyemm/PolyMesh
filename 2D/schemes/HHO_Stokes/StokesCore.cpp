@@ -428,6 +428,7 @@ Eigen::VectorXd StokesCore::pressure_robust_RHS(const size_t iT, const Functiona
         // auto the_bubble = reference_bubble(0, 0.2);
         auto the_bubble = bubble(m_mesh->cell(iT), 0.1, 0.0002);
         auto bubble_enrich = Functional::curl(the_bubble * func);
+        // auto bubble_enrich = Functional::curl(the_bubble);
 
         std::vector<Functional::Pole<Eigen::Vector2d>> poles;
         bubble_enrich.set_poles(poles); // empty poles
@@ -467,19 +468,16 @@ Eigen::VectorXd StokesCore::pressure_robust_RHS(const size_t iT, const Functiona
         CellBasisType cell_test_space = construct_cell_basis(iT, m_edge_deg - 1);
         for (auto &func : laplace_cell_enrichment)
         {
-        // auto the_bubble = bubble(m_mesh->cell(iT), 0, 1.0);
-        // auto bubble_enrich = Functional::curl(the_bubble);
             cell_test_space.add_basis_function(func);
-            // cell_test_space.add_basis_function(bubble_enrich);
         }
 
         if (laplace_cell_enrichment.size() != 0)
         {
-            // Eigen::MatrixXd B_mat = Eigen::MatrixXd::Identity(cell_test_space.dimension(), cell_test_space.dimension());
-            // B_mat.topLeftCorner(cell_test_space.dimension() - 1, cell_test_space.dimension() - 1) = cell_test_space.matrix();
+            Eigen::MatrixXd B_mat = Eigen::MatrixXd::Identity(cell_test_space.dimension(), cell_test_space.dimension());
+            B_mat.topLeftCorner(cell_test_space.dimension() - 1, cell_test_space.dimension() - 1) = cell_test_space.matrix();
 
-            Eigen::MatrixXd mass = m_quad_handle.l2_product(cell_test_space.ancestor(), cell_test_space.ancestor(), m_mesh->cell(iT));
-            Eigen::MatrixXd B_mat = orthonormalize(mass);
+            // Eigen::MatrixXd mass = m_quad_handle.l2_product(cell_test_space.ancestor(), cell_test_space.ancestor(), m_mesh->cell(iT));
+            // Eigen::MatrixXd B_mat = orthonormalize(mass);
 
             cell_test_space.reset_matrix(B_mat);
         }

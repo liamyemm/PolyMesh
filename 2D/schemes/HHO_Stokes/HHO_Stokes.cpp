@@ -76,6 +76,13 @@ int main(const int argc, const char **argv)
 
     std::unique_ptr<PolyMesh2D::CurvedMesh::Mesh> curved_mesh = PolyMesh2D::MeshTransform::mesh_convert(straight_mesh.get());
 
+    // std::ofstream mesh_out("mesh_plot.dat");
+    // curved_mesh->plot_mesh(&mesh_out, 20);
+    // mesh_out.close();
+
+    // assert(curved_mesh->test());
+    // exit(1);
+
     straight_mesh.reset(); // delete straight mesh
 
     // Reordering
@@ -126,14 +133,14 @@ int main(const int argc, const char **argv)
     //     return std::sin(Math::PI * x(0)) * std::sin(Math::PI * x(1)) * Eigen::Vector2d(std::sin(Math::PI * x(0)) * std::cos(Math::PI * x(1)), -std::cos(Math::PI * x(0)) * std::sin(Math::PI * x(1)));
     // };
 
-    double lambda = 1.146079206482891027;
+    // double lambda = 1.146079206482891027;
     // double alpha = Math::PI - 0.2;
 
     // double lambda = 1.146079206482891027;
 
     // double lambda = 2.29708403836702389336389083304;
 
-    // double lambda = 4.67729965305253346348463840085;
+    double lambda = 4.67729965305253346348463840085;
     double alpha = Math::PI - 0.2;
 
     // std::cout << "\n" << std::abs(std::pow(lambda * std::sin(alpha), 2) - std::pow(std::sin(lambda * alpha), 2)) << "\n";
@@ -237,55 +244,49 @@ int main(const int argc, const char **argv)
     //     return -2.0 * std::pow(Math::PI, 3) * mat;
     // };
 
-    std::function<double(Eigen::Vector2d)> p = [](const Eigen::Vector2d x) -> double
-    {
-        // return std::exp(x(0) + x(1)) - std::pow(std::exp(1) - 1, 2) + std::sin(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1));
-        return 0.0;
-        // return x(0) + x(1) - 1.0;
-        // return x(0) * x(1) - 0.25;
-    };
-    std::function<PolyMesh2D::Functional::RowVector(Eigen::Vector2d)> Dp = [](const Eigen::Vector2d x) -> PolyMesh2D::Functional::RowVector
-    {
-        // return std::exp(x(0) + x(1)) * PolyMesh2D::Functional::RowVector(1, 1) + 2.0 * Math::PI * PolyMesh2D::Functional::RowVector(std::cos(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1)), std::sin(2.0 * Math::PI * x(0)) * std::cos(2.0 * Math::PI * x(1)));
-        // return PolyMesh2D::Functional::RowVector(x(1), x(0));
-        return Eigen::RowVector2d::Zero();
-    };
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [](const Eigen::Vector2d x) -> Eigen::Vector2d
+    // std::function<double(Eigen::Vector2d)> p = [](const Eigen::Vector2d x) -> double
     // {
-    //     // return Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0)));
-    //     return Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0))) + std::exp(x(0) + x(1)) * Eigen::Vector2d(1, 1);
+    //     // return std::exp(x(0) + x(1)) - std::pow(std::exp(1) - 1, 2) + std::sin(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1));
+    //     return 0.0;
+    //     // return x(0) + x(1) - 1.0;
+    //     // return x(0) * x(1) - 0.25;
+    // };
+    // std::function<PolyMesh2D::Functional::RowVector(Eigen::Vector2d)> Dp = [](const Eigen::Vector2d x) -> PolyMesh2D::Functional::RowVector
+    // {
+    //     // return std::exp(x(0) + x(1)) * PolyMesh2D::Functional::RowVector(1, 1) + 2.0 * Math::PI * PolyMesh2D::Functional::RowVector(std::cos(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1)), std::sin(2.0 * Math::PI * x(0)) * std::cos(2.0 * Math::PI * x(1)));
+    //     // return PolyMesh2D::Functional::RowVector(x(1), x(0));
+    //     return Eigen::RowVector2d::Zero();
     // };
 
     // ScalarFunction2D p_sing(sing.p(-2.2911351521999143910305093));
 
     // std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [laplace_u](const Eigen::Vector2d x) -> Eigen::Vector2d
-    std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [sing](const Eigen::Vector2d x) -> Eigen::Vector2d
-    {
+    // std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [sing](const Eigen::Vector2d x) -> Eigen::Vector2d
+    // {
         // return p_sing.derivative(x).transpose();
         // return -sing.laplace_u().value(x);
         // return -sing.p(-2.2911351521999093).derivative(x).transpose();
         // return sing.p(-2.2911351521999093).derivative(x).transpose();
         // return Eigen::Vector2d(1, 1);
         // return Eigen::Vector2d(x(1), x(0));
-        return Eigen::Vector2d::Zero();
+        // return Eigen::Vector2d::Zero();
         // return std::exp(x(0) + x(1)) * Eigen::Vector2d(1, 1) + 2.0 * Math::PI * Eigen::Vector2d(std::cos(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1)), std::sin(2.0 * Math::PI * x(0)) * std::cos(2.0 * Math::PI * x(1))) + Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0)));
         // return Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0)));
-    };
+    // };
 
-    std::function<Eigen::Vector2d(Eigen::Vector2d)> u = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    {
-        // return Eigen::Vector2d::Zero();
-        return Eigen::Vector2d(x(1), x(0));
-        // return (1.0 - x.squaredNorm()) * Eigen::Vector2d(-x(1), x(0));
-    };
-    std::function<Eigen::Matrix2d(Eigen::Vector2d)> Du = [](const Eigen::Vector2d x) -> Eigen::Matrix2d
-    {
-        Eigen::Matrix2d G = Eigen::Matrix2d::Zero();
-        G(0, 1) = 1.0;
-        G(1, 0) = 1.0;
-        return G;
-    };
+    // std::function<Eigen::Vector2d(Eigen::Vector2d)> u = [](const Eigen::Vector2d x) -> Eigen::Vector2d
+    // {
+    //     // return Eigen::Vector2d::Zero();
+    //     return Eigen::Vector2d(x(1), x(0));
+    //     // return (1.0 - x.squaredNorm()) * Eigen::Vector2d(-x(1), x(0));
+    // };
+    // std::function<Eigen::Matrix2d(Eigen::Vector2d)> Du = [](const Eigen::Vector2d x) -> Eigen::Matrix2d
+    // {
+    //     Eigen::Matrix2d G = Eigen::Matrix2d::Zero();
+    //     G(0, 1) = 1.0;
+    //     G(1, 0) = 1.0;
+    //     return G;
+    // };
 
     // std::function<double(Eigen::Vector2d)> enrich_p = [](const Eigen::Vector2d x) -> double
     // {
@@ -297,24 +298,30 @@ int main(const int argc, const char **argv)
     //     return std::exp(x(0) + x(1)) * PolyMesh2D::Functional::RowVector(1, 1);
     // };
 
-    VectorFunction2D source(src);
     // source.add_pole(PolyMesh2D::Functional::Pole<Eigen::Vector2d>(Eigen::Vector2d::Zero(), 2.0 - lambda));
 
     // VectorFunction2D source(sing.laplace_u());
 
     // VectorFunction2D u_func(u, Du);
-    VectorFunction2D u_func(sing.u());
-    VectorFunction2D u_func_sing(sing.u());
-    VectorFunction2D laplace_u_func(sing.laplace_u());
-    // VectorFunction2D laplace_u_func(laplace_u, D_laplace_u);
-    ScalarFunction2D p_func(sing.p(-2.2911351521999093));
-    // ScalarFunction2D p_func(p, Dp);
-    // ScalarFunction2D p_func(sing.p(-2.7268449211216583324161529));
-    // ScalarFunction2D p_func(sing.p(-2.7268449211216583324161529));
-    // ScalarFunction2D p_func(p);
-    // ScalarFunction2D p_func(p, Dp);
 
-    // ScalarFunction2D p_func(sing.p(0.0));
+    // PolyMesh2D::StokesTestSquare stokes_test;
+
+    // VectorFunction2D source(stokes_test.source());
+    // VectorFunction2D u_func(stokes_test.u());
+    // VectorFunction2D laplace_u_func(stokes_test.laplace_u());
+    // ScalarFunction2D p_func(stokes_test.p());
+
+
+    std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [](const Eigen::Vector2d x) -> Eigen::Vector2d
+    {
+        return Eigen::Vector2d::Zero();
+    };
+
+    VectorFunction2D source(src);
+    VectorFunction2D u_func(sing.u());
+    VectorFunction2D laplace_u_func(sing.laplace_u());
+    // ScalarFunction2D p_func(sing.p(-2.291135152199913));
+    ScalarFunction2D p_func(sing.p(-2.726844921121656));
 
     // double integral = 0.0;
     // auto handle = stokes.get_quad_handle();
@@ -323,36 +330,26 @@ int main(const int argc, const char **argv)
     //     integral += handle.integrate(p_func, cell);
     // }
 
-    // std::cout << std::setprecision(17) << integral << "\n";
+    // std::cout << "\n" << std::setprecision(16) << integral << "\n";
     // exit(1);
-
-    // ScalarFunction2D enrich_p_func(p, Dp);
-
-    // std::vector<PolyMesh2D::Functional::Pole<Eigen::Vector2d>> poles_u;
-
-    // poles_u.push_back(PolyMesh2D::Functional::Pole<Eigen::Vector2d>(Eigen::Vector2d::Zero(), - beta));
-
-    // std::vector<PolyMesh2D::Functional::Pole<Eigen::Vector2d>> poles_Lu;
-
-    // poles_Lu.push_back(PolyMesh2D::Functional::Pole<Eigen::Vector2d>(Eigen::Vector2d::Zero(), 2.0 - beta));
-
-    // u_func.poles = poles_u;
-    // laplace_u_func.poles = poles_Lu;
 
 #if 1
     for (size_t iT = 0; iT < curved_mesh->n_cells(); ++iT)
     {
-        stokes.enrich_highorder_basis(iT, u_func_sing);
+        stokes.enrich_highorder_basis(iT, u_func);
         // stokes.enrich_pressure_basis(iT, p_func);
-        // stokes.enrich_pressure_basis(iT, enrich_p_func);
-        stokes.enrich_cell_basis(iT, u_func);
-        // stokes.enrich_cell_basis(iT, laplace_u_func);
+        // stokes.enrich_cell_basis(iT, u_func);
+        stokes.enrich_cell_basis(iT, laplace_u_func);
+        // stokes.enrich_cell_basis(iT, stokes_test.grad_p());
     }
 
     for (size_t iE = 0; iE < curved_mesh->n_edges(); ++iE)
     {
-        stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::neumann_trace(u_func_sing, curved_mesh->edge(iE)->parameterisation()));
-        // stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::times_n(PolyMesh2D::Functional::trace(p_func, curved_mesh->edge(iE)->parameterisation()), curved_mesh->edge(iE)->parameterisation()));
+        stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::neumann_trace(u_func, curved_mesh->edge(iE)->parameterisation()));
+        // if(std::abs(curved_mesh->edge(iE)->normal(curved_mesh->edge(iE)->parameterisation().tmin).dot(Eigen::Vector2d(1, -1))) > 1E-12)
+        // {
+            // stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::times_n(PolyMesh2D::Functional::trace(p_func, curved_mesh->edge(iE)->parameterisation()), curved_mesh->edge(iE)->parameterisation()));
+        // }
     }
 #endif
 
@@ -625,16 +622,19 @@ void Model::local_stokes_operator(const size_t iT, Eigen::MatrixXd &AT_loc, Eige
 
 void Model::local_source_term(const size_t iT, Eigen::VectorXd &bT)
 {
-    // bT = Eigen::VectorXd::Zero(m_stokes.local_cell_dofs(iT) + m_stokes.local_boundary_dofs(iT));
+    bT = Eigen::VectorXd::Zero(m_stokes.local_cell_dofs(iT) + m_stokes.local_boundary_dofs(iT));
 
     // auto quad_handle(m_stokes.get_quad_handle());
     // bT.head(m_stokes.local_cell_dofs(iT)) = quad_handle.l2_product(m_src, *m_stokes.cell_basis(iT), mesh_ptr->cell(iT));
 
-    std::vector<ScalarFunction2D> cell_enrich;
-    std::vector<VectorFunction2D> lap_u;
+    // std::vector<ScalarFunction2D> cell_enrich;
+    // std::vector<VectorFunction2D> lap_u;
 
-    cell_enrich.push_back(m_sing.invcurl_u());
-    lap_u.push_back(m_sing.laplace_u());
+    // PolyMesh2D::StokesTestSquare stokes_test;
+
+    // cell_enrich.push_back(m_sing.invcurl_u());
+    // cell_enrich.push_back(stokes_test.p());
+    // lap_u.push_back(m_sing.laplace_u());
 
     // auto curl_inv_curl = Functional::curl(m_sing.invcurl_u());
 
@@ -648,7 +648,7 @@ void Model::local_source_term(const size_t iT, Eigen::VectorXd &bT)
 
     //     exit(1);
 
-    bT = m_stokes.pressure_robust_RHS(iT, m_src, cell_enrich, lap_u);
+    // bT = m_stokes.pressure_robust_RHS(iT, m_src, cell_enrich, lap_u);
     // bT = m_stokes.pressure_robust_RHS(iT, m_src);
 
     // std::function<Eigen::Vector2d(Eigen::Vector2d)> laplace_u = [](const Eigen::Vector2d x) -> Eigen::Vector2d

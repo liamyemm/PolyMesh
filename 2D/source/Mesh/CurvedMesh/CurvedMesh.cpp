@@ -226,6 +226,14 @@ namespace PolyMesh2D
             {
                 edge->plot(out, partitions);
             }
+
+            // for (auto &cell : _i_cells)
+            // {
+            //     for (auto &edge : cell->get_edges())
+            //     {
+            //         edge->plot(out, partitions);
+            //     }
+            // }
         }
 
         void Mesh::remove_vertex(Vertex *vertex)
