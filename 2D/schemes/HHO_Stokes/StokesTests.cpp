@@ -93,7 +93,7 @@ namespace PolyMesh2D
             Eigen::Vector2d r_vec = x / r;
             Eigen::Vector2d theta_vec(-r_vec(1), r_vec(0));
 
-            return (lambda - 1.0) * 2.0 * lambda * std::pow(r, lambda - 2) * (d1 * r_vec + d2 * theta_vec);
+            return (lambda - 1.0) * 2.0 * lambda * std::pow(r, lambda - 2.0) * (d1 * r_vec + d2 * theta_vec);
         };
 
         std::function<Eigen::Matrix2d(Eigen::Vector2d)> deriv = [lambda, alpha](const Eigen::Vector2d &x) -> Eigen::Matrix2d

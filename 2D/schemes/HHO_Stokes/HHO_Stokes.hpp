@@ -36,15 +36,16 @@ namespace PolyMesh2D
             std::string mesh_name, plot_file;
             bool use_threads, orthonormalise;
             unsigned cell_degree, edge_degree;
+            double radius;
         };
         class Model
         {
         public:
-            Model(const StokesCore &stokes_backend, const VectorFunction2D &src, const StokesSingularity &sing);
+            Model(const StokesCore &stokes_backend, const VectorFunction2D &src);
             void assemble(bool use_threads = true);
             Eigen::VectorXd solve(const Eigen::VectorXd &UDir);
-            std::vector<double> compute_errors(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::vector<Eigen::VectorXd> &elliptic_projectors);
-            void plot(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::string &plot_file);
+            std::vector<double> compute_errors(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::vector<Eigen::VectorXd> &elliptic_projectors, const std::vector<Eigen::VectorXd> &l2_velocity_projectors);
+            void plot(const Eigen::VectorXd &approx_Uvec);
 
         private:
             void local_stokes_operator(const size_t iT, Eigen::MatrixXd &AT, Eigen::MatrixXd &RT);
@@ -52,7 +53,6 @@ namespace PolyMesh2D
 
             const StokesCore &m_stokes;
             const VectorFunction2D &m_src;
-            const StokesSingularity &m_sing;
 
             Mesh *mesh_ptr;
 

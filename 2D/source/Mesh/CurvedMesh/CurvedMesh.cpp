@@ -226,14 +226,6 @@ namespace PolyMesh2D
             {
                 edge->plot(out, partitions);
             }
-
-            // for (auto &cell : _i_cells)
-            // {
-            //     for (auto &edge : cell->get_edges())
-            //     {
-            //         edge->plot(out, partitions);
-            //     }
-            // }
         }
 
         void Mesh::remove_vertex(Vertex *vertex)
@@ -249,7 +241,7 @@ namespace PolyMesh2D
             auto pos = std::find(_vertices.begin(), _vertices.end(), vertex);
             _vertices.erase(pos);
 
-            auto pos_i = std::find(_i_vertices.begin(), _vertices.end(), vertex);
+            auto pos_i = std::find(_i_vertices.begin(), _i_vertices.end(), vertex);
             if (pos_i != _i_vertices.end())
             {
                 _i_vertices.erase(pos_i);
@@ -352,6 +344,18 @@ namespace PolyMesh2D
             }
 
             delete cell;
+        }
+
+
+        void Mesh::reset_boundary()
+        {
+            _b_vertices.clear();
+            _b_edges.clear();
+            _b_cells.clear();
+
+            _i_vertices.clear();
+            _i_edges.clear();
+            _i_cells.clear();
         }
 
 

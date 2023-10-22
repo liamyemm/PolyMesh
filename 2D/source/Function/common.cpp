@@ -408,10 +408,19 @@ namespace PolyMesh2D
 
             Function<2, 2> ret(grad);
 
-            std::vector<Functional::Pole<Eigen::Vector2d>> poles(func.get_poles());
-            for (auto &pole : poles) pole.order = pole.order + 1;
+            // std::vector<Functional::Pole<Eigen::Vector2d>> poles(func.get_poles());
+            // for (auto &pole : poles) pole.order = pole.order + 1;
 
-            ret.set_poles(poles);
+            // ret.set_poles(poles);
+
+            auto old_poles = func.get_poles();
+            for (auto &pole : old_poles)
+            {
+                Pole<Eigen::Vector2d> new_pole;
+                new_pole.location = pole.location;
+                new_pole.order = pole.order + 1;
+                ret.add_pole(new_pole);
+            }
             return ret;
         }
 
@@ -423,6 +432,22 @@ namespace PolyMesh2D
             };
 
             Function<2, 2> ret(curl);
+
+            std::vector<Functional::Pole<Eigen::Vector2d>> poles(func.get_poles());
+            for (auto &pole : poles) pole.order = pole.order + 1;
+
+            ret.set_poles(poles);
+            return ret;
+        }
+
+        const Function<2, 1> curl(const Function<2, 2> &func)
+        {
+            std::function<double(VectorType<2>)> curl = [func](const VectorType<2> & x) -> double
+            {
+                return func.derivative(x)(1, 0) - func.derivative(x)(0, 1);
+            };
+
+            Function<2, 1> ret(curl);
 
             std::vector<Functional::Pole<Eigen::Vector2d>> poles(func.get_poles());
             for (auto &pole : poles) pole.order = pole.order + 1;

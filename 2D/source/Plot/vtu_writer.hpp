@@ -49,33 +49,39 @@
           /// Writes the vtu file
           bool write_to_vtu(
               std::string file_name,      ///< name of file to write to
-              Eigen::VectorXd sol_vertex, ///< vector of values of the solution at the mesh vertices
+              const std::vector<double> &vertex_values, ///< vector of values of the solution at the mesh vertices
               bool dimen = true           ///< elevation of the plot: planar if dimen=0, elevated if dimen=1
           );
 
-          bool write_cells_to_vtu(std::string filename, Eigen::VectorXd sol_vertex);
+          /// Writes the vtu file
+          bool write_to_vtu(
+              std::string file_name,      ///< name of file to write to
+              const std::vector<Eigen::Vector2d>& vertex_values, ///< vector of values of the solution at the mesh vertices
+              bool dimen = true           ///< elevation of the plot: planar if dimen=0, elevated if dimen=1
+          );
+
+          bool write_cells_to_vtu(std::string filename, const std::vector<double> &cell_values);
 
           /// overloaded writer for the mesh alone
           bool write_to_vtu(std::string file_name);
 
      private:
           void write_vertices(FILE *pFile);                       /// <\brief add vertices coords to the vtk file
-          void write_vertices(FILE *pFile, Eigen::VectorXd data); /// <\brief add vertices coords to the vtk file for 3d graphs
+          void write_vertices(FILE *pFile, const std::vector<double> &vertex_values); /// <\brief add vertices coords to the vtk file for 3d graphs
           void write_header(FILE *pFile);                         /// <\brief add header to the file
+          void write_vector_field_property(FILE *pFile, const std::vector<Eigen::Vector2d> &vertex_values, std::string name);
           void write_cells(FILE *pFile);                          /// <\brief add the cell data - note we just use a polygon form vtk type 7
                                                                   /**
+                                                                   * 
     * @brief     *
     * @param pFile
     * @param alldata
     * @param names
     */
 
-          void write_cell_scalar_property(FILE *pFile,
-                                                     Eigen::VectorXd data,
-                                                     std::string name);
+          void write_cell_scalar_property(FILE *pFile, const std::vector<double> &vertex_values, std::string name);
 
-          void write_point_scalar_property(FILE *pFile, Eigen::VectorXd data,
-                                           std::string name); /// <\brief writes all of the point data to the vtk file
+          void write_point_scalar_property(FILE *pFile, const std::vector<double> &vertex_values, std::string name); /// <\brief writes all of the point data to the vtk file          
           void write_footer(FILE *pFile);                     /// <\brief add the footer to the vtk file
 
           const PolyMesh2D::CurvedMesh::Mesh *_mesh;

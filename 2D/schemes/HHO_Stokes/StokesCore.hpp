@@ -45,6 +45,11 @@ namespace PolyMesh2D
         CellBasisType *cell_basis(const size_t iT) const;
         EdgeBasisType *edge_basis(const size_t iE) const;
 
+        Functional::Function<2, 1> bubble(const CurvedMesh::Cell *cell) const;
+
+        Functional::Function<2, 2> vector_bubble(const CurvedMesh::Cell *cell) const;
+        Functional::Function<2, 1> vector_bubble_divergence(const CurvedMesh::Cell *cell) const;
+
         ScalarBasisType *pressure_basis(const size_t iT) const;
 
         void enrich_highorder_basis(const size_t iT, const Functional::VectorFunction2D &func);

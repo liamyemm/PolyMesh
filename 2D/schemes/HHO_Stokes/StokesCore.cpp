@@ -58,8 +58,8 @@ StokesCore::StokesCore(
     : m_mesh(mesh_ptr),
       m_cell_deg(cell_deg),
       m_edge_deg(edge_deg),
-      // m_quad_handle(m_mesh, 2 * m_edge_deg + 2, 2 * m_edge_deg + 2),
-      m_quad_handle(m_mesh, 45, 45),
+    //   m_quad_handle(m_mesh, 2 * m_edge_deg + 3, 2 * m_edge_deg + 3),
+      m_quad_handle(m_mesh, 15, 15),
       m_use_threads(use_threads),
       m_ortho(ortho),
       m_highorder_basis(mesh_ptr->n_cells()),
@@ -350,28 +350,119 @@ Functional::Function<2, 1> reference_bubble(double eps1, double eps2)
     return Functional::Function<2, 1>(bubble, bubble_deriv);
 }
 
-Functional::Function<2, 1> bubble(const CurvedMesh::Cell *cell, double eps1, double eps2)
+// Functional::Function<2, 1> bubble(const CurvedMesh::Cell *cell, double eps1, double eps2)
+// {
+//     assert(cell->n_vertices() == 3);
+
+//     auto ref_bubble = reference_bubble(eps1, eps2);
+
+//     Eigen::Matrix2d A;
+//     A.col(0) = cell->vertex(1)->coords() - cell->vertex(0)->coords();
+//     A.col(1) = cell->vertex(2)->coords() - cell->vertex(0)->coords();
+
+//     Eigen::Matrix2d B = A.inverse();
+//     Eigen::Vector2d b = cell->vertex(0)->coords();
+
+//     std::function<Eigen::Vector2d(Eigen::Vector2d)> transform = [B, b](Eigen::Vector2d x) -> Eigen::Vector2d
+//     {
+//         return B * (x - b);
+//     };
+//     std::function<Eigen::Matrix2d(Eigen::Vector2d)> transform_deriv = [B](Eigen::Vector2d x) -> Eigen::Matrix2d
+//     {
+//         return B;
+//     };
+//     return Functional::compose(ref_bubble, Functional::Function<2, 2>(transform, transform_deriv));
+// }
+
+Functional::Function<2, 1> StokesCore::bubble(const CurvedMesh::Cell *cell) const
 {
     assert(cell->n_vertices() == 3);
 
-    auto ref_bubble = reference_bubble(eps1, eps2);
-
-    Eigen::Matrix2d A;
-    A.col(0) = cell->vertex(1)->coords() - cell->vertex(0)->coords();
-    A.col(1) = cell->vertex(2)->coords() - cell->vertex(0)->coords();
-
-    Eigen::Matrix2d B = A.inverse();
-    Eigen::Vector2d b = cell->vertex(0)->coords();
-
-    std::function<Eigen::Vector2d(Eigen::Vector2d)> transform = [B, b](Eigen::Vector2d x) -> Eigen::Vector2d
+    std::function<double(Eigen::Vector2d)> bubble = [cell](Eigen::Vector2d x) -> double
     {
-        return B * (x - b);
+        double d1 = (x - cell->edge(0)->center_mass()).dot(cell->edge_normal(0, cell->edge(0)->parameterisation().tmin));
+        double d2 = (x - cell->edge(1)->center_mass()).dot(cell->edge_normal(1, cell->edge(1)->parameterisation().tmin));
+        double d3 = (x - cell->edge(2)->center_mass()).dot(cell->edge_normal(2, cell->edge(2)->parameterisation().tmin));
+        return std::pow(d1 * d2 * d3, 2);
     };
-    std::function<Eigen::Matrix2d(Eigen::Vector2d)> transform_deriv = [B](Eigen::Vector2d x) -> Eigen::Matrix2d
+    std::function<Eigen::RowVector2d(Eigen::Vector2d)> bubble_deriv = [cell](Eigen::Vector2d x) -> Eigen::RowVector2d
     {
-        return B;
+        double d1 = (x - cell->edge(0)->center_mass()).dot(cell->edge_normal(0, cell->edge(0)->parameterisation().tmin));
+        double d2 = (x - cell->edge(1)->center_mass()).dot(cell->edge_normal(1, cell->edge(1)->parameterisation().tmin));
+        double d3 = (x - cell->edge(2)->center_mass()).dot(cell->edge_normal(2, cell->edge(2)->parameterisation().tmin));
+
+        Eigen::RowVector2d Dd1 = cell->edge_normal(0, cell->edge(0)->parameterisation().tmin).transpose();
+        Eigen::RowVector2d Dd2 = cell->edge_normal(1, cell->edge(1)->parameterisation().tmin).transpose();
+        Eigen::RowVector2d Dd3 = cell->edge_normal(2, cell->edge(2)->parameterisation().tmin).transpose();
+        return 2.0 * d1 * d2 * d3 * (d2 * d3 * Dd1 + d1 * d2 * Dd3 + d1 * d3 * Dd2);
     };
-    return Functional::compose(ref_bubble, Functional::Function<2, 2>(transform, transform_deriv));
+    return Functional::Function<2, 1>(bubble, bubble_deriv);
+}
+
+Functional::Function<2, 2> StokesCore::vector_bubble(const CurvedMesh::Cell *cell) const
+{
+    assert(cell->n_vertices() == 3);
+
+    std::function<Eigen::Vector2d(Eigen::Vector2d)> bubble = [cell](Eigen::Vector2d x) -> Eigen::Vector2d
+    {
+        Eigen::Vector2d n0 = cell->edge(0)->normal(cell->edge(0)->parameterisation().tmin);
+        Eigen::Vector2d n1 = cell->edge(1)->normal(cell->edge(1)->parameterisation().tmin);
+        // Eigen::Vector2d n2 = cell->edge(2)->normal(cell->edge(2)->parameterisation().tmin);
+
+        double d0 = (x - cell->edge(0)->center_mass()).dot(n0);
+        double d1 = (x - cell->edge(1)->center_mass()).dot(n1);
+        // double d2 = (x - cell->edge(2)->center_mass()).dot(n2);
+
+        // Eigen::Vector2d t0 = cell->edge(0)->tangent(cell->edge(0)->parameterisation().tmin);
+        // Eigen::Vector2d t1 = cell->edge(1)->tangent(cell->edge(1)->parameterisation().tmin);
+        Eigen::Vector2d t2 = cell->edge(2)->tangent(cell->edge(2)->parameterisation().tmin);
+
+        // return d0 * d1 * t2 + d1 * d2 * t0 + d2 * d0 * t1;
+
+        return d0 * d1 * t2;
+    };
+    return Functional::Function<2, 2>(bubble);
+}
+
+Functional::Function<2, 1> StokesCore::vector_bubble_divergence(const CurvedMesh::Cell *cell) const
+{
+    assert(cell->n_vertices() == 3);
+
+    std::function<double(Eigen::Vector2d)> bubble_div = [cell](Eigen::Vector2d x) -> double
+    {
+        Eigen::Vector2d n0 = cell->edge(0)->normal(cell->edge(0)->parameterisation().tmin);
+        Eigen::Vector2d n1 = cell->edge(1)->normal(cell->edge(1)->parameterisation().tmin);
+        // Eigen::Vector2d n2 = cell->edge(2)->normal(cell->edge(2)->parameterisation().tmin);
+
+        double d0 = (x - cell->edge(0)->center_mass()).dot(n0);
+        double d1 = (x - cell->edge(1)->center_mass()).dot(n1);
+        // double d2 = (x - cell->edge(2)->center_mass()).dot(n2);
+
+        // Eigen::Vector2d t0 = cell->edge(0)->tangent(cell->edge(0)->parameterisation().tmin);
+        // Eigen::Vector2d t1 = cell->edge(1)->tangent(cell->edge(1)->parameterisation().tmin);
+        Eigen::Vector2d t2 = cell->edge(2)->tangent(cell->edge(2)->parameterisation().tmin);
+
+        // return (d1 * n2 + d2 * n1).dot(t0) + (d0 * n2 + d2 * n0).dot(t1) + (d0 * n1 + d1 * n0).dot(t2);
+
+        return d0 * (t2.dot(n1)) + d1 * (t2.dot(n0));
+    };
+
+    std::function<Eigen::RowVector2d(Eigen::Vector2d)> D_bubble_div = [cell](Eigen::Vector2d x) -> Eigen::RowVector2d
+    {
+        Eigen::Vector2d n0 = cell->edge_normal(0, cell->edge(0)->parameterisation().tmin);
+        Eigen::Vector2d n1 = cell->edge_normal(1, cell->edge(1)->parameterisation().tmin);
+        // Eigen::Vector2d n2 = cell->edge_normal(2, cell->edge(2)->parameterisation().tmin);
+
+        // Eigen::Vector2d t0 = cell->edge(0)->tangent(cell->edge(0)->parameterisation().tmin);
+        // Eigen::Vector2d t1 = cell->edge(1)->tangent(cell->edge(1)->parameterisation().tmin);
+        Eigen::Vector2d t2 = cell->edge(2)->tangent(cell->edge(2)->parameterisation().tmin);
+
+        // return ((t1.dot(n2) + t2.dot(n1)) * n0 + (t0.dot(n2) + t2.dot(n0)) * n1 + (t1.dot(n0) + t0.dot(n1)) * n2).transpose();
+
+
+        return (n0 * (t2.dot(n1)) + n1 * (t2.dot(n0))).transpose();
+    };
+    return Functional::Function<2, 1>(bubble_div, D_bubble_div);
 }
 
 Eigen::VectorXd StokesCore::pressure_robust_RHS(const size_t iT, const Functional::VectorFunction2D &source, const std::vector<Functional::Function<2, 1>> &RTN_enrichment, const std::vector<Functional::Function<2, 2>> &laplace_cell_enrichment) const
@@ -426,12 +517,80 @@ Eigen::VectorXd StokesCore::pressure_robust_RHS(const size_t iT, const Functiona
     for (auto &func : RTN_enrichment)
     {
         // auto the_bubble = reference_bubble(0, 0.2);
-        auto the_bubble = bubble(m_mesh->cell(iT), 0.1, 0.0002);
-        auto bubble_enrich = Functional::curl(the_bubble * func);
+        // auto the_bubble = bubble(m_mesh->cell(iT), 0.1, 0.1);
+        // auto the_bubble = bubble(m_mesh->cell(iT), 0.1, 0.1);
+        // Functional::VectorFunction2D bubble_enrich = Functional::curl(the_bubble * func);
         // auto bubble_enrich = Functional::curl(the_bubble);
+
+
+        auto bubble_enrich = this->vector_bubble(m_mesh->cell(iT));
 
         std::vector<Functional::Pole<Eigen::Vector2d>> poles;
         bubble_enrich.set_poles(poles); // empty poles
+
+        for (size_t iE = 0; iE < 3; ++iE)
+        {
+            auto edge = m_mesh->cell(iT)->edge(iE);
+            Functional::ScalarFunction1D bubble_dot_nTE(Functional::dot_n(Functional::trace(bubble_enrich, edge->parameterisation()), edge->parameterisation()));
+
+            double t0 = edge->parameterisation().tmin;
+            double t1 = edge->parameterisation().tmax;
+
+            if (std::abs(bubble_dot_nTE.value(t0)) > 1E-14)
+            {
+                std::cout << "\nerror" << iT << " " << iE << " " << bubble_dot_nTE.value(t0);
+            }
+            if (std::abs(bubble_dot_nTE.value(0.3 * (t0 + t1))) > 1E-14)
+            {
+                std::cout << "\nerror" << iT << " " << iE << " " << bubble_dot_nTE.value(0.3 * (t0 + t1));
+            }
+            if (std::abs(bubble_dot_nTE.value(0.4 * (t0 + t1))) > 1E-14)
+            {
+                std::cout << "\nerror" << iT << " " << iE << " " << bubble_dot_nTE.value(0.4 * (t0 + t1));
+            }
+            if (std::abs(bubble_dot_nTE.value(0.5 * (t0 + t1))) > 1E-14)
+            {
+                std::cout << "\nerror" << iT << " " << iE << " " << bubble_dot_nTE.value(0.5 * (t0 + t1));
+            }
+            if (std::abs(bubble_dot_nTE.value(0.6 * (t0 + t1))) > 1E-14)
+            {
+                std::cout << "\nerror" << iT << " " << iE << " " << bubble_dot_nTE.value(0.6 * (t0 + t1));
+            }
+            if (std::abs(bubble_dot_nTE.value(0.7 * (t0 + t1))) > 1E-14)
+            {
+                std::cout << "\nerror" << iT << " " << iE << " " << bubble_dot_nTE.value(0.7 * (t0 + t1));
+            }
+            if (std::abs(bubble_dot_nTE.value(t1)) > 1E-14)
+            {
+                std::cout << "\nerror" << iT << " " << iE << " " << bubble_dot_nTE.value(t1);
+            }
+        }
+
+        // Eigen::VectorXd bubble_grad_pressure_vec = Eigen::VectorXd::Zero(this->local_pressure_dofs(iT));
+
+        // for(size_t i = 0; i < this->local_pressure_dofs(iT); ++i)
+        // {
+        //     auto grad_p = Functional::gradient(this->pressure_basis(iT)->ancestor().function(i));
+        //     auto to_integrate = Functional::scalar_product(bubble_enrich, grad_p);
+        //     bubble_grad_pressure_vec(i) = m_quad_handle.integrate(to_integrate, m_mesh->cell(iT));
+
+
+        //     // std::cout << "\n grad_p" << grad_p.value(m_mesh->cell(iT)->center_mass()).norm() << "\n";
+        //     // std::cout << "\n bubble_enrich" << bubble_enrich.value(m_mesh->cell(iT)->center_mass()).norm() << "\n";
+        // }
+
+        // if(bubble_grad_pressure_vec.norm() > 1E-14)
+        // {
+        //     std::cout << "\n" << bubble_grad_pressure_vec << "\n";
+        //     std::cout << "\n local pressure dofs: " << this->local_pressure_dofs(iT) << "\n";
+        // //     std::cout << "\n lbubble_grad_pressure_vec: " << bubble_grad_pressure_vec.size() << "\n";
+        // }
+        
+
+        // if (bubble_enrich.derivative(m_mesh->cell(iT)->center_mass()).trace() > 1E-14)
+        // {
+        //     std::cout << "\nerror" << iT << " " << bubble_enrich.derivative(m_mesh->cell(iT)->center_mass()).trace();
+        // }
         // auto bubble_enrich = Functional::curl(the_bubble);
 
         // std::cout << "\n" << bubble_enrich.value(m_mesh->cell(iT)->center_mass()) << "\n";
@@ -473,11 +632,11 @@ Eigen::VectorXd StokesCore::pressure_robust_RHS(const size_t iT, const Functiona
 
         if (laplace_cell_enrichment.size() != 0)
         {
-            Eigen::MatrixXd B_mat = Eigen::MatrixXd::Identity(cell_test_space.dimension(), cell_test_space.dimension());
-            B_mat.topLeftCorner(cell_test_space.dimension() - 1, cell_test_space.dimension() - 1) = cell_test_space.matrix();
+            // Eigen::MatrixXd B_mat = Eigen::MatrixXd::Identity(cell_test_space.dimension(), cell_test_space.dimension());
+            // B_mat.topLeftCorner(cell_test_space.dimension() - 1, cell_test_space.dimension() - 1) = cell_test_space.matrix();
 
-            // Eigen::MatrixXd mass = m_quad_handle.l2_product(cell_test_space.ancestor(), cell_test_space.ancestor(), m_mesh->cell(iT));
-            // Eigen::MatrixXd B_mat = orthonormalize(mass);
+            Eigen::MatrixXd mass = m_quad_handle.l2_product(cell_test_space.ancestor(), cell_test_space.ancestor(), m_mesh->cell(iT));
+            Eigen::MatrixXd B_mat = orthonormalize(mass);
 
             cell_test_space.reset_matrix(B_mat);
         }
@@ -655,8 +814,11 @@ void StokesCore::enrich_highorder_basis(const size_t iT, const Functional::Vecto
 
     if ((max / min) > 1E16)
     {
-        std::cerr << "Highorder basis #" << iT << " is linearly dependent.\n";
-        exit(1);
+        // std::cerr << "Highorder basis #" << iT << " is linearly dependent.\n";
+        // exit(1);
+
+        m_highorder_basis[iT]->remove_basis_function(m_highorder_basis[iT]->dimension() - 1);
+        basis_integrals = m_quad_handle.l2_product(m_highorder_basis[iT]->ancestor(), m_highorder_basis[iT]->ancestor(), m_mesh->cell(iT), true);
     }
 
     Eigen::MatrixXd B = orthonormalize(basis_integrals);
@@ -682,8 +844,11 @@ void StokesCore::enrich_cell_basis(const size_t iT, const Functional::VectorFunc
 
     if ((max / min) > 1E16)
     {
-        std::cerr << "Cell basis #" << iT << " is linearly dependent.\n";
-        exit(1);
+        // std::cerr << "Cell basis #" << iT << " is linearly dependent.\n";
+        // exit(1);
+
+        m_cell_basis[iT]->remove_basis_function(m_cell_basis[iT]->dimension() - 1);
+        basis_integrals = m_quad_handle.l2_product(m_cell_basis[iT]->ancestor(), m_cell_basis[iT]->ancestor(), m_mesh->cell(iT), true);
     }
 
     Eigen::MatrixXd B = orthonormalize(basis_integrals);
@@ -709,8 +874,12 @@ void StokesCore::enrich_edge_basis(const size_t iE, const Functional::VectorFunc
 
     if ((max / min) > 1E16)
     {
-        std::cerr << "Edge basis #" << iE << " is linearly dependent.\n";
-        exit(1);
+        // std::cerr << "Edge basis #" << iE << " is linearly dependent.\n";
+        // std::cerr << "Edge:" << (m_mesh->edge(iE)->is_straight() ? " straight\n" : " curved\n");
+
+        m_edge_basis[iE]->remove_basis_function(m_edge_basis[iE]->dimension() - 1);
+        basis_integrals = m_quad_handle.l2_product(m_edge_basis[iE]->ancestor(), m_edge_basis[iE]->ancestor(), m_mesh->edge(iE), true);
+        // exit(1);
     }
 
     Eigen::MatrixXd B = orthonormalize(basis_integrals);
@@ -736,9 +905,11 @@ void StokesCore::enrich_pressure_basis(const size_t iT, const Functional::Scalar
 
     if ((max / min) > 1E16)
     {
-        std::cerr << "Pressure basis #" << iT << " is linearly dependent.\n";
-        std::cout << "Condition number of gram matrix = " << max / min << "\n";
-        exit(1);
+        // std::cerr << "Pressure basis #" << iT << " is linearly dependent.\n";
+        // exit(1);
+
+        m_pressure_basis[iT]->remove_basis_function(m_pressure_basis[iT]->dimension() - 1);
+        basis_integrals = m_quad_handle.l2_product(m_pressure_basis[iT]->ancestor(), m_pressure_basis[iT]->ancestor(), m_mesh->cell(iT), true);
     }
 
     Eigen::MatrixXd B = orthonormalize(basis_integrals);

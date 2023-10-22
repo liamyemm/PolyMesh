@@ -10,7 +10,7 @@
 #include "MeshReaderTyp2.hpp"
 
 #include "mesh_convert.hpp"
-#include "../IntersectMesh/IntersectMesh.hpp"
+#include "mesh_cutter.hpp"
 #include "../HHO_Poisson/TestCase.hpp"
 
 // boost libraries
@@ -22,6 +22,8 @@
 #include <iomanip>  // std::setprecision
 
 #include <numeric> // std::accumulate
+
+#include "vtk_writer.hpp"
 
 using namespace PolyMesh2D::HHOSTOKES;
 
@@ -50,40 +52,36 @@ int main(const int argc, const char **argv)
         std::cerr << msg;
     }
 
-    // std::function<Eigen::Vector2d(double)> circle_val = [](double t) -> Eigen::Vector2d
-    // { return Eigen::Vector2d(std::cos(t), std::sin(t)); };
-    // std::function<Eigen::Vector2d(double)> circle_deriv = [](double t) -> Eigen::Vector2d
-    // { return Eigen::Vector2d(-std::sin(t), std::cos(t)); };
-
-    // PolyMesh2D::Functional::Curve bdry_param(0.0, 2.0 * Math::PI, circle_val, circle_deriv);
-
-    // std::function<double(PolyMesh2D::Functional::ColVector)> LS = [](const PolyMesh2D::Functional::ColVector &x) -> double
-    // {
-    //     return 1.0 - (x(0) * x(0) + x(1) * x(1));
-    // };
-
-    // std::function<PolyMesh2D::Functional::RowVector(PolyMesh2D::Functional::ColVector)> LS_grad = [](const PolyMesh2D::Functional::ColVector &x) -> PolyMesh2D::Functional::RowVector
-    // {
-    //     return -2.0 * PolyMesh2D::Functional::RowVector(x(0), x(1));
-    // };
-
-    // ScalarFunction2D level_set(LS, LS_grad);
-
-    // PolyMesh2D::MeshCutter mesh_cutter(straight_mesh.get(), level_set, bdry_param);
-    // std::unique_ptr<Mesh> curved_mesh = mesh_cutter.cut_mesh();
-
-    // straight_mesh.reset(); // delete straight mesh
-
     std::unique_ptr<PolyMesh2D::CurvedMesh::Mesh> curved_mesh = PolyMesh2D::MeshTransform::mesh_convert(straight_mesh.get());
 
-    // std::ofstream mesh_out("mesh_plot.dat");
-    // curved_mesh->plot_mesh(&mesh_out, 20);
-    // mesh_out.close();
-
-    // assert(curved_mesh->test());
-    // exit(1);
-
     straight_mesh.reset(); // delete straight mesh
+
+    std::vector<PolyMesh2D::Circle> circles;
+
+    {
+        // PolyMesh2D::Circle circle1(Eigen::Vector2d(0.4, 0.275), 0.01);
+        // PolyMesh2D::Circle circle2(Eigen::Vector2d(0.2, 0.25), 0.02);
+        // PolyMesh2D::Circle circle3(Eigen::Vector2d(0.7, 0.5), 0.075);
+        // PolyMesh2D::Circle circle4(Eigen::Vector2d(0.3, 0.75), 0.015);
+
+        // circles = {circle1, circle2, circle3, circle4};
+
+        PolyMesh2D::Circle circle(Eigen::Vector2d(0.5, 0.5), params.radius);
+        circles = {circle};
+    }
+
+    for (auto &circle : circles)
+    {
+        PolyMesh2D::MeshCutter mesh_cutter(curved_mesh.get(), circle.level_set(), circle.param(), false, true);
+        mesh_cutter.cut_mesh();
+    }
+
+    std::ofstream mesh_out("mesh_plot.dat");
+    curved_mesh->plot_mesh(&mesh_out, 20);
+    mesh_out.close();
+
+    assert(curved_mesh->test());
+    exit(1);
 
     // Reordering
     PolyMesh2D::HHOPOISSON::reorder_edges(curved_mesh.get());
@@ -98,219 +96,12 @@ int main(const int argc, const char **argv)
 
     PolyMesh2D::StokesCore stokes(curved_mesh.get(), params.cell_degree, params.edge_degree, params.use_threads, params.orthonormalise);
 
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> u = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     // return (1.0 - x.squaredNorm()) * Eigen::Vector2d(-x(1), x(0));
-    //     return std::exp(x.squaredNorm()) * (1.0 - x.squaredNorm()) * Eigen::Vector2d(-x(1), x(0));
-    // };
-    // std::function<Eigen::Matrix2d(Eigen::Vector2d)> Du = [](const Eigen::Vector2d x) -> Eigen::Matrix2d
-    // {
-    //     Eigen::Matrix2d mat = Eigen::Matrix2d::Zero();
-    //     mat(0, 0) = 2.0 * x(0) * x(1);
-    //     mat(0, 1) = -1.0 + x(0) * x(0) + 3.0 * x(1) * x(1);
-    //     mat(1, 0) = 1.0 - 3.0 * x(0) * x(0) - x(1) * x(1);
-    //     mat(1, 1) = -2.0 * x(0) * x(1);
+    // PolyMesh2D::StokesTestSquare stokes_test_square;
 
-    //     return mat;
-    // };
-    // std::function<double(Eigen::Vector2d)> p = [](const Eigen::Vector2d x) -> double
-    // {
-    //     return 0.0;
-    // };
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     // return 8.0 * Eigen::Vector2d(-x(1), x(0));
-    //     return 4.0 * std::exp(x.squaredNorm()) * x.squaredNorm() * (3.0 + x.squaredNorm()) * Eigen::Vector2d(-x(1), x(0));
-    // };
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> u_sing = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     return std::pow(x.norm(), 1.5) * Eigen::Vector2d(-x(1), x(0));
-    // };
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> u_reg = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     return std::sin(Math::PI * x(0)) * std::sin(Math::PI * x(1)) * Eigen::Vector2d(std::sin(Math::PI * x(0)) * std::cos(Math::PI * x(1)), -std::cos(Math::PI * x(0)) * std::sin(Math::PI * x(1)));
-    // };
-
-    // double lambda = 1.146079206482891027;
-    // double alpha = Math::PI - 0.2;
-
-    // double lambda = 1.146079206482891027;
-
-    // double lambda = 2.29708403836702389336389083304;
-
-    double lambda = 4.67729965305253346348463840085;
-    double alpha = Math::PI - 0.2;
-
-    // std::cout << "\n" << std::abs(std::pow(lambda * std::sin(alpha), 2) - std::pow(std::sin(lambda * alpha), 2)) << "\n";
-
-    // PolyMesh2D::StokesSingularity sing(0.54448373678246393, 3.0 * Math::PI / 2.0, 0, Eigen::Vector2d::Zero());
-
-    PolyMesh2D::StokesSingularity sing(lambda, alpha, 0, Eigen::Vector2d::Zero());
-
-    // double beta = 1.5;
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> u = [&beta](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     double r = x.norm();
-
-    //     if (r < 1E-15)
-    //     {
-    //         return Eigen::Vector2d::Zero();
-    //     }
-
-    //     Eigen::Vector2d r_vec = x / r;
-    //     Eigen::Vector2d theta_vec(-r_vec(1), r_vec(0));
-    //     return std::pow(r, beta) * theta_vec;
-    // };
-    // std::function<Eigen::Matrix2d(Eigen::Vector2d)> Du = [&beta](const Eigen::Vector2d x) -> Eigen::Matrix2d
-    // {
-    //     double r = x.norm();
-
-    //     if (r < 1E-15)
-    //     {
-    //         return Eigen::Matrix2d::Zero();
-    //     }
-
-    //     Eigen::Vector2d r_vec = x / r;
-    //     Eigen::Vector2d theta_vec(-r_vec(1), r_vec(0));
-
-    //     Eigen::Matrix2d r_theta_mat = tensor_product(r_vec, theta_vec);
-    //     Eigen::Matrix2d theta_r_mat = tensor_product(theta_vec, r_vec);
-
-    //     return std::pow(r, beta - 1.0) * (-r_theta_mat + beta * theta_r_mat);
-    // };
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> laplace_u = [&beta](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     double r = x.norm();
-
-    //     if (r < 1E-15)
-    //     {
-    //         return Eigen::Vector2d::Zero();
-    //     }
-
-    //     Eigen::Vector2d r_vec = x / r;
-    //     Eigen::Vector2d theta_vec(-r_vec(1), r_vec(0));
-    //     return (beta * beta - 1.0) * std::pow(r, beta - 2.0) * theta_vec;
-    // };
-
-    // std::function<Eigen::Matrix2d(Eigen::Vector2d)> D_laplace_u = [&beta](const Eigen::Vector2d x) -> Eigen::Matrix2d
-    // {
-    //     double r = x.norm();
-
-    //     if (r < 1E-15)
-    //     {
-    //         return Eigen::Matrix2d::Zero();
-    //     }
-
-    //     Eigen::Vector2d r_vec = x / r;
-    //     Eigen::Vector2d theta_vec(-r_vec(1), r_vec(0));
-
-    //     Eigen::Matrix2d r_theta_mat = tensor_product(r_vec, theta_vec);
-    //     Eigen::Matrix2d theta_r_mat = tensor_product(theta_vec, r_vec);
-
-    //     return (beta * beta - 1.0) * std::pow(r, beta - 3.0) * (-r_theta_mat + (beta - 2.0) * theta_r_mat);
-    // };
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> u = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     return std::sin(Math::PI * x(0)) * std::sin(Math::PI * x(1)) * Eigen::Vector2d(std::sin(Math::PI * x(0)) * std::cos(Math::PI * x(1)), -std::cos(Math::PI * x(0)) * std::sin(Math::PI * x(1))) + Eigen::Vector2d(1, 1);
-    // };
-    // std::function<Eigen::Matrix2d(Eigen::Vector2d)> Du = [](const Eigen::Vector2d x) -> Eigen::Matrix2d
-    // {
-    //     Eigen::Matrix2d mat = Eigen::Matrix2d::Zero();
-    //     mat(0, 0) = 2.0 * std::sin(Math::PI * x(0)) * std::sin(Math::PI * x(1)) * std::cos(Math::PI * x(0)) * std::cos(Math::PI * x(1));
-    //     mat(0, 1) = std::pow(std::sin(Math::PI * x(0)) * std::cos(Math::PI * x(1)), 2) - std::pow(std::sin(Math::PI * x(0)) * std::sin(Math::PI * x(1)), 2);
-    //     mat(1, 0) = std::pow(std::sin(Math::PI * x(0)) * std::sin(Math::PI * x(1)), 2) - std::pow(std::cos(Math::PI * x(0)) * std::sin(Math::PI * x(1)), 2);
-    //     mat(1, 1) = -2.0 * std::sin(Math::PI * x(0)) * std::sin(Math::PI * x(1)) * std::cos(Math::PI * x(0)) * std::cos(Math::PI * x(1));
-
-    //     return Math::PI * mat;
-    // };
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> laplace_u = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     return -Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0)));
-    // };
-    // std::function<Eigen::Matrix2d(Eigen::Vector2d)> D_laplace_u = [](const Eigen::Vector2d x) -> Eigen::Matrix2d
-    // {
-    //     Eigen::Matrix2d mat = Eigen::Matrix2d::Zero();
-    //     mat(0, 0) = 2.0 * std::sin(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1));
-    //     mat(0, 1) = (1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::cos(2.0 * Math::PI * x(1));
-    //     mat(1, 0) = -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::cos(2.0 * Math::PI * x(0));
-    //     mat(1, 1) = -2.0 * std::sin(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1));
-
-    //     return -2.0 * std::pow(Math::PI, 3) * mat;
-    // };
-
-    // std::function<double(Eigen::Vector2d)> p = [](const Eigen::Vector2d x) -> double
-    // {
-    //     // return std::exp(x(0) + x(1)) - std::pow(std::exp(1) - 1, 2) + std::sin(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1));
-    //     return 0.0;
-    //     // return x(0) + x(1) - 1.0;
-    //     // return x(0) * x(1) - 0.25;
-    // };
-    // std::function<PolyMesh2D::Functional::RowVector(Eigen::Vector2d)> Dp = [](const Eigen::Vector2d x) -> PolyMesh2D::Functional::RowVector
-    // {
-    //     // return std::exp(x(0) + x(1)) * PolyMesh2D::Functional::RowVector(1, 1) + 2.0 * Math::PI * PolyMesh2D::Functional::RowVector(std::cos(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1)), std::sin(2.0 * Math::PI * x(0)) * std::cos(2.0 * Math::PI * x(1)));
-    //     // return PolyMesh2D::Functional::RowVector(x(1), x(0));
-    //     return Eigen::RowVector2d::Zero();
-    // };
-
-    // ScalarFunction2D p_sing(sing.p(-2.2911351521999143910305093));
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [laplace_u](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [sing](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-        // return p_sing.derivative(x).transpose();
-        // return -sing.laplace_u().value(x);
-        // return -sing.p(-2.2911351521999093).derivative(x).transpose();
-        // return sing.p(-2.2911351521999093).derivative(x).transpose();
-        // return Eigen::Vector2d(1, 1);
-        // return Eigen::Vector2d(x(1), x(0));
-        // return Eigen::Vector2d::Zero();
-        // return std::exp(x(0) + x(1)) * Eigen::Vector2d(1, 1) + 2.0 * Math::PI * Eigen::Vector2d(std::cos(2.0 * Math::PI * x(0)) * std::sin(2.0 * Math::PI * x(1)), std::sin(2.0 * Math::PI * x(0)) * std::cos(2.0 * Math::PI * x(1))) + Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0)));
-        // return Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0)));
-    // };
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> u = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     // return Eigen::Vector2d::Zero();
-    //     return Eigen::Vector2d(x(1), x(0));
-    //     // return (1.0 - x.squaredNorm()) * Eigen::Vector2d(-x(1), x(0));
-    // };
-    // std::function<Eigen::Matrix2d(Eigen::Vector2d)> Du = [](const Eigen::Vector2d x) -> Eigen::Matrix2d
-    // {
-    //     Eigen::Matrix2d G = Eigen::Matrix2d::Zero();
-    //     G(0, 1) = 1.0;
-    //     G(1, 0) = 1.0;
-    //     return G;
-    // };
-
-    // std::function<double(Eigen::Vector2d)> enrich_p = [](const Eigen::Vector2d x) -> double
-    // {
-    //     return std::exp(x(0) + x(1)) - std::pow(std::exp(1) - 1, 2);
-    //     // return 0.0;
-    // };
-    // std::function<PolyMesh2D::Functional::RowVector(Eigen::Vector2d)> D_enrich_p = [](const Eigen::Vector2d x) -> PolyMesh2D::Functional::RowVector
-    // {
-    //     return std::exp(x(0) + x(1)) * PolyMesh2D::Functional::RowVector(1, 1);
-    // };
-
-    // source.add_pole(PolyMesh2D::Functional::Pole<Eigen::Vector2d>(Eigen::Vector2d::Zero(), 2.0 - lambda));
-
-    // VectorFunction2D source(sing.laplace_u());
-
-    // VectorFunction2D u_func(u, Du);
-
-    // PolyMesh2D::StokesTestSquare stokes_test;
-
-    // VectorFunction2D source(stokes_test.source());
+    // VectorFunction2D source(stokes_test_square.source());
     // VectorFunction2D u_func(stokes_test.u());
     // VectorFunction2D laplace_u_func(stokes_test.laplace_u());
     // ScalarFunction2D p_func(stokes_test.p());
-
 
     std::function<Eigen::Vector2d(Eigen::Vector2d)> src = [](const Eigen::Vector2d x) -> Eigen::Vector2d
     {
@@ -318,10 +109,30 @@ int main(const int argc, const char **argv)
     };
 
     VectorFunction2D source(src);
-    VectorFunction2D u_func(sing.u());
-    VectorFunction2D laplace_u_func(sing.laplace_u());
-    // ScalarFunction2D p_func(sing.p(-2.291135152199913));
-    ScalarFunction2D p_func(sing.p(-2.726844921121656));
+
+    // source.add_pole(PolyMesh2D::Functional::Pole<Eigen::Vector2d>(Eigen::Vector2d::Zero(), 2.0 - lambda));
+
+    // VectorFunction2D u_func(zero_u, D_zero_u);
+    // VectorFunction2D laplace_u_func(zero_u, D_zero_u);
+
+    // VectorFunction2D u_func(circle.u() + stokes_test_square.u());
+    // VectorFunction2D laplace_u_func(circle.laplace_u() + stokes_test_square.laplace_u());
+    // ScalarFunction2D p_func(circle.p(0.0) + stokes_test_square.p(0.0));
+
+    VectorFunction2D u_func(circles[0].u());
+    ScalarFunction2D p_func(circles[0].p(0.0));
+
+    // VectorFunction2D u_func(circle.u());
+    // VectorFunction2D laplace_u_func(circle.laplace_u());
+    // ScalarFunction2D p_func(circle.p(0.0));
+
+    // std::function<double(Eigen::Vector2d)> test = [sing, stokes_test](const Eigen::Vector2d x) -> double
+    // {
+    //     return (-sing.laplace_u().value(x) + sing.p(0.0).derivative(x).transpose()).squaredNorm();
+    // };
+    // ScalarFunction2D test_func(test);
+
+    // ScalarFunction2D test_func(PolyMesh2D::Functional::curl(sing.laplace_u()));
 
     // double integral = 0.0;
     // auto handle = stokes.get_quad_handle();
@@ -333,40 +144,40 @@ int main(const int argc, const char **argv)
     // std::cout << "\n" << std::setprecision(16) << integral << "\n";
     // exit(1);
 
-#if 1
-    for (size_t iT = 0; iT < curved_mesh->n_cells(); ++iT)
-    {
-        stokes.enrich_highorder_basis(iT, u_func);
-        // stokes.enrich_pressure_basis(iT, p_func);
-        // stokes.enrich_cell_basis(iT, u_func);
-        stokes.enrich_cell_basis(iT, laplace_u_func);
-        // stokes.enrich_cell_basis(iT, stokes_test.grad_p());
-    }
+    double cutoff = 0.1;
 
-    for (size_t iE = 0; iE < curved_mesh->n_edges(); ++iE)
+#if 1
+    for (auto &circle : circles)
     {
-        stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::neumann_trace(u_func, curved_mesh->edge(iE)->parameterisation()));
-        // if(std::abs(curved_mesh->edge(iE)->normal(curved_mesh->edge(iE)->parameterisation().tmin).dot(Eigen::Vector2d(1, -1))) > 1E-12)
-        // {
-            // stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::times_n(PolyMesh2D::Functional::trace(p_func, curved_mesh->edge(iE)->parameterisation()), curved_mesh->edge(iE)->parameterisation()));
-        // }
+        for (size_t iT = 0; iT < curved_mesh->n_cells(); ++iT)
+        {
+            if (circle.enrich_cell(curved_mesh->cell(iT), cutoff))
+            {
+                stokes.enrich_highorder_basis(iT, circle.u());
+                stokes.enrich_pressure_basis(iT, circle.p(0.0));
+                stokes.enrich_cell_basis(iT, circle.laplace_u());
+            }
+        }
+
+        for (size_t iE = 0; iE < curved_mesh->n_edges(); ++iE)
+        {
+            if (circle.enrich_edge(curved_mesh->edge(iE), cutoff))
+            {
+                // if((circle.u_linearly_independent(curved_mesh->edge(iE))) || (params.edge_degree == 0))
+                // {
+                stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::neumann_trace(circle.u(), curved_mesh->edge(iE)->parameterisation()));
+                // }
+
+                // if(circle.p_linearly_independent(curved_mesh->edge(iE)))
+                // {
+                stokes.enrich_edge_basis(iE, PolyMesh2D::Functional::times_n(PolyMesh2D::Functional::trace(circle.p(0.0), curved_mesh->edge(iE)->parameterisation()), curved_mesh->edge(iE)->parameterisation()));
+                // }
+            }
+        }
     }
 #endif
 
-    // std::ofstream pressure_out("pressure_plot.tsv");
-    // std::ofstream velocity_out("velocity_plot.tsv");
-    // for (size_t iT = 0; iT < curved_mesh->n_cells(); iT++)
-    // {
-    //     Eigen::Vector2d point(curved_mesh->cell(iT)->center_mass());
-
-    //     pressure_out << std::setprecision(12) << std::setw(20) << std::left << point(0) << std::setprecision(12) << std::setw(20) << std::left << point(1) << std::setprecision(12) << std::setw(20) << p_func.value(point) << std::endl;
-
-    //     velocity_out << std::setprecision(12) << std::setw(20) << std::left << point(0) << std::setprecision(12) << std::setw(20) << std::left << point(1) << std::setprecision(12) << std::setw(20) << u_func.value(point).norm() << std::endl;
-    // }
-    // pressure_out.close();
-    // velocity_out.close();
-
-    Model model(stokes, source, sing);
+    Model model(stokes, source);
 
     model.assemble(params.use_threads);
 
@@ -380,18 +191,42 @@ int main(const int argc, const char **argv)
     }
 
     // set boundary dofs
-    Eigen::VectorXd UDir = interp.segment(stokes.total_cell_dofs() + stokes.total_edge_dofs() - bdry_vector_dofs, bdry_vector_dofs);
+    // Eigen::VectorXd UDir = interp.segment(stokes.total_cell_dofs() + stokes.total_edge_dofs() - bdry_vector_dofs, bdry_vector_dofs);
+
+    Eigen::VectorXd UDir = Eigen::VectorXd::Zero(bdry_vector_dofs);
+
+    std::function<Eigen::Vector2d(double)> dirichlet_bc = [](const double x) -> Eigen::Vector2d
+    {
+        return Eigen::Vector2d(1.0, 0.0);
+    };
+
+    PolyMesh2D::Functional::VectorFunction1D BC(dirichlet_bc);
+
+    for (auto &b_edge : curved_mesh->get_b_edges())
+    {
+        if (b_edge->is_straight())
+        {
+            UDir.segment(stokes.global_offset_E(b_edge->global_index()) - stokes.total_edge_dofs() + bdry_vector_dofs, stokes.local_edge_dofs(b_edge->global_index())) = stokes.l2_edge_projection(b_edge->global_index(), BC);
+        }
+        else
+        {
+            UDir.segment(stokes.global_offset_E(b_edge->global_index()) - stokes.total_edge_dofs() + bdry_vector_dofs, stokes.local_edge_dofs(b_edge->global_index())) = Eigen::VectorXd::Zero(stokes.local_edge_dofs(b_edge->global_index()));
+        }
+    }
 
     Eigen::VectorXd sol(model.solve(UDir));
 
     std::vector<Eigen::VectorXd> elliptic_projectors;
+    std::vector<Eigen::VectorXd> l2_velocity_projectors;
     elliptic_projectors.reserve(curved_mesh->n_cells());
+    l2_velocity_projectors.reserve(curved_mesh->n_cells());
     for (size_t iT = 0; iT < curved_mesh->n_cells(); ++iT)
     {
         elliptic_projectors.push_back(stokes.elliptic_projection(iT, u_func));
+        l2_velocity_projectors.push_back(stokes.l2_highorder_projection(iT, u_func));
     }
 
-    auto errors = model.compute_errors(sol, interp, elliptic_projectors);
+    auto errors = model.compute_errors(sol, interp, elliptic_projectors, l2_velocity_projectors);
 
     double l2_error = errors[0];
     double h1_error = errors[1];
@@ -405,9 +240,11 @@ int main(const int argc, const char **argv)
     std::cout << "     Pressure Error = " << pressure_error << "\n";
     std::cout << "     Divergence Error = " << divergence_error << "\n";
 
-    model.plot(sol, interp, "plot");
+    model.plot(sol);
 
     std::cout << "\n[Scheme] Writing solution to file\n";
+
+    double global_dofs = stokes.total_edge_dofs() - bdry_vector_dofs + curved_mesh->n_cells();
 
     std::ofstream out("results.txt");
     out << "EdgeDegree: " << params.edge_degree << "\n";
@@ -420,6 +257,8 @@ int main(const int argc, const char **argv)
     out << "NbCells: " << curved_mesh->n_cells() << "\n";
     out << "NbEdges: " << curved_mesh->n_edges() << "\n";
     out << "NbInternalEdges: " << curved_mesh->n_edges() - curved_mesh->n_b_edges() << "\n";
+    out << "DOFs: " << global_dofs << "\n";
+    out << "Radius: " << params.radius << "\n";
     out.close();
 
     return 0;
@@ -431,7 +270,7 @@ ModelParameters::ModelParameters(const int argc, const char **argv)
 
     // Program options
     po::options_description desc("Allowed options");
-    desc.add_options()("help,h", "Produce help message")("mesh,m", po::value<std::string>(), "Set the mesh")("celldegree,l", po::value<unsigned>(), "Set the degree of the cell polynomials")("edgedegree,k", po::value<unsigned>(), "Set the degree of the edge polynomials")("plot,p", po::value<std::string>(), "Plot to file")("use_threads,u", po::value<bool>(), "Using multithreading")("orthonormalise,o", po::value<bool>(), "Orthonormalise the basis functions");
+    desc.add_options()("help,h", "Produce help message")("mesh,m", po::value<std::string>(), "Set the mesh")("celldegree,l", po::value<unsigned>(), "Set the degree of the cell polynomials")("edgedegree,k", po::value<unsigned>(), "Set the degree of the edge polynomials")("plot,p", po::value<std::string>(), "Plot to file")("use_threads,u", po::value<bool>(), "Using multithreading")("orthonormalise,o", po::value<bool>(), "Orthonormalise the basis functions")("radius,r", po::value<double>(), "Set the circle radius");
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
@@ -465,9 +304,11 @@ ModelParameters::ModelParameters(const int argc, const char **argv)
     use_threads = (vm.count("use_threads") ? vm["use_threads"].as<bool>() : true);
 
     orthonormalise = (vm.count("orthonormalise") ? vm["orthonormalise"].as<bool>() : true);
+
+    radius = (vm.count("radius") ? vm["radius"].as<double>() : 0.1);
 }
 
-Model::Model(const StokesCore &stokes, const VectorFunction2D &src, const StokesSingularity &sing) : m_stokes(stokes), m_src(src), m_sing(sing), mesh_ptr(m_stokes.get_mesh()) {}
+Model::Model(const StokesCore &stokes, const VectorFunction2D &src) : m_stokes(stokes), m_src(src), mesh_ptr(m_stokes.get_mesh()) {}
 
 void Model::local_stokes_operator(const size_t iT, Eigen::MatrixXd &AT_loc, Eigen::MatrixXd &RT_loc)
 {
@@ -624,54 +465,8 @@ void Model::local_source_term(const size_t iT, Eigen::VectorXd &bT)
 {
     bT = Eigen::VectorXd::Zero(m_stokes.local_cell_dofs(iT) + m_stokes.local_boundary_dofs(iT));
 
-    // auto quad_handle(m_stokes.get_quad_handle());
-    // bT.head(m_stokes.local_cell_dofs(iT)) = quad_handle.l2_product(m_src, *m_stokes.cell_basis(iT), mesh_ptr->cell(iT));
-
-    // std::vector<ScalarFunction2D> cell_enrich;
-    // std::vector<VectorFunction2D> lap_u;
-
-    // PolyMesh2D::StokesTestSquare stokes_test;
-
-    // cell_enrich.push_back(m_sing.invcurl_u());
-    // cell_enrich.push_back(stokes_test.p());
-    // lap_u.push_back(m_sing.laplace_u());
-
-    // auto curl_inv_curl = Functional::curl(m_sing.invcurl_u());
-
-
-    //     for (size_t jT = 0; jT < mesh_ptr->n_cells(); ++jT)
-    //     {
-    //         std::cout << (curl_inv_curl.value(mesh_ptr->cell(iT)->center_mass()) - m_sing.u().value(mesh_ptr->cell(iT)->center_mass())).norm() << "\n\n";
-    //         std::cout << (curl_inv_curl.value(mesh_ptr->cell(iT)->center_mass())) << "\n\n";
-    //         std::cout << (m_sing.u().value(mesh_ptr->cell(iT)->center_mass())) << "\n\n\n\n";
-    //     }
-
-    //     exit(1);
-
-    // bT = m_stokes.pressure_robust_RHS(iT, m_src, cell_enrich, lap_u);
-    // bT = m_stokes.pressure_robust_RHS(iT, m_src);
-
-    // std::function<Eigen::Vector2d(Eigen::Vector2d)> laplace_u = [](const Eigen::Vector2d x) -> Eigen::Vector2d
-    // {
-    //     return -Math::PI * Math::PI * Eigen::Vector2d((1.0 - 2.0 * std::cos(2.0 * Math::PI * x(0))) * std::sin(2.0 * Math::PI * x(1)), -(1.0 - 2.0 * std::cos(2.0 * Math::PI * x(1))) * std::sin(2.0 * Math::PI * x(0)));
-    // };
-    // std::function<double(Eigen::Vector2d)> p = [](const Eigen::Vector2d x) -> double
-    // {
-    //     return std::exp(x(0) + x(1)) - std::pow(std::exp(1) - 1, 2);
-    //     // return 0.0;
-    // };
-    // std::function<PolyMesh2D::Functional::RowVector(Eigen::Vector2d)> Dp = [](const Eigen::Vector2d x) -> PolyMesh2D::Functional::RowVector
-    // {
-    //     return std::exp(x(0) + x(1)) * PolyMesh2D::Functional::RowVector(1, 1);
-    // };
-
-    // std::vector<ScalarFunction2D> cell_enrich;
-    // std::vector<VectorFunction2D> lap_u;
-
-    // cell_enrich.push_back(ScalarFunction2D(p, Dp));
-    // lap_u.push_back(VectorFunction2D(laplace_u));
-
-    // bT = m_stokes.pressure_robust_RHS(iT, m_src, cell_enrich, lap_u);
+    auto quad_handle(m_stokes.get_quad_handle());
+    bT.head(m_stokes.local_cell_dofs(iT)) = quad_handle.l2_product(m_src, *m_stokes.cell_basis(iT), mesh_ptr->cell(iT));
 }
 
 void Model::assemble(bool threading)
@@ -813,8 +608,10 @@ void Model::assemble(bool threading)
             }
         }
 
-        triplets_LTgg.emplace_back(n_total_velocity_edge_dofs + iT, n_unknowns, cell->measure());
-        triplets_LTgg.emplace_back(n_unknowns, n_total_velocity_edge_dofs + iT, cell->measure());
+        double pressure_integral = cell->measure() * m_stokes.pressure_basis(iT)->value(0, cell->center_mass());
+
+        triplets_LTgg.emplace_back(n_total_velocity_edge_dofs + iT, n_unknowns, pressure_integral);
+        triplets_LTgg.emplace_back(n_unknowns, n_total_velocity_edge_dofs + iT, pressure_integral);
 
         // triplets_LTgg.emplace_back(n_total_velocity_edge_dofs + iT, n_total_velocity_edge_dofs + iT, std::pow((cell->diam() / double(m_stokes.edge_degree() + 1)), m_stokes.edge_degree() + 2));
     }
@@ -914,95 +711,107 @@ Eigen::VectorXd Model::solve(const Eigen::VectorXd &UDir)
     return U;
 }
 
-void Model::plot(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::string &plot_file)
+void Model::plot(const Eigen::VectorXd &approx_Uvec)
 {
-    if (plot_file != "")
+    // std::ofstream vel_out("velocity_plot.csv");
+
+    // // vel_out << "{";
+    // for (size_t iT = 0; iT < mesh_ptr->n_cells(); iT++)
+    // {
+    //     Eigen::VectorXd rT_vec = RT[iT] * m_stokes.velocity_restr(approx_Uvec, iT);
+    //     auto basis = m_stokes.highorder_basis(iT);
+
+    //     std::function<Eigen::Vector2d(Eigen::Vector2d)> approx_sol = [&rT_vec, &basis](const Eigen::Vector2d &x) -> Eigen::Vector2d
+    //     {
+    //         Eigen::Vector2d value = Eigen::Vector2d::Zero();
+    //         for (size_t i = 0; i < basis->dimension(); i++)
+    //         {
+    //             value += rT_vec(i) * basis->value(i, x);
+    //         }
+    //         return value;
+    //     };
+
+    //     QuadratureRule<Eigen::Vector2d> quadT = m_stokes.get_quad_handle().get_cell_quad(iT);
+
+    //     for (size_t iqn = 0; iqn < quadT.size(); ++iqn)
+    //     {
+    //         Eigen::Vector2d point(quadT[iqn].x);
+
+    //         // if(iT !=  0)
+    //         // {
+    //         //     vel_out << ",";
+    //         // }
+    //         // Eigen::Vector2d point(mesh_ptr->cell(iT)->center_mass());
+    //         // vel_out << "{{" << std::setprecision(12) << point(0) << "," << std::setprecision(12) << point(1)  << "},{" << approx_sol(point)(0) << "," << std::setprecision(12) << approx_sol(point)(1)  << "}}";
+
+    //         vel_out << std::setprecision(12) << point.x() << "," << std::setprecision(12) << point.y() << "," << std::setprecision(12) << approx_sol(point).x() << "," << std::setprecision(12) << approx_sol(point).y() << "\n";
+
+    //         // vel_out << std::setprecision(12) << std::setw(20) << std::left << point(0) << std::setprecision(12) << std::setw(20) << std::left << point(1) << std::setprecision(12) << std::setw(20) << std::left << approx_sol(point)(0) << std::setprecision(12) << std::setw(20) << std::left << approx_sol(point)(1) << std::endl;
+    //     }
+    // }
+    // // vel_out << "}";
+    // vel_out.close();
+
+    std::vector<double> cell_enrich_values;
+    for (size_t iT = 0; iT < mesh_ptr->n_cells(); iT++)
     {
-        // Eigen::VectorXd UT = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-        // Eigen::VectorXd IT = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-        // Eigen::VectorXd UE = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-        // Eigen::VectorXd exact = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-        Eigen::VectorXd potential = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-        Eigen::VectorXd elliptic = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-        Eigen::VectorXd approx_pressure = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-        Eigen::VectorXd exact_pressure = Eigen::VectorXd::Zero(mesh_ptr->n_vertices());
-
-        for (size_t iV = 0; iV < mesh_ptr->n_vertices(); iV++)
-        {
-            // exact(iV) = sol.value(mesh_ptr->vertex(iV)->coords());
-
-            Eigen::Vector2d xV = mesh_ptr->vertex(iV)->coords();
-            auto cList = mesh_ptr->vertex(iV)->get_cells();
-            for (size_t ilT = 0; ilT < cList.size(); ilT++)
-            {
-                size_t iT = cList[ilT]->global_index();
-
-                Eigen::VectorXd local_potential = RT[iT] * m_stokes.velocity_restr(approx_Uvec, iT);
-                Eigen::VectorXd local_elliptic = RT[iT] * m_stokes.velocity_restr(interp_Uvec, iT);
-                Eigen::VectorXd local_approx_pressure = m_stokes.pressure_restr(approx_Uvec, iT);
-                Eigen::VectorXd local_exact_pressure = m_stokes.pressure_restr(interp_Uvec, iT);
-
-                for (size_t i = 0; i < m_stokes.local_highorder_dofs(iT); i++)
-                {
-                    potential(iV) += local_potential(i) * m_stokes.highorder_basis(iT)->value(i, xV)(0);
-                    elliptic(iV) += local_elliptic(i) * m_stokes.highorder_basis(iT)->value(i, xV)(0);
-                }
-                // for (size_t i = 0; i < m_stokes.local_cell_dofs(iT); i++)
-                // {
-                //     UT(iV) += m_stokes.velocity_restr(approx_Uvec, iT)(i) * m_stokes.cell_basis(iT)->value(i, xV)(0);
-                //     IT(iV) += m_stokes.velocity_restr(interp_Uvec, iT)(i) * m_stokes.cell_basis(iT)->value(i, xV)(0);
-                // }
-                for (size_t i = 0; i < m_stokes.local_pressure_dofs(iT); i++)
-                {
-                    approx_pressure(iV) += local_approx_pressure(i) * m_stokes.pressure_basis(iT)->value(i, xV);
-                    exact_pressure(iV) += local_exact_pressure(i) * m_stokes.pressure_basis(iT)->value(i, xV);
-                }
-            }
-            potential(iV) = potential(iV) / (cList.size());
-            elliptic(iV) = elliptic(iV) / (cList.size());
-            // UT(iV) = UT(iV) / (cList.size());
-            // IT(iV) = IT(iV) / (cList.size());
-            approx_pressure(iV) = approx_pressure(iV) / (cList.size());
-            exact_pressure(iV) = exact_pressure(iV) / (cList.size());
-
-            // auto eList = mesh_ptr->vertex(iV)->get_edges();
-            // for (size_t ilE = 0; ilE < cList.size(); ilE++)
-            // {
-            //     size_t iE = eList[ilE]->global_index();
-
-            //     Eigen::VectorXd interp_E = approx_Uvec.segment(m_stokes.total_cell_dofs() + m_stokes.global_offset_E(iE), m_stokes.local_edge_dofs(iE));
-
-            //     for (size_t i = 0; i < m_stokes.local_edge_dofs(iE); i++)
-            //     {
-            //         double tval = ((mesh_ptr->vertex(iV)->coords() - eList[ilE]->parameterisation().value(eList[ilE]->parameterisation().tmin)).norm() < 1E-12 ? eList[ilE]->parameterisation().tmin : eList[ilE]->parameterisation().tmax);
-            //         UE(iV) += interp_E(i) * m_stokes.edge_basis(iE)->value(i, tval)(0);
-            //     }
-            // }
-            // UE(iV) = UE(iV) / (eList.size());
-        }
-
-        Eigen::VectorXd vel_diff_plot = potential - elliptic;
-        Eigen::VectorXd pres_diff_plot = approx_pressure - exact_pressure;
-
-        VtuWriter plotdata(mesh_ptr);
-
-        // plotdata.write_to_vtu("exact-" + plot_file + ".vtu", exact);
-        plotdata.write_to_vtu("potential-" + plot_file + ".vtu", potential);
-        plotdata.write_to_vtu("elliptic-" + plot_file + ".vtu", elliptic);
-        // plotdata.write_to_vtu("UT-" + plot_file + ".vtu", UT);
-        // plotdata.write_to_vtu("IT-" + plot_file + ".vtu", IT);
-        // plotdata.write_to_vtu("UE-" + plot_file + ".vtu", UE);
-        plotdata.write_to_vtu("pressure-" + plot_file + ".vtu", approx_pressure);
-        plotdata.write_to_vtu("interp_pressure-" + plot_file + ".vtu", exact_pressure);
-        plotdata.write_to_vtu("vel_diff-" + plot_file + ".vtu", vel_diff_plot);
-        plotdata.write_to_vtu("pres_diff-" + plot_file + ".vtu", pres_diff_plot);
-        plotdata.write_to_vtu("zero-" + plot_file + ".vtu", Eigen::VectorXd::Zero(mesh_ptr->n_vertices()));
+        size_t L = m_stokes.cell_degree();
+        int n_enrichments = m_stokes.local_cell_dofs(iT) - (L + 1) * (L + 2);
+        cell_enrich_values.push_back(double(n_enrichments));
     }
+
+    std::vector<Eigen::Vector2d> velocity_vertex_values;
+    std::vector<double> pressure_vertex_values;
+
+    for (size_t iV = 0; iV < mesh_ptr->n_vertices(); iV++)
+    {
+        auto xV = mesh_ptr->vertex(iV)->coords();
+        auto cList = mesh_ptr->vertex(iV)->get_cells();
+
+        Eigen::Vector2d velocity_val = Eigen::Vector2d::Zero();
+        double pressure_val = 0.0;
+        for (size_t ilT = 0; ilT < cList.size(); ilT++)
+        {
+            size_t iT = cList[ilT]->global_index();
+
+            Eigen::VectorXd local_potential = RT[iT] * m_stokes.velocity_restr(approx_Uvec, iT);
+
+            for (size_t i = 0; i < m_stokes.local_highorder_dofs(iT); ++i)
+            {
+                velocity_val += local_potential(i) * m_stokes.highorder_basis(iT)->value(i, xV);
+            }
+
+            Eigen::VectorXd local_pressure = m_stokes.pressure_restr(approx_Uvec, iT);
+
+            for (size_t i = 0; i < m_stokes.local_pressure_dofs(iT); ++i)
+            {
+                pressure_val += local_pressure(i) * m_stokes.pressure_basis(iT)->value(i, xV);
+            }
+        }
+        velocity_val = velocity_val / (cList.size());
+        pressure_val = pressure_val / (cList.size());
+
+        velocity_vertex_values.push_back(velocity_val);
+        pressure_vertex_values.push_back(pressure_val);
+    }
+
+    // vtk_writer plotdata(mesh_ptr, vertex_values);
+    // plotdata.write_to_vtk("velocity.vtu");
+
+    VtuWriter plotdata(mesh_ptr);
+    plotdata.write_to_vtu("velocity.vtu", velocity_vertex_values);
+    plotdata.write_to_vtu("pressure.vtu", pressure_vertex_values, false);
+    plotdata.write_cells_to_vtu("cells2.vtu", cell_enrich_values);
 }
 
-std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::vector<Eigen::VectorXd> &elliptic_projectors)
+std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, const Eigen::VectorXd &interp_Uvec, const std::vector<Eigen::VectorXd> &elliptic_projectors, const std::vector<Eigen::VectorXd> &l2_velocity_projectors)
 {
     std::cout << "\n[Scheme] Computing error\n";
+
+
+
+    std::vector<double> pressure_l2_norm(mesh_ptr->n_cells());
+    std::vector<double> velocity_h1_norm(mesh_ptr->n_cells());
 
     std::vector<double> pressure_diff_vec(mesh_ptr->n_cells());
     std::vector<double> pressure_exact_vec(mesh_ptr->n_cells());
@@ -1013,6 +822,31 @@ std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, co
     std::vector<double> H1_diff_vec(mesh_ptr->n_cells());
     std::vector<double> H1_exact_vec(mesh_ptr->n_cells());
     std::vector<double> divergence_vec(mesh_ptr->n_cells());
+    // double discrete_pressure_avg = 0.0;
+    // double interpolant_pressure_avg = 0.0;
+
+    // for (size_t iT = 0; iT < mesh_ptr->n_cells(); ++iT)
+    // {
+    //     Eigen::VectorXd local_interp_pressure = m_stokes.pressure_restr(interp_Uvec, iT);
+    //     Eigen::VectorXd local_approx_pressure = m_stokes.pressure_restr(approx_Uvec, iT);
+
+    //     auto quad_handle(m_stokes.get_quad_handle());
+    //     QuadratureRule<Eigen::Vector2d> quadT(quad_handle.get_cell_quad(iT));
+
+    //     for(int i = 0; i < local_interp_pressure.size(); ++i)
+    //     {
+    //         double basis_i_avg = 0.0;
+    //         for(size_t iq = 0; iq < quadT.size(); ++iq)
+    //         {
+    //             basis_i_avg += quadT.weight(iq) * m_stokes.pressure_basis(iT)->value(i, quadT.point(iq));
+    //         }
+
+    //         discrete_pressure_avg += local_approx_pressure[i] * basis_i_avg;
+    //         interpolant_pressure_avg += local_interp_pressure[i] * basis_i_avg;
+    //     }
+    // }
+    // std::cout << "     Discrete pressure avg = " << discrete_pressure_avg << "\n";
+    // std::cout << "     Interpolant pressure avg = " << interpolant_pressure_avg << "\n\n";
 
     std::function<void(size_t, size_t)> compute_all_errors = [&](size_t start, size_t end) -> void
     {
@@ -1042,11 +876,17 @@ std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, co
             Eigen::VectorXd rT_minus_sigma_T = RT[iT] * local_approx_velocity - elliptic_projectors[iT];
             Eigen::VectorXd sigma_T = elliptic_projectors[iT];
 
+            Eigen::VectorXd rT_minus_pi_T = RT[iT] * local_approx_velocity - l2_velocity_projectors[iT];
+            Eigen::VectorXd pi_T = l2_velocity_projectors[iT];
+
             H1_diff_vec[iT] = rT_minus_sigma_T.transpose() * ST * rT_minus_sigma_T;
             H1_exact_vec[iT] = sigma_T.transpose() * ST * sigma_T;
 
-            L2_diff_vec[iT] = rT_minus_sigma_T.transpose() * MT * rT_minus_sigma_T;
-            L2_exact_vec[iT] = sigma_T.transpose() * MT * sigma_T;
+            velocity_h1_norm[iT] = (RT[iT] * local_approx_velocity).transpose() * ST * RT[iT] * local_approx_velocity;
+            pressure_l2_norm[iT] = local_approx_pressure.transpose() * MPressure * local_approx_pressure;
+
+            L2_diff_vec[iT] = rT_minus_pi_T.transpose() * MT * rT_minus_pi_T;
+            L2_exact_vec[iT] = pi_T.transpose() * MT * pi_T;
 
             pressure_diff_vec[iT] = local_difference_pressure.transpose() * MPressure * local_difference_pressure;
             pressure_exact_vec[iT] = local_interp_pressure.transpose() * MPressure * local_interp_pressure;
@@ -1056,8 +896,13 @@ std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, co
     };
     parallel_for(mesh_ptr->n_cells(), compute_all_errors, true);
 
-    double pressure_diff = std::accumulate(pressure_diff_vec.begin(), pressure_diff_vec.end(), 0.0);
-    double pressure_exact = std::accumulate(pressure_exact_vec.begin(), pressure_exact_vec.end(), 0.0);
+    std::cout << std::setprecision(16) << "     Velocity H1 norm = " << std::sqrt(std::accumulate(velocity_h1_norm.begin(), velocity_h1_norm.end(), 0.0)) << "\n";
+    std::cout << std::setprecision(16) << "     Pressure L2 norm = " << std::sqrt(std::accumulate(pressure_l2_norm.begin(), pressure_l2_norm.end(), 0.0)) << "\n\n";
+
+    // double pressure_diff = std::accumulate(pressure_diff_vec.begin(), pressure_diff_vec.end(), 0.0);
+    // double pressure_exact = std::accumulate(pressure_exact_vec.begin(), pressure_exact_vec.end(), 0.0);
+
+    double pressure_diff = std::abs(std::sqrt(std::accumulate(pressure_l2_norm.begin(), pressure_l2_norm.end(), 0.0)) - 15.61002388089276);
 
     double energy_diff = std::accumulate(energy_diff_vec.begin(), energy_diff_vec.end(), 0.0);
     double energy_exact = std::accumulate(energy_exact_vec.begin(), energy_exact_vec.end(), 0.0);
@@ -1065,12 +910,14 @@ std::vector<double> Model::compute_errors(const Eigen::VectorXd &approx_Uvec, co
     double L2_diff = std::accumulate(L2_diff_vec.begin(), L2_diff_vec.end(), 0.0);
     double L2_exact = std::accumulate(L2_exact_vec.begin(), L2_exact_vec.end(), 0.0);
 
-    double H1_diff = std::accumulate(H1_diff_vec.begin(), H1_diff_vec.end(), 0.0);
-    double H1_exact = std::accumulate(H1_exact_vec.begin(), H1_exact_vec.end(), 0.0);
+    // double H1_diff = std::accumulate(H1_diff_vec.begin(), H1_diff_vec.end(), 0.0);
+    // double H1_exact = std::accumulate(H1_exact_vec.begin(), H1_exact_vec.end(), 0.0);
+
+    double H1_diff = std::abs(std::sqrt(std::accumulate(velocity_h1_norm.begin(), velocity_h1_norm.end(), 0.0)) - 5.777266571568622);
 
     double divergence = std::accumulate(divergence_vec.begin(), divergence_vec.end(), 0.0);
 
-    // return {std::sqrt(L2_diff / L2_exact), std::sqrt(H1_diff / H1_exact), std::sqrt(energy_diff / energy_exact), std::sqrt(pressure_diff / pressure_exact)};
+    // return {std::sqrt(L2_diff / L2_exact), std::sqrt(H1_diff / H1_exact), std::sqrt(energy_diff / energy_exact), std::sqrt(pressure_diff / pressure_exact), std::sqrt(divergence)};
     // return {std::sqrt(L2_diff / L2_exact), std::sqrt(H1_diff / H1_exact), std::sqrt(energy_diff / energy_exact), std::sqrt(pressure_diff)};
     return {std::sqrt(L2_diff), std::sqrt(H1_diff), std::sqrt(energy_diff), std::sqrt(pressure_diff), std::sqrt(divergence)};
 }

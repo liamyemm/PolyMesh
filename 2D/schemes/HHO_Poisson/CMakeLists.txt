@@ -1,4 +1,4 @@
-ADD_EXECUTABLE(hho_poisson $<TARGET_OBJECTS:IntersectMesh> $<TARGET_OBJECTS:TestCase> hho_poisson.cpp)
+ADD_EXECUTABLE(hho_poisson $<TARGET_OBJECTS:TestCase> hho_poisson.cpp)
 
 TARGET_LINK_LIBRARIES(hho_poisson ${Boost_LIBRARIES})
 TARGET_LINK_LIBRARIES(hho_poisson function mesh quadrature plot hybridcore)

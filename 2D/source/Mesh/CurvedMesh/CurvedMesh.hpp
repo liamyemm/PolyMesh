@@ -96,6 +96,8 @@ namespace PolyMesh2D
 
             bool test() const;
 
+            void reset_boundary();
+
         private:
             std::string _mesh_name;
 

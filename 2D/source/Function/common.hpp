@@ -193,6 +193,10 @@ namespace PolyMesh2D
                     new_pole.order = pole.order;
                     new_poles.push_back(new_pole);
                 }
+                else
+                {
+                    assert(false);
+                }
             }
 
             ret.set_poles(new_poles);

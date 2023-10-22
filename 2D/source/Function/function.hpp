@@ -165,61 +165,38 @@ namespace PolyMesh2D
 
         };
 
-        // /**
-        //  * Overloaded operator to add two functions.
-        //  * @tparam input_dim The number of input dimensions.
-        //  * @tparam output_dim The number of output dimensions.
-        //  * @param f1 The first function to be added.
-        //  * @param f2 The second function to be added.
-        //  * @return A new Function object which is the sum of f1 and f2.
-        //  **/
-        // template <unsigned input_dim, unsigned output_dim>
-        // Function<input_dim, output_dim> operator+(const Function<input_dim, output_dim> &f1, const Function<input_dim, output_dim> &f2)
-        // {
-        //     auto sum_value = [f1, f2](const typename Function<input_dim, output_dim>::InputType &x) -> typename Function<input_dim, output_dim>::OutputType
-        //     {
-        //         return f1.value(x) + f2.value(x);
-        //     };
+        /**
+         * Overloaded operator to add two functions.
+         * @tparam input_dim The number of input dimensions.
+         * @tparam output_dim The number of output dimensions.
+         * @param f1 The first function to be added.
+         * @param f2 The second function to be added.
+         * @return A new Function object which is the sum of f1 and f2.
+         **/
+        template <unsigned input_dim, unsigned output_dim>
+        Function<input_dim, output_dim> operator+(const Function<input_dim, output_dim> &f1, const Function<input_dim, output_dim> &f2)
+        {
+            auto sum_value = [f1, f2](const typename Function<input_dim, output_dim>::InputType &x) -> typename Function<input_dim, output_dim>::OutputType
+            {
+                return f1.value(x) + f2.value(x);
+            };
 
-        //     std::vector<Pole<typename Function<input_dim, output_dim>::InputType>> poles = f1.poles;
-        //     poles.insert(poles.end(), f2.poles.begin(), f2.poles.end());
+            if (f1.differentiable() && f2.differentiable()) // Check if both f1 and f2 have available derivatives
+            {
+                auto sum_derivative = [f1, f2](const typename Function<input_dim, output_dim>::InputType &x) -> typename Function<input_dim, output_dim>::DerivativeType
+                {
+                    return f1.derivative(x) + f2.derivative(x);
+                };
 
-        //     for (size_t i = 0; i < poles.size(); ++i)
-        //     {
-        //         for (size_t j = i + 1; j < poles.size(); ++j)
-        //         {
-        //             VectorType<input_dim> pole_diff(poles[i].location - poles[j].location);
-        //             if (Math::norm(pole_diff) < 1E-15)
-        //             {
-        //                 poles[i].order = std::max(poles[i].order, poles[j].order);
-        //                 poles.erase(poles.begin() + j);
-        //                 if (j == i + 1)
-        //                 {
-        //                     --i;
-        //                 }
-        //                 break; // assume can be max two at one location. True if f1.poles and f2.poles have no repeats - as they should.
-        //             }
-        //         }
-        //     }
+                return Function<input_dim, output_dim>(sum_value, sum_derivative);
+            }
+            else
+            {
+                return Function<input_dim, output_dim>(sum_value);
+            }
 
-        //     if (f1.differentiable() && f2.differentiable()) // Check if both f1 and f2 have available derivatives
-        //     {
-        //         auto sum_derivative = [f1, f2](const typename Function<input_dim, output_dim>::InputType &x) -> typename Function<input_dim, output_dim>::DerivativeType
-        //         {
-        //             return f1.derivative(x) + f2.derivative(x);
-        //         };
-
-        //         Function<input_dim, output_dim> ret(sum_value, sum_derivative);
-        //         ret.poles = poles;
-        //         return ret;
-        //     }
-        //     else
-        //     {
-        //         Function<input_dim, output_dim> ret(sum_value);
-        //         ret.poles = poles;
-        //         return ret;
-        //     }
-        // }
+            #warning "The + operator does not copy the poles of the input functions"
+        }
 
         // /**
         //  * Overloaded operator to subtract two functions.

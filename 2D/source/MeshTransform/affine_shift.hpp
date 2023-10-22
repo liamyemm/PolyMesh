@@ -1,9 +1,14 @@
-// #include <mesh.hpp>
+#include <Eigen/Core>
 
-// #ifndef _TRANSFORMMESH_HPP
-// #define _TRANSFORMMESH_HPP
+#ifndef _AFFINE_SHIFT_HPP
+#define _AFFINE_SHIFT_HPP
 
-// // std::unique_ptr<CurvedMesh2D::Mesh> intersect_mesh(Function2D::Curve curve, Mesh2D::Mesh *straight_mesh);
-// // std::unique_ptr<Mesh2D::Mesh *straight_mesh> transform_mesh(Mesh2D::Mesh *straight_mesh);
+namespace PolyMesh2D
+{
+    // namespace MeshTransform
+    // {
+        void affine_shift(const std::string &input_file_path, const std::string &output_file_path, const Eigen::Matrix2d &A, const Eigen::Vector2d &b);
+    // }
+}
 
-// #endif
+#endif
