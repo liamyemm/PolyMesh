@@ -45,8 +45,8 @@ using MeshType = PolyMesh2D::CurvedMesh::Mesh;
     void enrich_cell_basis(const size_t iT, const PolyMesh2D::Functional::ScalarFunction2D &func);
     void enrich_edge_basis(const size_t iE, const PolyMesh2D::Functional::ScalarFunction1D &func);
 
-    Quadrature::QuadratureRule<Eigen::Vector2d> quadT(const size_t iT) const;
-    Quadrature::QuadratureRule<double> quadE(const size_t iE) const;
+    PolyMesh2D::Quadrature::QuadratureRule<Eigen::Vector2d> quadT(const size_t iT) const;
+    PolyMesh2D::Quadrature::QuadratureRule<double> quadE(const size_t iE) const;
 
     size_t local_cell_dofs(const size_t iT) const;
     size_t local_highorder_dofs(const size_t iT) const;
@@ -73,8 +73,8 @@ private:
     std::vector<std::unique_ptr<CellBasisType>> m_cell_basis;
     std::vector<std::unique_ptr<EdgeBasisType>> m_edge_basis;
 
-    std::vector<Quadrature::QuadratureRule<double>> edge_quads;
-    std::vector<Quadrature::QuadratureRule<Eigen::Vector2d>> cell_quads;
+    std::vector<PolyMesh2D::Quadrature::QuadratureRule<double>> edge_quads;
+    std::vector<PolyMesh2D::Quadrature::QuadratureRule<Eigen::Vector2d>> cell_quads;
 
     // Function2D::ScalarFamily2D construct_highorder_basis(const size_t iT);
     CellBasisType construct_cell_basis(const size_t iT, const size_t degree);

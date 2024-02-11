@@ -39,8 +39,8 @@ Eigen::MatrixXd orthonormalize(Eigen::MatrixXd &gram_mat)
     return B;
 }
 
-using Quadrature::GaussLegendre1D;
-using Quadrature::QuadratureRule;
+using PolyMesh2D::Quadrature::GaussLegendre1D;
+using PolyMesh2D::Quadrature::QuadratureRule;
 
 HybridCore::HybridCore(
     MeshType *mesh_ptr, ///< A pointer to the loaded mesh

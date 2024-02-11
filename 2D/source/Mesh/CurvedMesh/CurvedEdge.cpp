@@ -69,21 +69,33 @@ namespace PolyMesh2D
             {
                 partitions = 1;
             }
+
+            bool enrich = false;
+            for(auto & c : _cells)
+            {
+                for(auto & v : c->get_vertices())
+                {
+                    enrich = enrich || v->coords().norm() < 0.15;
+                }
+            }
+
+            // bool crack = _center_mass(0) > 0 && std::abs(_center_mass(1)) < 1E-14;
+
             double deltat = (_parameterisation.tmax - _parameterisation.tmin) / double(partitions);
             for (int i = 0; i < partitions - 1; ++i)
             {
                 double t0 = _parameterisation.tmin + i * deltat;
                 double t1 = _parameterisation.tmin + (i + 1) * deltat;
 
-                *out << _parameterisation.value(t0)(0) << " " << _parameterisation.value(t0)(1) << std::endl;
-                *out << _parameterisation.value(t1)(0) << " " << _parameterisation.value(t1)(1) << std::endl;
+                *out << _parameterisation.value(t0)(0) << " " << _parameterisation.value(t0)(1) << " " << enrich << std::endl;
+                *out << _parameterisation.value(t1)(0) << " " << _parameterisation.value(t1)(1) << " " << enrich << std::endl;
                 *out << std::endl;
             }
             double t0 = _parameterisation.tmax - deltat;
             double t1 = _parameterisation.tmax;
 
-            *out << _parameterisation.value(t0)(0) << " " << _parameterisation.value(t0)(1) << std::endl;
-            *out << _parameterisation.value(t1)(0) << " " << _parameterisation.value(t1)(1) << std::endl;
+            *out << _parameterisation.value(t0)(0) << " " << _parameterisation.value(t0)(1) << " " << enrich << std::endl;
+            *out << _parameterisation.value(t1)(0) << " " << _parameterisation.value(t1)(1) << " " << enrich << std::endl;
             *out << std::endl;
         }
 

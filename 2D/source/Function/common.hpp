@@ -195,7 +195,7 @@ namespace PolyMesh2D
                 }
                 else
                 {
-                    assert(false);
+                    // assert(false);
                 }
             }
 
@@ -212,11 +212,11 @@ namespace PolyMesh2D
          * @return A Function object representing the Neumann trace of the input function.
          */
         template <unsigned output_dim>
-        const Function<1, output_dim> neumann_trace(const Function<2, output_dim> &func, const Curve &param)
+        const Function<1, output_dim> neumann_trace(const Function<2, output_dim> &func, const Curve &param, const Eigen::Vector2d &bias = Eigen::Vector2d::Zero())
         {
-            std::function<VectorType<output_dim>(double)> val = [func, param](double x) -> VectorType<output_dim>
+            std::function<VectorType<output_dim>(double)> val = [func, param, bias](double x) -> VectorType<output_dim>
             {
-                return func.derivative(param.value(x)) * param.normal(x);
+                return func.derivative(param.value(x) + bias) * param.normal(x);
             };
 
             Function<1, output_dim> ret(val);

@@ -195,7 +195,7 @@ namespace PolyMesh2D
                 return Function<input_dim, output_dim>(sum_value);
             }
 
-            #warning "The + operator does not copy the poles of the input functions"
+            // #warning "The + operator does not copy the poles of the input functions"
         }
 
         // /**

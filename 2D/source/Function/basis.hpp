@@ -177,7 +177,7 @@ namespace PolyMesh2D
                   m_matrix(matrix)
             {
                 assert((size_t)m_matrix.cols() == m_basis.dimension());
-                assert((size_t)m_matrix.rows() == m_basis.dimension());
+                // assert((size_t)m_matrix.rows() == m_basis.dimension());
             }
 
             /**
@@ -187,7 +187,7 @@ namespace PolyMesh2D
              **/
             inline size_t dimension() const
             {
-                return m_basis.dimension();
+                return (size_t)m_matrix.rows();
             }
 
             /**
@@ -205,7 +205,7 @@ namespace PolyMesh2D
              **/
             void remove_basis_function(const size_t i) // remove basis function at ith index
             {
-                assert(i < dimension());
+                assert(i < m_basis.dimension());
                 m_basis.remove_basis_function(i);
             }
 
@@ -256,6 +256,15 @@ namespace PolyMesh2D
              * @return The coefficient matrix.
              **/
             const Eigen::MatrixXd &matrix() const
+            {
+                return m_matrix;
+            }
+
+            /**
+             * Return the coefficient matrix.
+             * @return The coefficient matrix.
+             **/
+            Eigen::MatrixXd matrix_copy() const
             {
                 return m_matrix;
             }
